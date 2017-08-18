@@ -1,12 +1,22 @@
 ---
-title: HelloHexo
-date: 2017-08-15 14:48:27
-tags:
+title: M2414总结
 ---
 
-#M2414项目问题和需求总结
-**去掉搜索条**
+### 去掉搜索条
 
-File:packages/apps/Launcher3/res/values/dimens.xml
+** File:packages/apps/Launcher3/res/values/dimens.xml **
+``` xml
+<dimen name="dynamic_grid_search_bar_height">0dp</dimen>
+```
 
->        <dimen name="dynamic_grid_search_bar_height">0dp</dimen>
+### Java代码实例
+
+``` java
+public class Main{
+    public static void main(String[] args){
+        System.out.println("hello world");
+    }
+}
+```
+
+![Galaxy](http://outmre4o7.bkt.clouddn.com/mbuntu%20%284%29.jpg  "galaxy")
