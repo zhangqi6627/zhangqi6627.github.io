@@ -152,32 +152,27 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-ubuntu搜狗输入法无法输入中文" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-游戏框架" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/09/21/ubuntu搜狗输入法无法输入中文/">ubuntu搜狗输入法无法输入中文</a>
+      <a class="article-title" href="/2017/09/25/游戏框架/">游戏框架</a>
     </h1>
   
 
         
-        <a href="/2017/09/21/ubuntu搜狗输入法无法输入中文/" class="archive-article-date">
-  	<time datetime="2017-09-21T02:42:39.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-09-21</time>
+        <a href="/2017/09/25/游戏框架/" class="archive-article-date">
+  	<time datetime="2017-09-25T07:44:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-09-25</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>今天晚上在搜东西的时候,突然间这搜狗输入法跟中了邪一样,只能输入拼音了(具体现象是，可以呼出搜狗输入法界面，但是候选词列表无显示），解决之后记录下来，希望能为同样遇到这个问题的人提供参考。总结了以下集中情况:同时附linux下常见软件崩溃问题解决方案。<br>系统环境;ubuntu 14.04LTS<br>搜狗版本:2.1.0.0082<br>fcitx版本:1:4.2.9.1-lu</p>
-<h3 id="方法一-重新启动搜狗输入法"><a href="#方法一-重新启动搜狗输入法" class="headerlink" title="方法一:重新启动搜狗输入法"></a>方法一:重新启动搜狗输入法</h3><p>通过下面的两个命令重启搜狗输入法,看重启之后是否可以正常使用:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">~$ sudo killall fcitx</div><div class="line">~$ sudo killall sogou-qinpanel</div></pre></td></tr></table></figure></p>
-<h3 id="方法二-检查修复安装依赖"><a href="#方法二-检查修复安装依赖" class="headerlink" title="方法二:检查修复安装依赖"></a>方法二:检查修复安装依赖</h3><p>因为我是在正常使用下出现的问题,所以不是安装依赖的问题不适用,刚安装好的朋友如果无法使用,可以用下面的领了排查或者修复安装依赖问题<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">~$ sudo apt-get install -f</div></pre></td></tr></table></figure></p>
-<h3 id="方法三-删除配置文件，重启搜狗"><a href="#方法三-删除配置文件，重启搜狗" class="headerlink" title="方法三:删除配置文件，重启搜狗"></a>方法三:删除配置文件，重启搜狗</h3><p>ubuntu下搜狗的配置文件在 ~/.config下的3个文件夹里：<br>SogouPY、SogouPY.users、sogou-qimpanel<br>删除这3个文件夹，然后重启搜狗。<br>我使用这种方法后解决了无法输入中文问题。</p>
-<h3 id="小记"><a href="#小记" class="headerlink" title="小记:"></a>小记:</h3><p>Linux下的软件会经常出现配置问题而崩溃,最直接的反应就是无法使用,之前的Wildfly也是因为配置文档的原因无法启动.<br>因此,如果Linux下正常使用的软件突然无法使用,崩溃,可以尝试删除或者修改配置文档的方式来解决.</p>
-
+        <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div><div class="line">127</div><div class="line">128</div><div class="line">129</div><div class="line">130</div><div class="line">131</div><div class="line">132</div><div class="line">133</div><div class="line">134</div><div class="line">135</div><div class="line">136</div><div class="line">137</div><div class="line">138</div><div class="line">139</div><div class="line">140</div><div class="line">141</div><div class="line">142</div><div class="line">143</div><div class="line">144</div><div class="line">145</div><div class="line">146</div><div class="line">147</div><div class="line">148</div><div class="line">149</div><div class="line">150</div><div class="line">151</div><div class="line">152</div><div class="line">153</div><div class="line">154</div><div class="line">155</div><div class="line">156</div><div class="line">157</div><div class="line">158</div><div class="line">159</div><div class="line">160</div><div class="line">161</div><div class="line">162</div><div class="line">163</div><div class="line">164</div><div class="line">165</div><div class="line">166</div><div class="line">167</div><div class="line">168</div><div class="line">169</div><div class="line">170</div><div class="line">171</div><div class="line">172</div><div class="line">173</div><div class="line">174</div><div class="line">175</div><div class="line">176</div><div class="line">177</div><div class="line">178</div><div class="line">179</div><div class="line">180</div><div class="line">181</div><div class="line">182</div><div class="line">183</div><div class="line">184</div><div class="line">185</div><div class="line">186</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">GameControl</span> <span class="keyword">extends</span> <span class="title">View</span> <span class="keyword">implements</span> <span class="title">Runnable</span></span>&#123;</div><div class="line">	<span class="keyword">public</span> <span class="keyword">int</span> mIGameStatus = -<span class="number">1</span>;</div><div class="line">	<span class="keyword">public</span> <span class="keyword">boolean</span> mBLoop = <span class="keyword">false</span>;</div><div class="line">	<span class="function"><span class="keyword">public</span>  <span class="title">GameControl</span><span class="params">(Context context)</span></span>&#123;</div><div class="line">		<span class="keyword">super</span>(context);</div><div class="line">	&#125;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">initGame</span><span class="params">()</span></span>&#123;</div><div class="line">		mBLoop = <span class="keyword">true</span>;</div><div class="line">		mIGameStatus = GameDefinition.Game_Logo;</div><div class="line">		Thread t = <span class="keyword">new</span> Thread(<span class="keyword">this</span>);</div><div class="line">		t.start();</div><div class="line">	&#125;</div><div class="line">	<span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onDraw</span><span class="params">(Canvas canvas)</span></span>&#123;</div><div class="line">		<span class="keyword">switch</span>(mIGameStatus)&#123;</div><div class="line">			<span class="keyword">case</span> GameDefinition.Game_Logo:</div><div class="line">				<span class="keyword">break</span>;</div><div class="line">			<span class="keyword">case</span> GameDefinition.Game_MainMenu:</div><div class="line">				<span class="keyword">break</span>;</div><div class="line">			<span class="keyword">case</span> GameDefinition.Game_Help:</div><div class="line">				<span class="keyword">break</span>;</div><div class="line">			<span class="keyword">default</span>:</div><div class="line">				<span class="keyword">break</span>;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span></span>&#123;</div><div class="line">		<span class="keyword">while</span>(mBLoop)&#123;</div><div class="line">			<span class="keyword">try</span>&#123;</div><div class="line">				Thread.sleep(<span class="number">500</span>);</div><div class="line">			&#125;<span class="keyword">catch</span>(Exception e)&#123;</div><div class="line">				e.printStackTrace();</div><div class="line">			&#125;</div><div class="line">			postInvalidate();</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	<span class="function"><span class="keyword">boolean</span> <span class="title">onKeyDown</span><span class="params">(<span class="keyword">int</span> keyCode)</span></span>&#123;</div><div class="line">		<span class="keyword">switch</span>(mIGameStatus)&#123;</div><div class="line">			<span class="keyword">case</span> GameDefinition.Game_Logo:</div><div class="line">				<span class="keyword">break</span>;</div><div class="line">			<span class="keyword">case</span> GameDefinition.Game_MainMenu:</div><div class="line">				<span class="keyword">break</span>;</div><div class="line">			<span class="keyword">case</span> GameDefinition.Game_Help:</div><div class="line">				<span class="keyword">break</span>;</div><div class="line">			<span class="keyword">default</span>:</div><div class="line">				<span class="keyword">break</span>;</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">return</span> <span class="keyword">true</span>;</div><div class="line">	&#125;</div><div class="line">	<span class="function"><span class="keyword">boolean</span> <span class="title">onKeyUp</span><span class="params">(<span class="keyword">int</span> keyCode)</span></span>&#123;</div><div class="line">		<span class="keyword">return</span> <span class="keyword">true</span>;</div><div class="line">	&#125;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">onTouchEvent</span><span class="params">(MotionEvent event)</span></span>&#123;</div><div class="line">		<span class="keyword">int</span> iAction = event.getAction();</div><div class="line">		<span class="keyword">if</span>(iAction == MotionEvent.ACTION_CANCEL)&#123;</div><div class="line">			</div><div class="line">		&#125;<span class="keyword">else</span> <span class="keyword">if</span>(iAction == MotionEvent.ACTION_DOWN)&#123;</div><div class="line">		&#125;<span class="keyword">else</span> <span class="keyword">if</span>(iAction == MotionEvent.ACTION_MOVE)&#123;</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">int</span> x = (<span class="keyword">int</span>)event.getX();</div><div class="line">		<span class="keyword">int</span> y = (<span class="keyword">int</span>)event.getY();</div><div class="line">		<span class="keyword">switch</span>(mIGameStatus)&#123;</div><div class="line">			<span class="keyword">case</span> GameDefinition.Game_Logo:</div><div class="line">				<span class="keyword">break</span>;</div><div class="line">			<span class="keyword">case</span> GameDefinition.Game_MainMenu:</div><div class="line">				<span class="keyword">break</span>;</div><div class="line">			<span class="keyword">case</span> GameDefinition.Game_Help:</div><div class="line">				<span class="keyword">break</span>;</div><div class="line">			<span class="keyword">default</span>:</div><div class="line">				<span class="keyword">break</span>;</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">return</span> <span class="keyword">true</span>;</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">GameObject</span></span>&#123;</div><div class="line">	<span class="keyword">private</span> String id = <span class="keyword">null</span>;</div><div class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">getId</span><span class="params">()</span></span>&#123;</div><div class="line">		<span class="keyword">return</span> id;</div><div class="line">	&#125;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setId</span><span class="params">(String id)</span></span>&#123;</div><div class="line">		<span class="keyword">this</span>.id = id;</div><div class="line">	&#125;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">loadProperties</span><span class="params">(Vector v)</span></span>;</div><div class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">toString</span><span class="params">()</span></span>&#123;</div><div class="line">		<span class="keyword">return</span> (<span class="string">"id="</span>+id);</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">GameObjectQueue</span> <span class="keyword">extends</span> <span class="title">Hashtable</span></span>&#123;</div><div class="line">	<span class="keyword">private</span> String id = <span class="keyword">null</span>;</div><div class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">getId</span><span class="params">()</span></span>&#123;</div><div class="line">		<span class="keyword">return</span> id;</div><div class="line">	&#125;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setId</span><span class="params">(String id)</span></span>&#123;</div><div class="line">		<span class="keyword">this</span>.id = id;</div><div class="line">	&#125;</div><div class="line">	<span class="function"><span class="keyword">public</span> Object <span class="title">find</span><span class="params">(String gameObjectId)</span></span>&#123;</div><div class="line">		<span class="keyword">if</span>(<span class="keyword">this</span>.containsKey(gameObjectId))&#123;</div><div class="line">			<span class="keyword">return</span> <span class="keyword">this</span>.get(gameObjectId);</div><div class="line">		&#125;<span class="keyword">else</span>&#123;</div><div class="line">			<span class="keyword">return</span> <span class="keyword">null</span>;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">public</span> Object[] list()&#123;</div><div class="line">		Object[] result = <span class="keyword">new</span> Object[<span class="keyword">this</span>.size()];</div><div class="line">		Enumeration enumer = <span class="keyword">this</span>.elements();</div><div class="line">		<span class="keyword">int</span> i = <span class="number">0</span>;</div><div class="line">		<span class="keyword">while</span>(enumer.hasMoreElements())&#123;</div><div class="line">			result[i++] = enumer.nextElements();</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">return</span> result;</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SimpleLayer</span> <span class="keyword">extends</span> <span class="title">GameObject</span></span>&#123;</div><div class="line">	<span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> WALKARENA = <span class="number">1</span>;</div><div class="line">	<span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> NO_WALKARENA = <span class="number">2</span>;</div><div class="line">	<span class="meta">@get</span></div><div class="line">	<span class="keyword">private</span> <span class="keyword">int</span>[] mapData = <span class="keyword">null</span>;</div><div class="line">	<span class="meta">@get</span></div><div class="line">	<span class="keyword">private</span> <span class="keyword">int</span> tileWidth = <span class="number">0</span>;</div><div class="line">	<span class="meta">@get</span></div><div class="line">	<span class="keyword">private</span> <span class="keyword">int</span> tileHeight = <span class="number">0</span>;</div><div class="line">	<span class="meta">@get</span></div><div class="line">	<span class="keyword">private</span> <span class="keyword">int</span> tileCols = <span class="number">0</span>;</div><div class="line">	<span class="meta">@get</span></div><div class="line">	<span class="keyword">private</span> <span class="keyword">int</span> tileRows = <span class="number">0</span>;</div><div class="line">	<span class="meta">@get</span>,set</div><div class="line">	<span class="keyword">private</span> TiledLayer layer = <span class="keyword">null</span>;</div><div class="line">	<span class="meta">@get</span></div><div class="line">	<span class="keyword">private</span> <span class="keyword">int</span> type = <span class="number">0</span>;</div><div class="line">	<span class="meta">@get</span></div><div class="line">	<span class="keyword">private</span> String imageURL = <span class="keyword">null</span>;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="title">SimpleLayer</span><span class="params">()</span></span>&#123;</div><div class="line">		<span class="keyword">super</span>();</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">private</span> <span class="keyword">int</span>[] StringToIntArray(String s)&#123;</div><div class="line">		s = StringExtension.removeToken(s,<span class="keyword">new</span> String[]&#123;<span class="string">"\t"</span>,<span class="string">" "</span>,<span class="string">"\r"</span>,<span class="string">"\n"</span>&#125;);</div><div class="line">		Object[] objArr = StringExtension.split(<span class="keyword">new</span> StringBuffer(s),<span class="string">","</span>,StringExtension.INTEGER_ARRAY,<span class="keyword">false</span>);</div><div class="line">		<span class="keyword">return</span> StringExtension.objectArrayBatchToIntArray(objArr);</div><div class="line">	&#125;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">loadProperties</span><span class="params">(Vector v)</span></span>&#123;</div><div class="line">		<span class="keyword">this</span>.setId((String)v.elementAt(<span class="number">0</span>));</div><div class="line">		<span class="keyword">this</span>.tileWidth = Integer.parseInt((String)v.elementAt(<span class="number">1</span>));</div><div class="line">		<span class="keyword">this</span>.tileHeight = Integer.parseInt((String)v.elementAt(<span class="number">2</span>));</div><div class="line">		<span class="keyword">this</span>.tileCols = Integer.parseInt((String)v.elementAt(<span class="number">3</span>));</div><div class="line">		<span class="keyword">this</span>.tileRows = Integer.parseInt((String)v.elementAt(<span class="number">4</span>));</div><div class="line">		<span class="keyword">this</span>.type = Integer.parseInt((String)v.elementAt(<span class="number">5</span>));</div><div class="line">		<span class="keyword">this</span>.imgURL = (String)v.elementAt(<span class="number">6</span>);</div><div class="line">		<span class="keyword">this</span>.mapData = StringToIntArray((String)v.elementAt(<span class="number">7</span>));</div><div class="line">	&#125;</div><div class="line">	<span class="function"><span class="keyword">public</span> TiledLayer <span class="title">getLayer</span><span class="params">()</span></span>&#123;</div><div class="line">		<span class="keyword">return</span> layer;</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SimpleMap</span> <span class="keyword">extends</span> <span class="title">GameObject</span></span>&#123;</div><div class="line">	<span class="meta">@get</span>,set</div><div class="line">	<span class="keyword">private</span> GameObjectQueue layerSet = <span class="keyword">null</span>;	<span class="comment">//图层集合</span></div><div class="line">	<span class="meta">@get</span>,set</div><div class="line">	<span class="keyword">private</span> GameObjectQueue npcSet = <span class="keyword">null</span>;		<span class="comment">//NPC集合</span></div><div class="line">	<span class="meta">@get</span>,set</div><div class="line">	<span class="keyword">private</span> GameObjectQueue mapLink = <span class="keyword">null</span>;		<span class="comment">//连接器集合</span></div><div class="line">	<span class="meta">@get</span></div><div class="line">	<span class="keyword">private</span> <span class="keyword">int</span> width = <span class="number">0</span>;						<span class="comment">//地图宽度</span></div><div class="line">	<span class="meta">@get</span></div><div class="line">	<span class="keyword">private</span> <span class="keyword">int</span> height = <span class="number">0</span>;						<span class="comment">//地图高度</span></div><div class="line">	<span class="meta">@get</span></div><div class="line">	<span class="keyword">private</span> String name = <span class="keyword">null</span>;					<span class="comment">//地图名称</span></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="title">SimpleMap</span><span class="params">()</span></span>&#123;</div><div class="line">		<span class="keyword">super</span>();</div><div class="line">	&#125;</div><div class="line">	<span class="meta">@Override</span></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">loadProperties</span><span class="params">(Vector v)</span></span>&#123;</div><div class="line">		<span class="keyword">this</span>.setId((String)v.elementAt(<span class="number">0</span>));</div><div class="line">		<span class="keyword">this</span>.name = (String)v.elementAt(<span class="number">1</span>);</div><div class="line">		<span class="keyword">this</span>.width = Integer.parseInt((String)v.elementAt(<span class="number">2</span>));</div><div class="line">		<span class="keyword">this</span>.height = Integer.parseInt((String)v.elementAt(<span class="number">3</span>));</div><div class="line">	&#125;</div><div class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">toString</span><span class="params">()</span></span>&#123;...&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">//这里的Sprite类在什么地方？？？</span></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Animator</span> <span class="keyword">extends</span> <span class="title">Sprite</span></span>&#123;</div><div class="line">	<span class="keyword">private</span> Calculagraph cal = <span class="keyword">null</span>;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="title">Animator</span><span class="params">(Bitmap img,<span class="keyword">int</span> frameWidth,<span class="keyword">int</span> frameHeight,<span class="keyword">int</span> loopTime)</span></span></div><div class="line"><span class="function">&#125;</span></div></pre></td></tr></table></figure>
       
 
       
@@ -189,7 +184,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2017/09/21/ubuntu搜狗输入法无法输入中文/">展开全文 >></a>
+          <a class="article-more-a" href="/2017/09/25/游戏框架/">展开全文 >></a>
         </p>
       
 
@@ -219,27 +214,27 @@
 
 
   
-    <article id="post-adb-factory-reset" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-性能测试" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/09/20/adb-factory-reset/">adb factory reset</a>
+      <a class="article-title" href="/2017/09/25/性能测试/">性能测试</a>
     </h1>
   
 
         
-        <a href="/2017/09/20/adb-factory-reset/" class="archive-article-date">
-  	<time datetime="2017-09-20T08:48:17.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-09-20</time>
+        <a href="/2017/09/25/性能测试/" class="archive-article-date">
+  	<time datetime="2017-09-25T07:43:40.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-09-25</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">adb shell am broadcast -a android.intent.action.MASTER_CLEAR</div></pre></td></tr></table></figure>
+        <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Testing</span></span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testArrayList</span><span class="params">()</span></span>;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testLinkedList</span><span class="params">()</span></span>; </div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestImpl</span> <span class="keyword">implements</span> <span class="title">Testing</span></span>&#123;</div><div class="line">    <span class="keyword">private</span> List link = <span class="keyword">new</span> LinkedList();</div><div class="line">    <span class="keyword">private</span> List array = <span class="keyword">new</span> ArrayList();</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">TestImpl</span><span class="params">()</span></span>&#123;</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span> ;i &lt; <span class="number">10000</span>;i++)&#123;</div><div class="line">            array.add(<span class="keyword">new</span> Integer(i));</div><div class="line">            link.add(<span class="keyword">new</span> Integer(i));</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testArrayList</span><span class="params">()</span></span>&#123;</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;<span class="number">10000</span>;i++)&#123;</div><div class="line">            array.get(i);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testlinkedList</span><span class="params">()</span></span>&#123;</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>;i&lt;<span class="number">10000</span>;i++)&#123;</div><div class="line">            link.get(i);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Handler</span> <span class="keyword">implements</span> <span class="title">InvocationHandler</span></span>&#123;</div><div class="line">    <span class="keyword">private</span> Object obj;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Handler</span><span class="params">(Object obj)</span></span>&#123;</div><div class="line">        <span class="keyword">this</span>.obj = obj;</div><div class="line">    &#125;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Object <span class="title">newInstance</span><span class="params">(Object obj)</span></span>&#123;</div><div class="line">        <span class="comment">//1.类加载器，2.实现的接口，3.此类的实例</span></div><div class="line">        Object result = Proxy.newProxyInstance(obj.getClass().getClassLoader(), obj.getClass().getInterfaces(), <span class="keyword">new</span> Handler(obj));</div><div class="line">        <span class="keyword">return</span> result;</div><div class="line">    &#125;</div><div class="line">    <span class="function"><span class="keyword">public</span> Object <span class="title">invoke</span><span class="params">(Object proxy,Method method,Object[] args)</span> <span class="keyword">throws</span> Throwable</span>&#123;</div><div class="line">        Object result;</div><div class="line">        <span class="keyword">try</span>&#123;</div><div class="line">            <span class="keyword">long</span> start = System.currentTimeMillis();    <span class="comment">//调用方法之前</span></div><div class="line">            result = method.invoke(obj,args);</div><div class="line">            <span class="keyword">long</span> end = System.currentTimeMillis();        <span class="comment">//调用方法之后</span></div><div class="line">            <span class="comment">//在这里计算性能</span></div><div class="line">        &#125;<span class="keyword">catch</span>(InvocationTargetException e)&#123;</div><div class="line">            <span class="keyword">throw</span> e.getTargetException();</div><div class="line">        &#125;<span class="keyword">catch</span>(Exception e)&#123;</div><div class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> RuntimeException(<span class="string">"unexpected invocation exception:"</span>+e.getMessage());</div><div class="line">        &#125;<span class="keyword">finally</span>&#123;</div><div class="line">            Log.e(<span class="string">"Handler"</span>,<span class="string">"end method "</span> + method.getName());</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> result;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"></div><div class="line"><span class="comment">//测试</span></div><div class="line"><span class="keyword">try</span>&#123;</div><div class="line">    Testing testing = (Testing)Handler.newInstance(<span class="keyword">new</span> TestingImpl());</div><div class="line">    testing.testArrayList();    </div><div class="line">    testing.testLinkedList();    </div><div class="line">&#125;<span class="keyword">catch</span>(Exception e)&#123;</div><div class="line">    e.printStackTrace();</div><div class="line">&#125;</div></pre></td></tr></table></figure>
       
 
       
@@ -251,7 +246,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2017/09/20/adb-factory-reset/">展开全文 >></a>
+          <a class="article-more-a" href="/2017/09/25/性能测试/">展开全文 >></a>
         </p>
       
 
@@ -281,37 +276,27 @@
 
 
   
-    <article id="post-shutdown-selinux" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-内存消耗测试" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/09/19/shutdown-selinux/">如何设置确认selinux 模式</a>
+      <a class="article-title" href="/2017/09/25/内存消耗测试/">内存消耗测试</a>
     </h1>
   
 
         
-        <a href="/2017/09/19/shutdown-selinux/" class="archive-article-date">
-  	<time datetime="2017-09-19T07:54:53.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-09-19</time>
+        <a href="/2017/09/25/内存消耗测试/" class="archive-article-date">
+  	<time datetime="2017-09-25T07:42:23.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-09-25</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>[Description]<br>linux SELinux 分成Enforce 以及 Permissive 两种模式，如何进行设置与确认当前SELinux模式？</p>
-<p>[Keyword]<br>android, SELinux, Enforce, Permissive</p>
-<p>[Solution]<br>在Android KK 4.4 版本后，Google 有正式有限制的启用SELinux, 来增强android 的安全保护。<br>在ENG 版本中, 可以使用setenforce 命令进行设置:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">adb shell setenforce 0    //设置成permissive 模式</div><div class="line">adb shell setenforce 1    //设置成enforce 模式</div></pre></td></tr></table></figure></p>
-<p>在ENG/USER 版本中，都可以使用getenforce 命令进行查询，如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">root@mt6589_phone_720pv2:/ # getenforce</div><div class="line">getenforce</div><div class="line">Enforcing</div></pre></td></tr></table></figure></p>
-<p>如果想开机一启动就设置模式，你可以用下面方式:<br>KK 版本:更新mediatek/custom/{platform}/lk/rules_platform.mk<br>L  版本: 更新bootable/bootloader/lk/platform/mt6xxx/rules.mk<br>M 版本: 更新vendor/mediatek/proprietary/bootable/bootloader/lk/platform/mt6XXX/rules.mk<br>choose one of following value -&gt; 1: disabled/ 2: permissive /3: enforcing<br>SELINUX_STATUS := 3<br>可直接调整这个SELINUX_STATUS这个的值为2, 严禁直接设置成1:disabled, 此会造成生成的文件无法正确的打上标签,造成在再次设置成enforcing时，难以预料的情况发生。</p>
-<p>注意的是:<br>在L 版本后, Google 要求强制性开启enforcing mode, 前面的设置只针对userdebug, eng 版本有效, 如果要对 user 版本有效,<br>需要修改 system/core/init/Android.mk<br>如果是 L 版本 新增:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">ifeq ($(strip $(TARGET_BUILD_VARIANT)),user)</div><div class="line">LOCAL_CFLAGS += -DALLOW_DISABLE_SELINUX=1</div><div class="line">endif</div></pre></td></tr></table></figure></p>
-<p>如果是在 M 版本 将:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">ifneq (,$(filter userdebug eng,$(TARGET_BUILD_VARIANT)))</div><div class="line">init_options += -DALLOW_LOCAL_PROP_OVERRIDE=1 -DALLOW_DISABLE_SELINUX=1</div><div class="line">init_options += -DINIT_ENG_BUILD</div><div class="line">else</div></pre></td></tr></table></figure></p>
-<p>修改成:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">ifneq (,$(filter user userdebug eng,$(TARGET_BUILD_VARIANT)))</div><div class="line">init_options += -DALLOW_LOCAL_PROP_OVERRIDE=1 -DALLOW_DISABLE_SELINUX=1</div><div class="line">init_options += -DINIT_ENG_BUILD</div><div class="line">else</div></pre></td></tr></table></figure></p>
-<p>需要注意的是, Google 要求强制性开启SELinux Enforcing Mode, 如果您关闭，将无法通过Google CTS. </p>
-<p>[相关FAQ]<br>[FAQ11486] [SELinux Policy] 如何设置SELinux 策略规则 ? 在Kernel Log 中出现”avc: denied” 要如何处理<br><a href="https://online.mediatek.com/Pages/FAQ.aspx?List=SW&amp;FAQID=FAQ11486" target="_blank" rel="external">https://online.mediatek.com/Pages/FAQ.aspx?List=SW&amp;FAQID=FAQ11486</a><br>[FAQ11485] 权限(Permission denied)问题如何确认是Selinux 约束引起<br><a href="https://online.mediatek.com/Pages/FAQ.aspx?List=SW&amp;FAQID=FAQ11485" target="_blank" rel="external">https://online.mediatek.com/Pages/FAQ.aspx?List=SW&amp;FAQID=FAQ11485</a><br>[FAQ11483] 如何快速Debug SELinux Policy 问题<br><a href="https://online.mediatek.com/Pages/FAQ.aspx?List=SW&amp;FAQID=FAQ11483" target="_blank" rel="external">https://online.mediatek.com/Pages/FAQ.aspx?List=SW&amp;FAQID=FAQ11483</a></p>
-
+        <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">MemoryConsumer</span></span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">createArray</span><span class="params">()</span></span>;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">createHashMap</span><span class="params">()</span></span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MemoConsumerImpl</span> <span class="keyword">implements</span> <span class="title">MemoryConsumer</span></span>&#123;</div><div class="line">    <span class="keyword">private</span> ArrayList arr = <span class="keyword">null</span>;</div><div class="line">    <span class="keyword">private</span> HashMap hash = <span class="keyword">null</span>;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">createArray</span><span class="params">()</span></span>&#123;</div><div class="line">        arr = <span class="keyword">new</span> ArrayList(<span class="number">1000</span>);</div><div class="line">    &#125;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">createHashMap</span><span class="params">()</span></span>&#123;</div><div class="line">        hash = <span class="keyword">new</span> HashMap(<span class="number">1000</span>);</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Memory</span></span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">long</span> <span class="title">used</span><span class="params">()</span></span>&#123;</div><div class="line">        <span class="keyword">long</span> total = Runtime.getRuntime().totalMemory();</div><div class="line">        <span class="keyword">long</span> free = Runtime.getRuntime().freeMemory();</div><div class="line">        <span class="keyword">return</span> (totao - free);</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Handler</span> <span class="keyword">implements</span> <span class="title">InvocationHandler</span></span>&#123;</div><div class="line">    <span class="keyword">private</span> Object obj;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Handler</span><span class="params">(Object obj)</span></span>&#123;</div><div class="line">        <span class="keyword">this</span>.obj = obj;</div><div class="line">    &#125;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Object <span class="title">newInstance</span><span class="params">(Object obj)</span></span>&#123;</div><div class="line">        Object result = Proxy.newProxyInstance(obj.getClass().getClassLoader(),obj.getClass().getInterfaces(),<span class="keyword">new</span> Handler(obj));</div><div class="line">        <span class="keyword">return</span> result;</div><div class="line">    &#125;</div><div class="line">    <span class="function"><span class="keyword">public</span> Object <span class="title">invoke</span><span class="params">(Object proxy,Method method,Object[] args)</span> <span class="keyword">throws</span> Throwable</span>&#123;</div><div class="line">        Object result;</div><div class="line">        <span class="keyword">try</span>&#123;</div><div class="line">            <span class="keyword">long</span> start = Memory.used();</div><div class="line">            result = method.invoke(obj,args);</div><div class="line">            <span class="keyword">long</span> end = Memory.used();</div><div class="line">            Log.e(<span class="string">"test"</span>,method.getName()+<span class="string">" test spend:"</span>+(end - start)+<span class="string">" bytes"</span>);</div><div class="line">        &#125;<span class="keyword">catch</span>(Exception e)&#123;</div><div class="line">            e.printStaceTrace();</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">try</span>&#123;</div><div class="line">    MemoryConsumer arrayMemo = (MemoryConsumer)Handler.newInstance(<span class="keyword">new</span> MemoConsumerImpl());</div><div class="line">    arrayMemo.createArray();</div><div class="line">    arrayMemo.createHashMap();</div><div class="line">&#125;<span class="keyword">catch</span>(Exception e)&#123;</div><div class="line">    e.printStackTrace();</div><div class="line">&#125;</div></pre></td></tr></table></figure>
       
 
       
@@ -323,7 +308,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2017/09/19/shutdown-selinux/">展开全文 >></a>
+          <a class="article-more-a" href="/2017/09/25/内存消耗测试/">展开全文 >></a>
         </p>
       
 
@@ -353,32 +338,53 @@
 
 
   
-    <article id="post-add-service" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-android-res下资源命名规则" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/09/19/add-service/">ServiceManager add_service SELinux Permission Denied</a>
+      <a class="article-title" href="/2017/09/25/android-res下资源命名规则/">android-res下资源命名规则</a>
     </h1>
   
 
         
-        <a href="/2017/09/19/add-service/" class="archive-article-date">
-  	<time datetime="2017-09-19T07:22:13.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-09-19</time>
+        <a href="/2017/09/25/android-res下资源命名规则/" class="archive-article-date">
+  	<time datetime="2017-09-25T07:40:07.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-09-25</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>问题点:<br>在systemserver.java中添加如下代码，向servicemanager进程中添加一个service<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">try &#123;</div><div class="line">	Slog.i(TAG, &quot;Hello Service&quot;);</div><div class="line">	ServiceManager.addService(&quot;hello&quot;, new HelloService());//</div><div class="line">&#125; catch (Throwable e) &#123;</div><div class="line">	Slog.e(TAG, &quot;Failure starting Hello Service&quot;, e);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>servicemanager是BINDER的管理者，负责协调Android里的进程通信。这里添加的helloservice是一个硬件管理服务，运行在单独的进程里，如果APP想要使用这个服务就必须通过servicemanager查询和调用。<br>执行代码的时候出现了如下错误:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">E SELinux : avc:  denied  &#123; add &#125; for service=hello scontext=u:r:system_server:s0 tcontext=u:object_r:default_android_service:s0 tclass=service_manager</div><div class="line">E ServiceManager: add_service(&apos;hello&apos;,62) uid=1000 - PERMISSION DENIED</div></pre></td></tr></table></figure></p>
-<p>提示为SELinux Permission Denied。<br>解决办法参考:<br><a href="http://stackoverflow.com/questions/30165852/selinux-permission-denied-for-a-new-framework-service-in-android" target="_blank" rel="external">http://stackoverflow.com/questions/30165852/selinux-permission-denied-for-a-new-framework-service-in-android</a><br>解决办法:</p>
-<p>external\sepolicy\service.te<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">type mytest_service, system_api_service, system_server_service, service_manager_type;</div></pre></td></tr></table></figure></p>
-<p>external\sepolicy\service_contexts</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mytestservice u:object_r:mytest_service:s0</div></pre></td></tr></table></figure>
+        <p>1、 命名规范</p>
+<ol>
+<li><p>可用的命名属性<br>在文档1中的表格“Table 2. Configuration qualifier names. ”中有说明(表格太大，不方便在此张贴)，表格中的&quot;Configuration&quot;项集就是Android全体可用命名属性集，表格此项的排列顺序即是各个属性的优先级别顺序。</p>
+</li>
+<li><p>命名方法与要求<br>1) 命名不区分大小写；<br>2) 命名形式：资源名-属性1-属性2-属性3-属性4-属性5…..<br>资源名就是资源类型名，包括:drawable, values, layout, anim, raw, menu, color, animator, xml；<br>属性1-属性2-属性3-属性4-属性5…..就是上述的属性集内的属性，如:-en-port-hdpi；<br>注意：各属性的位置顺序必须遵守优先级从高到低排列！否则编译不过</p>
+</li>
+<li><p>实例说明<br>1) 把全部属性都用上的例子(各属性是按优先级先后排列出来的)<br>values-mcc310-en-sw320dp-w720dp-h720dp-large-long-port-car-night-ldpi-notouch-keysexposed-nokeys-navexposed-nonav-v7<br>2) 上述例子属性的中文说明<br>values-mcc310(sim卡运营商)-en(语言)-sw320dp(屏幕最小宽度)-w720dp(屏幕最佳宽度)-h720dp(屏幕最佳高度)-large(屏幕尺寸)-long(屏幕长短边模式)-port(当前屏幕横竖屏显示模式)-car(dock模式)-night(白天或夜晚)-ldpi(屏幕最佳dpi)-notouch(触摸屏模类型)-keysexposed(键盘类型)-nokey(硬按键类型)-navexposed(方向键是否可用)-nonav(方向键类型)-v7(android版本)</p>
+</li>
+</ol>
+<p>2、 定位最佳文件夹</p>
+<ol>
+<li>定位算法</li>
+</ol>
+<p>providingResource<br>特殊说明：关于屏幕大小size相关的属性不在步骤１的过滤清除条件里（dpi属性和screen size属性）：<br>1) 对于dpi属性系统的选择方法是&quot;best match&quot;－－－即如果没有找到准确的属性，可以接着寻找最接近的属性文件夹。例如：我的g7手机，应该是values-hdpi,但如果没有values-hdpi，则可以找出最接近的文件夹（先找values-xhdpi到values-mdpi到values最后到values-ldpi,注意values在values-ldpi之前先找到，系统认为values比values-ldpi更接近我的values-hdpi属性）;</p>
+<p>2) 对于screen size属性系统的选择方法是&quot;向下best match&quot;，即如果没找到准确的属性，只可以接着在比自身属性小的文件夹里找最接近的属性文件夹。例如：我的g7手机，应该是values-normal,但如果没有values-normal,则可以找出最接近的文件夹(先找values再到values-small,注意，系统认为values比values-small更接近我的values-normal属性，但之后就不会再找values-large与values-xlarge了，因为是&quot;向下best match&quot;，large与xlarge都比normal大)。</p>
+<ol>
+<li>实例说明<br>工程有如下文件夹：<br>drawable/<br>drawable-en/<br>drawable-fr-rCA/<br>drawable-en-port/<br>drawable-en-notouch-12key/<br>drawable-port-ldpi/<br>drawable-port-notouch-12key/<br>手机属性：<br>Locale = en-GB<br>Screen orientation = port<br>Screen pixel density = hdpi<br>Touchscreen type = notouch<br>Primary text input method = 12key</li>
+</ol>
+<p>1) 清除包含任何与手机配置有冲突的属性的资源文件夹（蓝色字体表现被清除）<br>drawable/<br>drawable-en/<br>drawable-fr-rCA/<br>drawable-en-port/<br>drawable-en-notouch-12key/<br>drawable-port-ldpi/<br>drawable-port-notouch-12key/<br>注意：因为dpi属性使用&quot;best match&quot;选择，所以drawable-port-ldpi/<br>没被清除。<br>2) 选择文档1中的表格“Table 2. Configuration qualifier names. ”最高优先级的属性（MCC最高，然后依次向下选择）。<br>3)  有包含上述属性的文件夹吗？<br>如果没有，跳转步骤２，选择下一优先级高的属性；<br>如果有，继续步骤４；<br>4) 清除不包含此属性的所有文件夹<br>drawable/<br>drawable-en/<br>drawable-en-port/<br>drawable-en-notouch-12key/<br>drawable-port-ldpi/<br>drawable-port-notouch-12key/<br>5) 重复步骤２和３，直到步骤４中只剩下一个文件夹则返回。例子中，屏幕方向是下一个最高优先级的属性，所以可以清除两个文件夹：<br>drawable-en/<br>drawable-en-port/<br>drawable-en-notouch-12key/</p>
+<p>最终找到的文件夹就是drawable-en-port/</p>
+<p>由上述过程可看出，匹配是看最高优先级别的属性，而不是一共匹配到的属性数量，例如：values-en-normal-hdpi的手机，values-en匹配比vaues-normal-hdpi更合适。</p>
+<p>3、 备注</p>
+<ol>
+<li>文档1中的表格“Table 2. Configuration qualifier names. ”列出的属性集并不是一直不变的，有些新属性是在高级的android version才加入的，系统在识别到此新属性时会自动加上支持新属性的android最低版本属性，例如：xhdpi是android 2.2(sdk[img]/images/smiles/icon_cool.gif&quot; alt=&quot;[/img]新加入的，则values-xhdpi系统会自动认为是values-xhdpi-v8,这样新属性一定不会在android旧版本中匹配到了;</li>
+<li>对于指定分辨率的属性（例如：values-hdpi-1024x600，values-hdpi-960x540，values-mdpi-1024x600），指定分辨率属性并没出现在官网的匹配属性集里，也没找到对于分辨率属性的详细说明，经测试，这个分辨率属性匹配并不准确，例如Galaxy Nexus(1280x720 ),却可以匹配到values-hdpi-1024x600，因此希望最好不使用分辨率属性。</li>
+</ol>
+
       
 
       
@@ -390,7 +396,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2017/09/19/add-service/">展开全文 >></a>
+          <a class="article-more-a" href="/2017/09/25/android-res下资源命名规则/">展开全文 >></a>
         </p>
       
 
@@ -420,28 +426,42 @@
 
 
   
-    <article id="post-编译报错" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-ubuntu下cocos2dx学习" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/09/19/编译报错/">编译报错 Out of memory error (version 1.2-rc4 &#39;Carnac&#39;</a>
+      <a class="article-title" href="/2017/09/25/ubuntu下cocos2dx学习/">ubuntu下cocos2dx学习</a>
     </h1>
   
 
         
-        <a href="/2017/09/19/编译报错/" class="archive-article-date">
-  	<time datetime="2017-09-19T06:34:29.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-09-19</time>
+        <a href="/2017/09/25/ubuntu下cocos2dx学习/" class="archive-article-date">
+  	<time datetime="2017-09-25T07:36:46.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-09-25</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>Starting build with ninja<br>ninja: Entering directory `.’<br>[  0% 8/30301] Ensure Jack server is installed and started<br>Jack server already installed in “/home/guochongxin/.jack-server”<br>Launching Jack server java -XX:MaxJavaStackTraceDepth=-1 -Djava.io.tmpdir=/tmp -Dfile.encoding=UTF-8 -XX:+TieredCompilation -cp /home/guochongxin/.jack-server/launcher.jar com.android.jack.launcher.ServerLauncher<br>[  0% 10/30301] Building with Jack: out/target/common/obj/JAVA_LIBRARIES/libprotobuf-java-micro_intermediates/classes.jack<br>[  0% 12/30301] Building with Jack: out/target/common/obj/JAVA_LIBRARIES/framework_intermediates/with-local/classes.dex<br>FAILED: /bin/bash out/target/common/obj/JAVA_LIBRARIES/framework_intermediates/with-local/classes.dex.rsp<br>Out of memory error (version 1.2-rc4 ‘Carnac’ (298900 f95d7bdecfceb327f9d201a1348397ed8a843843 by android-jack-team@google.com)).<br>GC overhead limit exceeded.<br>Try increasing heap size with java option ‘-Xmx<size>‘.<br>Warning: This may have produced partial or corrupted output.<br>[  0% 12/30301] Compiling SDK Stubs with Jack: out/target/comm…AVA_LIBRARIES/android_stubs_current_intermediates/classes.jack<br>ninja: build stopped: subcommand failed.<br>make: <em>*</em> [ninja_wrapper] Error 1<br>按照提示修改prebuilts/sdk/tools/jack-admin文件，找到如下内容：<br>JACK_SERVER_COMMAND=”java -XX:MaxJavaStackTraceDepth=-1 -Djava.io.tmpdir<br>=$TMPDIR $JACK_SERVER_VM_ARGUMENTS -cp $LAUNCHER_JAR $LAUNCHER_NAME”</size></p>
-<p>将其修改为：<br>&gt;<br>JACK_SERVER_COMMAND=”java -XX:MaxJavaStackTraceDepth=-1 -Djava.io.tmpdir<br>=$TMPDIR $JACK_SERVER_VM_ARGUMENTS -Xmx4096m -cp $LAUNCHER_JAR $LAUNCHER_NAME”<br>然后在源码根目录下执行如下命令：<br>./prebuilts/sdk/tools/jack-admin stop-server<br>./prebuilts/sdk/tools/jack-admin start-server<br>重启下jack-admin服务，此时再重新执行编译命令就能编译通过ninja了。<br>参考网址：<br><a href="http://www.cnblogs.com/dinphy/p/6138803.html" target="_blank" rel="external">http://www.cnblogs.com/dinphy/p/6138803.html</a><br><a href="http://blog.csdn.net/u014386544/article/details/53287861" target="_blank" rel="external">http://blog.csdn.net/u014386544/article/details/53287861</a><br><a href="http://berniechenopenvpn.blogspot.jp/2016/07/hikey-board-android.html" target="_blank" rel="external">http://berniechenopenvpn.blogspot.jp/2016/07/hikey-board-android.html</a></p>
+        <ol>
+<li>编译cocos2dx整个工程的时候编译不过？？？</li>
+</ol>
+<p>解决:<br>a…/CocoStudio/Reader/WidgetReader/LabelReader/LabelReader.cpp:54: error: ‘transform’ is not a member of ‘std’<br>只要在LabelReader.cpp文件中添加#include <algorithm> 就可以<br>b.会报Lua编译不过的异常<br>只要将cocos2dx根目录下的Makefile文件中编译Lua的部分去掉就可以了</algorithm></p>
+<ol>
+<li>如何创建工程之后如何编译？？？</li>
+</ol>
+<p>解决:<br>只需要执行 cocos2d-x-2.2.5/projects/FlappyBird/proj.linux/build.sh 这个脚本就可以了</p>
+<ol>
+<li>cocos2d-x-2.2.5/projects/FlappyBird/proj.linux/../Classes/HelloWorldScene.cpp:88: undefined reference to `GameScene::scene()’ 报错?????</li>
+</ol>
+<p>解决:<br>没有将GameScene.cpp文件编进去，找不到GameScene::scene()函数的引用<br>需要在 Makefile 文件中添加编译 GameScene.cpp就行了</p>
+<ol>
+<li>../Classes/HelloWorldScene.cpp:5: error: expected unqualified-id before ‘using’？？？？</li>
+</ol>
+<p>解决:<br>类定义的时候的问题，只需要在 GameScene.h 头文件中类定义的结尾添加”;”就可以了</p>
 
       
 
@@ -454,7 +474,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2017/09/19/编译报错/">展开全文 >></a>
+          <a class="article-more-a" href="/2017/09/25/ubuntu下cocos2dx学习/">展开全文 >></a>
         </p>
       
 
@@ -484,35 +504,46 @@
 
 
   
-    <article id="post-hello-world" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-Bitmap内存优化" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/07/28/hello-world/">Hello World</a>
+      <a class="article-title" href="/2017/09/25/Bitmap内存优化/">Bitmap内存优化</a>
     </h1>
   
 
         
-        <a href="/2017/07/28/hello-world/" class="archive-article-date">
-  	<time datetime="2017-07-28T09:05:07.547Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-28</time>
+        <a href="/2017/09/25/Bitmap内存优化/" class="archive-article-date">
+  	<time datetime="2017-09-25T07:35:36.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-09-25</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
+        <p>1.将加载Bitmap的地方都改为加载Drawable，Drawable应该不属于常驻内存的对象,因为解析Bitmap比较消耗内存，而且Bitmap的内存不容易被系统回收<br>参考：<a href="http://blog.sina.com.cn/s/blog_696bcf8f0101etkd.html" target="_blank" rel="external">http://blog.sina.com.cn/s/blog_696bcf8f0101etkd.html</a><br>例如：<br>获取Drawable的几种方法<br>((BitmapDrawable) Drawable.createFromStream(is, “test.png”)).getBitmap();</p>
+<p>2.在必须使用Bitmap的地方<br>a.使用BitmapFactory.Options指定解码选项<br>BitmapFactory.Options opts = new BitmapFactory.Options();<br>opts.inPurgeable = true;                                                    //设置Options.inPurgeable和inInputShareable：让系统能及时回收内存。<br>//1）inPurgeable：设置为True时，表示系统内存不足时可以被回 收，设置为False时，表示不能被回收。<br>//2）inInputShareable：设置是否深拷贝，与inPurgeable结合使用，inPurgeable为false时，该参数无意义True：<br>//share  a reference to the input data(inputStream, array,etc) 。 False ：a deep copy。<br>opts.inPreferredConfig = Bitmap.Config.ARGB_4444;        //这个属性可以减少图片占用的内存大小,节约一半内存</p>
+<p>b.将Bitmap用WeakReference或SoftReference包装起来，方便系统回收</p>
+<p>c.将一些常用的Bitmap（如主题应用图标中的foreground和background）缓存到Map中，方便再次获取，而不需要再次解析</p>
+<p>d.在使用流的地方，一点要在finally里面讲流关闭，因为流也会占用一些内存</p>
+<p>e.在需要使用Paint画图的地方，在确保不失真的情况下，可以将paint的anti_alias属性关闭</p>
+<p>f.要及时回收Bitmap内存，并将bitmap设置为null<br>Bitmap类的构造方法都是私有的，所以开发者不能直接new出一个Bitmap对象，只能通过BitmapFactory类的各种静态方法来实例化一个Bitmap。<br>仔细查看BitmapFactory的源代码可以看到，生成Bitmap对象最终都是通过JNI调用方式实现的。<br>所以，加载 Bitmap到内存里以后，是包含两部分内存区域的。简单的说，一部分是Java部分的，一部分是C部分的。<br>这个Bitmap对象是由Java部分分配的，不用的时候系统就会自动回收了，但是那个对应的C可用的内存区域，虚拟机是不能直接回收的，这个只能调用底层的功能释放。<br>所以需要调用 recycle()方法来释放C部分的内存。从Bitmap类的源代码也可以看到，recycle()方法里也的确是调用了JNI方法了的。<br>例如：<br>if(bitmap != null &amp;&amp; !bitmap.isRecycled()){<br>        // 回收并且置为null<br>        bitmap.recycle();<br>        bitmap = null;<br>}<br>System.gc();</p>
+<p>g.在解析图片内存溢出的时候捕获Error重新解析</p>
+<p>例如：<br>private void decodeBitmap(String path){<br>    Bitmap bitmap = null;<br>    try {<br>        // 实例化Bitmap<br>        bitmap = BitmapFactory.decodeFile(path);<br>    } catch (OutOfMemoryError e) {<br>        e.printStackTrace();<br>        System.gc();<br>        decodeBitmap(path);</p>
+<pre><code>}
+</code></pre><p>}</p>
+<p>h.尝试使用cocos2dx做《WorldCup》的动态壁纸？</p>
+<p>i.查看是否有内存泄露</p>
+<p>可以使用Eclipse中的DDMS视图查看<br>先在Device中选择一个进行，点击上面的update heap按钮，在点击heap中的cause gc按钮，就会在下面显示某个进程的内存使用情况了<br>如果存在内存泄露，gc之后内存不会有明显变化，内存还是会一直增加</p>
+<p>j.将解析图片的方法放在子线程中进行，防止主线程阻塞出现ANR</p>
+<p>k.研究一下gallery加载图片的方法</p>
+<p>l.使用多分辨率图片设计[hdpi,mdpi,ldpi,xhdpi]。UI图片分别设计hdpi,mdpi,ldpi,xhdpi等多种规格，这也是官方推荐的方式，<br>使用这种方式，还有好处就是可以降低峰值内存，优先避免内存溢出。在android中图片的加载会根据分辨率来自动缩放【缩放的过程会额外消耗内存】</p>
+<p>m.如何在WallpaperService.Engine中使用Animation???</p>
+<p>n.使用decodeStream代替其他decodeResource,setImageResource,setImageBitmap等方法：<br>//decodeStream直接调用 JNI&gt;&gt;nativeDecodeAsset()来完成decode，无需再使用java层的createBitmap，也不使用java空间进行分辨率适配，虽节省dalvik内存，但需要在hdpi和mdpi，ldpi中配置相应的 图片资源，否则在不同分辨率机器上都是同样大小（像素点数量）。其他方法如setImageBitmap、setImageResource、 BitmapFactory.decodeResource在完成decode后，最终都是通过java层的 createBitmap来完成的，需要消耗更多内存。</p>
+<p>o.通过程序设定增强内存处理效率和自定义堆内存大小。</p>
 
       
 
@@ -525,7 +556,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2017/07/28/hello-world/">展开全文 >></a>
+          <a class="article-more-a" href="/2017/09/25/Bitmap内存优化/">展开全文 >></a>
         </p>
       
 
@@ -555,6 +586,269 @@
 
 
   
+    <article id="post-反编译查看google向导设置息屏时间121000" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/09/25/反编译查看google向导设置息屏时间121000/">反编译查看google向导设置息屏时间121000</a>
+    </h1>
+  
+
+        
+        <a href="/2017/09/25/反编译查看google向导设置息屏时间121000/" class="archive-article-date">
+  	<time datetime="2017-09-25T07:32:18.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-09-25</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>通过反编译/vendor/google/apps/SetupWizard_default_dark.apk<br>可以看到在 com.google.setupwizard.BaseActivity.java 文件中有<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onSetupStart</span><span class="params">()</span></span>&#123;</div><div class="line">    mUserData.put(<span class="string">"screenTimeout"</span>, Integer.valueOf(Settings.System.getInt(getContentResolver(), <span class="string">"screen_off_timeout"</span>, <span class="number">121000</span>)));</div><div class="line">    Settings.System.putInt(getContentResolver(), <span class="string">"screen_off_timeout"</span>, <span class="number">121000</span>);            <span class="comment">//在这个地方将息屏时间设置为 121000</span></div><div class="line">    <span class="keyword">if</span> (ROTATION_LOCKED)</div><div class="line">        lockRotation();</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>在 com.google.setupwizard.SetupWizardActivity.java 文件中调用上面的 onSetupStart() 方法<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle paramBundle)</span> </span>&#123;</div><div class="line">    ...</div><div class="line">    <span class="keyword">while</span> (<span class="keyword">true</span>)</div><div class="line">    &#123;</div><div class="line">        <span class="keyword">return</span>;</div><div class="line">        str1 = <span class="string">"icicle"</span>;</div><div class="line">        <span class="keyword">break</span>;</div><div class="line">        label280: str2 = <span class="string">"false"</span>;</div><div class="line">        <span class="keyword">break</span> label43;</div><div class="line">        label287: bool1 = <span class="keyword">false</span>;</div><div class="line">        <span class="keyword">break</span> label121;</div><div class="line">        label293: bool2 = <span class="keyword">false</span>;</div><div class="line">        <span class="keyword">break</span> label163;</div><div class="line">        label299: bool4 = <span class="keyword">false</span>;</div><div class="line">        <span class="keyword">break</span> label213;</div><div class="line">        label305: <span class="keyword">if</span> ((bool1) || (!isHomeActivity()))</div><div class="line">        <span class="keyword">this</span>.mClearAccountsDone = <span class="keyword">true</span>;</div><div class="line">        <span class="keyword">if</span> (paramBundle == <span class="keyword">null</span>) &#123;</div><div class="line">            onSetupStart();</div><div class="line">            startWarmSimCheck();</div><div class="line">            startWelcomeActivity();</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">activity</span></span></div><div class="line"><span class="tag">    <span class="attr">android:theme</span>=<span class="string">"@7F090013"</span></span></div><div class="line"><span class="tag">    <span class="attr">android:name</span>=<span class="string">"SetupWizardActivity"</span>        //这个<span class="attr">activity</span>是启动<span class="attr">activity</span></span></div><div class="line"><span class="tag">    <span class="attr">android:excludeFromRecents</span>=<span class="string">"true"</span></span></div><div class="line"><span class="tag">    <span class="attr">android:launchMode</span>=<span class="string">"1"</span></span></div><div class="line"><span class="tag">    <span class="attr">android:immersive</span>=<span class="string">"true"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">intent-filter</span> <span class="attr">android:priority</span>=<span class="string">"5"</span> &gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">action</span> <span class="attr">android:name</span>=<span class="string">"android.intent.action.MAIN"</span> /&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">action</span> <span class="attr">android:name</span>=<span class="string">"android.intent.action.DEVICE_INITIALIZATION_WIZARD"</span>/&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">category</span> <span class="attr">android:name</span>=<span class="string">"android.intent.category.HOME"</span>/&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">category</span> <span class="attr">android:name</span>=<span class="string">"android.intent.category.DEFAULT"</span> /&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">intent-filter</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">activity</span>&gt;</span></div></pre></td></tr></table></figure>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/09/25/反编译查看google向导设置息屏时间121000/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-修改SIMToolkit的显示名称" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/09/25/修改SIMToolkit的显示名称/">修改SIMToolkit的显示名称</a>
+    </h1>
+  
+
+        
+        <a href="/2017/09/25/修改SIMToolkit的显示名称/" class="archive-article-date">
+  	<time datetime="2017-09-25T07:29:07.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-09-25</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>//frameworks/opt/telephony/src/java/com/android/internal/telephony/cat/CommandParamsFactory.java<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">CatLog.d(<span class="keyword">this</span>, <span class="string">"add AlphaId: "</span> + menu.title);</div><div class="line">android.os.SystemProperties.set(<span class="string">"gsm.zhangqi.stkmenu"</span>, menu.title);        <span class="comment">//添加这一行代码将 menu.title</span></div></pre></td></tr></table></figure></p>
+<p>保存到 build.prop 文件中，注意这里需要将键值修改为 gsm 开头，参照system/core/init/property_service.c文件</p>
+<p>//frameworks/base/core/java/android/app/ApplicationPackageManager.java<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span>(packageName.equalsIgnoreCase(<span class="string">"com.android.stk"</span>)) &#123;</div><div class="line">    String tmptext = android.os.SystemProperties.get(<span class="string">"gsm.sim.operator.alpha"</span>);</div><div class="line">    String numeric = android.os.SystemProperties.get(<span class="string">"gsm.sim.operator.numeric"</span>);</div><div class="line">    <span class="keyword">if</span>(numeric != <span class="keyword">null</span> &amp;&amp; numeric.equalsIgnoreCase(<span class="string">"28405"</span>) &amp;&amp; tmptext != <span class="keyword">null</span> &amp;&amp; !tmptext.isEmpty() )&#123;</div><div class="line">        text = android.os.SystemProperties.get(<span class="string">"gsm.zhangqi.stkmenu"</span>);            <span class="comment">//添加一个判断</span></div><div class="line">        <span class="keyword">if</span>(text == <span class="keyword">null</span> || text.toString().isEmpty())&#123;</div><div class="line">            <span class="keyword">if</span>(tmptext.toLowerCase().contains(<span class="string">"telenor"</span>))&#123;</div><div class="line">                text = <span class="string">"Telenor"</span>;</div><div class="line">            &#125;<span class="keyword">else</span> <span class="keyword">if</span>(tmptext.toLowerCase().contains(<span class="string">"globul"</span>))&#123;</div><div class="line">                text = <span class="string">"My Globul"</span>;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>//mediatek/packages/apps/Stk1/src/com/android/stk/StkMenuInstance.java<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">String alpha = android.os.SystemProperties.get(<span class="string">"gsm.sim.operator.alpha"</span>);</div><div class="line">String numeric = android.os.SystemProperties.get(<span class="string">"gsm.sim.operator.numeric"</span>);</div><div class="line">String title = android.os.SystemProperties.get(<span class="string">"gsm.zhangqi.stkmenu"</span>);            <span class="comment">//添加一个判断</span></div><div class="line"><span class="keyword">if</span>(title == <span class="keyword">null</span> || title.isEmpty())&#123;</div><div class="line">    <span class="keyword">if</span>(numeric != <span class="keyword">null</span> &amp;&amp; numeric.equalsIgnoreCase(<span class="string">"28405"</span>) &amp;&amp; alpha != <span class="keyword">null</span> &amp;&amp; !alpha.isEmpty() )&#123;</div><div class="line">        <span class="keyword">if</span>(alpha.toLowerCase().contains(<span class="string">"telenor"</span>))&#123;</div><div class="line">            textView.setText(<span class="string">"Telenor"</span>);</div><div class="line">        &#125;<span class="keyword">else</span> <span class="keyword">if</span>(alpha.toLowerCase().contains(<span class="string">"globul"</span>))&#123;</div><div class="line">            textView.setText(<span class="string">"My Globul"</span>);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/09/25/修改SIMToolkit的显示名称/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-默认打开wifi热点" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/09/25/默认打开wifi热点/">默认打开wifi热点</a>
+    </h1>
+  
+
+        
+        <a href="/2017/09/25/默认打开wifi热点/" class="archive-article-date">
+  	<time datetime="2017-09-25T07:20:04.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-09-25</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><a href="https://onlinesso.mediatek.com/Pages/FAQ.aspx?List=SW&amp;FAQID=FAQ10275" target="_blank" rel="external">FAQ10275</a>怎样默认打开便携式WIFI热点 </p>
+<p>//frameworks/base/services/java/com/android/server/wifi/WifiService.java<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">checkAndStartSoftAp</span><span class="params">()</span> </span>&#123;										<span class="comment">//在 WifiService 中添加这个方法</span></div><div class="line">    mWifiStateMachine.autoConnectInit();</div><div class="line">    <span class="keyword">boolean</span> isAirplaneModeOn = Settings.Global.getInt(mContext.getContentResolver(), Settings.Global.AIRPLANE_MODE_ON, <span class="number">0</span>) != <span class="number">0</span>;</div><div class="line">    <span class="keyword">if</span> (mWifiStateMachine.hasCustomizedAutoConnect() &amp;&amp; isAirplaneModeOn) &#123;</div><div class="line">        SXlog.i(TAG, <span class="string">"Don't enable softAp when airplane mode is on for customization."</span>);</div><div class="line">    &#125; <span class="keyword">else</span> &#123;</div><div class="line">        Slog.i(TAG, <span class="string">"WifiService starting up with softAp"</span>);</div><div class="line">        setWifiApEnabled(<span class="keyword">null</span>, <span class="keyword">true</span>);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>//frameworks/base/services/java/com/android/server/SystemServer.java<br>在 initAndLoop() 方法中将<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">wifi.checkAndStartWifi();</div></pre></td></tr></table></figure></p>
+<p>替换为<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">wifi.checkAndStartSoftAp();		<span class="comment">//调用上面添加的方法</span></div></pre></td></tr></table></figure></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/09/25/默认打开wifi热点/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-在刷机之后Camera有可能会消失" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/09/25/在刷机之后Camera有可能会消失/">在刷机之后Camera有可能会消失</a>
+    </h1>
+  
+
+        
+        <a href="/2017/09/25/在刷机之后Camera有可能会消失/" class="archive-article-date">
+  	<time datetime="2017-09-25T07:02:46.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-09-25</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>packages/apps/Camera/src/com/android/camera/DisableCameraReceiver.java     文件中有<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onReceive</span><span class="params">(Context context, Intent intent)</span> </span>&#123;</div><div class="line">    <span class="keyword">boolean</span> needCameraActivity = FeatureSwitcher.isOnlyCheckBackCamera() ? hasBackCamera() : hasCamera();</div><div class="line">    <span class="keyword">if</span> (!needCameraActivity) &#123;</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; ACTIVITIES.length; i++) &#123;</div><div class="line">            <span class="comment">//private static final String ACTIVITIES[] = &#123;"com.android.camera.CameraLauncher", "com.android.camera.VideoCamera", "com.android.camera.Camera"&#125;;</span></div><div class="line">            disableComponent(context, ACTIVITIES[i]);                        <span class="comment">//这里接收到广播之后会将相机全都屏蔽掉</span></div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    disableComponent(context, <span class="string">"com.android.camera.DisableCameraReceiver"</span>);    <span class="comment">//</span></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">receiver</span> <span class="attr">android:name</span>=<span class="string">"com.android.camera.DisableCameraReceiver"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">intent-filter</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">action</span> <span class="attr">android:name</span>=<span class="string">"android.intent.action.BOOT_COMPLETED"</span> /&gt;</span>        //在开机之后就会注册这个广播接收器，为什么有的时候不会消失？？？</div><div class="line">    <span class="tag">&lt;/<span class="name">intent-filter</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">receiver</span>&gt;</span></div></pre></td></tr></table></figure>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/09/25/在刷机之后Camera有可能会消失/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+  
+    <nav id="page-nav">
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+    </nav>
   
 
 
