@@ -152,6 +152,78 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-Intent的高级写法" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/09/28/Intent的高级写法/">Intent的高级写法</a>
+    </h1>
+  
+
+        
+        <a href="/2017/09/28/Intent的高级写法/" class="archive-article-date">
+  	<time datetime="2017-09-28T07:39:49.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-09-28</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Intent的高级写法?</p>
+<p>1.普通写Intent的方法和缺陷</p>
+<p>普通activity a要调用起activity b页面会这么写:<br>MainActivity.java<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Intent intent = <span class="keyword">new</span> Intent(MainActivity.<span class="keyword">this</span>, SecondActivity.class);</div><div class="line">intent.putExtra(<span class="string">"is_index"</span>, message);</div><div class="line">startActivity(intent);</div></pre></td></tr></table></figure></p>
+<p>SecondActivity.java<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Override</span></div><div class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;        </div><div class="line">    <span class="keyword">super</span>.onCreate(savedInstanceState);</div><div class="line">    ...</div><div class="line">    String is_index = getIntent().getExtras().getString(<span class="string">"is_index"</span>);</div><div class="line">    ...</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<blockquote>
+<p>上面的写法是大多数Intent写法，在发起方创建intent。但这种写法在代码量大大增加的时候会出现一个问题。当activity b在各种地方都会被调用起的时候，并且会传入各种各样不同的extra字段时，会发现很混乱，哪些发起方使用了哪些extra字段，每个字段什么意思，哪些是必须的等等问题。最终造成b代码可读性变差，让以后想要调用起b的页面也不清楚需要传入哪些extra。<br>so，根据以上问题，无意间看到了google官方example代码里一个使用intent的小技巧。</p>
+</blockquote>
+<p>2.优化写Intent</p>
+<p>MainActivity.java<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Intent intent = SecondActivity.newIndexIntent(<span class="keyword">this</span>, text);</div><div class="line">startActivity(intent);</div></pre></td></tr></table></figure></p>
+<p>SecondActivity.java<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">static</span> String IS_INDEX = <span class="string">"is_index"</span>;</div><div class="line"></div><div class="line"><span class="meta">@Override</span></div><div class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;        </div><div class="line">    <span class="keyword">super</span>.onCreate(savedInstanceState);</div><div class="line">    ...</div><div class="line">    String is_index = getIntent().getExtras().getString(IS_INDEX);</div><div class="line">    ...</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Intent <span class="title">newIndexIntent</span><span class="params">(Context context, String message)</span> </span>&#123;</div><div class="line">    Intent newIntent = <span class="keyword">new</span> Intent(context, b.class);</div><div class="line">    newIntent.putExtra(IS_INDEX, message);</div><div class="line">    <span class="keyword">return</span> newIntent;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/09/28/Intent的高级写法/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-游戏框架" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -753,69 +825,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2017/09/25/默认打开wifi热点/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-在刷机之后Camera有可能会消失" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/09/25/在刷机之后Camera有可能会消失/">在刷机之后Camera有可能会消失</a>
-    </h1>
-  
-
-        
-        <a href="/2017/09/25/在刷机之后Camera有可能会消失/" class="archive-article-date">
-  	<time datetime="2017-09-25T07:02:46.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-09-25</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>packages/apps/Camera/src/com/android/camera/DisableCameraReceiver.java     文件中有<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onReceive</span><span class="params">(Context context, Intent intent)</span> </span>&#123;</div><div class="line">    <span class="keyword">boolean</span> needCameraActivity = FeatureSwitcher.isOnlyCheckBackCamera() ? hasBackCamera() : hasCamera();</div><div class="line">    <span class="keyword">if</span> (!needCameraActivity) &#123;</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; ACTIVITIES.length; i++) &#123;</div><div class="line">            <span class="comment">//private static final String ACTIVITIES[] = &#123;"com.android.camera.CameraLauncher", "com.android.camera.VideoCamera", "com.android.camera.Camera"&#125;;</span></div><div class="line">            disableComponent(context, ACTIVITIES[i]);                        <span class="comment">//这里接收到广播之后会将相机全都屏蔽掉</span></div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    disableComponent(context, <span class="string">"com.android.camera.DisableCameraReceiver"</span>);    <span class="comment">//</span></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">receiver</span> <span class="attr">android:name</span>=<span class="string">"com.android.camera.DisableCameraReceiver"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">intent-filter</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">action</span> <span class="attr">android:name</span>=<span class="string">"android.intent.action.BOOT_COMPLETED"</span> /&gt;</span>        //在开机之后就会注册这个广播接收器，为什么有的时候不会消失？？？</div><div class="line">    <span class="tag">&lt;/<span class="name">intent-filter</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">receiver</span>&gt;</span></div></pre></td></tr></table></figure>
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/09/25/在刷机之后Camera有可能会消失/">展开全文 >></a>
         </p>
       
 
