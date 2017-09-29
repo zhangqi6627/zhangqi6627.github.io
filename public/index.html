@@ -152,6 +152,72 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-沉浸式学习" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/09/29/沉浸式学习/">沉浸式学习</a>
+    </h1>
+  
+
+        
+        <a href="/2017/09/29/沉浸式学习/" class="archive-article-date">
+  	<time datetime="2017-09-29T06:27:53.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-09-29</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="1-隐藏状态栏"><a href="#1-隐藏状态栏" class="headerlink" title="1.隐藏状态栏"></a>1.隐藏状态栏</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MainActivity</span> <span class="keyword">extends</span> <span class="title">AppCompatActivity</span> </span>&#123;</div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</div><div class="line">        <span class="keyword">super</span>.onCreate(savedInstanceState);</div><div class="line">        setContentView(R.layout.activity_main);</div><div class="line">        View decorView = getWindow().getDecorView();</div><div class="line">        <span class="keyword">int</span> option = View.SYSTEM_UI_FLAG_FULLSCREEN;</div><div class="line">        decorView.setSystemUiVisibility(option);</div><div class="line">        ActionBar actionBar = getSupportActionBar();</div><div class="line">        actionBar.hide();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h4 id="2-状态栏透明"><a href="#2-状态栏透明" class="headerlink" title="2.状态栏透明"></a>2.状态栏透明</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MainActivity</span> <span class="keyword">extends</span> <span class="title">AppCompatActivity</span> </span>&#123;</div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</div><div class="line">        <span class="keyword">super</span>.onCreate(savedInstanceState);</div><div class="line">        setContentView(R.layout.activity_main);</div><div class="line">        <span class="keyword">if</span> (Build.VERSION.SDK_INT &gt;= <span class="number">21</span>) &#123;</div><div class="line">            View decorView = getWindow().getDecorView();</div><div class="line">            <span class="keyword">int</span> option = View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN | View.SYSTEM_UI_FLAG_LAYOUT_STABLE;</div><div class="line">            decorView.setSystemUiVisibility(option);</div><div class="line">            getWindow().setStatusBarColor(Color.TRANSPARENT);</div><div class="line">        &#125;</div><div class="line">        ActionBar actionBar = getSupportActionBar();</div><div class="line">        actionBar.hide();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h4 id="3-隐藏导航栏"><a href="#3-隐藏导航栏" class="headerlink" title="3.隐藏导航栏"></a>3.隐藏导航栏</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MainActivity</span> <span class="keyword">extends</span> <span class="title">AppCompatActivity</span> </span>&#123;</div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</div><div class="line">        <span class="keyword">super</span>.onCreate(savedInstanceState);</div><div class="line">        setContentView(R.layout.activity_main);</div><div class="line">        View decorView = getWindow().getDecorView();</div><div class="line">        <span class="keyword">int</span> option = View.SYSTEM_UI_FLAG_HIDE_NAVIGATION | View.SYSTEM_UI_FLAG_FULLSCREEN;</div><div class="line">        decorView.setSystemUiVisibility(option);</div><div class="line">        ActionBar actionBar = getSupportActionBar();</div><div class="line">        actionBar.hide();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h4 id="4-导航栏透明"><a href="#4-导航栏透明" class="headerlink" title="4.导航栏透明"></a>4.导航栏透明</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MainActivity</span> <span class="keyword">extends</span> <span class="title">AppCompatActivity</span> </span>&#123;</div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</div><div class="line">        <span class="keyword">super</span>.onCreate(savedInstanceState);</div><div class="line">        setContentView(R.layout.activity_main);</div><div class="line">        <span class="keyword">if</span> (Build.VERSION.SDK_INT &gt;= <span class="number">21</span>) &#123;</div><div class="line">            View decorView = getWindow().getDecorView();</div><div class="line">            <span class="keyword">int</span> option = View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION</div><div class="line">                    | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN</div><div class="line">                    | View.SYSTEM_UI_FLAG_LAYOUT_STABLE;</div><div class="line">            decorView.setSystemUiVisibility(option);</div><div class="line">            getWindow().setNavigationBarColor(Color.TRANSPARENT);	<span class="comment">//导航栏光明</span></div><div class="line">            getWindow().setStatusBarColor(Color.TRANSPARENT);</div><div class="line">        &#125;</div><div class="line">        ActionBar actionBar = getSupportActionBar();</div><div class="line">        actionBar.hide();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h4 id="5-真正的沉浸式"><a href="#5-真正的沉浸式" class="headerlink" title="5.真正的沉浸式"></a>5.真正的沉浸式</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MainActivity</span> <span class="keyword">extends</span> <span class="title">AppCompatActivity</span> </span>&#123;</div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</div><div class="line">        <span class="keyword">super</span>.onCreate(savedInstanceState);</div><div class="line">        setContentView(R.layout.activity_main);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onWindowFocusChanged</span><span class="params">(<span class="keyword">boolean</span> hasFocus)</span> </span>&#123;</div><div class="line">        <span class="keyword">super</span>.onWindowFocusChanged(hasFocus);</div><div class="line">        <span class="keyword">if</span> (hasFocus &amp;&amp; Build.VERSION.SDK_INT &gt;= <span class="number">19</span>) &#123;</div><div class="line">            View decorView = getWindow().getDecorView();</div><div class="line">            decorView.setSystemUiVisibility(</div><div class="line">                View.SYSTEM_UI_FLAG_LAYOUT_STABLE</div><div class="line">                | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION</div><div class="line">                | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN</div><div class="line">                | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION</div><div class="line">                | View.SYSTEM_UI_FLAG_FULLSCREEN</div><div class="line">                | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/09/29/沉浸式学习/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-Snackbar的学习和使用" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -763,70 +829,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2017/09/25/Bitmap内存优化/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-反编译查看google向导设置息屏时间121000" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/09/25/反编译查看google向导设置息屏时间121000/">反编译查看google向导设置息屏时间121000</a>
-    </h1>
-  
-
-        
-        <a href="/2017/09/25/反编译查看google向导设置息屏时间121000/" class="archive-article-date">
-  	<time datetime="2017-09-25T07:32:18.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-09-25</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>通过反编译/vendor/google/apps/SetupWizard_default_dark.apk<br>可以看到在 com.google.setupwizard.BaseActivity.java 文件中有<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onSetupStart</span><span class="params">()</span></span>&#123;</div><div class="line">    mUserData.put(<span class="string">"screenTimeout"</span>, Integer.valueOf(Settings.System.getInt(getContentResolver(), <span class="string">"screen_off_timeout"</span>, <span class="number">121000</span>)));</div><div class="line">    Settings.System.putInt(getContentResolver(), <span class="string">"screen_off_timeout"</span>, <span class="number">121000</span>);            <span class="comment">//在这个地方将息屏时间设置为 121000</span></div><div class="line">    <span class="keyword">if</span> (ROTATION_LOCKED)</div><div class="line">        lockRotation();</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>在 com.google.setupwizard.SetupWizardActivity.java 文件中调用上面的 onSetupStart() 方法<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle paramBundle)</span> </span>&#123;</div><div class="line">    ...</div><div class="line">    <span class="keyword">while</span> (<span class="keyword">true</span>)</div><div class="line">    &#123;</div><div class="line">        <span class="keyword">return</span>;</div><div class="line">        str1 = <span class="string">"icicle"</span>;</div><div class="line">        <span class="keyword">break</span>;</div><div class="line">        label280: str2 = <span class="string">"false"</span>;</div><div class="line">        <span class="keyword">break</span> label43;</div><div class="line">        label287: bool1 = <span class="keyword">false</span>;</div><div class="line">        <span class="keyword">break</span> label121;</div><div class="line">        label293: bool2 = <span class="keyword">false</span>;</div><div class="line">        <span class="keyword">break</span> label163;</div><div class="line">        label299: bool4 = <span class="keyword">false</span>;</div><div class="line">        <span class="keyword">break</span> label213;</div><div class="line">        label305: <span class="keyword">if</span> ((bool1) || (!isHomeActivity()))</div><div class="line">        <span class="keyword">this</span>.mClearAccountsDone = <span class="keyword">true</span>;</div><div class="line">        <span class="keyword">if</span> (paramBundle == <span class="keyword">null</span>) &#123;</div><div class="line">            onSetupStart();</div><div class="line">            startWarmSimCheck();</div><div class="line">            startWelcomeActivity();</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">activity</span></span></div><div class="line"><span class="tag">    <span class="attr">android:theme</span>=<span class="string">"@7F090013"</span></span></div><div class="line"><span class="tag">    <span class="attr">android:name</span>=<span class="string">"SetupWizardActivity"</span>        //这个<span class="attr">activity</span>是启动<span class="attr">activity</span></span></div><div class="line"><span class="tag">    <span class="attr">android:excludeFromRecents</span>=<span class="string">"true"</span></span></div><div class="line"><span class="tag">    <span class="attr">android:launchMode</span>=<span class="string">"1"</span></span></div><div class="line"><span class="tag">    <span class="attr">android:immersive</span>=<span class="string">"true"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">intent-filter</span> <span class="attr">android:priority</span>=<span class="string">"5"</span> &gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">action</span> <span class="attr">android:name</span>=<span class="string">"android.intent.action.MAIN"</span> /&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">action</span> <span class="attr">android:name</span>=<span class="string">"android.intent.action.DEVICE_INITIALIZATION_WIZARD"</span>/&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">category</span> <span class="attr">android:name</span>=<span class="string">"android.intent.category.HOME"</span>/&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">category</span> <span class="attr">android:name</span>=<span class="string">"android.intent.category.DEFAULT"</span> /&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">intent-filter</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">activity</span>&gt;</span></div></pre></td></tr></table></figure>
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/09/25/反编译查看google向导设置息屏时间121000/">展开全文 >></a>
         </p>
       
 
