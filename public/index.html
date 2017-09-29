@@ -152,6 +152,70 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-通过反射修改全局默认字体" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/09/29/通过反射修改全局默认字体/">通过反射修改全局默认字体</a>
+    </h1>
+  
+
+        
+        <a href="/2017/09/29/通过反射修改全局默认字体/" class="archive-article-date">
+  	<time datetime="2017-09-29T05:11:42.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-09-29</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>在 Typeface 中，是有一些被标记为 static final 的默认字体，因为上一步的 Theme 中，就是设置的 serif ，所以我们这里替换它就好了。</p>
+<p>完整的方法非常的简单，就是通过反射拿到 Typeface.SERIF，然后使用反射将它修改成我们需要的字体即可。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">static</span> String CUSTOM_FONT = <span class="string">"fonts/custom_font.ttf"</span>;</div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">changeDefaultFont</span><span class="params">(Context ctx)</span></span>&#123;</div><div class="line">    <span class="keyword">try</span>&#123;</div><div class="line">        Typeface typeface = Typeface.createFromAsset(cts.getAssets(), CUSTOM_FONT);</div><div class="line">        Field defaultField = Typeface.class.getDeclaredField(<span class="string">"SERIF"</span>);</div><div class="line">        defaultField.setAccessible(<span class="keyword">true</span>);</div><div class="line">        defaultField.set(<span class="keyword">null</span>, typeface);</div><div class="line">    &#125;<span class="keyword">catch</span>(Exception e)&#123;</div><div class="line">        e.printStackTrace();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/09/29/通过反射修改全局默认字体/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-Intent的高级写法" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -788,75 +852,9 @@
 
 
   
-    <article id="post-默认打开wifi热点" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/09/25/默认打开wifi热点/">默认打开wifi热点</a>
-    </h1>
-  
-
-        
-        <a href="/2017/09/25/默认打开wifi热点/" class="archive-article-date">
-  	<time datetime="2017-09-25T07:20:04.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-09-25</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><a href="https://onlinesso.mediatek.com/Pages/FAQ.aspx?List=SW&amp;FAQID=FAQ10275" target="_blank" rel="external">FAQ10275</a>怎样默认打开便携式WIFI热点 </p>
-<p>//frameworks/base/services/java/com/android/server/wifi/WifiService.java<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">checkAndStartSoftAp</span><span class="params">()</span> </span>&#123;										<span class="comment">//在 WifiService 中添加这个方法</span></div><div class="line">    mWifiStateMachine.autoConnectInit();</div><div class="line">    <span class="keyword">boolean</span> isAirplaneModeOn = Settings.Global.getInt(mContext.getContentResolver(), Settings.Global.AIRPLANE_MODE_ON, <span class="number">0</span>) != <span class="number">0</span>;</div><div class="line">    <span class="keyword">if</span> (mWifiStateMachine.hasCustomizedAutoConnect() &amp;&amp; isAirplaneModeOn) &#123;</div><div class="line">        SXlog.i(TAG, <span class="string">"Don't enable softAp when airplane mode is on for customization."</span>);</div><div class="line">    &#125; <span class="keyword">else</span> &#123;</div><div class="line">        Slog.i(TAG, <span class="string">"WifiService starting up with softAp"</span>);</div><div class="line">        setWifiApEnabled(<span class="keyword">null</span>, <span class="keyword">true</span>);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>//frameworks/base/services/java/com/android/server/SystemServer.java<br>在 initAndLoop() 方法中将<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">wifi.checkAndStartWifi();</div></pre></td></tr></table></figure></p>
-<p>替换为<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">wifi.checkAndStartSoftAp();		<span class="comment">//调用上面添加的方法</span></div></pre></td></tr></table></figure></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/09/25/默认打开wifi热点/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/10/">10</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
     </nav>
   
 
