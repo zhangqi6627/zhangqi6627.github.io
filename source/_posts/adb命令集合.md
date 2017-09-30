@@ -46,3 +46,7 @@ adb shell sqlite3 /data/data/com.android.launcher3/databases/launcher.db ".dump"
 adb shell setprop ctl.start bootanim
 adb shell setprop ctl.stop bootanim
 ```
+Monkey测试
+``` bash
+adb shell monkey -s 6516 --throttle 200 --ignore-crashes --ignore-timeouts --ignore-security-exceptions -v 20000000 > result.txt
+```
