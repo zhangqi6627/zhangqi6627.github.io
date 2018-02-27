@@ -16,7 +16,16 @@ adb shell am broadcast -a android.intent.action.MASTER_CLEAR
 
 查看手机中安装的所有apk的包名
 ``` bash
-adb shell pm -l
+adb shell pm list packages [-f] [-d] [-e] [-s] [-3] [-i] [-u] [--user USER_ID] [FILTER]
+无	所有应用
+-f	显示应用关联的 apk 文件
+-d	只显示 disabled 的应用
+-e	只显示 enabled 的应用
+-s	只显示系统应用
+-3	只显示第三方应用
+-i	显示应用的 installer
+-u	包含已卸载应用
+<FILTER>	包名包含 <FILTER> 字符串
 ```
 
 保存读取SettingsProvider中的值
@@ -50,3 +59,34 @@ Monkey测试
 ``` bash
 adb shell monkey -s 6516 --throttle 200 --ignore-crashes --ignore-timeouts --ignore-security-exceptions -v 20000000 > result.txt
 ```
+
+查看IMEI码
+``` bash
+adb shell service call iphonesubinfo 1
+```
+
+查看手机型号
+``` bash
+adb shell getprop ro.product.model
+```
+
+查看Android系统版本
+``` bash
+adb shell getprop ro.build.version.release
+```
+
+清除应用数据与缓存
+``` bash
+adb shell pm clear <packagename>
+```
+
+查看设备分辨率
+``` bash
+adb shell wm size
+```
+
+截屏
+``` bash
+adb exec-out screencap -p > sc.png
+```
+
