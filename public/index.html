@@ -185,7 +185,13 @@
 <p>补充:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">am_proc_start (User|1|5),(PID|1|5),(UID|1|5),(Process Name|3),(Type|3),(Component|3)</div><div class="line"></div><div class="line">am_proc_start:[0,9227,10002,com.android.browser,contentprovider,com.android.browser/.provider.BrowserProvider2]</div><div class="line"></div><div class="line">(User|1|5) ==&gt; 名字为User, 数据类型为1，数据单位为5)</div></pre></td></tr></table></figure></p>
 <blockquote>
 <p>数据类型:<br>1: int<br>2: long<br>3: string<br>4: list</p>
+</blockquote>
+<hr>
+<blockquote>
 <p>数据单位:<br>1: Number of objects(对象个数)<br>2: Number of bytes(字节数)<br>3: Number of milliseconds(毫秒)<br>4: Number of allocations(分配个数)<br>5: Id、6: Percent(百分比)</p>
+</blockquote>
+<hr>
+<blockquote>
 <p>举例:<br>进程启动: UserId=0, pid=9227, uid=10002, ProcessName=com.android.browser, 数据类型=ContentProvider, 组件=com.android.browser/.provider.BrowserProvider2</p>
 </blockquote>
 

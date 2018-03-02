@@ -85,6 +85,7 @@ am_proc_start:[0,9227,10002,com.android.browser,contentprovider,com.android.brow
 3: string
 4: list
 
+---
 
 >数据单位:
 1: Number of objects(对象个数)
@@ -92,6 +93,8 @@ am_proc_start:[0,9227,10002,com.android.browser,contentprovider,com.android.brow
 3: Number of milliseconds(毫秒)
 4: Number of allocations(分配个数)
 5: Id、6: Percent(百分比)
+
+---
 
 >举例:
 进程启动: UserId=0, pid=9227, uid=10002, ProcessName=com.android.browser, 数据类型=ContentProvider, 组件=com.android.browser/.provider.BrowserProvider2
