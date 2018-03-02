@@ -75,11 +75,23 @@ power_screen_state: [1,0,0,0] // 亮屏状态(1)
 am_proc_start (User|1|5),(PID|1|5),(UID|1|5),(Process Name|3),(Type|3),(Component|3)
 
 am_proc_start:[0,9227,10002,com.android.browser,contentprovider,com.android.browser/.provider.BrowserProvider2]
+
+(User|1|5) ==> 名字为User, 数据类型为1，数据单位为5)
 ```
---> (User|1|5) ==> 名字为User, 数据类型为1，数据单位为5)
 
-数据类型:1: int、2: long、3: string、4: list
+>数据类型:
+1: int
+2: long
+3: string
+4: list
 
-数据单位:1: Number of objects(对象个数)、2: Number of bytes(字节数)、3: Number of milliseconds(毫秒)、4: Number of allocations(分配个数)、5: Id、6: Percent(百分比)
 
---> 进程启动: UserId=0, pid=9227, uid=10002, ProcessName=com.android.browser, 数据类型=ContentProvider, 组件=com.android.browser/.provider.BrowserProvider2
+>数据单位:
+1: Number of objects(对象个数)
+2: Number of bytes(字节数)
+3: Number of milliseconds(毫秒)
+4: Number of allocations(分配个数)
+5: Id、6: Percent(百分比)
+
+>举例:
+进程启动: UserId=0, pid=9227, uid=10002, ProcessName=com.android.browser, 数据类型=ContentProvider, 组件=com.android.browser/.provider.BrowserProvider2
