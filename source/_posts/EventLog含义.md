@@ -63,12 +63,10 @@ am_task_to_front: 位于AS.moveTaskToFrontLocked
 ```
 power_sleep_requested: 位于PMS.goToSleepNoUpdateLocked
 power_screen_state:位于Notifer.handleEarlyInteractiveChange, handleLateInteractiveChange
-
 battery_level: [19,3660,352] //剩余电量19%, 电池电压3.66v, 电池温度35.2℃
 power_screen_state: [0,3,0,0] // 灭屏状态(0), 屏幕超时(3). 当然还有其他设备管理策略(1),其他理由都为用户行为(2)
 power_screen_state: [1,0,0,0] // 亮屏状态(1)
 ```
-
 
 补充:
 ```
@@ -79,22 +77,22 @@ am_proc_start:[0,9227,10002,com.android.browser,contentprovider,com.android.brow
 (User|1|5) ==> 名字为User, 数据类型为1，数据单位为5)
 ```
 
->数据类型:
+> 
+数据类型:
 1: int
 2: long
 3: string
 4: list
-
----
-
->数据单位:
+数据单位:
 1: Number of objects(对象个数)
 2: Number of bytes(字节数)
 3: Number of milliseconds(毫秒)
 4: Number of allocations(分配个数)
-5: Id、6: Percent(百分比)
+5: Id
+6: Percent(百分比)
 
 ---
 
->举例:
+> 
+举例:
 进程启动: UserId=0, pid=9227, uid=10002, ProcessName=com.android.browser, 数据类型=ContentProvider, 组件=com.android.browser/.provider.BrowserProvider2
