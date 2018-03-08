@@ -46,3 +46,29 @@ M:cp external/icu/icu4c/source/data/out/tmp/icudt55l.dat   $AOSP/external/icu/ic
 N:cp external/icu/icu4c/source/data/out/tmp/icudt56l.dat   $AOSP/external/icu/icu4c/source/stubdata
 ```
 ### C. 重新编译工程
+
+### D. 遇到的问题
+1.编译的时候出错？？？
+Item curr/uz_Cyrl_UZ.res depends on missing item curr/uz_Cyrl.res
+Item lang/uz_Cyrl_UZ.res depends on missing item lang/uz_Cyrl.res
+Item region/uz_Cyrl_UZ.res depends on missing item region/uz_Cyrl.res
+Item uz_Cyrl_UZ.res depends on missing item uz_Cyrl.res
+Item zone/uz_Cyrl_UZ.res depends on missing item zone/uz_Cyrl.res
+['/home/zq/zq/trunk_LCA_a35eh_0526/prebuilts/misc/linux-x86_64/icu-4.8/icupkg', '-tl', '-s', '/home/zq/zq/trunk_LCA_a35eh_0526/external/icu4c/tmp', '-a', '/home/zq/zq/trunk_LCA_a35eh_0526/external/icu4c/stubdata/icudt48l-default.txt', 'new', 'icudt48l.dat']
+
+解决：
+在external/icu4c/stubdata/icudt48l-default.dat 中加上	curr/uz_Cyrl.res 等资源就可以了
+
+2.push了之后开不了机？？？ 01-01 00:02:35.238: E/ICU(2288): Couldn't find ICU DateTimePatterns for uz_UZ
+
+解决：
+将uz_UZ.txt中的	"%%ALIAS"{"uz_Cyrl_UZ"} 这句话删除了就可以了
+
+3.编译成功push开机之后，语言列表中少了乌兹别克语？？？
+
+4.语言列表在哪里加载？？？
+
+5.Couldn't find ICU yesterday/today/tomorrow for uz_UZ??
+
+解决：
+将资源make -j2 clean
