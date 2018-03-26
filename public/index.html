@@ -152,6 +152,68 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-android-am-pm-wm命令" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/03/26/android-am-pm-wm命令/">android am pm wm命令</a>
+    </h1>
+  
+
+        
+        <a href="/2018/03/26/android-am-pm-wm命令/" class="archive-article-date">
+  	<time datetime="2018-03-26T05:25:19.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-03-26</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/03/26/android-am-pm-wm命令/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-获取图片信息" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -172,7 +234,8 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>1.metadata-extractor是 处理图片EXIF信息的开源项目，最新代码及下载地址：<a href="https://github.com/drewnoakes/metadata-extractor" target="_blank" rel="external">https://github.com/drewnoakes/metadata-extractor</a><br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> com.test;</div><div class="line"></div><div class="line"><span class="keyword">import</span> java.io.File;</div><div class="line"><span class="keyword">import</span> java.io.IOException;</div><div class="line"><span class="keyword">import</span> java.util.Iterator;</div><div class="line"><span class="keyword">import</span> com.drew.imaging.jpeg.JpegMetadataReader;</div><div class="line"><span class="keyword">import</span> com.drew.imaging.jpeg.JpegProcessingException;</div><div class="line"><span class="keyword">import</span> com.drew.metadata.Directory;</div><div class="line"><span class="keyword">import</span> com.drew.metadata.Metadata;</div><div class="line"><span class="keyword">import</span> com.drew.metadata.Tag;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ReadPic</span> </span>&#123;</div><div class="line">    <span class="comment">/**</span></div><div class="line"><span class="comment">     * 导入标签，使用metadata-extractor</span></div><div class="line"><span class="comment">     * </span></div><div class="line"><span class="comment">     * <span class="doctag">@param</span> args</span></div><div class="line"><span class="comment">     */</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">        readPic();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line"><span class="comment">     * 处理 单张 图片</span></div><div class="line"><span class="comment">     * </span></div><div class="line"><span class="comment">     * <span class="doctag">@return</span> void</span></div><div class="line"><span class="comment">     * <span class="doctag">@date</span> 2015-7-25 下午7:30:47</span></div><div class="line"><span class="comment">     */</span></div><div class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">readPic</span><span class="params">()</span> </span>&#123;</div><div class="line">        File jpegFile = <span class="keyword">new</span> File(<span class="string">"d:\\002.jpg"</span>);</div><div class="line">        Metadata metadata;</div><div class="line">        <span class="keyword">try</span> &#123;</div><div class="line">            metadata = JpegMetadataReader.readMetadata(jpegFile);</div><div class="line">            Iterator&lt;Directory&gt; it = metadata.getDirectories().iterator();</div><div class="line">            <span class="keyword">while</span> (it.hasNext()) &#123;</div><div class="line">                Directory exif = it.next();</div><div class="line">                Iterator&lt;Tag&gt; tags = exif.getTags().iterator();</div><div class="line">                <span class="keyword">while</span> (tags.hasNext()) &#123;</div><div class="line">                    Tag tag = (Tag) tags.next();</div><div class="line">                    System.out.println(tag);</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125; <span class="keyword">catch</span> (JpegProcessingException e) &#123;</div><div class="line">            e.printStackTrace();</div><div class="line">        &#125; <span class="keyword">catch</span> (IOException e) &#123;</div><div class="line">            e.printStackTrace();</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+        <p>1.metadata-extractor是 处理图片EXIF信息的开源项目，最新代码及下载地址:<a href="https://github.com/drewnoakes/metadata-extractor" target="_blank" rel="external">https://github.com/drewnoakes/metadata-extractor</a><br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> com.test;</div><div class="line"></div><div class="line"><span class="keyword">import</span> java.io.File;</div><div class="line"><span class="keyword">import</span> java.io.IOException;</div><div class="line"><span class="keyword">import</span> java.util.Iterator;</div><div class="line"><span class="keyword">import</span> com.drew.imaging.jpeg.JpegMetadataReader;</div><div class="line"><span class="keyword">import</span> com.drew.imaging.jpeg.JpegProcessingException;</div><div class="line"><span class="keyword">import</span> com.drew.metadata.Directory;</div><div class="line"><span class="keyword">import</span> com.drew.metadata.Metadata;</div><div class="line"><span class="keyword">import</span> com.drew.metadata.Tag;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ReadPic</span> </span>&#123;</div><div class="line">    <span class="comment">/**</span></div><div class="line"><span class="comment">     * 导入标签，使用metadata-extractor</span></div><div class="line"><span class="comment">     * </span></div><div class="line"><span class="comment">     * <span class="doctag">@param</span> args</span></div><div class="line"><span class="comment">     */</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">        readPic();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line"><span class="comment">     * 处理 单张 图片</span></div><div class="line"><span class="comment">     * </span></div><div class="line"><span class="comment">     * <span class="doctag">@return</span> void</span></div><div class="line"><span class="comment">     * <span class="doctag">@date</span> 2015-7-25 下午7:30:47</span></div><div class="line"><span class="comment">     */</span></div><div class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">readPic</span><span class="params">()</span> </span>&#123;</div><div class="line">        File jpegFile = <span class="keyword">new</span> File(<span class="string">"d:\\002.jpg"</span>);</div><div class="line">        Metadata metadata;</div><div class="line">        <span class="keyword">try</span> &#123;</div><div class="line">            metadata = JpegMetadataReader.readMetadata(jpegFile);</div><div class="line">            Iterator&lt;Directory&gt; it = metadata.getDirectories().iterator();</div><div class="line">            <span class="keyword">while</span> (it.hasNext()) &#123;</div><div class="line">                Directory exif = it.next();</div><div class="line">                Iterator&lt;Tag&gt; tags = exif.getTags().iterator();</div><div class="line">                <span class="keyword">while</span> (tags.hasNext()) &#123;</div><div class="line">                    Tag tag = (Tag) tags.next();</div><div class="line">                    System.out.println(tag);</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125; <span class="keyword">catch</span> (JpegProcessingException e) &#123;</div><div class="line">            e.printStackTrace();</div><div class="line">        &#125; <span class="keyword">catch</span> (IOException e) &#123;</div><div class="line">            e.printStackTrace();</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>控制台打印信息如下:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line">[Exif IFD0] Software - Picasa</div><div class="line">[Exif IFD0] Date/Time - 2015:02:15 12:09:22</div><div class="line">[Exif IFD0] Windows XP Keywords - 白色;蓝色;颜色白</div><div class="line">[Exif IFD0] Padding - [2060 bytes]</div><div class="line">[Xmp] XMP Value Count - 13</div><div class="line">[Xmp] Subject - 白色 蓝色 颜色白</div><div class="line">[JFIF] Version - 1.1</div><div class="line">[JFIF] Resolution Units - inch</div><div class="line">[JFIF] X Resolution - 96 dots</div><div class="line">[JFIF] Y Resolution - 96 dots</div><div class="line">[File] File Name - 002.jpg</div><div class="line">[File] File Size - 51798 bytes</div><div class="line">[File] File Modified Date - Mon Jul 27 09:55:42 CST 2015</div><div class="line">[IPTC] Enveloped Record Version - 4</div><div class="line">[IPTC] Coded Character Set - UTF-8</div><div class="line">[IPTC] Application Record Version - 4</div><div class="line">[IPTC] Keywords - 白色;蓝色;颜色白</div><div class="line">[Photoshop] Caption Digest - -68 -113 27 105 -101 114 34 -54 -56 20 16 108 64 37 -42 -58</div><div class="line">[Exif SubIFD] Exif Version - 2.20</div><div class="line">[Exif SubIFD] Unique Image ID - f9b137287bef9686897c8a258ffd089b</div><div class="line">[Exif SubIFD] Padding - [2060 bytes]</div><div class="line">[JPEG] Compression Type - Baseline</div><div class="line">[JPEG] Data Precision - 8 bits</div><div class="line">[JPEG] Image Height - 870 pixels</div><div class="line">[JPEG] Image Width - 580 pixels</div><div class="line">[JPEG] Number of Components - 3</div><div class="line">[JPEG] Component 1 - Y component: Quantization table 0, Sampling factors 2 horiz/2 vert</div><div class="line">[JPEG] Component 2 - Cb component: Quantization table 1, Sampling factors 1 horiz/1 vert</div><div class="line">[JPEG] Component 3 - Cr component: Quantization table 1, Sampling factors 1 horiz/1 vert</div></pre></td></tr></table></figure></p>
 
       
 
@@ -1018,70 +1081,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2018/02/27/50篇Android干货文章/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-为用户生成有趣的头像" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/02/27/为用户生成有趣的头像/">为用户生成有趣的头像</a>
-    </h1>
-  
-
-        
-        <a href="/2018/02/27/为用户生成有趣的头像/" class="archive-article-date">
-  	<time datetime="2018-02-27T01:23:02.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-02-27</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>只需 HTTP 请求<br><a href="http://www.gravatar.com/avatar/{hash}?s=256&amp;d=identicon" target="_blank" rel="external">http://www.gravatar.com/avatar/{hash}?s=256&amp;d=identicon</a></p>
-<p>其中:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">hash : 生成一个随机数填充</div><div class="line">s : 尺寸，像素为单位</div><div class="line">d : 风格，目前可选 identicon、monsterid、wavatar、retro、robohash 等</div><div class="line">具体可参考 Gravatar 文档 Image Request。</div></pre></td></tr></table></figure></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/02/27/为用户生成有趣的头像/">展开全文 >></a>
         </p>
       
 
