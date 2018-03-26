@@ -48,7 +48,7 @@ textView.setTypeface(android.graphics.Typeface.createFromFile("/system/fonts/clo
     android:fontFamily="clock-font" />
 ```
 
-6.在项目中的具体使用实例----Bug124982 修改桌面时钟widget的字体
+6.在项目中的具体使用实例
 
 M:alps/frameworks/base/core/java/android/widget/RemoteViews.java
 ``` Java
@@ -67,7 +67,6 @@ public class RemoteViews implements Parcelable, Filter {
             }else{
                 target.setTextSize(units, size);
             }
-            //Redmine124982 zhangqi modified for clock widget font 2018/03/23:end
         }
         ...
     }
