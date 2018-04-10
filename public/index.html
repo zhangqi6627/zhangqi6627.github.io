@@ -152,6 +152,128 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-mtklog分析" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/04/09/mtklog分析/">mtklog分析</a>
+    </h1>
+  
+
+        
+        <a href="/2018/04/09/mtklog分析/" class="archive-article-date">
+  	<time datetime="2018-04-09T05:10:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-04-09</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><a href="https://www.cnblogs.com/xiyuan2016/p/6740521.html" target="_blank" rel="external">https://www.cnblogs.com/xiyuan2016/p/6740521.html</a></p>
+<p><a href="http://www.voidcn.com/article/p-btyoxkos-bpn.html" target="_blank" rel="external">http://www.voidcn.com/article/p-btyoxkos-bpn.html</a></p>
+<h3 id="Mtklog-结构"><a href="#Mtklog-结构" class="headerlink" title="Mtklog 结构"></a>Mtklog 结构</h3><p>mtklog分析:  </p>
+<pre><code>1. mdlog1                           // modem 相关底层的log  
+    1.1 MDLog1_2010_0101_000152     // 每次打开mtklog都会新建一个文件夹  
+    1.2 MDLog1_2015_0101_000042  
+
+2. mobilelog                        // android log 和 kernel log  
+    2.1 APLog_2010_0101_000147  
+    2.1 APLog_2015_0101_000037        
+        atf_log                     // 所有_log都是进入安卓之后的  
+        atf_log.boot                // 所有.boot都是启动到进入安卓之前的log  
+        bootprof                    // 启动的简要信息 - 可以分析启动时间 - 启动模式(普通or看门狗or按键())  
+        cmdline                     // lk传给kernel的参数(包括lcm等) - 可以自己加  
+        crash_log                   // 崩溃log  
+        crash_log.boot  
+        events_log                  // 事件log，主要输出记录各个activity周期及事件  
+        events_log.boot：  
+        kernel_log                  // 内核log，常用  
+        kernel_log.boot  
+        last_kmsg                   // 上一次关机前的log - 可以分析重启原因  
+        main_log                    // hal层的log打印在这里  
+        main_log.boot  
+        mblog_history               // 本目录下所有log的大小等信息  
+        ProjectConfig.mk            // 工程配置  
+        properties                  // 属性  
+        radio_log                   // 输出通话，网络状态变化  
+        radio_log.boot  
+        sys_log                     // jni、framework层log，Exception定位点  
+        sys_log.boot  
+
+3. netlog                           //网络log  
+    3.1 NTLog_2010_0101_000147  
+        NTLog_2015_0101_000037  
+        tcpdump_NTLog_2015_0101_000037_start.cap.tmp  
+
+4. running_file_tree.txt            //
+</code></pre><h3 id="ZZ-INTERNAL相关信息及解释"><a href="#ZZ-INTERNAL相关信息及解释" class="headerlink" title="ZZ_INTERNAL相关信息及解释"></a>ZZ_INTERNAL相关信息及解释</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">ANR,2173,-1361051648,99,/data/core/,1,system_app_anr,android.process.media,Tue Jul  4 18:51:03 HKT 2017,1</div><div class="line"></div><div class="line">第一列：exception class，有KE/NE/JE/EE等</div><div class="line">第二列：pid</div><div class="line">第三列：tid</div><div class="line">第四列：固定是99</div><div class="line">第五列：固定是/data/core</div><div class="line">第六列：exception level，0: fatal, 1: exception, 2: warning, 3: reminding</div><div class="line">第七列：exception type info string (如果是NE，则这个栏位是signal名称，比如：SIGSEGV，KE则为空，SWT则为:system_server_watchdog)</div><div class="line">第八列：module name or process name</div><div class="line">第九列：UTC time</div><div class="line">第十列：固定是1</div></pre></td></tr></table></figure>
+<h3 id="trace部分信息解析"><a href="#trace部分信息解析" class="headerlink" title="trace部分信息解析"></a>trace部分信息解析</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">----- pid 2173 at 2017-07-04 11:51:32 -----</div><div class="line">Cmd line: android.process.media</div><div class="line">&quot;main&quot; prio=5 tid=1 Native</div><div class="line">&quot;Binder:2173_1&quot; prio=5 tid=9 Blocked</div><div class="line">  | group=&quot;main&quot; sCount=1 dsCount=0 obj=0x22c05430 self=0xa1fcab00</div><div class="line">  | sysTid=2186 nice=10 cgrp=bg_non_interactive sched=0/0 handle=0xa497a920</div><div class="line">  | state=S schedstat=( 26942858 122825452 281 ) utm=0 stm=2 core=0 HZ=100</div><div class="line">  | stack=0xa487e000-0xa4880000 stackSize=1014KB</div><div class="line">  | held mutexes=</div><div class="line">  at com.android.providers.media.MediaProvider.getParent(MediaProvider.java:4118)</div><div class="line">  - waiting to lock &lt;0x06de4cd2&gt; (a java.util.HashMap) held by thread 13</div><div class="line">  at com.android.providers.media.MediaProvider.insertFile(MediaProvider.java:4395)</div><div class="line">  at com.android.providers.media.MediaProvider.insertInternal(MediaProvider.java:4662)</div><div class="line">  at com.android.providers.media.MediaProvider.insert(MediaProvider.java:4015)</div><div class="line">  at android.content.ContentProvider$Transport.insert(ContentProvider.java:272)</div><div class="line">  at android.content.ContentProviderNative.onTransact(ContentProviderNative.java:163)</div><div class="line">  at android.os.Binder.execTransact(Binder.java:570)</div></pre></td></tr></table></figure>
+<p>1)pid 2173 at 2017-07-04 11:51:32<br>  ANR发生的进程的ID，时间点</p>
+<p>2)Cmd line: android.process.media<br>  ANR发生的进程的名称</p>
+<p>3)”main” prio=5 tid=1 Native<br>  说明线程名，线程的优先级，线程锁ID和线程状态.<br>  线程名称是启动线程的时候手动指明的，这里的main标示是主线程，<br>  是Android自动设定的一个线程名称，如果是自己手动创建的线程，<br>  一般会被命名成“Thread-xx”的格式，启动xx是线程ID，他只增不减<br>  不会被复用;注意这启动的tid不是线程的id，他是一个在Java虚拟机<br>  中用来实现线程锁的变量，随着线程的增减，这个变量的值是可能被<br>  复用的；</p>
+<p>4)group=”main” sCount=1 dsCount=0 obj=0x22c05430 self=0xa1fcab00<br>  group是线程组名称。<br>  sCount是此线程被挂起的次数，<br>  dsCount是线程被调试器挂起的次数。<br>  当一个进程被调试后，sCount会重置为，调试完毕后sCount会根据是否<br>  被正常挂起增长，但是dsCount不会被重置为0，所以dsCount也可以用来<br>  判断这个线程是否被调试过，obj表示这个线程的Java对象地址，self表<br>  示这个线程本身的地址。</p>
+<p>5)此后是线程的调度信息<br>| sysTid=2186 nice=10 cgrp=bg_non_interactive sched=0/0 handle=0xa497a920<br>  sysTid是Linux下的内核线程ID，<br>  nice是线程调度的优先级.<br>  sched分别标志了线程的调度策略和优先级，<br>  cgrp是调度属组，<br>  handle是线程的处理函数地址。</p>
+<p>6)线程当前上下文信息<br> | state=S schedstat=( 26942858 122825452 281 ) utm=0 stm=2 core=0 HZ=100<br>  state是调度状态;<br>  schedstat从 /proc/[pid]/task/[tid]/schedstat读出<br>  三个值分别表示线程在cpu上执行的时间、线程的等待时间和线程执行的时间片长度;<br>  有的android内核版本不支持这项信息，得到的三个值都是0；utm是线程用户态下使<br>  用的时间值(单位是jiffies);stm是内核态下的调度时间值;core是最后执行这个线程<br>  cpu核的序号</p>
+<p>7)最后就是这个线程的调度栈信息。<br>  一般可以通过以下几个简单的方法来判断<br>  <em>trace文件顶部的线程一般是ANR的元凶。
+  </em>这是一个简单的方法，大部分情况下都适用，可以通过这个方法来快速判断是否是自己<br>   的应用造成了本次的ANR，但是并不是trace文件包含的应用就一定是造成ANR的帮凶，应<br>   用出现在trace文件中，只能说明出现ANR的时候这个应用进程还活着，trace文件的顶部<br>   则是触发ANR的应用信息，因此如果你的应用出现在trace文件的顶部，那么很有可能是<br>   因为你的应用造成了ANR,否则是你的应用造成ANR的可能性不大，还需要进一步分析。</p>
+<p>8)如果定位不到时间点，可以看CPU<br>  (sys_log)07-04 18:51:03.209156  1044  1068 E ANRManager: 3.4% TOTAL: 0.5% user  + 2.6% kernel + 0.2% irq<br>   从CPU使用率可以看出:<br>   <em>如果使用量很高，说明当前设备很忙(内存不足，循环处理)
+   </em>如果CPU使用量很少，说明主线程被BLOCK了<br>   *如果IOwait很高，说明ANR有可能是主线程在进行I/O操作造成的(数据库、文件操作、<br>    网络操作等)      </p>
+<p>9)等待锁引起的ANR<br>  找到WallpaperManager对应代码，再结合main log等其他信息，看tid=27的thread在忙<br>  什么。</p>
+<p>10)SWT重启问题分析<br>  SWT是指Android Watchdog Timeout，应用层看门狗超时，通常我们说的WDT是HWT，硬件<br>  看门狗超时。<br>  1.Watchdog的目的是监控系统几个比较主要的service，比如NetworkManagementService，<br>  PowerManagerService，ActivityManagerService等。这些Service在启动时通过调用<br>  Watchdog。getInstance().addMonitor(this);加入到Watchdog的监控列表中，如果超过<br>  一定时间没有反应，认为系统出错，会强制启动Android。<br>  2.Watchdog原理：/framework/base/services/java/com/android/server/Watchdog.java<br>  3.具体分析方法<br>    <em>首先从enventlog中以watchdog为关键字搜索，记录下这个时刻<br>      17:25:23.645459 950 1285 I watchdog:surfaceflinger hang.
+    </em>然后分析所有Service Object的monitor()为何在这个时刻之前1分钟没有做完，<br>    <em>后面具体分析方法和ANR一样
+    </em>ANR是某个AP的主线程在一段时间内没有完成某件事情，<br>    *Android Watchdog 是SystemServer进程的ServerThread 线程在一段时间内没有做完<br>     某件事情。                </p>
+<h3 id="radio-log分析网络状况"><a href="#radio-log分析网络状况" class="headerlink" title="radio_log分析网络状况"></a>radio_log分析网络状况</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">06-30 10:38:06.572525 938 976 I AT : AT&lt; +ECSQ: 22,54,1,1,1,-36,-346,7,39 (RIL_URC_READER, tid:0)</div><div class="line">06-30 10:38:06.572737 938 976 I RILC : RIL_SOCKET_1 UNSOLICITED: UNSOL_SIGNAL_STRENGTH length:72</div><div class="line">06-30 10:38:06.573125 938 998 I RIL : [GSM MAL] URC send success, rid 0, ret 0:      #F5F6FA</div><div class="line">06-30 10:38:06.573125 938 998 I RIL : +ECSQ: 22,54,1,1,1,-36,-346,7,39</div><div class="line">06-30 10:38:06.574384 1028 1067 D RilMalClient: UNSOL_TO_MAL: remap to unsol resp(1009)</div><div class="line">06-30 10:38:06.575465 1028 1067 D RpRilClientController: leave blocking write</div><div class="line">06-30 10:38:06.575605 1028 1067 D RpRilClientController: leave blocking write</div><div class="line">06-30 10:38:06.576133 1425 1425 D SST : [GsmSST0] handle EVENT_SIGNAL_STRENGTH_UPDATE</div><div class="line">06-30 10:38:06.576410 1425 1425 W SignalStrength: Signal before validate=SignalStrength: 0 54 -1 -1 -1 -1 -1 99 86 9 97 2147483647 2147483647 gsm|lte 2147483647 2147483647 2147483647</div><div class="line">06-30 10:38:06.576526 1425 1425 W SignalStrength: Signal after validate=SignalStrength: 0 54 -120 -160 -120 -1 -1 99 -86 -9 97 2147483647 2147483647 gsm|lte 2147483647 2147483647 2147483647</div><div class="line">06-30 10:38:06.577794 1010 1367 D TelephonyRegistry: notifySignalStrengthForPhoneId: callback.onSsS r=&#123;callingPackage=android binder=android.telephony.PhoneStateListener$IPhoneStateListenerStub@d4b4edc callback=android.telephony.PhoneStateListener$IPhoneStateListenerStub@d4b4edc onSubscriptionsChangedListenererCallback=null callerUserId=0 subId=2147483647 phoneId=-1 events=1c1 canReadPhoneState=true&#125; subId=3 phoneId=0 ss=SignalStrength: 0 54 -120 -160 -120 -1 -1 99 -86 -9 97 2147483647 2147483647 gsm|lte 2147483647 2147483647 2147483647</div><div class="line">06-30 10:38:06.578163 1010 1367 D TelephonyRegistry: notifySignalStrengthForPhoneId: callback.onSsS r=&#123;callingPackage=com.android.systemui binder=android.os.BinderProxy@d2e4c9 callback=com.android.internal.telephony.IPhoneStateListener$Stub$Proxy@7f6d7ce onSubscriptionsChangedListenererCallback=null callerUserId=0 subId=3 phoneId=0 events=101e1 canReadPhoneState=true&#125; subId=3 phoneId=0 ss=SignalStrength: 0 54 -120 -160 -120 -1 -1 99 -86 -9 97 2147483647 2147483647 gsm|lte 2147483647 2147483647 2147483647</div><div class="line">06-30 10:38:06.578577 1010 1367 I use-Rlog/RLOG-GSM: getLTELevel - rsrp:-86 snr:97 rsrpIconLevel:3 snrIconLevel:3</div><div class="line">06-30 10:38:06.578693 1010 1367 W SignalStrength: getLevel=3</div><div class="line">06-30 10:38:06.579533 1305 1531 I use-Rlog/RLOG-GSM: getLTELevel - rsrp:-86 snr:97 rsrpIconLevel:3 snrIconLevel:3</div><div class="line">06-30 10:38:06.582788 1305 1531 W SignalStrength: getLevel=3</div><div class="line">06-30 10:38:06.588566 1305 1531 I use-Rlog/RLOG-GSM: getLTELevel - rsrp:-86 snr:97 rsrpIconLevel:3 snrIconLevel:3</div><div class="line">06-30 10:38:06.589489 1305 1531 W SignalStrength: getLevel=3</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">3G modem:</div><div class="line">+ECSQ: &lt;asu&gt;, &lt;ber&gt;, &lt;rssi&gt; （2G网络）</div><div class="line">+ECSQ: &lt;asu&gt;, &lt;ber&gt;, &lt;rssi&gt;, &lt;rscp&gt;, &lt;ec/no&gt; （3G网络）</div><div class="line">4G modem:</div><div class="line">+ECSQ: &lt;asu&gt;, &lt;ber&gt;, &lt;rssi&gt;, &lt;rscp&gt;,1,1,1,&lt;act&gt; （2G网络）</div><div class="line">+ECSQ: &lt;asu&gt;, &lt;ber&gt;, &lt;rssi&gt;, &lt;rscp&gt;, &lt;ec/no&gt;,1,1, &lt;act&gt; （3G网络）</div><div class="line">+ECSQ: &lt;rsrq&gt;, &lt;rsrp&gt;,1,1,1,&lt;rsrq_qdbm &gt;,&lt;rsrp_qdbm&gt; &lt;act&gt; （4G网络）</div><div class="line"></div><div class="line">看+ECSQ 命令带的值:</div><div class="line">*如果第六第七位不是255 or 1 则当前在LTE状态，</div><div class="line">*如果第四第五位不是255 or 1 则当前在3G mode。</div><div class="line">*2G的话不是很清楚怎么看radio log,一般是在modem log里确认的。</div><div class="line">+ECSQ:&lt;sig1&gt;,&lt;sig2&gt;,&lt;rssi_in_qdbm&gt;,&lt;rscp_in_qdbm&gt;,&lt;ecn0_in_qdbm&gt;,&lt;rsrq_in_qdbm&gt;,&lt;rsrp_in_qdbm&gt;,&lt;Act&gt;</div><div class="line">从radio log看，手机应该在</div><div class="line">4G mode时, 如果 SNR&lt;0 (RSRQ&lt;-60dbm)，则信号很差。</div><div class="line">3G mode时, EcN0&lt;-15 (RSCP&lt;-115dbm)时信号很差</div><div class="line">2G mode时, 2G：rssi&lt; -95dbm 、 rscq &gt; 4 (0~7 ,0最好，7最差)</div></pre></td></tr></table></figure>
+<h3 id="通话问题分析"><a href="#通话问题分析" class="headerlink" title="通话问题分析"></a>通话问题分析</h3><p>很多场测神马的，都会报出很多通话相关的bug，有些是通话无声，有些事通话质量不好，等等。遇到这种问题原来都是直接提给MTK的，后面发现很多都是网络质量问题，遂跟MTK讨了方法。在radiolog中搜索 +ECSQ:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">06-30 10:38:06.572525 938 976 I AT : AT&lt; +ECSQ: 22,54,1,1,1,-36,-346,7,39 (RIL_URC_READER, tid:0)</div></pre></td></tr></table></figure></p>
+<p>看+ECSQ 命令带的值，<br>如果第六第七位不是255 or 1 则当前在LTE状态，<br>如果第四第五位不是255or1则当前在3G mode。<br>2G的话不是很清楚怎么看radio log,一般是在modem log里确认的。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">+ECSQ:&lt;sig1&gt;,&lt;sig2&gt;,&lt;rssi_in_qdbm&gt;,&lt;rscp_in_qdbm&gt;,&lt;ecn0_in_qdbm&gt;,&lt;rsrq_in_qdbm&gt;,&lt;rsrp_in_qdbm&gt; ,&lt;Act&gt;</div></pre></td></tr></table></figure></p>
+<p>判断信号质量:<br>手机应该在4G下。如果 SNR &lt; 0 (RSRQ &lt;-60)，则信号很差。<br>3G mode时， EcN0&lt;-15 (RSCP&lt;-115)时信号很差。<br>2G mode时， rssi&lt; -95dbm 、 rscq &gt; 4 (0~7 ,0最好，7最差)</p>
+<h3 id="ANR-问题分析流程"><a href="#ANR-问题分析流程" class="headerlink" title="ANR 问题分析流程"></a>ANR 问题分析流程</h3><h4 id="1-定位问题点"><a href="#1-定位问题点" class="headerlink" title="1.定位问题点"></a>1.定位问题点</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">a) 使用mobile log</div><div class="line">*events_log中搜索am_anr</div><div class="line">*main_log 或 Sys_log 中搜索ANR in</div><div class="line">*traces.txt中查找相应的PID或者进程名</div><div class="line"></div><div class="line">b) 使用anr db文件 </div><div class="line">*使用gat工具打开db文件</div><div class="line">*查看ZZ_INTERNAL文件 找到pid或者进程名</div><div class="line">*在SWT_JBT_TRACES查找pid</div></pre></td></tr></table></figure>
+<h4 id="2-在mainlog中查看cpu"><a href="#2-在mainlog中查看cpu" class="headerlink" title="2.在mainlog中查看cpu"></a>2.在mainlog中查看cpu</h4><p>一般在trace就能看到问题点，如果还是定位不到，就需要在mainlog中搜索TOTAL：<br>查看CPU使用率  进而确认问题</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/04/09/mtklog分析/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-The-application-may-be-doing-too-much-work-on-its-main-thread" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -861,84 +983,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2018/03/08/root权限相关/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-数据连接信号小图标" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/03/08/数据连接信号小图标/">数据连接信号小图标</a>
-    </h1>
-  
-
-        
-        <a href="/2018/03/08/数据连接信号小图标/" class="archive-article-date">
-  	<time datetime="2018-03-08T03:21:55.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-03-08</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="1-数据连接信号图标，就是指在-联网时，出现的E，3G，H-等图标，它们是属于DataType，"><a href="#1-数据连接信号图标，就是指在-联网时，出现的E，3G，H-等图标，它们是属于DataType，" class="headerlink" title="1.数据连接信号图标，就是指在 联网时，出现的E，3G，H+等图标，它们是属于DataType，"></a>1.数据连接信号图标，就是指在 联网时，出现的E，3G，H+等图标，它们是属于DataType，</h3><p>DataType.java (frameworks\base\packages\systemui\ext\src\com\mediatek\systemui\ext)<br>这些图标就是标识不同的网络连接类型。。至于它们各自的区别，那是属于技术标准的问题。<br>比如 ： 他们的理论速度之类的都是不同的。。<br>2G－－－－－GSM，速率9Kbps<br>2.5G－－－－GPRS，速率115Kbps<br>2.7G－－－－EDGE 速率384Kbps<br>3G－－－－－WCDMA 速率384Kbps<br>3.5G－－－－HSDPA 速率3.6M<br>4G－－－－－WIMAX 速率更高</p>
-<h3 id="2-另一种，有时候出现的2G，3G之类的，那是属于-NetworkType"><a href="#2-另一种，有时候出现的2G，3G之类的，那是属于-NetworkType" class="headerlink" title="2.另一种，有时候出现的2G，3G之类的，那是属于 NetworkType"></a>2.另一种，有时候出现的2G，3G之类的，那是属于 NetworkType</h3><p>NetworkType.java (frameworks\base\packages\systemui\ext\src\com\mediatek\systemui\ext)<br>即注册的是2G还是3G网络，联通定制会显示单独的网络图标，这两者是不同的。。</p>
-<h3 id="3-那些数据连接信号图片的图片资源位于-frameworks-base-packages-SystemUI-res-drawable-dpi-下面。"><a href="#3-那些数据连接信号图片的图片资源位于-frameworks-base-packages-SystemUI-res-drawable-dpi-下面。" class="headerlink" title="3.那些数据连接信号图片的图片资源位于 frameworks/base/packages/SystemUI/res/drawable-*dpi/下面。"></a>3.那些数据连接信号图片的图片资源位于 frameworks/base/packages/SystemUI/res/drawable-*dpi/下面。</h3><p>  并且他们根据是否漫游(roaming)有两种图标，并且每种类型共计有五种颜色。</p>
-<h3 id="4-SystemUI上面，那些蓝牙，wifi，电池，信号强度，数据连接信号等这些小图标，并不是在java代码当中new出来的，而就是普通的布局，不过使用了include等形式，所以布局的比较复杂，然后在java代码当中，来控制它们是否显示。"><a href="#4-SystemUI上面，那些蓝牙，wifi，电池，信号强度，数据连接信号等这些小图标，并不是在java代码当中new出来的，而就是普通的布局，不过使用了include等形式，所以布局的比较复杂，然后在java代码当中，来控制它们是否显示。" class="headerlink" title="4.SystemUI上面，那些蓝牙，wifi，电池，信号强度，数据连接信号等这些小图标，并不是在java代码当中new出来的，而就是普通的布局，不过使用了include等形式，所以布局的比较复杂，然后在java代码当中，来控制它们是否显示。"></a>4.SystemUI上面，那些蓝牙，wifi，电池，信号强度，数据连接信号等这些小图标，并不是在java代码当中new出来的，而就是普通的布局，不过使用了include等形式，所以布局的比较复杂，然后在java代码当中，来控制它们是否显示。</h3><h3 id="5-对于-单双卡情况来讲，如果有必要，双卡情况使用的文件名都有gemini后缀。"><a href="#5-对于-单双卡情况来讲，如果有必要，双卡情况使用的文件名都有gemini后缀。" class="headerlink" title="5.对于 单双卡情况来讲，如果有必要，双卡情况使用的文件名都有gemini后缀。"></a>5.对于 单双卡情况来讲，如果有必要，双卡情况使用的文件名都有gemini后缀。</h3><p>而对于数据连接小图标相关显示，以及更新情况，就集中在两个java文件中。<br>其中 单卡会走networkcontroller.java和signalclusterview.java,双卡会跑networkcontrollergemini.java和signalclusterviewgemini.java </p>
-<h3 id="6-确定每张卡是卡一，还是卡二，以及每张卡的颜色（同时来决定显示不同颜色的小图标），都是通过SIMHelper-来得到的。他们的颜色，卡号都是与settigns下面的SIM卡管理中一致的。"><a href="#6-确定每张卡是卡一，还是卡二，以及每张卡的颜色（同时来决定显示不同颜色的小图标），都是通过SIMHelper-来得到的。他们的颜色，卡号都是与settigns下面的SIM卡管理中一致的。" class="headerlink" title="6.确定每张卡是卡一，还是卡二，以及每张卡的颜色（同时来决定显示不同颜色的小图标），都是通过SIMHelper 来得到的。他们的颜色，卡号都是与settigns下面的SIM卡管理中一致的。"></a>6.确定每张卡是卡一，还是卡二，以及每张卡的颜色（同时来决定显示不同颜色的小图标），都是通过SIMHelper 来得到的。他们的颜色，卡号都是与settigns下面的SIM卡管理中一致的。</h3><h3 id="7-对于数据连接，他们的布局文件是在-Gemini-signal-cluster-view-xml-frameworks-base-packages-systemui-res-layout-。"><a href="#7-对于数据连接，他们的布局文件是在-Gemini-signal-cluster-view-xml-frameworks-base-packages-systemui-res-layout-。" class="headerlink" title="7.对于数据连接，他们的布局文件是在 Gemini_signal_cluster_view.xml (frameworks\base\packages\systemui\res\layout)。"></a>7.对于数据连接，他们的布局文件是在 Gemini_signal_cluster_view.xml (frameworks\base\packages\systemui\res\layout)。</h3><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">ImageView</span></span></div><div class="line"><span class="tag">    <span class="attr">android:id</span>=<span class="string">"@+id/data_type"</span></span></div><div class="line"><span class="tag">    <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span></span></div><div class="line"><span class="tag">    <span class="attr">android:layout_width</span>=<span class="string">"wrap_content"</span> /&gt;</span></div></pre></td></tr></table></figure>
-<p>并且通过这里的布局其实也可以看到，布局当中是准备了四张卡的情况的。。</p>
-<h3 id="8-有了布局，在代码当中-SignalClusterView-java-frameworks-base-packages-systemui-src-com-android-systemui-statusbar"><a href="#8-有了布局，在代码当中-SignalClusterView-java-frameworks-base-packages-systemui-src-com-android-systemui-statusbar" class="headerlink" title="8.有了布局，在代码当中  SignalClusterView.java (frameworks\base\packages\systemui\src\com\android\systemui\statusbar)"></a>8.有了布局，在代码当中  SignalClusterView.java (frameworks\base\packages\systemui\src\com\android\systemui\statusbar)</h3><p>中 mDataType[i]                  = (ImageView) findViewById(R.id.data_type);<br>创建了具体对象。。然后通过不同情况，来控制其显示还是消失。<br>mDataType[i].setVisibility((!mWifiVisible) ? View.VISIBLE: View.GONE);</p>
-<p>而该布局对象的资源id。是通过 mDataType[i].setImageDrawable(mMobileTypeId[i].getDrawable());来设置的。。<br>而这个设置具体的资源所有的apply（）方法，在任意一个小图标状态发生改变时，都会被调用</p>
-<p>而 mMobileTypeId[i]这个值，是在<br>setMobileDataIndicators(……)方法中<br>mMobileTypeId[slotId] = typeIcon.clone();<br>得到。<br>注意这个 clone方法。在这块内容当中，很多资源关联的对象，都是使用了<br>public class IconIdWrapper implements Cloneable<br>类，这种类实现 Cloneable接口，然后具体对象可以通过clone（）方法，来克隆该对象在内存中的一份拷贝。而不会修改其本身的内容。。<br>IconIdWrapper.java (frameworks\base\packages\systemui\ext\src\com\mediatek\systemui\ext)    </p>
-<h3 id="9-而-setMobileDataIndicators（）方法则是在-networkcontroller-java中被调用，并且通过快递参数来设置不同的资源。。"><a href="#9-而-setMobileDataIndicators（）方法则是在-networkcontroller-java中被调用，并且通过快递参数来设置不同的资源。。" class="headerlink" title="9.而 setMobileDataIndicators（）方法则是在 networkcontroller.java中被调用，并且通过快递参数来设置不同的资源。。"></a>9.而 setMobileDataIndicators（）方法则是在 networkcontroller.java中被调用，并且通过快递参数来设置不同的资源。。</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">在 NetworkController.java (frameworks\base\packages\systemui\src\com\android\systemui\statusbar\policy)	中</div><div class="line">public void  refreshSignalCluster()中，调用</div><div class="line">cluster.setMobileDataIndicators(</div><div class="line">    i,</div><div class="line">    mHasMobileDataFeature,</div><div class="line">    mPhoneSignalIconId[i],</div><div class="line">    mMobileActivityIconId[i],</div><div class="line">    mDataTypeIconId[i],                              //yaowen0209</div><div class="line">    mContentDescriptionPhoneSignal[i],</div><div class="line">    mContentDescriptionDataType[i]);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>而 mDataTypeIconId[] 的值 是在 updateDataNetType（）方法中来设置的<br>具体的代码流程如下：<br>mDataTypeIconId[slotId] = tempDataTypeIconId.clone();<br>而 tempDataTypeIconId则是在该方法中，根据不同情况，通过 下面的形式来得到的<br>tempDataTypeIconId.setResources(null);<br>tempDataTypeIconId.setIconId(iconList[simColorId]);<br>或<br>tempDataTypeIconId.setResources(PluginFactory.getStatusBarPlugin(mContext).getPluginResources());<br>tempDataTypeIconId.setIconId(iconList[simColorId]);<br>所以最后这个值，是通过iconList 来进行最终的传递和设定的。而iconList是通过一个工厂方法，结合漫游和不同的数据连接类型来得到的。<br>int[] iconList = PluginFactory.getStatusBarPlugin(mContext).getDataTypeIconListGemini(tempIsRoaming, tempDateType);<br>而 tempDateType就是各种case的中，进行的赋值。。<br>比如<br>case TelephonyManager.NETWORK_TYPE_UMTS:<br>case TelephonyManager.NETWORK_TYPE_HSDPA:<br>case TelephonyManager.NETWORK_TYPE_CDMA:<br>等等。<br>而这些不同分支，最终都是Modem来进行判断上传。。</p>
-<p>而这个 来设置不同的图标的过程，有很多种情况都是使那些图标得到更新。。<br>通过代码可以发现，比如 广播，手机状态监听器，服务状态改变，电话状态改变，数据连接状态改变等都会使他们发生改变</p>
-<h3 id="10-而最后一个问题就是，再代码中，根据不同情况，来设置显示不同的数据连接小图标。那么他们是怎么来具体的和那些Drawable资源。来设置的。"><a href="#10-而最后一个问题就是，再代码中，根据不同情况，来设置显示不同的数据连接小图标。那么他们是怎么来具体的和那些Drawable资源。来设置的。" class="headerlink" title="10.而最后一个问题就是，再代码中，根据不同情况，来设置显示不同的数据连接小图标。那么他们是怎么来具体的和那些Drawable资源。来设置的。"></a>10.而最后一个问题就是，再代码中，根据不同情况，来设置显示不同的数据连接小图标。那么他们是怎么来具体的和那些Drawable资源。来设置的。</h3><p>实际上，代码中将相关资源都定义在了同一个文件中，<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">TelephonyIcons.java (frameworks\base\packages\systemui\src\com\android\systemui\statusbar\policy)</div><div class="line">比如 </div><div class="line"><span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span>[] NETWORK_TYPE_G = &#123;</div><div class="line">    R.drawable.stat_sys_gemini_signal_g_blue,</div><div class="line">    R.drawable.stat_sys_gemini_signal_g_orange,</div><div class="line">    R.drawable.stat_sys_gemini_signal_g_green,</div><div class="line">    R.drawable.stat_sys_gemini_signal_g_purple,</div><div class="line">    R.drawable.stat_sys_gemini_signal_g_blue</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
-<p>然后通过公开接口，以供调用。。<br>比如：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span>[] getDataTypeIconListGemini(<span class="keyword">boolean</span> roaming, DataType dataType) &#123;</div><div class="line">    <span class="keyword">int</span>[] iconList = <span class="keyword">null</span>;</div><div class="line">    <span class="keyword">if</span> (roaming) &#123;</div><div class="line">        iconList = DATA_ROAM[dataType.getTypeId()];</div><div class="line">    &#125; <span class="keyword">else</span> &#123;</div><div class="line">        iconList = DATA[dataType.getTypeId()];</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> iconList;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>而具体调用地方，就是通过 iconList的工厂方法<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">int</span>[] iconList = PluginFactory.getStatusBarPlugin(mContext).getDataTypeIconListGemini(tempIsRoaming, tempDateType);</div></pre></td></tr></table></figure></p>
-<p>来根据是否漫游，数据连接类型，来得到不同资源ID。</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/03/08/数据连接信号小图标/">展开全文 >></a>
         </p>
       
 
