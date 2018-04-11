@@ -152,6 +152,76 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-ANR问题分析" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/04/11/ANR问题分析/">ANR问题分析</a>
+    </h1>
+  
+
+        
+        <a href="/2018/04/11/ANR问题分析/" class="archive-article-date">
+  	<time datetime="2018-04-11T02:41:59.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-04-11</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="如何去分析ANR"><a href="#如何去分析ANR" class="headerlink" title="如何去分析ANR"></a>如何去分析ANR</h1><p>先看个LOG:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line">04-01 13:12:11.572 I/InputDispatcher( 220): Application is not responding:Window&#123;2b263310com.android.email/com.android.email.activity.SplitScreenActivitypaused=false&#125;.  5009.8ms since event, 5009.5ms since waitstarted</div><div class="line">04-01 13:12:11.572 I/WindowManager( 220): Input event dispatching timedout sending tocom.android.email/com.android.email.activity.SplitScreenActivity</div><div class="line">04-01 13:12:14.123 I/Process(  220): Sending signal. PID: 21404 SIG: 3---发生ANR的时间和生成trace.txt的时间</div><div class="line">04-01 13:12:14.123 I/dalvikvm(21404):threadid=4: reacting to signal 3 </div><div class="line">……</div><div class="line">04-01 13:12:15.872 E/ActivityManager(  220): ANR in com.android.email(com.android.email/.activity.SplitScreenActivity)</div><div class="line">04-01 13:12:15.872 E/ActivityManager(  220): Reason:keyDispatchingTimedOut</div><div class="line">04-01 13:12:15.872 E/ActivityManager(  220): Load: 8.68 / 8.37 / 8.53</div><div class="line">04-01 13:12:15.872 E/ActivityManager(  220): CPUusage from 4361ms to 699ms ago ----CPU在ANR发生前的使用情况</div><div class="line"></div><div class="line">04-01 13:12:15.872 E/ActivityManager(  220):   5.5%21404/com.android.email: 1.3% user + 4.1% kernel / faults: 10 minor</div><div class="line">04-01 13:12:15.872 E/ActivityManager(  220):   4.3%220/system_server: 2.7% user + 1.5% kernel / faults: 11 minor 2 major</div><div class="line">04-01 13:12:15.872 E/ActivityManager(  220):   0.9%52/spi_qsd.0: 0% user + 0.9% kernel</div><div class="line">04-01 13:12:15.872 E/ActivityManager(  220):   0.5%65/irq/170-cyttsp-: 0% user + 0.5% kernel</div><div class="line">04-01 13:12:15.872 E/ActivityManager(  220):   0.5%296/com.android.systemui: 0.5% user + 0% kernel</div><div class="line">04-01 13:12:15.872 E/ActivityManager(  220): 100%TOTAL: 4.8% user + 7.6% kernel + 87% iowait</div><div class="line">04-01 13:12:15.872 E/ActivityManager(  220): CPUusage from 3697ms to 4223ms later:-- ANR后CPU的使用量</div><div class="line">04-01 13:12:15.872 E/ActivityManager(  220):   25%21404/com.android.email: 25% user + 0% kernel / faults: 191 minor</div><div class="line">04-01 13:12:15.872 E/ActivityManager(  220):    16% 21603/__eas(par.hakan: 16% user + 0% kernel</div><div class="line">04-01 13:12:15.872 E/ActivityManager(  220):    7.2% 21406/GC: 7.2% user + 0% kernel</div><div class="line">04-01 13:12:15.872 E/ActivityManager(  220):    1.8% 21409/Compiler: 1.8% user + 0% kernel</div><div class="line">04-01 13:12:15.872 E/ActivityManager(  220):   5.5%220/system_server: 0% user + 5.5% kernel / faults: 1 minor</div><div class="line">04-01 13:12:15.872 E/ActivityManager(  220):    5.5% 263/InputDispatcher: 0% user + 5.5% kernel</div><div class="line">04-01 13:12:15.872 E/ActivityManager(  220): 32%TOTAL: 28% user + 3.7% kernel</div></pre></td></tr></table></figure></p>
+<p>从LOG可以看出ANR的类型，CPU的使用情况，如果CPU使用量接近100%，说明当前设备很忙，有可能是CPU饥饿导致了ANR<br>如果CPU使用量很少，说明主线程被BLOCK了<br>如果IOwait很高，说明ANR有可能是主线程在进行I/O操作造成的<br>除了看LOG，解决ANR还得需要trace.txt文件，<br>如何获取呢？可以用如下命令获取<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">$ chmod 777 /data/anr</div><div class="line">$ rm /data/anr/traces.txt</div><div class="line">$ ps</div><div class="line">$ <span class="built_in">kill</span> -3 PID</div><div class="line">$ adb pull data/anr/traces.txt ./mytraces.txt</div></pre></td></tr></table></figure></p>
+<p>从trace.txt文件，看到最多的是如下的信息：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">-----pid 21404 at 2011-04-01 13:12:14 -----  </div><div class="line">Cmdline: com.android.email</div><div class="line"></div><div class="line">DALVIK THREADS:</div><div class="line">(mutexes: tll=0tsl=0 tscl=0 ghl=0 hwl=0 hwll=0)</div><div class="line">&quot;main&quot; prio=5 tid=1NATIVE</div><div class="line">  | group=&quot;main&quot; sCount=1 dsCount=0obj=0x2aad2248 self=0xcf70</div><div class="line">  | sysTid=21404 nice=0 sched=0/0cgrp=[fopen-error:2] handle=1876218976</div><div class="line">  at android.os.MessageQueue.nativePollOnce(Native Method)</div><div class="line">  at android.os.MessageQueue.next(MessageQueue.java:119)</div><div class="line">  at android.os.Looper.loop(Looper.java:110)</div><div class="line">  at android.app.ActivityThread.main(ActivityThread.java:3688)</div><div class="line">  at java.lang.reflect.Method.invokeNative(Native Method)</div><div class="line">  at java.lang.reflect.Method.invoke(Method.java:507)</div><div class="line">  at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:866)</div><div class="line">  at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:624)</div><div class="line">  at dalvik.system.NativeStart.main(Native Method)</div></pre></td></tr></table></figure></p>
+<p>说明主线程在等待下条消息进入消息队列</p>
+<h2 id="Thread状态"><a href="#Thread状态" class="headerlink" title="Thread状态"></a>Thread状态</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">ThreadState (defined at “dalvik/vm/thread.h “)</div><div class="line">THREAD_UNDEFINED = -1, /* makes enum compatible with int32_t */</div><div class="line">THREAD_ZOMBIE = 0, /* TERMINATED */</div><div class="line">THREAD_RUNNING = 1, /* RUNNABLE or running now */</div><div class="line">THREAD_TIMED_WAIT = 2, /* TIMED_WAITING in Object.wait() */</div><div class="line">THREAD_MONITOR = 3, /* BLOCKED on a monitor */</div><div class="line">THREAD_WAIT = 4, /* WAITING in Object.wait() */</div><div class="line">THREAD_INITIALIZING= 5, /* allocated, not yet running */</div><div class="line">THREAD_STARTING = 6, /* started, not yet on thread list */</div><div class="line">THREAD_NATIVE = 7, /* off in a JNI native method */</div><div class="line">THREAD_VMWAIT = 8, /* waiting on a VM resource */</div><div class="line">THREAD_SUSPENDED = 9, /* suspended, usually by GC or debugger */</div></pre></td></tr></table></figure>
+<h2 id="如何调查并解决ANR"><a href="#如何调查并解决ANR" class="headerlink" title="如何调查并解决ANR"></a>如何调查并解决ANR</h2><blockquote>
+<p>1 : 首先分析log<br>2 : 从trace.txt文件查看调用stack.<br>3 : 看代码<br>4 : 仔细查看ANR的成因（iowait?block?memoryleak?）</p>
+</blockquote>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/04/11/ANR问题分析/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-mtklog分析" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -914,75 +984,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2018/03/08/反编译/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-root权限相关" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/03/08/root权限相关/">root权限相关</a>
-    </h1>
-  
-
-        
-        <a href="/2018/03/08/root权限相关/" class="archive-article-date">
-  	<time datetime="2018-03-08T04:49:31.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-03-08</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>android apk的root权限和USB adb权限的区别</p>
-<p>[Keyword]<br>apk usb Superuser SuperSU root adb</p>
-<p>[Solution]<br>USB adb 权限是指，当adb 连接手机时，手机中的守护进程adbd 的权限为root 权限，从而它的子进程也具有root 权限，通常如果adb shell 看到是:</p>
-<p>Android 4.0 以后版本:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">C:\Users\mtk71029\Desktop&gt;adb shell</div><div class="line">root@android:/ #</div></pre></td></tr></table></figure></p>
-<p>Android 2.3 版本:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">C:\Users\mtk71029\Desktop&gt;adb shell</div><div class="line">#</div></pre></td></tr></table></figure></p>
-<p>即表明adb 的连接是root 权限的，相反如果看到是$ 即表明是shell 权限<br>Android 的APK 本身都是不具备root 权限的，如果想启用root 权限，那么就必须借助具有root 权限的进程或者具有s bit 的文件，目前比较通用的手法是，手机root 后，内置了su到system/bin, 然后普通APP 即可借助su 命令来达到root 权限切换。<br>网络上已经有同仁修改su 命令，并通过一个APK 来控制su 命令的权限控制。<br>如常见的Superuser: <a href="http://androidsu.com/superuser/" target="_blank" rel="external">http://androidsu.com/superuser/</a> 这样即可人为的控制root 权限的使用。((因很久都没有更新了，只能用于ICS 以及以前的版本))<br>SuperSU: <a href="http://forum.xda-developers.com/showthread.php?t=1538053" target="_blank" rel="external">http://forum.xda-developers.com/showthread.php?t=1538053</a> (更新速度很快，推荐使用)</p>
-<p>综上所叙，如果adb 已经有root 权限，那么让apk 行使root 权限就很简单了。比如:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">adb remount</div><div class="line">adb push su /system/bin</div><div class="line">adb push Superuser.apk /system/app</div><div class="line">adb shell chmod 0644 /system/app/Superuser.apk</div><div class="line">adb shell chmod 6755 /system/bin/su</div><div class="line">adb reboot</div></pre></td></tr></table></figure></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/03/08/root权限相关/">展开全文 >></a>
         </p>
       
 
