@@ -152,6 +152,76 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-insufficient-permissions-for-device" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/04/25/insufficient-permissions-for-device/">insufficient permissions for device</a>
+    </h1>
+  
+
+        
+        <a href="/2018/04/25/insufficient-permissions-for-device/" class="archive-article-date">
+  	<time datetime="2018-04-25T01:20:29.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-04-25</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>问题4: error: insufficient permissions for device（解决adb shell问题）</p>
+<p>解决方法:<br>在linux下连接手机usb，试用adb shell时出现error: insufficient permissions for device，</p>
+<p>而且我们输入adb devices显示：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">xxxx@xxxx-pt:~$ adb devices</div><div class="line">List of devices attached </div><div class="line">????????????    device</div></pre></td></tr></table></figure></p>
+<p>那么我们怎么解决它呢？</p>
+<p>首先在终端查看usb的ID，输入lsusb命令，我们可以看到我们刚插如usb的ID号，如：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">xxxx@xxxx-pt:~$ lsusb</div><div class="line">Bus 001 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub</div><div class="line">Bus 002 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub</div><div class="line">Bus 001 Device 002: ID 8087:0020 Intel Corp. Integrated Rate Matching Hub</div><div class="line">Bus 002 Device 002: ID 8087:0020 Intel Corp. Integrated Rate Matching Hub</div><div class="line">Bus 001 Device 003: ID 0461:4d80 Primax Electronics, Ltd </div><div class="line">Bus 001 Device 004: ID 1c7a:0801 LighTuning Technology Inc. Fingerprint Reader</div><div class="line">Bus 002 Device 003: ID 5986:0190 Acer, Inc </div><div class="line">Bus 001 Device 019: ID 0bb4:0c02 High Tech Computer Corp. Dream / ADP1 / G1 / Magic / Tattoo (Debug)</div></pre></td></tr></table></figure>
+<p>0bb4:0c02 的就是我们插入usb的ID号。<br>那么我们进入到cd /etc/udev/rules.d/下，新建一个51-android.rules文件（sudo  vim  51-android.rules），在这个文件中写上：<br>SUBSYSTEM==”usb”, ATTRS{idVendor}==” 0bb4”, ATTRS{idProduct}==”0c02”,MODE=”0666”<br>保存，再为51-android.rules加上权限（sudo chmod a+x 51-android.rules）.<br>拔掉usb重新插上就可以了，如：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">xxnan@xxnan-pt:~$ adb devices</div><div class="line">List of devices attached </div><div class="line">0123456789ABCDEF    device</div></pre></td></tr></table></figure></p>
+<p>这样就解决了不能识别USB的问题。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/04/25/insufficient-permissions-for-device/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-git命令大全" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -896,78 +966,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2018/03/08/手机基本概念/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Java的编译时多态和运行时多态" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/03/08/Java的编译时多态和运行时多态/">Java的编译时多态和运行时多态</a>
-    </h1>
-  
-
-        
-        <a href="/2018/03/08/Java的编译时多态和运行时多态/" class="archive-article-date">
-  	<time datetime="2018-03-08T04:57:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-03-08</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>java的编译时多态和运行时多态</p>
-<h3 id="运行时多态和编译时多态的区别"><a href="#运行时多态和编译时多态的区别" class="headerlink" title="运行时多态和编译时多态的区别?"></a>运行时多态和编译时多态的区别?</h3><blockquote>
-<p>编译时的多态,是指参数列表的不同, 来区分不同的函数, 在编译后, 就自动变成两个不同的函数名. 在运行时谈不上多态</p>
-</blockquote>
-<hr>
-<blockquote>
-<p>运行时多态:用到的是后期绑定的技术, 在程序运行前不知道,会调用那个方法, 而到运行时, 通过运算程序,动态的算出被调用的地址. 动态调用在继承的时候,方法名 参数列表完全相同时才出现运行时多态!<br>运行时多态,也就是动态绑定,是指在执行期间(而非编译期间)判断所引用对象的实际类型,根据实际类型判断并调用相应的属性和方法.看看下面这个例子:</p>
-</blockquote>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">Animal</span> </span>&#123;</div><div class="line">  <span class="keyword">private</span> String name;</div><div class="line">  Animal(String name) &#123;<span class="keyword">this</span>.name = name;&#125;</div><div class="line">  <span class="comment">/*</span></div><div class="line"><span class="comment">  public void enjoy()&#123;</span></div><div class="line"><span class="comment">    System.out.println("叫声......");//父类方法,下面的子类对该方法不满意,重写.</span></div><div class="line"><span class="comment">  &#125;</span></div><div class="line"><span class="comment">  */</span></div><div class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">enjoy</span><span class="params">()</span></span>;<span class="comment">//该方法没有实现的必要(所以我们一般声明为静态方法),但有定义的必要.</span></div><div class="line">&#125;</div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Cat</span> <span class="keyword">extends</span> <span class="title">Animal</span> </span>&#123;</div><div class="line">  <span class="keyword">private</span> String eyesColor;</div><div class="line">  Cat(String n,String c) &#123;<span class="keyword">super</span>(n); eyesColor = c;&#125;</div><div class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">enjoy</span><span class="params">()</span> </span>&#123;</div><div class="line">    System.out.println(<span class="string">"猫叫声......"</span>);</div><div class="line">  &#125;</div><div class="line">  </div><div class="line">  <span class="comment">//public abstract void enjoy();//如果不想实现父类静态方法,可将此方法声明为静态的,该类也同时为abstract</span></div><div class="line">&#125;</div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Dog</span> <span class="keyword">extends</span> <span class="title">Animal</span> </span>&#123;</div><div class="line">  <span class="keyword">private</span> String furColor;</div><div class="line">  Dog(String n,String c) &#123;<span class="keyword">super</span>(n); furColor = c;&#125;</div><div class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">enjoy</span><span class="params">()</span> </span>&#123;</div><div class="line">    System.out.println(<span class="string">"狗叫声......"</span>);</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Bird</span> <span class="keyword">extends</span> <span class="title">Animal</span> </span>&#123;</div><div class="line">         Bird() &#123;</div><div class="line">                  <span class="keyword">super</span>(<span class="string">"bird"</span>);</div><div class="line">         &#125;</div><div class="line">         <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">enjoy</span><span class="params">()</span> </span>&#123;</div><div class="line">    System.out.println(<span class="string">"鸟叫声......"</span>);</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Lady</span> </span>&#123;</div><div class="line">    <span class="keyword">private</span> String name;</div><div class="line">    <span class="keyword">private</span> Animal pet;</div><div class="line">    Lady(String name,Animal pet) &#123;</div><div class="line">        <span class="keyword">this</span>.name = name; <span class="keyword">this</span>.pet = pet;</div><div class="line">    &#125;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">myPetEnjoy</span><span class="params">()</span></span>&#123;pet.enjoy();&#125;</div><div class="line">&#125;</div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String args[])</span></span>&#123;</div><div class="line">        Cat c = <span class="keyword">new</span> Cat(<span class="string">"catname"</span>,<span class="string">"blue"</span>);</div><div class="line">        Dog d = <span class="keyword">new</span> Dog(<span class="string">"dogname"</span>,<span class="string">"black"</span>);</div><div class="line">        Bird b = <span class="keyword">new</span> Bird();</div><div class="line">        <span class="comment">//Lady l1 = new Lady("l1",c);</span></div><div class="line">        Lady l2 = <span class="keyword">new</span> Lady(<span class="string">"l2"</span>,d);</div><div class="line">        Lady l3 = <span class="keyword">new</span> Lady(<span class="string">"l3"</span>,b);</div><div class="line">       <span class="comment">//l1.myPetEnjoy();</span></div><div class="line">        l2.myPetEnjoy();</div><div class="line">        l3.myPetEnjoy();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>动态绑定的底层实现是指针,我们知道程序中的方法是一段代码,存放在专门的内存区域中(code segment—代码区),当我们在程序执行期间new 出一个对象后调用enjoy方法的时候,JVM动态的把指针指向实际的对象重写的方法,从而实现了动态绑定.<br>动态绑定的最大好处就是给我们的程序的可扩展性带来了相当大的提高(上面的例子中我们可以继续添加子类或是在main方法中new  lady,),如果没有动态绑定,我们一般情况下的做法是在子类中用instanceof判断一个对象是不是我们需要的当前具体对象,但当我们定义好多个子类的时候,每次都要判断,现在有了动态绑定,我们不需要再去判断,而是JVM动态给我们指向具体的对象并调用相应的属性和方法.</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/03/08/Java的编译时多态和运行时多态/">展开全文 >></a>
         </p>
       
 
