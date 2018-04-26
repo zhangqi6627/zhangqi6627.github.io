@@ -101,7 +101,7 @@ adb shell wm density reset
 
 截屏
 ``` bash
-adb exec-out screencap -p > sc.png
+adb shell exec-out screencap -p > sc.png
 ```
 
 录屏
