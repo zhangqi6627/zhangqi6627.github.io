@@ -181,6 +181,71 @@ adb shell cat /proc/cpuinfo
 adb shell cat /data/misc/wifi/*.conf
 ```
 
+设置显示区域
+```
+四个数字分别表示距离左、上、右、下边缘的留白像素，以上命令表示将屏幕底部 200px 留白。
+adb shell wm overscan 0,0,0,200
+恢复
+adb shell wm overscan reset
+```
+
+关闭USB调试模式
+```
+adb shell settings put global adb_enabled 0
+```
+
+允许/禁止访问非 SDK API
+```
+允许
+adb shell settings put global hidden_api_policy_pre_p_apps 1
+adb shell settings put global hidden_api_policy_p_apps 1
+禁止
+adb shell settings delete global hidden_api_policy_pre_p_apps
+adb shell settings delete global hidden_api_policy_p_apps
+
+0：禁止检测非 SDK 接口的调用。该情况下，日志记录功能被禁用，并且令 strict mode API，即 detectNonSdkApiUsage() 无效。不推荐。
+1：仅警告——允许访问所有非 SDK 接口，但保留日志中的警告信息，可继续使用 strick mode API。
+2：禁止调用深灰名单和黑名单中的接口。
+3：禁止调用黑名单中的接口，但允许调用深灰名单中的接口。
+```
+
+状态栏和导航栏的显示隐藏
+```
+adb shell settings put global policy_control <key-values>
+adb shell settings put global policy_control immersive.full=*
+隐藏
+adb shell settings delete global policy_control
+```
+
+打开关闭wifi
+```
+adb shell svc wifi enable
+adb shell svc wifi disable
+```
+
+通过 sideload 更新系统
+```
+进入recovery模式
+adb reboot recovery
+
+在recovery界面上选择
+Apply update-Apply from ADB
+
+通过sideload上传ota包
+adb sideload <path-to-update.zip>
+```
+
+启用/禁用 dm_verity
+```
+adb enable-verity
+adb disable-verity
+```
+
+查看实时资源占用情况
+```
+adb shell top
+```
+
 
 查看节点信息
 ```
