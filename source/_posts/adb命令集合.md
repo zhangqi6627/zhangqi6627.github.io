@@ -67,6 +67,15 @@ Monkey测试
 adb shell monkey -s 6516 --throttle 200 --ignore-crashes --ignore-timeouts --ignore-security-exceptions -v 20000000 > result.txt
 ```
 
+通过包名查看apk安装路径
+``` bash
+adb shell pm path com.android.launcher3
+```
+输入：
+``` bash
+package:/system/priv-app/Launcher3Go/Launcher3Go.apk
+```
+
 查看IMEI码
 ``` bash
 adb shell service call iphonesubinfo 1
