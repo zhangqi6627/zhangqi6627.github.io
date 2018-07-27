@@ -152,6 +152,209 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-docker安装ss" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/07/27/docker安装ss/">docker安装ss</a>
+    </h1>
+  
+
+        
+        <a href="/2018/07/27/docker安装ss/" class="archive-article-date">
+  	<time datetime="2018-07-27T01:50:20.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-27</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="拉取shadowsocks的docker"><a href="#拉取shadowsocks的docker" class="headerlink" title="拉取shadowsocks的docker"></a>拉取shadowsocks的docker</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">docker pull mritd/shadowsocks</div></pre></td></tr></table></figure>
+<h3 id="在docker运行Server端的SS"><a href="#在docker运行Server端的SS" class="headerlink" title="在docker运行Server端的SS"></a>在docker运行Server端的SS</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">docker run -dt --name ss -p 6443:6443 mritd/shadowsocks -s &quot;-s 0.0.0.0 -p 6443 -m aes-256-cfb -k test123 --fast-open&quot;</div></pre></td></tr></table></figure>
+<h3 id="以上命令相当于执行了"><a href="#以上命令相当于执行了" class="headerlink" title="以上命令相当于执行了"></a>以上命令相当于执行了</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">ss-server -s 0.0.0.0 -p 6443 -m aes-256-cfb -k test123 --fast-open</div><div class="line">kcpserver -t 127.0.0.1:6443 -l :6500 -mode fast2</div></pre></td></tr></table></figure>
+<h3 id="在docker运行Client端的ss"><a href="#在docker运行Client端的ss" class="headerlink" title="在docker运行Client端的ss"></a>在docker运行Client端的ss</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">docker run -dt --name ssclient -p 1080:1080 mritd/shadowsocks -m &quot;ss-local&quot; -s &quot;-s 127.0.0.1 -p 6500 -b 0.0.0.0 -l 1080 -m aes-256-cfb -k test123 --fast-open&quot; -x -e &quot;kcpclient&quot; -k &quot;-r SSSERVER_IP:6500 -l :6500 -mode fast2&quot;</div></pre></td></tr></table></figure>
+<h3 id="以上命令相当于执行了-1"><a href="#以上命令相当于执行了-1" class="headerlink" title="以上命令相当于执行了"></a>以上命令相当于执行了</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">ss-local -s 127.0.0.1 -p 6500 -b 0.0.0.0 -l 1080 -m aes-256-cfb -k test123 --fast-open </div><div class="line">kcpclient -r SSSERVER_IP:6500 -l :6500 -mode fast2</div></pre></td></tr></table></figure>
+<h3 id="参数介绍"><a href="#参数介绍" class="headerlink" title="参数介绍"></a>参数介绍</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">-m : 参数后指定一个 shadowsocks 命令，如 ss-local，不写默认为 ss-server；该参数用于 shadowsocks 在客户端和服务端工作模式间切换，可选项如下: ss-local、ss-manager、ss-nat、ss-redir、ss-server、ss-tunnel</div><div class="line">-s : 参数后指定一个 shadowsocks-libev 的参数字符串，所有参数将被拼接到 ss-server 后</div><div class="line">-x : 指定该参数后才会开启 kcptun 支持，否则将默认禁用 kcptun</div><div class="line">-e : 参数后指定一个 kcptun 命令，如 kcpclient，不写默认为 kcpserver；该参数用于 kcptun 在客户端和服务端工作模式间切换，可选项如下: kcpserver、kcpclient</div><div class="line">-k : 参数后指定一个 kcptun 的参数字符串，所有参数将被拼接到 kcptun 后</div></pre></td></tr></table></figure>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/07/27/docker安装ss/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-ubuntu安装docker" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/07/27/ubuntu安装docker/">ubuntu安装docker</a>
+    </h1>
+  
+
+        
+        <a href="/2018/07/27/ubuntu安装docker/" class="archive-article-date">
+  	<time datetime="2018-07-27T01:49:38.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-27</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>操作系统要求：<br>需要以下Ubuntu系统的64位版本:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">Bionic 18.04 (LTS)</div><div class="line">Artful 17.10</div><div class="line">Xenial 16.04 (LTS)</div><div class="line">Trusty 14.04 (LTS)</div></pre></td></tr></table></figure></p>
+<h3 id="1-卸载老版本的docker（如果之前没有安装可以略过）"><a href="#1-卸载老版本的docker（如果之前没有安装可以略过）" class="headerlink" title="1.卸载老版本的docker（如果之前没有安装可以略过）"></a>1.卸载老版本的docker（如果之前没有安装可以略过）</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo apt-get remove docker docker-engine docker.io</div></pre></td></tr></table></figure>
+<h3 id="2-更新软件源"><a href="#2-更新软件源" class="headerlink" title="2.更新软件源"></a>2.更新软件源</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo apt-get update</div></pre></td></tr></table></figure>
+<h3 id="3-安装所需的软件包"><a href="#3-安装所需的软件包" class="headerlink" title="3.安装所需的软件包"></a>3.安装所需的软件包</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo apt-get install apt-transport-https ca-certificates curl  software-properties-common</div></pre></td></tr></table></figure>
+<h3 id="4-添加fingerprint"><a href="#4-添加fingerprint" class="headerlink" title="4.添加fingerprint"></a>4.添加fingerprint</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo apt-key fingerprint 0EBFCD88</div></pre></td></tr></table></figure>
+<h3 id="5-添加repository"><a href="#5-添加repository" class="headerlink" title="5.添加repository"></a>5.添加repository</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo add-apt-repository &quot;deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable&quot;</div></pre></td></tr></table></figure>
+<h3 id="6-再次更新软件源"><a href="#6-再次更新软件源" class="headerlink" title="6.再次更新软件源"></a>6.再次更新软件源</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo apt-get update</div></pre></td></tr></table></figure>
+<h3 id="7-安装docker"><a href="#7-安装docker" class="headerlink" title="7.安装docker"></a>7.安装docker</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo apt-get install docker-ce</div></pre></td></tr></table></figure>
+<h3 id="8-测试docker是否安装成功"><a href="#8-测试docker是否安装成功" class="headerlink" title="8.测试docker是否安装成功"></a>8.测试docker是否安装成功</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo docker run hello-world</div></pre></td></tr></table></figure>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/07/27/ubuntu安装docker/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-docker加载ylzq" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/07/27/docker加载ylzq/">docker加载ylzq</a>
+    </h1>
+  
+
+        
+        <a href="/2018/07/27/docker加载ylzq/" class="archive-article-date">
+  	<time datetime="2018-07-27T01:47:22.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-27</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="1-下载docker离线包"><a href="#1-下载docker离线包" class="headerlink" title="1.下载docker离线包"></a>1.下载docker离线包</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">wget http://www.yiluzhuanqian.com/soft/docker_images/ylzq_v2_0.tar</div></pre></td></tr></table></figure>
+<h3 id="2-导入镜像"><a href="#2-导入镜像" class="headerlink" title="2.导入镜像"></a>2.导入镜像</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">docker load  --input ylzq_v2_0.tar</div></pre></td></tr></table></figure>
+<p>运行容器，开始赚钱</p>
+<h3 id="3-注意这里uid对应的是之前获取到的id。不要填写错误，否则获取不到收益。"><a href="#3-注意这里uid对应的是之前获取到的id。不要填写错误，否则获取不到收益。" class="headerlink" title="3.注意这里uid对应的是之前获取到的id。不要填写错误，否则获取不到收益。"></a>3.注意这里uid对应的是之前获取到的id。不要填写错误，否则获取不到收益。</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">docker run --name=ylzq2_0 -d -e uid=10014 ylzq:v2.0</div></pre></td></tr></table></figure>
+<h3 id="4-检查下是否运行"><a href="#4-检查下是否运行" class="headerlink" title="4.检查下是否运行"></a>4.检查下是否运行</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">docker ps</div></pre></td></tr></table></figure>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/07/27/docker加载ylzq/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-Hexo常用命令" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -684,244 +887,9 @@
 
 
   
-    <article id="post-The-application-may-be-doing-too-much-work-on-its-main-thread" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/04/09/The-application-may-be-doing-too-much-work-on-its-main-thread/">The application may be doing too much work on its main thread</a>
-    </h1>
-  
-
-        
-        <a href="/2018/04/09/The-application-may-be-doing-too-much-work-on-its-main-thread/" class="archive-article-date">
-  	<time datetime="2018-04-09T02:34:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-04-09</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>在 mtklog 中搜索 grep “Skipped.*frames” ./ -ri ,搜索结果如下:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">./main_log:04-02 12:59:51.789230 6259 6259 I Choreographer: Skipped 67 frames! The application may be doing too much work on its main thread.</div><div class="line">./main_log:04-02 12:59:54.948920 6259 6259 I Choreographer: Skipped 114 frames! The application may be doing too much work on its main thread.</div><div class="line">./main_log:04-02 12:59:55.683659 6259 6259 I Choreographer: Skipped 41 frames! The application may be doing too much work on its main thread.</div><div class="line">./main_log:04-02 12:59:58.288454 6259 6259 I Choreographer: Skipped 152 frames! The application may be doing too much work on its main thread.</div><div class="line">./main_log:04-02 12:59:59.693032 6259 6259 I Choreographer: Skipped 71 frames! The application may be doing too much work on its main thread.</div><div class="line">./main_log:04-02 13:00:02.947048 6259 6259 I Choreographer: Skipped 71 frames! The application may be doing too much work on its main thread.</div><div class="line">./main_log:04-02 13:00:03.461233 6259 6259 I Choreographer: Skipped 30 frames! The application may be doing too much work on its main thread.</div><div class="line">./main_log:04-02 13:00:04.653194 6259 6259 I Choreographer: Skipped 31 frames! The application may be doing too much work on its main thread.</div><div class="line">./main_log:04-02 13:00:07.490548 6259 6259 I Choreographer: Skipped 58 frames! The application may be doing too much work on its main thread.</div><div class="line">./main_log:04-02 13:00:08.920317 11468 11468 I Choreographer: Skipped 53 frames! The application may be doing too much work on its main thread.</div><div class="line">./main_log:04-02 13:00:35.015765 6259 6259 I Choreographer: Skipped 49 frames! The application may be doing too much work on its main thread.</div><div class="line">./main_log:04-02 13:00:36.722107 894 894 I Choreographer: Skipped 51 frames! The application may be doing too much work on its main thread.</div><div class="line">./main_log:04-02 13:00:38.924398 894 894 I Choreographer: Skipped 32 frames! The application may be doing too much work on its main thread.</div></pre></td></tr></table></figure></p>
-<p>从log中看出有很多地方在掉帧,在网上查到出现 The application may be doing too much work on its main thread 的原因如下:<br>意思是：主线程中有耗时操作，主线程受不了了。原因是我在重写callback的handleMessage方法时，模拟了延时操作。实际在开发中，这种情况是万万不可的，解决办法是实现android的两大原则：</p>
-<blockquote>
-<ol>
-<li>不要！不要在主线程（UI线程）中执行耗时操作，如网络请求，数据库操作等。应另开线程操作，实现方式有1) 自开线程new Thread；2) runOnUIThread; 3) post方法以及4) 异步AsyncTask</li>
-<li>一定！一定要在主线程（UI线程）中修改控件的状态。否则会报：Only the original thread that created a view hierarchy can touch its views</li>
-</ol>
-</blockquote>
-<p>英文原版解释:<br>Anyone who begins developing android application sees this message on logcat “Choreographer(abc): Skipped xx frames! The application may be doing too much work on its main thread.” So what does it actually means, why should you be concerned and how to solve it.</p>
-<p>What this means is that your code is taking long to process and frames are being skipped because of it, It maybe because of some heavy processing that you are doing at the heart of your application or DB access or any other thing which causes the thread to stop for a while. Here is a more detailed explanation –</p>
-<p>Choreographer lets apps to connect themselves to the vsync, and properly time things to improve performance.</p>
-<p>Android view animations internally uses Choreographer for the same purpose: to properly time the animations and possibly improve performance.</p>
-<p>Since Choreographer is told about every vsync events, I can tell if one of the Runnables passed along by the Choreographer.post* apis doesnt finish in one frame’s time, causing frames to be skipped.</p>
-<p>In my understanding Choreographer can only detect the frame skipping. It has no way of telling why this happens.</p>
-<p>The message “The application may be doing too much work on its main thread.” could be misleading.</p>
-<p>source :  <a href="http://stackoverflow.com/questions/11266535/meaning-of-choreographer-messages-in-logcat" target="_blank" rel="external">http://stackoverflow.com/questions/11266535/meaning-of-choreographer-messages-in-logcat</a></p>
-<p>Why you should be concerned<br>When this message pops up on android emulator and the number of frames skipped are fairly small (&lt;100) then you can take a safe bet of the emulator being slow – which happens almost all the times. But if the number of frames skipped and large and in the order of 300+ then there can be some serious trouble with your code. Android devices come in a vast array of hardware unlike ios and windows devices. The RAM and CPU varies and if you want a reasonable performance and user experience on all the devices then you need to fix this thing. When frames are skipped the UI is slow and laggy, which is not a desirable user experience.</p>
-<p>How to fix it<br>Fixing this requires identifying nodes where there is or possibly can happen long duration of processing. The best way is to do all the processing no matter how small or big in a thread separate from main UI thread. So be it accessing data form SQLite Database or doing some hardcore maths or simply sorting an array – Do it in a different thread</p>
-<p>Now there is a catch here, You will create a new Thread for doing these operations and when you run your application, it will crash saying “Only the original thread that created a view hierarchy can touch its views“. You need to know this fact that UI in android can be changed by the main thread or the UI thread only. Any other thread which attempts to do so, fails and crashes with this error. What you need to do is create a new Runnable inside runOnUiThread and inside this runnable you should do all the operations involving the UI. Find an example here.</p>
-<p>So we have Thread and Runnable for processing data out of main Thread, what else? There is AsyncTask in android which enables doing long time processes on the UI thread. This is the most useful when you applications are data driven or web api driven or use complex UI’s like those build using Canvas. The power of AsyncTask is that is allows doing things in background and once you are done doing the processing, you can simply do the required actions on UI without causing any lagging effect. This is possible because the AsyncTask derives itself from Activity’s UI thread – all the operations you do on UI via AsyncTask are done is a different thread from the main UI thread, No hindrance to user interaction.</p>
-<p>So this is what you need to know for making smooth android applications and as far I know every beginner gets this message on his console.</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/04/09/The-application-may-be-doing-too-much-work-on-its-main-thread/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Channel-is-unrecoverably-broken-and-will-be-disposed" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/04/09/Channel-is-unrecoverably-broken-and-will-be-disposed/">Channel is unrecoverably broken and will be disposed</a>
-    </h1>
-  
-
-        
-        <a href="/2018/04/09/Channel-is-unrecoverably-broken-and-will-be-disposed/" class="archive-article-date">
-  	<time datetime="2018-04-09T02:24:45.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-04-09</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Channel is unrecoverably broken and will be disposed</p>
-<h1 id="第一篇"><a href="#第一篇" class="headerlink" title="第一篇"></a>第一篇</h1><p>今天遇到了一个头疼的问题，就是本来程序昨天都是好好的，但是今天在该页面退出的时候就报通道破碎错误了，直接闪屏，头大，上网搜了一下资料，再结合昨晚写的代码，预估可能是网络请求的问题，搞了半天解决了，记录一下。<br>报错记录</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">05-25 10:52:21.125 491-528/system_process E/InputDispatcher: channel &apos;4a8b59f4 activity.MainActivity (server)&apos; ~ Channel is unrecoverably broken and will be disposed!</div><div class="line">05-25 10:52:21.125 491-528/system_process E/InputDispatcher: channel &apos;4a9790c4 activity.ShoppingCartActivity (server)&apos; ~ Channel is unrecoverably broken and will be disposed!</div></pre></td></tr></table></figure>
-<h3 id="出错位置"><a href="#出错位置" class="headerlink" title="出错位置"></a>出错位置</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">private</span> Handler mHandler = <span class="keyword">new</span> Handler()&#123;</div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">handleMessage</span><span class="params">(Message msg)</span> </span>&#123;</div><div class="line">        <span class="keyword">super</span>.handleMessage(msg);</div><div class="line">        <span class="keyword">switch</span> (msg.what)&#123;</div><div class="line">            <span class="keyword">case</span> KEY:</div><div class="line">                <span class="keyword">if</span> (ispay) &#123;</div><div class="line">                    Map&lt;String, String&gt; param = <span class="keyword">new</span> HashMap&lt;&gt;();</div><div class="line">                    String orderId = SharePreferenceUtils.readString(PayActivity.<span class="keyword">this</span>, <span class="string">"user"</span>, <span class="string">"orderId"</span>);</div><div class="line">                    param.put(<span class="string">"orderId"</span>,orderId);</div><div class="line">                    PayActivity.<span class="keyword">this</span>.post(Api.PayResult,param, PayResultBean.class);</div><div class="line">                &#125;</div><div class="line">                <span class="keyword">break</span>;</div><div class="line">            <span class="keyword">default</span>:</div><div class="line">                <span class="keyword">break</span>;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
-<p>这行网络请求（这是我写的一个xutils封装类里的post请求方法）出了问题：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">PayActivity.<span class="keyword">this</span>.post(Api.PayResult,param, PayResultBean.class);</div></pre></td></tr></table></figure></p>
-<p>具体原因就是因为页面在退出的时候，该行代码依然在执行，所以报错，紧急之下也没做其他的处理，只是写了一个标志位，在页面退出的时候设置为false，这个方法其实不太好，暂时先这样，后期改进。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Override</span></div><div class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onDestroy</span><span class="params">()</span> </span>&#123;</div><div class="line">    <span class="keyword">super</span>.onDestroy();</div><div class="line">    ispay = <span class="keyword">false</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<h3 id="解决问题思路"><a href="#解决问题思路" class="headerlink" title="解决问题思路"></a>解决问题思路</h3><p>改正后，就不在报那个错了，从报这个错误消息的情况来看，如果程序报Channel is unrecoverably broken and will be disposed!时，首先可以考虑是不是代码中某个有数据输入或是有数据输出的地方，写错了代码。</p>
-<h3 id="稍做补充"><a href="#稍做补充" class="headerlink" title="稍做补充"></a>稍做补充</h3><p>下午又遇到这个问题了，看了一下，原来是后台接口数据做了改动，我重新生成bean对象的时候，有个为long类型的数据变成了String类型我也没注意到，改正过来就好了。写代码细心很重要，引以为戒，下不为例。</p>
-<h1 id="第二篇"><a href="#第二篇" class="headerlink" title="第二篇"></a>第二篇</h1><p>刚才测试代码时，报了如下的错误消息：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">04-23 14:09:18.608: E/InputDispatcher(99): channel &apos;405fd468 cn.jbit.NewsManager/cn.jbit.NewsManager.NewsManagerActivity (server)&apos; ~Channel is unrecoverably broken and will be disposed!</div></pre></td></tr></table></figure></p>
-<p>由于前面写代码时，遇到过类似的错误消息，这次遇到就得心应手了，从错误的消息来看，可以确定是代码中某个有数据输入的地方写错了，于是，找到我刚才的代码中，有数据输入的地方，详见下边：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/***</span></div><div class="line"><span class="comment">*   利用GET方式 提交 数据</span></div><div class="line"><span class="comment">* <span class="doctag">@param</span> strtitle</span></div><div class="line"><span class="comment">* <span class="doctag">@param</span> strauthor</span></div><div class="line"><span class="comment">* <span class="doctag">@param</span> string</span></div><div class="line"><span class="comment">* <span class="doctag">@return</span></span></div><div class="line"><span class="comment">* <span class="doctag">@throws</span> Exception </span></div><div class="line"><span class="comment">*/</span></div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">boolean</span> <span class="title">saveByGET</span><span class="params">(String strtitle, String strauthor)</span> <span class="keyword">throws</span> Exception </span>&#123;</div><div class="line">    StringBuffer buffer  =<span class="keyword">new</span> StringBuffer();  </div><div class="line">    buffer.append(<span class="string">"?title="</span>).append(URLEncoder.encode(strtitle, <span class="string">"UTF-8"</span>)+<span class="string">"&amp;author="</span>).append(URLEncoder.encode(strauthor, <span class="string">"UTF-8"</span>));</div><div class="line">    URL url  =<span class="keyword">new</span> URL(<span class="string">"http://192.168.137.1/JspUnit2/NewsAddServlet"</span>+buffer.toString());</div><div class="line">    HttpURLConnection conn =(HttpURLConnection)url.openConnection();</div><div class="line">    conn.setConnectTimeout(<span class="number">5000</span>);</div><div class="line">    conn.setRequestMethod(<span class="string">"GET"</span>);</div><div class="line">    <span class="keyword">if</span>(conn.getResponseCode()==<span class="number">200</span>)&#123;</div><div class="line">    	<span class="keyword">return</span> <span class="keyword">true</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>一看，上面的代码中，红色部分中少了:8080,不知道，自己当时是怎么了，把这个给写漏了，正确的代码应该是：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">URL url  = <span class="keyword">new</span> URL(<span class="string">"http://192.168.137.1:8080/JspUnit2/NewsAddServlet"</span> + buffer.toString());</div></pre></td></tr></table></figure></p>
-<p>改正后，就不在报那个错了，从这几次，报这个错误消息的情况来看，如果程序报Channel is unrecoverably broken and will be disposed!时，首先可以考虑是不是代码中某个有数据输入或是有数据输出的地方，写错了代码。</p>
-<p>以上是两篇 Channel is unrecoverably broken and will be disposed 的解决思路,仅供参考!</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/04/09/Channel-is-unrecoverably-broken-and-will-be-disposed/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-在framework下添加字体和使用方法" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/03/26/在framework下添加字体和使用方法/">在framework下添加字体和使用方法</a>
-    </h1>
-  
-
-        
-        <a href="/2018/03/26/在framework下添加字体和使用方法/" class="archive-article-date">
-  	<time datetime="2018-03-26T06:58:38.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-03-26</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>1.将需要添加的ttf字体文件放在 frameworks/base/data/fonts/ 目录</p>
-<p>A:frameworks/base/data/fonts/clock_thin.ttf</p>
-<p>2.修改 frameworks/base/data/fonts/Android.mk 文件,将字体文件编译到 system/fonts/ 目录中</p>
-<p>M:frameworks/base/data/fonts/Android.mk<br>font_src_files := \<br>    AndroidClock.ttf \<br>    clock_thin.ttf</p>
-<p>3.修改 frameworks/base/data/fonts/fonts.mk 文件</p>
-<p>M:frameworks/base/data/fonts/fonts.mk<br>PRODUCT_PACKAGES := \<br>    DroidSansMono.ttf \<br>    AndroidClock.ttf \<br>    clock_thin.ttf \<br>    fonts.xml</p>
-<p>4.在 fonts.xml 文件中定义字体对应的名称</p>
-<p>M:frameworks/base/data/fonts/fonts.xml<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">family</span> <span class="attr">name</span>=<span class="string">"clock-font"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">font</span> <span class="attr">weight</span>=<span class="string">"400"</span> <span class="attr">style</span>=<span class="string">"normal"</span>&gt;</span>clock_thin.ttf<span class="tag">&lt;/<span class="name">font</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">family</span>&gt;</span></div></pre></td></tr></table></figure></p>
-<p>5.使用新添加的字体</p>
-<p>方法1:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">TextView textView = <span class="keyword">new</span> TextView(mContext);</div><div class="line">textView.setTypeface(android.graphics.Typeface.createFromFile(<span class="string">"/system/fonts/clock_thin.ttf"</span>));</div></pre></td></tr></table></figure></p>
-<p>方法2:<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">TextView</span></span></div><div class="line"><span class="tag">    <span class="attr">android:layout_width</span>=<span class="string">"match_parent"</span></span></div><div class="line"><span class="tag">    <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span></span></div><div class="line"><span class="tag">    <span class="attr">android:fontFamily</span>=<span class="string">"clock-font"</span> /&gt;</span></div></pre></td></tr></table></figure></p>
-<p>6.在项目中的具体使用实例</p>
-<p>M:alps/frameworks/base/core/java/android/widget/RemoteViews.java<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">RemoteViews</span> <span class="keyword">implements</span> <span class="title">Parcelable</span>, <span class="title">Filter</span> </span>&#123;</div><div class="line">    ...</div><div class="line">    <span class="keyword">private</span> <span class="class"><span class="keyword">class</span> <span class="title">TextViewSizeAction</span> <span class="keyword">extends</span> <span class="title">Action</span> </span>&#123;</div><div class="line">        ...</div><div class="line">        <span class="meta">@Override</span></div><div class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">apply</span><span class="params">(View root, ViewGroup rootParent, OnClickHandler handler)</span> </span>&#123;</div><div class="line">            <span class="keyword">final</span> TextView target = root.findViewById(viewId);</div><div class="line">            <span class="keyword">if</span> (target == <span class="keyword">null</span>) <span class="keyword">return</span>;</div><div class="line"></div><div class="line">            <span class="comment">//通过特殊约定的参数(如77,0)来特殊设置TextView的字体</span></div><div class="line">            <span class="keyword">if</span>(units == -<span class="number">77</span> &amp;&amp; size == <span class="number">0f</span>)&#123;</div><div class="line">                target.setTypeface(android.graphics.Typeface.createFromFile(<span class="string">"/system/fonts/clock_thin.ttf"</span>));</div><div class="line">            &#125;<span class="keyword">else</span>&#123;</div><div class="line">                target.setTextSize(units, size);</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        ...</div><div class="line">    &#125;</div><div class="line">    ...</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>M:alps/vendor/mediatek/proprietary/packages/apps/DeskClock/src/com/android/alarmclock/DigitalAppWidgetProvider.java<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">DigitalAppWidgetProvider</span> <span class="keyword">extends</span> <span class="title">AppWidgetProvider</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> RemoteViews <span class="title">relayoutWidget</span><span class="params">(Context context, AppWidgetManager wm, <span class="keyword">int</span> widgetId, Bundle options, <span class="keyword">boolean</span> portrait)</span> </span>&#123;</div><div class="line">        <span class="keyword">final</span> String packageName = context.getPackageName();</div><div class="line">        <span class="keyword">final</span> RemoteViews rv = <span class="keyword">new</span> RemoteViews(packageName, R.layout.digital_widget);</div><div class="line">        <span class="comment">//通过特殊约定的参数(如77,0)来特殊设置TextView的字体,这里调用setTextViewTextSize方法就会调用RemoteViews的内部类TextViewSizeAction的apply方法</span></div><div class="line">        rv.setTextViewTextSize(R.id.clock, -<span class="number">77</span>, <span class="number">0f</span>);</div><div class="line">        ...</div><div class="line">    &#125;</div><div class="line">    ...</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/03/26/在framework下添加字体和使用方法/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/12/">12</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/13/">13</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
     </nav>
   
 
