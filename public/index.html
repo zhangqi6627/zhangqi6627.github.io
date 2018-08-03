@@ -152,6 +152,209 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-markdown语法" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/08/03/markdown语法/">markdown语法</a>
+    </h1>
+  
+
+        
+        <a href="/2018/08/03/markdown语法/" class="archive-article-date">
+  	<time datetime="2018-08-03T02:01:36.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-03</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="什么是-Markdown"><a href="#什么是-Markdown" class="headerlink" title="什么是 Markdown"></a>什么是 Markdown</h2><p>Markdown 是一种方便记忆、书写的纯文本标记语言，用户可以使用这些标记符号以最小的输入代价生成极富表现力的文档：譬如您正在阅读的这份文档。它使用简单的符号标记不同的标题，分割不同的段落，<strong>粗体</strong> 或者 <em>斜体</em> 某些文字，更棒的是，它还可以</p>
+<h3 id="1-制作一份待办事宜-Todo-列表"><a href="#1-制作一份待办事宜-Todo-列表" class="headerlink" title="1. 制作一份待办事宜 Todo 列表"></a>1. 制作一份待办事宜 <a href="https://www.zybuluo.com/mdeditor?url=https://www.zybuluo.com/static/editor/md-help.markdown#13-待办事宜-todo-列表" target="_blank" rel="external">Todo 列表</a></h3><ul>
+<li style="list-style: none"><input type="checkbox"> 支持以 PDF 格式导出文稿</li>
+<li style="list-style: none"><input type="checkbox"> 改进 Cmd 渲染算法，使用局部渲染技术提高渲染效率</li>
+<li style="list-style: none"><input type="checkbox" checked> 新增 Todo 列表功能</li>
+<li style="list-style: none"><input type="checkbox" checked> 修复 LaTex 公式渲染问题</li>
+<li style="list-style: none"><input type="checkbox" checked> 新增 LaTex 公式编号功能</li>
+</ul>
+<h3 id="2-书写一个质能守恒公式-LaTeX"><a href="#2-书写一个质能守恒公式-LaTeX" class="headerlink" title="2. 书写一个质能守恒公式[^LaTeX]"></a>2. 书写一个质能守恒公式[^LaTeX]</h3><p>$$E=mc^2$$</p>
+<h3 id="3-高亮一段代码-code"><a href="#3-高亮一段代码-code" class="headerlink" title="3. 高亮一段代码[^code]"></a>3. 高亮一段代码[^code]</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@requires_authorization</span></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">SomeClass</span>:</span></div><div class="line">    <span class="keyword">pass</span></div><div class="line"></div><div class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</div><div class="line">    <span class="comment"># A comment</span></div><div class="line">    <span class="keyword">print</span> <span class="string">'hello world'</span></div></pre></td></tr></table></figure>
+<h3 id="4-高效绘制-流程图"><a href="#4-高效绘制-流程图" class="headerlink" title="4. 高效绘制 流程图"></a>4. 高效绘制 <a href="https://www.zybuluo.com/mdeditor?url=https://www.zybuluo.com/static/editor/md-help.markdown#7-流程图" target="_blank" rel="external">流程图</a></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">st=&gt;start: Start</div><div class="line">op=&gt;operation: Your Operation</div><div class="line">cond=&gt;condition: Yes or No?</div><div class="line">e=&gt;end</div><div class="line"></div><div class="line">st-&gt;op-&gt;cond</div><div class="line">cond(yes)-&gt;e</div><div class="line">cond(no)-&gt;op</div></pre></td></tr></table></figure>
+<h3 id="5-高效绘制-序列图"><a href="#5-高效绘制-序列图" class="headerlink" title="5. 高效绘制 序列图"></a>5. 高效绘制 <a href="https://www.zybuluo.com/mdeditor?url=https://www.zybuluo.com/static/editor/md-help.markdown#8-序列图" target="_blank" rel="external">序列图</a></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Alice-&gt;Bob: Hello Bob, how are you?</div><div class="line">Note right of Bob: Bob thinks</div><div class="line">Bob--&gt;Alice: I am good thanks!</div></pre></td></tr></table></figure>
+<h3 id="6-高效绘制-甘特图"><a href="#6-高效绘制-甘特图" class="headerlink" title="6. 高效绘制 甘特图"></a>6. 高效绘制 <a href="https://www.zybuluo.com/mdeditor?url=https://www.zybuluo.com/static/editor/md-help.markdown#9-甘特图" target="_blank" rel="external">甘特图</a></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">title 项目开发流程</div><div class="line">section 项目确定</div><div class="line">    需求分析       :a1, 2016-06-22, 3d</div><div class="line">    可行性报告     :after a1, 5d</div><div class="line">    概念验证       : 5d</div><div class="line">section 项目实施</div><div class="line">    概要设计      :2016-07-05  , 5d</div><div class="line">    详细设计      :2016-07-08, 10d</div><div class="line">    编码          :2016-07-15, 10d</div><div class="line">    测试          :2016-07-22, 5d</div><div class="line">section 发布验收</div><div class="line">    发布: 2d</div><div class="line">    验收: 3d</div></pre></td></tr></table></figure>
+<h3 id="7-绘制表格"><a href="#7-绘制表格" class="headerlink" title="7. 绘制表格"></a>7. 绘制表格</h3><table>
+<thead>
+<tr>
+<th>项目</th>
+<th style="text-align:right">价格</th>
+<th style="text-align:center">数量</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>计算机</td>
+<td style="text-align:right">\$1600</td>
+<td style="text-align:center">5</td>
+</tr>
+<tr>
+<td>手机</td>
+<td style="text-align:right">\$12</td>
+<td style="text-align:center">12</td>
+</tr>
+<tr>
+<td>管线</td>
+<td style="text-align:right">\$1</td>
+<td style="text-align:center">234</td>
+</tr>
+</tbody>
+</table>
+<h3 id="8-更详细语法说明"><a href="#8-更详细语法说明" class="headerlink" title="8. 更详细语法说明"></a>8. 更详细语法说明</h3><p>想要查看更详细的语法说明，可以参考我们准备的 <a href="https://www.zybuluo.com/mdeditor?url=https://www.zybuluo.com/static/editor/md-help.markdown" target="_blank" rel="external">Cmd Markdown 简明语法手册</a>，进阶用户可以参考 <a href="https://www.zybuluo.com/mdeditor?url=https://www.zybuluo.com/static/editor/md-help.markdown#cmd-markdown-高阶语法手册" target="_blank" rel="external">Cmd Markdown 高阶语法手册</a> 了解更多高级功能。</p>
+<p>总而言之，不同于其它 <em>所见即所得</em> 的编辑器：你只需使用键盘专注于书写文本内容，就可以生成印刷级的排版格式，省却在键盘和工具栏之间来回切换，调整内容和格式的麻烦。<strong>Markdown 在流畅的书写和印刷级的阅读体验之间找到了平衡。</strong> 目前它已经成为世界上最大的技术分享网站 GitHub 和 技术问答网站 StackOverFlow 的御用书写格式。</p>
+<hr>
+<h2 id="什么是-Cmd-Markdown"><a href="#什么是-Cmd-Markdown" class="headerlink" title="什么是 Cmd Markdown"></a>什么是 Cmd Markdown</h2><p>您可以使用很多工具书写 Markdown，但是 Cmd Markdown 是这个星球上我们已知的、最好的 Markdown 工具——没有之一 ：）因为深信文字的力量，所以我们和你一样，对流畅书写，分享思想和知识，以及阅读体验有极致的追求，我们把对于这些诉求的回应整合在 Cmd Markdown，并且一次，两次，三次，乃至无数次地提升这个工具的体验，最终将它演化成一个 <strong>编辑/发布/阅读</strong> Markdown 的在线平台——您可以在任何地方，任何系统/设备上管理这里的文字。</p>
+<h3 id="1-实时同步预览"><a href="#1-实时同步预览" class="headerlink" title="1. 实时同步预览"></a>1. 实时同步预览</h3><p>我们将 Cmd Markdown 的主界面一分为二，左边为<strong>编辑区</strong>，右边为<strong>预览区</strong>，在编辑区的操作会实时地渲染到预览区方便查看最终的版面效果，并且如果你在其中一个区拖动滚动条，我们有一个巧妙的算法把另一个区的滚动条同步到等价的位置，超酷！</p>
+<h3 id="2-编辑工具栏"><a href="#2-编辑工具栏" class="headerlink" title="2. 编辑工具栏"></a>2. 编辑工具栏</h3><p>也许您还是一个 Markdown 语法的新手，在您完全熟悉它之前，我们在 <strong>编辑区</strong> 的顶部放置了一个如下图所示的工具栏，您可以使用鼠标在工具栏上调整格式，不过我们仍旧鼓励你使用键盘标记格式，提高书写的流畅度。</p>
+<p><img src="https://www.zybuluo.com/static/img/toolbar-editor.png" alt="tool-editor"></p>
+<h3 id="3-编辑模式"><a href="#3-编辑模式" class="headerlink" title="3. 编辑模式"></a>3. 编辑模式</h3><p>完全心无旁骛的方式编辑文字：点击 <strong>编辑工具栏</strong> 最右侧的拉伸按钮或者按下 <code>Ctrl + M</code>，将 Cmd Markdown 切换到独立的编辑模式，这是一个极度简洁的写作环境，所有可能会引起分心的元素都已经被挪除，超清爽！</p>
+<h3 id="4-实时的云端文稿"><a href="#4-实时的云端文稿" class="headerlink" title="4. 实时的云端文稿"></a>4. 实时的云端文稿</h3><p>为了保障数据安全，Cmd Markdown 会将您每一次击键的内容保存至云端，同时在 <strong>编辑工具栏</strong> 的最右侧提示 <code>已保存</code> 的字样。无需担心浏览器崩溃，机器掉电或者地震，海啸——在编辑的过程中随时关闭浏览器或者机器，下一次回到 Cmd Markdown 的时候继续写作。</p>
+<h3 id="5-离线模式"><a href="#5-离线模式" class="headerlink" title="5. 离线模式"></a>5. 离线模式</h3><p>在网络环境不稳定的情况下记录文字一样很安全！在您写作的时候，如果电脑突然失去网络连接，Cmd Markdown 会智能切换至离线模式，将您后续键入的文字保存在本地，直到网络恢复再将他们传送至云端，即使在网络恢复前关闭浏览器或者电脑，一样没有问题，等到下次开启 Cmd Markdown 的时候，她会提醒您将离线保存的文字传送至云端。简而言之，我们尽最大的努力保障您文字的安全。</p>
+<h3 id="6-管理工具栏"><a href="#6-管理工具栏" class="headerlink" title="6. 管理工具栏"></a>6. 管理工具栏</h3><p>为了便于管理您的文稿，在 <strong>预览区</strong> 的顶部放置了如下所示的 <strong>管理工具栏</strong>：</p>
+<p><img src="https://www.zybuluo.com/static/img/toolbar-manager.jpg" alt="tool-manager"></p>
+<p>通过管理工具栏可以：</p>
+<p><i class="icon-share"></i> 发布：将当前的文稿生成固定链接，在网络上发布，分享<br><i class="icon-file"></i> 新建：开始撰写一篇新的文稿<br><i class="icon-trash"></i> 删除：删除当前的文稿<br><i class="icon-cloud"></i> 导出：将当前的文稿转化为 Markdown 文本或者 Html 格式，并导出到本地<br><i class="icon-reorder"></i> 列表：所有新增和过往的文稿都可以在这里查看、操作<br><i class="icon-pencil"></i> 模式：切换 普通/Vim/Emacs 编辑模式</p>
+<h3 id="7-阅读工具栏"><a href="#7-阅读工具栏" class="headerlink" title="7. 阅读工具栏"></a>7. 阅读工具栏</h3><p><img src="https://www.zybuluo.com/static/img/toolbar-reader.jpg" alt="tool-manager"></p>
+<p>通过 <strong>预览区</strong> 右上角的 <strong>阅读工具栏</strong>，可以查看当前文稿的目录并增强阅读体验。</p>
+<p>工具栏上的五个图标依次为：</p>
+<p><i class="icon-list"></i> 目录：快速导航当前文稿的目录结构以跳转到感兴趣的段落<br><i class="icon-chevron-sign-left"></i> 视图：互换左边编辑区和右边预览区的位置<br><i class="icon-adjust"></i> 主题：内置了黑白两种模式的主题，试试 <strong>黑色主题</strong>，超炫！<br><i class="icon-desktop"></i> 阅读：心无旁骛的阅读模式提供超一流的阅读体验<br><i class="icon-fullscreen"></i> 全屏：简洁，简洁，再简洁，一个完全沉浸式的写作和阅读环境</p>
+<h3 id="8-阅读模式"><a href="#8-阅读模式" class="headerlink" title="8. 阅读模式"></a>8. 阅读模式</h3><p>在 <strong>阅读工具栏</strong> 点击 <i class="icon-desktop"></i> 或者按下 <code>Ctrl+Alt+M</code> 随即进入独立的阅读模式界面，我们在版面渲染上的每一个细节：字体，字号，行间距，前背景色都倾注了大量的时间，努力提升阅读的体验和品质。</p>
+<h3 id="9-标签、分类和搜索"><a href="#9-标签、分类和搜索" class="headerlink" title="9. 标签、分类和搜索"></a>9. 标签、分类和搜索</h3><p>在编辑区任意行首位置输入以下格式的文字可以标签当前文档：</p>
+<p>标签： 未分类</p>
+<p>标签以后的文稿在【文件列表】（Ctrl+Alt+F）里会按照标签分类，用户可以同时使用键盘或者鼠标浏览查看，或者在【文件列表】的搜索文本框内搜索标题关键字过滤文稿，如下图所示：</p>
+<p><img src="https://www.zybuluo.com/static/img/file-list.png" alt="file-list"></p>
+<h3 id="10-文稿发布和分享"><a href="#10-文稿发布和分享" class="headerlink" title="10. 文稿发布和分享"></a>10. 文稿发布和分享</h3><p>在您使用 Cmd Markdown 记录，创作，整理，阅读文稿的同时，我们不仅希望它是一个有力的工具，更希望您的思想和知识通过这个平台，连同优质的阅读体验，将他们分享给有相同志趣的人，进而鼓励更多的人来到这里记录分享他们的思想和知识，尝试点击 <i class="icon-share"></i> (Ctrl+Alt+P) 发布这份文档给好友吧！</p>
+<hr>
+<p>再一次感谢您花费时间阅读这份欢迎稿，点击 <i class="icon-file"></i> (Ctrl+Alt+N) 开始撰写新的文稿吧！祝您在这里记录、阅读、分享愉快！</p>
+<p>[^LaTeX]: 支持 <strong>LaTeX</strong> 编辑显示支持，例如：$\sum_{i=1}^n a_i=0$， 访问 <a href="http://meta.math.stackexchange.com/questions/5020/mathjax-basic-tutorial-and-quick-reference" target="_blank" rel="external">MathJax</a> 参考更多使用方法。</p>
+<p>[^code]: 代码高亮功能支持包括 Java, Python, JavaScript 在内的，<strong>四十一</strong>种主流编程语言。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/08/03/markdown语法/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-adb控制mtklog" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/08/03/adb控制mtklog/">adb控制mtklog</a>
+    </h1>
+  
+
+        
+        <a href="/2018/08/03/adb控制mtklog/" class="archive-article-date">
+  	<time datetime="2018-08-03T01:21:20.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-03</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="1、显示MTKLogger主界面"><a href="#1、显示MTKLogger主界面" class="headerlink" title="1、显示MTKLogger主界面"></a>1、显示MTKLogger主界面</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">adb shell am start -n com.mediatek.mtklogger/com.mediatek.mtklogger.MainActivity</div></pre></td></tr></table></figure>
+<p>查看当前界面包名类名：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">adb shell &quot;dumpsys activity top |grep ACTIVITY&quot;</div></pre></td></tr></table></figure></p>
+<h3 id="2、通过命令启动"><a href="#2、通过命令启动" class="headerlink" title="2、通过命令启动"></a>2、通过命令启动</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">a.启动全部log打印：adb shell am broadcast -a com.mediatek.mtklogger.ADB_CMD -e cmd_name start --ei cmd_target 23</div><div class="line">4个log打印：</div><div class="line">1:MobileLog     (00001)</div><div class="line">2:ModemLog      (00010)</div><div class="line">3:NetworkLog    (00100)</div><div class="line">4:GPSLog        (10000)</div><div class="line"></div><div class="line">参数说明:23</div><div class="line">1代表打开“1:MobileLog”；</div><div class="line">2打开代表“2:ModemLog”；</div><div class="line">3代表1和2一起打开；</div><div class="line">4代表打开“3:NetworkLog”</div><div class="line">5代表打开1和3；</div><div class="line">6代表打开2和3；</div><div class="line">7代表打开123；</div><div class="line">23代表启动1234  ？？？不是15吗？</div><div class="line"></div><div class="line">b.关闭LOG打印：同上命令和说明，把start换成stop就好了</div></pre></td></tr></table></figure>
+<h3 id="3、设置参数功能："><a href="#3、设置参数功能：" class="headerlink" title="3、设置参数功能："></a>3、设置参数功能：</h3><p>1开启关闭Tag Log，勾选：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">开启：adb shell am broadcast -a com.mediatek.mtklogger.ADB_CMD -e cmd_name switch_taglog --ei cmd_target 1</div><div class="line">关闭：adb shell am broadcast -a com.mediatek.mtklogger.ADB_CMD -e cmd_name switch_taglog --ei cmd_target 0</div></pre></td></tr></table></figure></p>
+<p>Trigger taglog:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">adb shell am broadcast -a com.mediatek.log2server.EXCEPTION_HAPPEND -e path SaveLogManually -e db_filename yourInputTagName</div></pre></td></tr></table></figure></p>
+<h3 id="4、获取开关状态"><a href="#4、获取开关状态" class="headerlink" title="4、获取开关状态"></a>4、获取开关状态</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">adb shell getprop debug.MB.running</div><div class="line">adb shell getprop debug.mdlogger.Running</div><div class="line">adb shell getprop debug.mtklog.netlog.Running</div></pre></td></tr></table></figure>
+<h3 id="5、修改log存储路径"><a href="#5、修改log存储路径" class="headerlink" title="5、修改log存储路径"></a>5、修改log存储路径</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">adb shell setprop persist.mtklog.log2sd.path logpath</div><div class="line">JB版本前logpath为：</div><div class="line">/mnt/sdcard 内置sd卡</div><div class="line">/mnt/sdcard2 外置sd卡</div><div class="line">需要做stop/start MTKLogger才能生效</div><div class="line">JB版本后logpath为：</div><div class="line">internal_sd 内置sd卡</div><div class="line">external_sd 外置sd卡</div></pre></td></tr></table></figure>
+<h3 id="6、显示MTKLogger主界面"><a href="#6、显示MTKLogger主界面" class="headerlink" title="6、显示MTKLogger主界面"></a>6、显示MTKLogger主界面</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">adb shell am start -n</div><div class="line">com.mediatek.mtklogger/com.mediatek.mtklogger.MainActivity</div></pre></td></tr></table></figure>
+<h3 id="7-Taglog开启-关闭"><a href="#7-Taglog开启-关闭" class="headerlink" title="7. Taglog开启/关闭"></a>7. Taglog开启/关闭</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">adb shell am broadcast -a com.mediatek.mtklogger.ADB_CMD -e cmd_name switch_taglog --ei cmd_target 0/1   //(0表示关，1表示开)</div></pre></td></tr></table></figure>
+<h3 id="8、切换Mdlog录制模式为USB-SD-Passive-Log-to-SD"><a href="#8、切换Mdlog录制模式为USB-SD-Passive-Log-to-SD" class="headerlink" title="8、切换Mdlog录制模式为USB/SD/Passive Log to SD"></a>8、切换Mdlog录制模式为USB/SD/Passive Log to SD</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">adb shell am broadcast -a com.mediatek.mtklogger.ADB_CMD -e cmd_name switch_modem_log_mode --ei cmd_target 1/2/3     //(1表示USB模式，2表示SD模式, 3表示Passive Log to SD模式)</div><div class="line">M:</div><div class="line">adb shell am broadcast -a com.mediatek.mtklogger.ADB_CMD -e cmd_name</div><div class="line">switch_modem_log_mode_mode --ei cmd_target mdtype</div><div class="line">Mode = 1/2/3 -&gt; Usb/sd/pst</div><div class="line">Mdtype = 1, 3 -&gt; md1/md3</div></pre></td></tr></table></figure>
+<h3 id="9、开机自启动开启-关闭"><a href="#9、开机自启动开启-关闭" class="headerlink" title="9、开机自启动开启/关闭"></a>9、开机自启动开启/关闭</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">adb shell am broadcast -a com.mediatek.mtklogger.ADB_CMD -e cmd_name set_auto_start_1/set_auto_start_0 --ei cmd_target 23 （set_auto_start_1表示开启开机自启动，set_auto_start_0表示关闭开机自启动；</div><div class="line">23可改为1/2/4/16，分别代表MobileLog/ModemLog/NetworkLog/GPSLog）</div></pre></td></tr></table></figure>
+<h3 id="10、设置Limit-Current-Log-Size-（JB版本以后生效）"><a href="#10、设置Limit-Current-Log-Size-（JB版本以后生效）" class="headerlink" title="10、设置Limit Current Log Size （JB版本以后生效）"></a>10、设置Limit Current Log Size （JB版本以后生效）</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">adb shell am broadcast -a com.mediatek.mtklogger.ADB_CMD -e cmd_name set_log_size_300 --ei cmd_target 7 （set_log_size_300 可更改为其他合适值如set_log_size_600</div><div class="line"></div><div class="line">7可改为1/2/4，分别代表MobileLog/ModemLog/NetworkLog）</div></pre></td></tr></table></figure>
+<h3 id="11、设置Mobile-Limit-Total-Log-Size-（JB版本以后生效）"><a href="#11、设置Mobile-Limit-Total-Log-Size-（JB版本以后生效）" class="headerlink" title="11、设置Mobile Limit Total Log Size （JB版本以后生效）"></a>11、设置Mobile Limit Total Log Size （JB版本以后生效）</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">adb shell am broadcast -a com.mediatek.mtklogger.ADB_CMD -e cmd_name set_total_log_size_600 --ei cmd_target 1</div><div class="line">set_total_log_size_600 可更改为其他合适值如set_total_log_size_1200； 最后一位1不可更改，因为只有mobile log有此功能</div></pre></td></tr></table></figure>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/08/03/adb控制mtklog/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-docker安装ss" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -375,7 +578,56 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <h1 id="QuickStart"><a href="#QuickStart" class="headerlink" title="QuickStart"></a>QuickStart</h1><h3 id="Installation"><a href="#Installation" class="headerlink" title="Installation"></a>Installation</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ npm install hexo-cli -g</div></pre></td></tr></table></figure>
+<h3 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h3><p><strong>Setup your blog</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ hexo init blog</div><div class="line">$ <span class="built_in">cd</span> blog</div></pre></td></tr></table></figure>
+<p><strong>Start the server</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
+<p><strong>Create a new post</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"Hello Hexo"</span></div></pre></td></tr></table></figure>
+<p><strong>Generate static files</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
+<h3 id="init"><a href="#init" class="headerlink" title="init"></a>init</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo init [folder]</div></pre></td></tr></table></figure>
+<p>Initializes a website. If no folder is provided, Hexo will set up the website in the current directory.</p>
+<h3 id="new"><a href="#new" class="headerlink" title="new"></a>new</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new [layout] &lt;title&gt;</div></pre></td></tr></table></figure>
+<p>Creates a new article. If no layout is provided, Hexo will use the default_layout from _config.yml. If the title contains spaces, surround it with quotation marks.</p>
+<h3 id="generate"><a href="#generate" class="headerlink" title="generate"></a>generate</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
+<p>Generates static files.</p>
+<p>Option    Description<br>-d, –deploy    Deploy after generation finishes<br>-w, –watch    Watch file changes<br>-b, –bail    Raise an error if any unhandled exception is thrown during generation<br>-f, –force    Force regenerate</p>
+<h3 id="publish"><a href="#publish" class="headerlink" title="publish"></a>publish</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo publish [layout] &lt;filename&gt;</div></pre></td></tr></table></figure>
+<p>Publishes a draft.</p>
+<h3 id="server"><a href="#server" class="headerlink" title="server"></a>server</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
+<p>Starts a local server. By default, this is at <a href="http://localhost:4000/" target="_blank" rel="external">http://localhost:4000/</a>.</p>
+<p>Option    Description<br>-p, –port    Override default port<br>-s, –static    Only serve static files<br>-l, –log    Enable logger. Override logger format.</p>
+<h3 id="deploy"><a href="#deploy" class="headerlink" title="deploy"></a>deploy</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
+<p>Deploys your website.</p>
+<p>Option    Description<br>-g, –generate    Generate before deployment</p>
+<h3 id="render"><a href="#render" class="headerlink" title="render"></a>render</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo render &lt;file1&gt; [file2] ...</div></pre></td></tr></table></figure>
+<p>Renders files.</p>
+<p>Option    Description<br>-o, –output    Output destination</p>
+<h3 id="migrate"><a href="#migrate" class="headerlink" title="migrate"></a>migrate</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo migrate &lt;type&gt;</div></pre></td></tr></table></figure>
+<p>Migrates content from other blog systems.</p>
+<h3 id="clean"><a href="#clean" class="headerlink" title="clean"></a>clean</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo clean</div></pre></td></tr></table></figure>
+<p>Cleans the cache file (db.json) and generated files (public).</p>
+<h3 id="list"><a href="#list" class="headerlink" title="list"></a>list</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo list &lt;type&gt;</div></pre></td></tr></table></figure>
+<p>Lists all routes.</p>
+<h3 id="version"><a href="#version" class="headerlink" title="version"></a>version</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo version</div></pre></td></tr></table></figure>
+<p>Displays version information.</p>
+<p>Options</p>
+<h3 id="Safe-mode"><a href="#Safe-mode" class="headerlink" title="Safe mode"></a>Safe mode</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo --safe</div></pre></td></tr></table></figure>
+<p>Disables loading plugins and scripts. Try this if you encounter problems after installing a new plugin.</p>
+<h3 id="Debug-mode"><a href="#Debug-mode" class="headerlink" title="Debug mode"></a>Debug mode</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo --debug</div></pre></td></tr></table></figure>
+<p>Logs verbose messages to the terminal and to debug.log. Try this if you encounter any problems with Hexo. If you see errors, please raise a GitHub issue.</p>
+<h3 id="Silent-mode"><a href="#Silent-mode" class="headerlink" title="Silent mode"></a>Silent mode</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo --silent</div></pre></td></tr></table></figure>
+<p>Silences output to the terminal.</p>
+<h3 id="Customize-config-file-path"><a href="#Customize-config-file-path" class="headerlink" title="Customize config file path"></a>Customize config file path</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo --config custom.yml</div></pre></td></tr></table></figure>
+<p>Uses a custom config file (instead of _config.yml). Also accepts a comma-separated list (no spaces) of JSON or YAML config files that will combine the files into a single _multiconfig.yml.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo --config custom.yml,custom2.json</div></pre></td></tr></table></figure>
+<h3 id="Display-drafts"><a href="#Display-drafts" class="headerlink" title="Display drafts"></a>Display drafts</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo --draft</div></pre></td></tr></table></figure>
+<p>Displays draft posts (stored in the source/_drafts folder).</p>
+<h3 id="Customize-CWD"><a href="#Customize-CWD" class="headerlink" title="Customize CWD"></a>Customize CWD</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo --cwd /path/to/cwd</div></pre></td></tr></table></figure>
+<p>Customizes the path of current working directory.</p>
+
       
 
       
@@ -666,198 +918,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2018/04/11/git命令大全/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-ANR问题分析" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/04/11/ANR问题分析/">ANR问题分析</a>
-    </h1>
-  
-
-        
-        <a href="/2018/04/11/ANR问题分析/" class="archive-article-date">
-  	<time datetime="2018-04-11T02:41:59.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-04-11</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="如何去分析ANR"><a href="#如何去分析ANR" class="headerlink" title="如何去分析ANR"></a>如何去分析ANR</h1><p>先看个LOG:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line">04-01 13:12:11.572 I/InputDispatcher( 220): Application is not responding:Window&#123;2b263310com.android.email/com.android.email.activity.SplitScreenActivitypaused=false&#125;.  5009.8ms since event, 5009.5ms since waitstarted</div><div class="line">04-01 13:12:11.572 I/WindowManager( 220): Input event dispatching timedout sending tocom.android.email/com.android.email.activity.SplitScreenActivity</div><div class="line">04-01 13:12:14.123 I/Process(  220): Sending signal. PID: 21404 SIG: 3---发生ANR的时间和生成trace.txt的时间</div><div class="line">04-01 13:12:14.123 I/dalvikvm(21404):threadid=4: reacting to signal 3 </div><div class="line">……</div><div class="line">04-01 13:12:15.872 E/ActivityManager(  220): ANR in com.android.email(com.android.email/.activity.SplitScreenActivity)</div><div class="line">04-01 13:12:15.872 E/ActivityManager(  220): Reason:keyDispatchingTimedOut</div><div class="line">04-01 13:12:15.872 E/ActivityManager(  220): Load: 8.68 / 8.37 / 8.53</div><div class="line">04-01 13:12:15.872 E/ActivityManager(  220): CPUusage from 4361ms to 699ms ago ----CPU在ANR发生前的使用情况</div><div class="line"></div><div class="line">04-01 13:12:15.872 E/ActivityManager(  220):   5.5%21404/com.android.email: 1.3% user + 4.1% kernel / faults: 10 minor</div><div class="line">04-01 13:12:15.872 E/ActivityManager(  220):   4.3%220/system_server: 2.7% user + 1.5% kernel / faults: 11 minor 2 major</div><div class="line">04-01 13:12:15.872 E/ActivityManager(  220):   0.9%52/spi_qsd.0: 0% user + 0.9% kernel</div><div class="line">04-01 13:12:15.872 E/ActivityManager(  220):   0.5%65/irq/170-cyttsp-: 0% user + 0.5% kernel</div><div class="line">04-01 13:12:15.872 E/ActivityManager(  220):   0.5%296/com.android.systemui: 0.5% user + 0% kernel</div><div class="line">04-01 13:12:15.872 E/ActivityManager(  220): 100%TOTAL: 4.8% user + 7.6% kernel + 87% iowait</div><div class="line">04-01 13:12:15.872 E/ActivityManager(  220): CPUusage from 3697ms to 4223ms later:-- ANR后CPU的使用量</div><div class="line">04-01 13:12:15.872 E/ActivityManager(  220):   25%21404/com.android.email: 25% user + 0% kernel / faults: 191 minor</div><div class="line">04-01 13:12:15.872 E/ActivityManager(  220):    16% 21603/__eas(par.hakan: 16% user + 0% kernel</div><div class="line">04-01 13:12:15.872 E/ActivityManager(  220):    7.2% 21406/GC: 7.2% user + 0% kernel</div><div class="line">04-01 13:12:15.872 E/ActivityManager(  220):    1.8% 21409/Compiler: 1.8% user + 0% kernel</div><div class="line">04-01 13:12:15.872 E/ActivityManager(  220):   5.5%220/system_server: 0% user + 5.5% kernel / faults: 1 minor</div><div class="line">04-01 13:12:15.872 E/ActivityManager(  220):    5.5% 263/InputDispatcher: 0% user + 5.5% kernel</div><div class="line">04-01 13:12:15.872 E/ActivityManager(  220): 32%TOTAL: 28% user + 3.7% kernel</div></pre></td></tr></table></figure></p>
-<p>从LOG可以看出ANR的类型，CPU的使用情况，如果CPU使用量接近100%，说明当前设备很忙，有可能是CPU饥饿导致了ANR<br>如果CPU使用量很少，说明主线程被BLOCK了<br>如果IOwait很高，说明ANR有可能是主线程在进行I/O操作造成的<br>除了看LOG，解决ANR还得需要trace.txt文件，<br>如何获取呢？可以用如下命令获取<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">$ chmod 777 /data/anr</div><div class="line">$ rm /data/anr/traces.txt</div><div class="line">$ ps</div><div class="line">$ <span class="built_in">kill</span> -3 PID</div><div class="line">$ adb pull data/anr/traces.txt ./mytraces.txt</div></pre></td></tr></table></figure></p>
-<p>从trace.txt文件，看到最多的是如下的信息：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">-----pid 21404 at 2011-04-01 13:12:14 -----  </div><div class="line">Cmdline: com.android.email</div><div class="line"></div><div class="line">DALVIK THREADS:</div><div class="line">(mutexes: tll=0tsl=0 tscl=0 ghl=0 hwl=0 hwll=0)</div><div class="line">&quot;main&quot; prio=5 tid=1NATIVE</div><div class="line">  | group=&quot;main&quot; sCount=1 dsCount=0obj=0x2aad2248 self=0xcf70</div><div class="line">  | sysTid=21404 nice=0 sched=0/0cgrp=[fopen-error:2] handle=1876218976</div><div class="line">  at android.os.MessageQueue.nativePollOnce(Native Method)</div><div class="line">  at android.os.MessageQueue.next(MessageQueue.java:119)</div><div class="line">  at android.os.Looper.loop(Looper.java:110)</div><div class="line">  at android.app.ActivityThread.main(ActivityThread.java:3688)</div><div class="line">  at java.lang.reflect.Method.invokeNative(Native Method)</div><div class="line">  at java.lang.reflect.Method.invoke(Method.java:507)</div><div class="line">  at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:866)</div><div class="line">  at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:624)</div><div class="line">  at dalvik.system.NativeStart.main(Native Method)</div></pre></td></tr></table></figure></p>
-<p>说明主线程在等待下条消息进入消息队列</p>
-<h2 id="Thread状态"><a href="#Thread状态" class="headerlink" title="Thread状态"></a>Thread状态</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">ThreadState (defined at “dalvik/vm/thread.h “)</div><div class="line">THREAD_UNDEFINED = -1, /* makes enum compatible with int32_t */</div><div class="line">THREAD_ZOMBIE = 0, /* TERMINATED */</div><div class="line">THREAD_RUNNING = 1, /* RUNNABLE or running now */</div><div class="line">THREAD_TIMED_WAIT = 2, /* TIMED_WAITING in Object.wait() */</div><div class="line">THREAD_MONITOR = 3, /* BLOCKED on a monitor */</div><div class="line">THREAD_WAIT = 4, /* WAITING in Object.wait() */</div><div class="line">THREAD_INITIALIZING= 5, /* allocated, not yet running */</div><div class="line">THREAD_STARTING = 6, /* started, not yet on thread list */</div><div class="line">THREAD_NATIVE = 7, /* off in a JNI native method */</div><div class="line">THREAD_VMWAIT = 8, /* waiting on a VM resource */</div><div class="line">THREAD_SUSPENDED = 9, /* suspended, usually by GC or debugger */</div></pre></td></tr></table></figure>
-<h2 id="如何调查并解决ANR"><a href="#如何调查并解决ANR" class="headerlink" title="如何调查并解决ANR"></a>如何调查并解决ANR</h2><blockquote>
-<p>1 : 首先分析log<br>2 : 从trace.txt文件查看调用stack.<br>3 : 看代码<br>4 : 仔细查看ANR的成因（iowait?block?memoryleak?）</p>
-</blockquote>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/04/11/ANR问题分析/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-mtklog分析" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/04/09/mtklog分析/">mtklog分析</a>
-    </h1>
-  
-
-        
-        <a href="/2018/04/09/mtklog分析/" class="archive-article-date">
-  	<time datetime="2018-04-09T05:10:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-04-09</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><a href="https://www.cnblogs.com/xiyuan2016/p/6740521.html" target="_blank" rel="external">https://www.cnblogs.com/xiyuan2016/p/6740521.html</a></p>
-<p><a href="http://www.voidcn.com/article/p-btyoxkos-bpn.html" target="_blank" rel="external">http://www.voidcn.com/article/p-btyoxkos-bpn.html</a></p>
-<h3 id="Mtklog-结构"><a href="#Mtklog-结构" class="headerlink" title="Mtklog 结构"></a>Mtklog 结构</h3><p>mtklog分析:  </p>
-<pre><code>1. mdlog1                           // modem 相关底层的log  
-    1.1 MDLog1_2010_0101_000152     // 每次打开mtklog都会新建一个文件夹  
-    1.2 MDLog1_2015_0101_000042  
-
-2. mobilelog                        // android log 和 kernel log  
-    2.1 APLog_2010_0101_000147  
-    2.1 APLog_2015_0101_000037        
-        atf_log                     // 所有_log都是进入安卓之后的  
-        atf_log.boot                // 所有.boot都是启动到进入安卓之前的log  
-        bootprof                    // 启动的简要信息 - 可以分析启动时间 - 启动模式(普通or看门狗or按键())  
-        cmdline                     // lk传给kernel的参数(包括lcm等) - 可以自己加  
-        crash_log                   // 崩溃log  
-        crash_log.boot  
-        events_log                  // 事件log，主要输出记录各个activity周期及事件  
-        events_log.boot：  
-        kernel_log                  // 内核log，常用  
-        kernel_log.boot  
-        last_kmsg                   // 上一次关机前的log - 可以分析重启原因  
-        main_log                    // hal层的log打印在这里  
-        main_log.boot  
-        mblog_history               // 本目录下所有log的大小等信息  
-        ProjectConfig.mk            // 工程配置  
-        properties                  // 属性  
-        radio_log                   // 输出通话，网络状态变化  
-        radio_log.boot  
-        sys_log                     // jni、framework层log，Exception定位点  
-        sys_log.boot  
-
-3. netlog                           //网络log  
-    3.1 NTLog_2010_0101_000147  
-        NTLog_2015_0101_000037  
-        tcpdump_NTLog_2015_0101_000037_start.cap.tmp  
-
-4. running_file_tree.txt            //
-</code></pre><h3 id="ZZ-INTERNAL相关信息及解释"><a href="#ZZ-INTERNAL相关信息及解释" class="headerlink" title="ZZ_INTERNAL相关信息及解释"></a>ZZ_INTERNAL相关信息及解释</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">ANR,2173,-1361051648,99,/data/core/,1,system_app_anr,android.process.media,Tue Jul  4 18:51:03 HKT 2017,1</div><div class="line"></div><div class="line">第一列：exception class，有KE/NE/JE/EE等</div><div class="line">第二列：pid</div><div class="line">第三列：tid</div><div class="line">第四列：固定是99</div><div class="line">第五列：固定是/data/core</div><div class="line">第六列：exception level，0: fatal, 1: exception, 2: warning, 3: reminding</div><div class="line">第七列：exception type info string (如果是NE，则这个栏位是signal名称，比如：SIGSEGV，KE则为空，SWT则为:system_server_watchdog)</div><div class="line">第八列：module name or process name</div><div class="line">第九列：UTC time</div><div class="line">第十列：固定是1</div></pre></td></tr></table></figure>
-<h3 id="trace部分信息解析"><a href="#trace部分信息解析" class="headerlink" title="trace部分信息解析"></a>trace部分信息解析</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">----- pid 2173 at 2017-07-04 11:51:32 -----</div><div class="line">Cmd line: android.process.media</div><div class="line">&quot;main&quot; prio=5 tid=1 Native</div><div class="line">&quot;Binder:2173_1&quot; prio=5 tid=9 Blocked</div><div class="line">  | group=&quot;main&quot; sCount=1 dsCount=0 obj=0x22c05430 self=0xa1fcab00</div><div class="line">  | sysTid=2186 nice=10 cgrp=bg_non_interactive sched=0/0 handle=0xa497a920</div><div class="line">  | state=S schedstat=( 26942858 122825452 281 ) utm=0 stm=2 core=0 HZ=100</div><div class="line">  | stack=0xa487e000-0xa4880000 stackSize=1014KB</div><div class="line">  | held mutexes=</div><div class="line">  at com.android.providers.media.MediaProvider.getParent(MediaProvider.java:4118)</div><div class="line">  - waiting to lock &lt;0x06de4cd2&gt; (a java.util.HashMap) held by thread 13</div><div class="line">  at com.android.providers.media.MediaProvider.insertFile(MediaProvider.java:4395)</div><div class="line">  at com.android.providers.media.MediaProvider.insertInternal(MediaProvider.java:4662)</div><div class="line">  at com.android.providers.media.MediaProvider.insert(MediaProvider.java:4015)</div><div class="line">  at android.content.ContentProvider$Transport.insert(ContentProvider.java:272)</div><div class="line">  at android.content.ContentProviderNative.onTransact(ContentProviderNative.java:163)</div><div class="line">  at android.os.Binder.execTransact(Binder.java:570)</div></pre></td></tr></table></figure>
-<p>1)pid 2173 at 2017-07-04 11:51:32<br>  ANR发生的进程的ID，时间点</p>
-<p>2)Cmd line: android.process.media<br>  ANR发生的进程的名称</p>
-<p>3)”main” prio=5 tid=1 Native<br>  说明线程名，线程的优先级，线程锁ID和线程状态.<br>  线程名称是启动线程的时候手动指明的，这里的main标示是主线程，<br>  是Android自动设定的一个线程名称，如果是自己手动创建的线程，<br>  一般会被命名成“Thread-xx”的格式，启动xx是线程ID，他只增不减<br>  不会被复用;注意这启动的tid不是线程的id，他是一个在Java虚拟机<br>  中用来实现线程锁的变量，随着线程的增减，这个变量的值是可能被<br>  复用的；</p>
-<p>4)group=”main” sCount=1 dsCount=0 obj=0x22c05430 self=0xa1fcab00<br>  group是线程组名称。<br>  sCount是此线程被挂起的次数，<br>  dsCount是线程被调试器挂起的次数。<br>  当一个进程被调试后，sCount会重置为，调试完毕后sCount会根据是否<br>  被正常挂起增长，但是dsCount不会被重置为0，所以dsCount也可以用来<br>  判断这个线程是否被调试过，obj表示这个线程的Java对象地址，self表<br>  示这个线程本身的地址。</p>
-<p>5)此后是线程的调度信息<br>| sysTid=2186 nice=10 cgrp=bg_non_interactive sched=0/0 handle=0xa497a920<br>  sysTid是Linux下的内核线程ID，<br>  nice是线程调度的优先级.<br>  sched分别标志了线程的调度策略和优先级，<br>  cgrp是调度属组，<br>  handle是线程的处理函数地址。</p>
-<p>6)线程当前上下文信息<br> | state=S schedstat=( 26942858 122825452 281 ) utm=0 stm=2 core=0 HZ=100<br>  state是调度状态;<br>  schedstat从 /proc/[pid]/task/[tid]/schedstat读出<br>  三个值分别表示线程在cpu上执行的时间、线程的等待时间和线程执行的时间片长度;<br>  有的android内核版本不支持这项信息，得到的三个值都是0；utm是线程用户态下使<br>  用的时间值(单位是jiffies);stm是内核态下的调度时间值;core是最后执行这个线程<br>  cpu核的序号</p>
-<p>7)最后就是这个线程的调度栈信息。<br>  一般可以通过以下几个简单的方法来判断<br>  <em>trace文件顶部的线程一般是ANR的元凶。
-  </em>这是一个简单的方法，大部分情况下都适用，可以通过这个方法来快速判断是否是自己<br>   的应用造成了本次的ANR，但是并不是trace文件包含的应用就一定是造成ANR的帮凶，应<br>   用出现在trace文件中，只能说明出现ANR的时候这个应用进程还活着，trace文件的顶部<br>   则是触发ANR的应用信息，因此如果你的应用出现在trace文件的顶部，那么很有可能是<br>   因为你的应用造成了ANR,否则是你的应用造成ANR的可能性不大，还需要进一步分析。</p>
-<p>8)如果定位不到时间点，可以看CPU<br>  (sys_log)07-04 18:51:03.209156  1044  1068 E ANRManager: 3.4% TOTAL: 0.5% user  + 2.6% kernel + 0.2% irq<br>   从CPU使用率可以看出:<br>   <em>如果使用量很高，说明当前设备很忙(内存不足，循环处理)
-   </em>如果CPU使用量很少，说明主线程被BLOCK了<br>   *如果IOwait很高，说明ANR有可能是主线程在进行I/O操作造成的(数据库、文件操作、<br>    网络操作等)      </p>
-<p>9)等待锁引起的ANR<br>  找到WallpaperManager对应代码，再结合main log等其他信息，看tid=27的thread在忙<br>  什么。</p>
-<p>10)SWT重启问题分析<br>  SWT是指Android Watchdog Timeout，应用层看门狗超时，通常我们说的WDT是HWT，硬件<br>  看门狗超时。<br>  1.Watchdog的目的是监控系统几个比较主要的service，比如NetworkManagementService，<br>  PowerManagerService，ActivityManagerService等。这些Service在启动时通过调用<br>  Watchdog。getInstance().addMonitor(this);加入到Watchdog的监控列表中，如果超过<br>  一定时间没有反应，认为系统出错，会强制启动Android。<br>  2.Watchdog原理：/framework/base/services/java/com/android/server/Watchdog.java<br>  3.具体分析方法<br>    <em>首先从enventlog中以watchdog为关键字搜索，记录下这个时刻<br>      17:25:23.645459 950 1285 I watchdog:surfaceflinger hang.
-    </em>然后分析所有Service Object的monitor()为何在这个时刻之前1分钟没有做完，<br>    <em>后面具体分析方法和ANR一样
-    </em>ANR是某个AP的主线程在一段时间内没有完成某件事情，<br>    *Android Watchdog 是SystemServer进程的ServerThread 线程在一段时间内没有做完<br>     某件事情。                </p>
-<h3 id="radio-log分析网络状况"><a href="#radio-log分析网络状况" class="headerlink" title="radio_log分析网络状况"></a>radio_log分析网络状况</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">06-30 10:38:06.572525 938 976 I AT : AT&lt; +ECSQ: 22,54,1,1,1,-36,-346,7,39 (RIL_URC_READER, tid:0)</div><div class="line">06-30 10:38:06.572737 938 976 I RILC : RIL_SOCKET_1 UNSOLICITED: UNSOL_SIGNAL_STRENGTH length:72</div><div class="line">06-30 10:38:06.573125 938 998 I RIL : [GSM MAL] URC send success, rid 0, ret 0:      #F5F6FA</div><div class="line">06-30 10:38:06.573125 938 998 I RIL : +ECSQ: 22,54,1,1,1,-36,-346,7,39</div><div class="line">06-30 10:38:06.574384 1028 1067 D RilMalClient: UNSOL_TO_MAL: remap to unsol resp(1009)</div><div class="line">06-30 10:38:06.575465 1028 1067 D RpRilClientController: leave blocking write</div><div class="line">06-30 10:38:06.575605 1028 1067 D RpRilClientController: leave blocking write</div><div class="line">06-30 10:38:06.576133 1425 1425 D SST : [GsmSST0] handle EVENT_SIGNAL_STRENGTH_UPDATE</div><div class="line">06-30 10:38:06.576410 1425 1425 W SignalStrength: Signal before validate=SignalStrength: 0 54 -1 -1 -1 -1 -1 99 86 9 97 2147483647 2147483647 gsm|lte 2147483647 2147483647 2147483647</div><div class="line">06-30 10:38:06.576526 1425 1425 W SignalStrength: Signal after validate=SignalStrength: 0 54 -120 -160 -120 -1 -1 99 -86 -9 97 2147483647 2147483647 gsm|lte 2147483647 2147483647 2147483647</div><div class="line">06-30 10:38:06.577794 1010 1367 D TelephonyRegistry: notifySignalStrengthForPhoneId: callback.onSsS r=&#123;callingPackage=android binder=android.telephony.PhoneStateListener$IPhoneStateListenerStub@d4b4edc callback=android.telephony.PhoneStateListener$IPhoneStateListenerStub@d4b4edc onSubscriptionsChangedListenererCallback=null callerUserId=0 subId=2147483647 phoneId=-1 events=1c1 canReadPhoneState=true&#125; subId=3 phoneId=0 ss=SignalStrength: 0 54 -120 -160 -120 -1 -1 99 -86 -9 97 2147483647 2147483647 gsm|lte 2147483647 2147483647 2147483647</div><div class="line">06-30 10:38:06.578163 1010 1367 D TelephonyRegistry: notifySignalStrengthForPhoneId: callback.onSsS r=&#123;callingPackage=com.android.systemui binder=android.os.BinderProxy@d2e4c9 callback=com.android.internal.telephony.IPhoneStateListener$Stub$Proxy@7f6d7ce onSubscriptionsChangedListenererCallback=null callerUserId=0 subId=3 phoneId=0 events=101e1 canReadPhoneState=true&#125; subId=3 phoneId=0 ss=SignalStrength: 0 54 -120 -160 -120 -1 -1 99 -86 -9 97 2147483647 2147483647 gsm|lte 2147483647 2147483647 2147483647</div><div class="line">06-30 10:38:06.578577 1010 1367 I use-Rlog/RLOG-GSM: getLTELevel - rsrp:-86 snr:97 rsrpIconLevel:3 snrIconLevel:3</div><div class="line">06-30 10:38:06.578693 1010 1367 W SignalStrength: getLevel=3</div><div class="line">06-30 10:38:06.579533 1305 1531 I use-Rlog/RLOG-GSM: getLTELevel - rsrp:-86 snr:97 rsrpIconLevel:3 snrIconLevel:3</div><div class="line">06-30 10:38:06.582788 1305 1531 W SignalStrength: getLevel=3</div><div class="line">06-30 10:38:06.588566 1305 1531 I use-Rlog/RLOG-GSM: getLTELevel - rsrp:-86 snr:97 rsrpIconLevel:3 snrIconLevel:3</div><div class="line">06-30 10:38:06.589489 1305 1531 W SignalStrength: getLevel=3</div></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">3G modem:</div><div class="line">+ECSQ: &lt;asu&gt;, &lt;ber&gt;, &lt;rssi&gt; （2G网络）</div><div class="line">+ECSQ: &lt;asu&gt;, &lt;ber&gt;, &lt;rssi&gt;, &lt;rscp&gt;, &lt;ec/no&gt; （3G网络）</div><div class="line">4G modem:</div><div class="line">+ECSQ: &lt;asu&gt;, &lt;ber&gt;, &lt;rssi&gt;, &lt;rscp&gt;,1,1,1,&lt;act&gt; （2G网络）</div><div class="line">+ECSQ: &lt;asu&gt;, &lt;ber&gt;, &lt;rssi&gt;, &lt;rscp&gt;, &lt;ec/no&gt;,1,1, &lt;act&gt; （3G网络）</div><div class="line">+ECSQ: &lt;rsrq&gt;, &lt;rsrp&gt;,1,1,1,&lt;rsrq_qdbm &gt;,&lt;rsrp_qdbm&gt; &lt;act&gt; （4G网络）</div><div class="line"></div><div class="line">看+ECSQ 命令带的值:</div><div class="line">*如果第六第七位不是255 or 1 则当前在LTE状态，</div><div class="line">*如果第四第五位不是255 or 1 则当前在3G mode。</div><div class="line">*2G的话不是很清楚怎么看radio log,一般是在modem log里确认的。</div><div class="line">+ECSQ:&lt;sig1&gt;,&lt;sig2&gt;,&lt;rssi_in_qdbm&gt;,&lt;rscp_in_qdbm&gt;,&lt;ecn0_in_qdbm&gt;,&lt;rsrq_in_qdbm&gt;,&lt;rsrp_in_qdbm&gt;,&lt;Act&gt;</div><div class="line">从radio log看，手机应该在</div><div class="line">4G mode时, 如果 SNR&lt;0 (RSRQ&lt;-60dbm)，则信号很差。</div><div class="line">3G mode时, EcN0&lt;-15 (RSCP&lt;-115dbm)时信号很差</div><div class="line">2G mode时, 2G：rssi&lt; -95dbm 、 rscq &gt; 4 (0~7 ,0最好，7最差)</div></pre></td></tr></table></figure>
-<h3 id="通话问题分析"><a href="#通话问题分析" class="headerlink" title="通话问题分析"></a>通话问题分析</h3><p>很多场测神马的，都会报出很多通话相关的bug，有些是通话无声，有些事通话质量不好，等等。遇到这种问题原来都是直接提给MTK的，后面发现很多都是网络质量问题，遂跟MTK讨了方法。在radiolog中搜索 +ECSQ:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">06-30 10:38:06.572525 938 976 I AT : AT&lt; +ECSQ: 22,54,1,1,1,-36,-346,7,39 (RIL_URC_READER, tid:0)</div></pre></td></tr></table></figure></p>
-<p>看+ECSQ 命令带的值，<br>如果第六第七位不是255 or 1 则当前在LTE状态，<br>如果第四第五位不是255or1则当前在3G mode。<br>2G的话不是很清楚怎么看radio log,一般是在modem log里确认的。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">+ECSQ:&lt;sig1&gt;,&lt;sig2&gt;,&lt;rssi_in_qdbm&gt;,&lt;rscp_in_qdbm&gt;,&lt;ecn0_in_qdbm&gt;,&lt;rsrq_in_qdbm&gt;,&lt;rsrp_in_qdbm&gt; ,&lt;Act&gt;</div></pre></td></tr></table></figure></p>
-<p>判断信号质量:<br>手机应该在4G下。如果 SNR &lt; 0 (RSRQ &lt;-60)，则信号很差。<br>3G mode时， EcN0&lt;-15 (RSCP&lt;-115)时信号很差。<br>2G mode时， rssi&lt; -95dbm 、 rscq &gt; 4 (0~7 ,0最好，7最差)</p>
-<h3 id="ANR-问题分析流程"><a href="#ANR-问题分析流程" class="headerlink" title="ANR 问题分析流程"></a>ANR 问题分析流程</h3><h4 id="1-定位问题点"><a href="#1-定位问题点" class="headerlink" title="1.定位问题点"></a>1.定位问题点</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">a) 使用mobile log</div><div class="line">*events_log中搜索am_anr</div><div class="line">*main_log 或 Sys_log 中搜索ANR in</div><div class="line">*traces.txt中查找相应的PID或者进程名</div><div class="line"></div><div class="line">b) 使用anr db文件 </div><div class="line">*使用gat工具打开db文件</div><div class="line">*查看ZZ_INTERNAL文件 找到pid或者进程名</div><div class="line">*在SWT_JBT_TRACES查找pid</div></pre></td></tr></table></figure>
-<h4 id="2-在mainlog中查看cpu"><a href="#2-在mainlog中查看cpu" class="headerlink" title="2.在mainlog中查看cpu"></a>2.在mainlog中查看cpu</h4><p>一般在trace就能看到问题点，如果还是定位不到，就需要在mainlog中搜索TOTAL：<br>查看CPU使用率  进而确认问题</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/04/09/mtklog分析/">展开全文 >></a>
         </p>
       
 
