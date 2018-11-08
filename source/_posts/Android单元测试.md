@@ -79,9 +79,9 @@ public class ServiceTest extends ServiceTestCase<MyService>{
 ## 4.测试普通类?
 
 ``` Java
-public class MyClass{
+public class MyClass {
     private String name = "Android";
-    public String getName(){
+    public String getName() {
         return name;
     }
 }
