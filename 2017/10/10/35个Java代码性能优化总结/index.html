@@ -1,0 +1,1738 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>35个Java代码性能优化总结 | 王大可的茅草房</title>
+  <meta name="keywords" content="">
+  <meta name="description" content="35个Java代码性能优化总结 | 王大可的茅草房">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="description" content="123456789Class&amp;lt;?&amp;gt; serviceManagerClass;serviceManagerClass = Class.forName(&quot;android.os.ServiceManager&quot;);Method getService = serviceManagerClass.getMethod(&quot;getService&quot;, String.class);IBinder retbi">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android反射调用通知栏回收">
+<meta property="og:url" content="http://yoursite.com/2019/12/31/Android反射调用通知栏回收/index.html">
+<meta property="og:site_name" content="王大可的茅草房">
+<meta property="og:description" content="123456789Class&amp;lt;?&amp;gt; serviceManagerClass;serviceManagerClass = Class.forName(&quot;android.os.ServiceManager&quot;);Method getService = serviceManagerClass.getMethod(&quot;getService&quot;, String.class);IBinder retbi">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-12-31T06:05:24.379Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Android反射调用通知栏回收">
+<meta name="twitter:description" content="123456789Class&amp;lt;?&amp;gt; serviceManagerClass;serviceManagerClass = Class.forName(&quot;android.os.ServiceManager&quot;);Method getService = serviceManagerClass.getMethod(&quot;getService&quot;, String.class);IBinder retbi">
+
+
+<link rel="icon" href="/img/avatar.jpg">
+
+<link href="/css/style.css?v=1.0.1" rel="stylesheet">
+
+<link href="/css/hl_theme/atom-light.css?v=1.0.1" rel="stylesheet">
+
+<link href="//cdn.bootcss.com/animate.css/3.5.2/animate.min.css" rel="stylesheet">
+<link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
+<script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+<script src="/js/jquery.autocomplete.min.js?v=1.0.1" ></script>
+
+<script src="//cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
+
+<script src="//cdn.bootcss.com/nprogress/0.2.0/nprogress.min.js"></script>
+
+
+
+<script src="//cdn.bootcss.com/jquery-cookie/1.4.1/jquery.cookie.min.js" ></script>
+
+<script src="/js/iconfont.js?v=1.0.1" ></script>
+
+</head>
+<div style="display: none">
+  <input class="theme_disqus_on" value="false">
+  <input class="theme_preload_comment" value="false">
+  <input class="theme_blog_path" value="">
+</div>
+
+<body>
+<aside class="nav">
+    <div class="nav-left">
+        <a href="/" class="avatar_target">
+    <img class="avatar" src="/img/avatar.jpg" />
+</a>
+<div class="author">
+    <span>王大可</span>
+</div>
+
+<div class="icon">
+    
+        
+        <a title="rss" href="/atom.xml" target="_blank">
+            
+                <svg class="iconfont-svg" aria-hidden="true">
+                    <use xlink:href="#icon-rss"></use>
+                </svg>
+            
+        </a>
+        
+    
+        
+        <a title="github" href="https://github.com/yelog" target="_blank">
+            
+                <svg class="iconfont-svg" aria-hidden="true">
+                    <use xlink:href="#icon-github"></use>
+                </svg>
+            
+        </a>
+        
+    
+        
+        <a title="facebook" href="https://www.facebook.com/faker.tops" target="_blank">
+            
+                <svg class="iconfont-svg" aria-hidden="true">
+                    <use xlink:href="#icon-facebook"></use>
+                </svg>
+            
+        </a>
+        
+    
+        
+    
+        
+    
+        
+        <a title="instagram" href="https://www.facebook.com/faker.tops" target="_blank">
+            
+                <svg class="iconfont-svg" aria-hidden="true">
+                    <use xlink:href="#icon-instagram"></use>
+                </svg>
+            
+        </a>
+        
+    
+        
+        <a title="reddit" href="https://www.reddit.com/user/yelog/" target="_blank">
+            
+                <svg class="iconfont-svg" aria-hidden="true">
+                    <use xlink:href="#icon-reddit"></use>
+                </svg>
+            
+        </a>
+        
+    
+        
+        <a title="weibo" href="http://weibo.com/u/2307534817" target="_blank">
+            
+                <svg class="iconfont-svg" aria-hidden="true">
+                    <use xlink:href="#icon-weibo"></use>
+                </svg>
+            
+        </a>
+        
+    
+        
+        <a title="jianshu" href="https://www.jianshu.com/u/ff56736de7cf" target="_blank">
+            
+                <svg class="iconfont-svg" aria-hidden="true">
+                    <use xlink:href="#icon-jianshu"></use>
+                </svg>
+            
+        </a>
+        
+    
+        
+        <a title="zhihu" href="https://www.zhihu.com/people/jaytp/activities" target="_blank">
+            
+                <svg class="iconfont-svg" aria-hidden="true">
+                    <use xlink:href="#icon-zhihu"></use>
+                </svg>
+            
+        </a>
+        
+    
+        
+    
+        
+        <a title="oschina" href="https://my.oschina.net/yelog" target="_blank">
+            
+                <svg class="iconfont-svg" aria-hidden="true">
+                    <use xlink:href="#icon-oschina"></use>
+                </svg>
+            
+        </a>
+        
+    
+        
+    
+        
+        <a title="email" href="mailto:jaytp@qq.com" target="_blank">
+            
+                <svg class="iconfont-svg" aria-hidden="true">
+                    <use xlink:href="#icon-email"></use>
+                </svg>
+            
+        </a>
+        
+    
+        
+        <a title="qq" href="http://wpa.qq.com/msgrd?v=3&uin=872336115&site=qq&menu=yes" target="_blank">
+            
+                <svg class="iconfont-svg" aria-hidden="true">
+                    <use xlink:href="#icon-qq"></use>
+                </svg>
+            
+        </a>
+        
+    
+        
+        <a title="kugou" href="https://www.kugou.com/" target="_blank">
+            
+                <svg class="iconfont-svg" aria-hidden="true">
+                    <use xlink:href="#icon-kugou"></use>
+                </svg>
+            
+        </a>
+        
+    
+        
+        <a title="neteasemusic" href="https://music.163.com/#/user/home?id=88151013" target="_blank">
+            
+                <svg class="iconfont-svg" aria-hidden="true">
+                    <use xlink:href="#icon-neteasemusic"></use>
+                </svg>
+            
+        </a>
+        
+    
+</div>
+
+
+
+
+<ul>
+    <li><div class="all active">全部文章<small>(124)</small></div></li>
+    
+</ul>
+<div class="left-bottom">
+    <div class="menus">
+    
+    
+    
+    
+    </div>
+    <div><a class="about  hasFriend  site_url"  href="/about">关于</a><a style="width: 50%"  class="friends">友链</a></div>
+</div>
+<input type="hidden" id="yelog_site_posts_number" value="124">
+
+<div style="display: none">
+    <span id="busuanzi_value_site_uv"></span>
+    <span id="busuanzi_value_site_pv"></span>
+</div>
+
+    </div>
+    <div class="nav-right">
+        <div class="friends-area">
+    <div class="friends-title">
+        友情链接
+        <i class="back-title-list"></i>
+    </div>
+    <div class="friends-content">
+        <ul>
+            
+            <li><a target="_blank" href="http://yelog.org/">叶落阁</a></li>
+            
+        </ul>
+    </div>
+</div>
+        <div class="title-list">
+    <form onkeydown="if(event.keyCode==13){return false;}">
+        <input class="search" type="text" placeholder="Search..." autocomplete="off"id="local-search-input" >
+        <i class="cross"></i>
+        <span>
+            <label for="tagswitch">Tags:</label>
+            <input id="tagswitch" type="checkbox" style="display: none" />
+            <i id="tagsWitchIcon"></i>
+        </span>
+    </form>
+    <div class="tags-list">
+    
+    <div class="clearfix"></div>
+</div>
+
+    
+    <nav id="title-list-nav">
+        
+        <a  class=""
+           href="/2017/10/10/35个Java代码性能优化总结/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="35个Java代码性能优化总结">35个Java代码性能优化总结</span>
+            <span class="post-date" title="2017-10-10 14:07:20">2017/10/10</span>
+        </a>
+        
+        <a  class=""
+           href="/2018/02/27/50篇Android干货文章/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="50篇Android干货文章">50篇Android干货文章</span>
+            <span class="post-date" title="2018-02-27 11:08:41">2018/02/27</span>
+        </a>
+        
+        <a  class=""
+           href="/2018/04/11/ANR问题分析/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="ANR问题分析">ANR问题分析</span>
+            <span class="post-date" title="2018-04-11 10:41:59">2018/04/11</span>
+        </a>
+        
+        <a  class=""
+           href="/2017/09/22/Activity和Service之间通过接口进行通信/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Activity和Service之间通过接口进行通信">Activity和Service之间通过接口进行通信</span>
+            <span class="post-date" title="2017-09-22 13:19:22">2017/09/22</span>
+        </a>
+        
+        <a  class=""
+           href="/2017/09/22/Android单元测试/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Android单元测试">Android单元测试</span>
+            <span class="post-date" title="2017-09-22 12:48:21">2017/09/22</span>
+        </a>
+        
+        <a  class=""
+           href="/2017/09/25/Bitmap内存优化/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Bitmap内存优化">Bitmap内存优化</span>
+            <span class="post-date" title="2017-09-25 15:35:36">2017/09/25</span>
+        </a>
+        
+        <a  class=""
+           href="/2019/12/31/Android反射调用通知栏回收/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Android反射调用通知栏回收">Android反射调用通知栏回收</span>
+            <span class="post-date" title="2019-12-31 14:04:21">2019/12/31</span>
+        </a>
+        
+        <a  class=""
+           href="/2017/10/09/ButterKnife的学习和使用/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="ButterKnife的学习和使用">ButterKnife的学习和使用</span>
+            <span class="post-date" title="2017-10-09 14:56:45">2017/10/09</span>
+        </a>
+        
+        <a  class=""
+           href="/2018/04/09/Channel-is-unrecoverably-broken-and-will-be-disposed/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Channel is unrecoverably broken and will be disposed">Channel is unrecoverably broken and will be disposed</span>
+            <span class="post-date" title="2018-04-09 10:24:45">2018/04/09</span>
+        </a>
+        
+        <a  class=""
+           href="/2017/10/11/Chronometer的学习和使用/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Chronometer的学习和使用">Chronometer的学习和使用</span>
+            <span class="post-date" title="2017-10-11 09:45:28">2017/10/11</span>
+        </a>
+        
+        <a  class=""
+           href="/2018/03/02/EventLog含义/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="EventLog含义">EventLog含义</span>
+            <span class="post-date" title="2018-03-02 13:33:11">2018/03/02</span>
+        </a>
+        
+        <a  class=""
+           href="/2018/07/25/Hexo常用命令/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Hexo常用命令">Hexo常用命令</span>
+            <span class="post-date" title="2018-07-25 16:59:22">2018/07/25</span>
+        </a>
+        
+        <a  class=""
+           href="/2017/09/28/Intent的高级写法/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Intent的高级写法">Intent的高级写法</span>
+            <span class="post-date" title="2017-09-28 15:39:49">2017/09/28</span>
+        </a>
+        
+        <a  class=""
+           href="/2018/03/08/Java的编译时多态和运行时多态/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Java的编译时多态和运行时多态">Java的编译时多态和运行时多态</span>
+            <span class="post-date" title="2018-03-08 12:57:48">2018/03/08</span>
+        </a>
+        
+        <a  class=""
+           href="/2017/09/22/L6735M平台上如何配置才能使SN号码唯一/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="L6735M平台上如何配置才能使SN号码唯一">L6735M平台上如何配置才能使SN号码唯一</span>
+            <span class="post-date" title="2017-09-22 10:20:50">2017/09/22</span>
+        </a>
+        
+        <a  class=""
+           href="/2017/09/21/ListView界面点击按键的时候会显示快捷搜索框/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="ListView界面点击按键的时候会显示快捷搜索框">ListView界面点击按键的时候会显示快捷搜索框</span>
+            <span class="post-date" title="2017-09-21 16:55:39">2017/09/21</span>
+        </a>
+        
+        <a  class=""
+           href="/2017/09/22/Observer观察者模式/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Observer观察者模式">Observer观察者模式</span>
+            <span class="post-date" title="2017-09-22 13:17:51">2017/09/22</span>
+        </a>
+        
+        <a  class=""
+           href="/2018/03/08/Launcher移植学习/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Launcher移植学习">Launcher移植学习</span>
+            <span class="post-date" title="2018-03-08 09:50:39">2018/03/08</span>
+        </a>
+        
+        <a  class=""
+           href="/2017/09/30/ShadowView的学习和使用/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="ShadowView的学习和使用">ShadowView的学习和使用</span>
+            <span class="post-date" title="2017-09-30 14:51:25">2017/09/30</span>
+        </a>
+        
+        <a  class=""
+           href="/2017/09/29/Snackbar的学习和使用/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Snackbar的学习和使用">Snackbar的学习和使用</span>
+            <span class="post-date" title="2017-09-29 14:15:17">2017/09/29</span>
+        </a>
+        
+        <a  class=""
+           href="/2018/04/09/The-application-may-be-doing-too-much-work-on-its-main-thread/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="The application may be doing too much work on its main thread">The application may be doing too much work on its main thread</span>
+            <span class="post-date" title="2018-04-09 10:34:00">2018/04/09</span>
+        </a>
+        
+        <a  class=""
+           href="/2017/09/22/Toast优化/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Toast优化">Toast优化</span>
+            <span class="post-date" title="2017-09-22 11:14:53">2017/09/22</span>
+        </a>
+        
+        <a  class=""
+           href="/2017/09/25/adb-shell-input-text源码分析/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="adb shell input text源码分析">adb shell input text源码分析</span>
+            <span class="post-date" title="2017-09-25 15:00:24">2017/09/25</span>
+        </a>
+        
+        <a  class=""
+           href="/2017/09/21/adb命令集合/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="adb命令集合">adb命令集合</span>
+            <span class="post-date" title="2017-09-21 16:40:22">2017/09/21</span>
+        </a>
+        
+        <a  class=""
+           href="/2018/08/03/adb控制mtklog/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="adb控制mtklog">adb控制mtklog</span>
+            <span class="post-date" title="2018-08-03 09:21:20">2018/08/03</span>
+        </a>
+        
+        <a  class=""
+           href="/2018/03/26/android-am-pm-wm命令/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="android am pm wm命令">android am pm wm命令</span>
+            <span class="post-date" title="2018-03-26 13:25:19">2018/03/26</span>
+        </a>
+        
+        <a  class=""
+           href="/2017/09/25/android-res下资源命名规则/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="android-res下资源命名规则">android-res下资源命名规则</span>
+            <span class="post-date" title="2017-09-25 15:40:07">2017/09/25</span>
+        </a>
+        
+        <a  class=""
+           href="/2017/09/21/android中media的url/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="android中media的url">android中media的url</span>
+            <span class="post-date" title="2017-09-21 12:52:17">2017/09/21</span>
+        </a>
+        
+        <a  class=""
+           href="/2017/09/21/android清理缓存功能的实现/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="android清理缓存功能的实现">android清理缓存功能的实现</span>
+            <span class="post-date" title="2017-09-21 11:15:46">2017/09/21</span>
+        </a>
+        
+        <a  class=""
+           href="/2017/09/21/ccache/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="ccache">ccache</span>
+            <span class="post-date" title="2017-09-21 17:02:16">2017/09/21</span>
+        </a>
+        
+        <a  class=""
+           href="/2018/07/27/docker加载ylzq/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="docker加载ylzq">docker加载ylzq</span>
+            <span class="post-date" title="2018-07-27 09:47:22">2018/07/27</span>
+        </a>
+        
+        <a  class=""
+           href="/2018/07/27/docker安装ss/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="docker安装ss">docker安装ss</span>
+            <span class="post-date" title="2018-07-27 09:50:20">2018/07/27</span>
+        </a>
+        
+        <a  class=""
+           href="/2017/09/19/framework下添加一个自定义的服务/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="framework下添加一个自定义的服务 SELinux Permission Denied">framework下添加一个自定义的服务 SELinux Permission Denied</span>
+            <span class="post-date" title="2017-09-19 15:22:13">2017/09/19</span>
+        </a>
+        
+        <a  class=""
+           href="/2018/04/11/git命令大全/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="git命令大全">git命令大全</span>
+            <span class="post-date" title="2018-04-11 13:40:22">2018/04/11</span>
+        </a>
+        
+        <a  class=""
+           href="/2019/04/15/hello-world/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Hello World">Hello World</span>
+            <span class="post-date" title="2019-04-15 16:50:54">2019/04/15</span>
+        </a>
+        
+        <a  class=""
+           href="/2018/04/25/insufficient-permissions-for-device/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="insufficient permissions for device">insufficient permissions for device</span>
+            <span class="post-date" title="2018-04-25 09:20:29">2018/04/25</span>
+        </a>
+        
+        <a  class=""
+           href="/2017/09/19/jack编译报错/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="编译报错 Out of memory error (version 1.2-rc4 &#39;Carnac&#39;">编译报错 Out of memory error (version 1.2-rc4 &#39;Carnac&#39;</span>
+            <span class="post-date" title="2017-09-19 14:34:29">2017/09/19</span>
+        </a>
+        
+        <a  class=""
+           href="/2018/08/03/markdown语法/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="markdown语法">markdown语法</span>
+            <span class="post-date" title="2018-08-03 10:01:36">2018/08/03</span>
+        </a>
+        
+        <a  class=""
+           href="/2017/09/21/menu菜单的解析/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="menu菜单的解析">menu菜单的解析</span>
+            <span class="post-date" title="2017-09-21 17:08:54">2017/09/21</span>
+        </a>
+        
+        <a  class=""
+           href="/2018/04/09/mtklog分析/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="mtklog分析">mtklog分析</span>
+            <span class="post-date" title="2018-04-09 13:10:12">2018/04/09</span>
+        </a>
+        
+        <a  class=""
+           href="/2018/03/08/root权限相关/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="root权限相关">root权限相关</span>
+            <span class="post-date" title="2018-03-08 12:49:31">2018/03/08</span>
+        </a>
+        
+        <a  class=""
+           href="/2017/09/21/setDescendantFocusability的参数含义/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="setDescendantFocusability的参数含义">setDescendantFocusability的参数含义</span>
+            <span class="post-date" title="2017-09-21 13:39:14">2017/09/21</span>
+        </a>
+        
+        <a  class=""
+           href="/2017/09/19/shutdown-selinux/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="如何设置确认selinux 模式">如何设置确认selinux 模式</span>
+            <span class="post-date" title="2017-09-19 15:54:53">2017/09/19</span>
+        </a>
+        
+        <a  class=""
+           href="/2017/09/22/sqlite-rawQuery/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="sqlite rawQuery() 方法怎么用">sqlite rawQuery() 方法怎么用</span>
+            <span class="post-date" title="2017-09-22 10:45:52">2017/09/22</span>
+        </a>
+        
+        <a  class=""
+           href="/2017/09/21/support-features/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="support_features">support_features</span>
+            <span class="post-date" title="2017-09-21 17:10:05">2017/09/21</span>
+        </a>
+        
+        <a  class=""
+           href="/2017/09/25/ubuntu下cocos2dx学习/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="ubuntu下cocos2dx学习">ubuntu下cocos2dx学习</span>
+            <span class="post-date" title="2017-09-25 15:36:46">2017/09/25</span>
+        </a>
+        
+        <a  class=""
+           href="/2018/07/27/ubuntu安装docker/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="ubuntu安装docker">ubuntu安装docker</span>
+            <span class="post-date" title="2018-07-27 09:49:38">2018/07/27</span>
+        </a>
+        
+        <a  class=""
+           href="/2017/09/21/ubuntu搜狗输入法无法输入中文/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="ubuntu搜狗输入法无法输入中文">ubuntu搜狗输入法无法输入中文</span>
+            <span class="post-date" title="2017-09-21 10:42:39">2017/09/21</span>
+        </a>
+        
+        <a  class=""
+           href="/2017/09/22/wifi热点名称保存读取/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="wifi热点名称保存读取">wifi热点名称保存读取</span>
+            <span class="post-date" title="2017-09-22 09:27:51">2017/09/22</span>
+        </a>
+        
+        <a  class=""
+           href="/2017/09/22/两个Activity之间通过接口进行通信/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="两个Activity之间通过接口进行通信">两个Activity之间通过接口进行通信</span>
+            <span class="post-date" title="2017-09-22 13:18:42">2017/09/22</span>
+        </a>
+        
+        <a  class=""
+           href="/2018/02/27/为用户生成有趣的头像/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="为用户生成有趣的头像">为用户生成有趣的头像</span>
+            <span class="post-date" title="2018-02-27 09:23:02">2018/02/27</span>
+        </a>
+        
+        <a  class=""
+           href="/2017/09/22/使用AIDL调用CountryDetector中的接口来获取国家编码/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="使用AIDL调用CountryDetector中的接口来获取国家编码">使用AIDL调用CountryDetector中的接口来获取国家编码</span>
+            <span class="post-date" title="2017-09-22 14:12:26">2017/09/22</span>
+        </a>
+        
+        <a  class=""
+           href="/2017/09/22/保存大文件到sqlite数据库/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="保存大文件到sqlite数据库">保存大文件到sqlite数据库</span>
+            <span class="post-date" title="2017-09-22 13:20:16">2017/09/22</span>
+        </a>
+        
+        <a  class=""
+           href="/2017/09/25/修改SIMToolkit的显示名称/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="修改SIMToolkit的显示名称">修改SIMToolkit的显示名称</span>
+            <span class="post-date" title="2017-09-25 15:29:07">2017/09/25</span>
+        </a>
+        
+        <a  class=""
+           href="/2017/09/22/修改wifi热点默认密码/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="修改wifi热点默认密码">修改wifi热点默认密码</span>
+            <span class="post-date" title="2017-09-22 10:30:07">2017/09/22</span>
+        </a>
+        
+        <a  class=""
+           href="/2017/09/22/修改某些分区表中的某些分区之后不起作用/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="修改某些分区表中的某些分区之后不起作用">修改某些分区表中的某些分区之后不起作用</span>
+            <span class="post-date" title="2017-09-22 09:58:35">2017/09/22</span>
+        </a>
+        
+        <a  class=""
+           href="/2017/09/21/修改默认Launcher/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="修改默认Launcher">修改默认Launcher</span>
+            <span class="post-date" title="2017-09-21 15:35:40">2017/09/21</span>
+        </a>
+        
+        <a  class=""
+           href="/2017/09/21/修改默认日期/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="修改默认日期">修改默认日期</span>
+            <span class="post-date" title="2017-09-21 14:19:03">2017/09/21</span>
+        </a>
+        
+        <a  class=""
+           href="/2019/04/15/修改默认的两个闹钟震动打开/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title=""></span>
+            <span class="post-date" title="2019-04-15 16:50:54">2019/04/15</span>
+        </a>
+        
+        <a  class=""
+           href="/2017/09/22/全局对话框/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="全局对话框">全局对话框</span>
+            <span class="post-date" title="2017-09-22 15:11:55">2017/09/22</span>
+        </a>
+        
+        <a  class=""
+           href="/2017/09/22/关闭NavigationBar/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="关闭NavigationBar">关闭NavigationBar</span>
+            <span class="post-date" title="2017-09-22 12:54:57">2017/09/22</span>
+        </a>
+        
+        <a  class=""
+           href="/2017/09/25/内存消耗测试/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="内存消耗测试">内存消耗测试</span>
+            <span class="post-date" title="2017-09-25 15:42:23">2017/09/25</span>
+        </a>
+        
+        <a  class=""
+           href="/2017/09/21/减缓按键长按事件的处理速度/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="减缓按键长按事件的处理速度">减缓按键长按事件的处理速度</span>
+            <span class="post-date" title="2017-09-21 16:53:58">2017/09/21</span>
+        </a>
+        
+        <a  class=""
+           href="/2017/09/25/动态壁纸的学习和使用/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="动态壁纸的学习和使用">动态壁纸的学习和使用</span>
+            <span class="post-date" title="2017-09-25 14:37:21">2017/09/25</span>
+        </a>
+        
+        <a  class=""
+           href="/2018/03/08/反编译/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="反编译">反编译</span>
+            <span class="post-date" title="2018-03-08 12:52:28">2018/03/08</span>
+        </a>
+        
+        <a  class=""
+           href="/2017/09/25/反编译查看google向导设置息屏时间121000/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="反编译查看google向导设置息屏时间121000">反编译查看google向导设置息屏时间121000</span>
+            <span class="post-date" title="2017-09-25 15:32:18">2017/09/25</span>
+        </a>
+        
+        <a  class=""
+           href="/2017/09/22/同时支持两个文件名不同的布局/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="同时支持两个文件名不同的布局">同时支持两个文件名不同的布局</span>
+            <span class="post-date" title="2017-09-22 10:50:09">2017/09/22</span>
+        </a>
+        
+        <a  class=""
+           href="/2017/09/22/圆形的Imageview/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="圆形的Imageview">圆形的Imageview</span>
+            <span class="post-date" title="2017-09-22 10:31:57">2017/09/22</span>
+        </a>
+        
+        <a  class=""
+           href="/2018/03/26/在framework下添加字体和使用方法/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="在framework下添加字体和使用方法">在framework下添加字体和使用方法</span>
+            <span class="post-date" title="2018-03-26 14:58:38">2018/03/26</span>
+        </a>
+        
+        <a  class=""
+           href="/2017/09/22/在关闭飞行模式之后蓝牙打不开/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="在关闭飞行模式之后蓝牙打不开">在关闭飞行模式之后蓝牙打不开</span>
+            <span class="post-date" title="2017-09-22 10:47:44">2017/09/22</span>
+        </a>
+        
+        <a  class=""
+           href="/2017/09/25/在刷机之后Camera有可能会消失/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="在刷机之后Camera有可能会消失">在刷机之后Camera有可能会消失</span>
+            <span class="post-date" title="2017-09-25 15:02:46">2017/09/25</span>
+        </a>
+        
+        <a  class=""
+           href="/2017/09/22/如何去掉AccentedEnglish/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="如何去掉AccentedEnglish">如何去掉AccentedEnglish</span>
+            <span class="post-date" title="2017-09-22 14:01:34">2017/09/22</span>
+        </a>
+        
+        <a  class=""
+           href="/2017/09/22/如何在下载好图片之后更新Gallery/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="如何在下载好图片之后更新Gallery">如何在下载好图片之后更新Gallery</span>
+            <span class="post-date" title="2017-09-22 13:55:31">2017/09/22</span>
+        </a>
+        
+        <a  class=""
+           href="/2017/09/22/如何编译ICU资源/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="如何编译ICU资源">如何编译ICU资源</span>
+            <span class="post-date" title="2017-09-22 12:02:45">2017/09/22</span>
+        </a>
+        
+        <a  class=""
+           href="/2017/09/22/如何解析voicemail-conf-xml文件/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="如何解析voicemail-conf.xml文件">如何解析voicemail-conf.xml文件</span>
+            <span class="post-date" title="2017-09-22 11:16:02">2017/09/22</span>
+        </a>
+        
+        <a  class=""
+           href="/2017/09/25/如何让EditText不自动获取焦点/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="如何让EditText不自动获取焦点">如何让EditText不自动获取焦点</span>
+            <span class="post-date" title="2017-09-25 14:56:43">2017/09/25</span>
+        </a>
+        
+        <a  class=""
+           href="/2017/09/21/如何让Launcher支持横屏显示/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="如何让Launcher支持横屏显示">如何让Launcher支持横屏显示</span>
+            <span class="post-date" title="2017-09-21 16:21:27">2017/09/21</span>
+        </a>
+        
+        <a  class=""
+           href="/2017/09/22/如何通过代码动态设置语言/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="如何通过代码动态设置语言">如何通过代码动态设置语言</span>
+            <span class="post-date" title="2017-09-22 13:46:40">2017/09/22</span>
+        </a>
+        
+        <a  class=""
+           href="/2017/09/22/如果只是测试修改后效果，执行步骤A即可；如果需要build后生效，则需要执行全部步骤/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="如果只是测试修改后效果，执行步骤A即可；如果需要build后生效，则需要执行全部步骤">如果只是测试修改后效果，执行步骤A即可；如果需要build后生效，则需要执行全部步骤</span>
+            <span class="post-date" title="2017-09-22 12:02:28">2017/09/22</span>
+        </a>
+        
+        <a  class=""
+           href="/2017/09/25/客制化USB-CDROM/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="客制化USB CDROM的显示名称">客制化USB CDROM的显示名称</span>
+            <span class="post-date" title="2017-09-25 14:50:59">2017/09/25</span>
+        </a>
+        
+        <a  class=""
+           href="/2017/09/22/工厂方法模式/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="工厂方法模式">工厂方法模式</span>
+            <span class="post-date" title="2017-09-22 13:16:45">2017/09/22</span>
+        </a>
+        
+        <a  class=""
+           href="/2017/09/21/工厂测试中SD卡测试失败/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="工厂测试中SD卡测试失败">工厂测试中SD卡测试失败</span>
+            <span class="post-date" title="2017-09-21 12:56:08">2017/09/21</span>
+        </a>
+        
+        <a  class=""
+           href="/2017/09/22/应用开机自启动/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="应用开机自启动">应用开机自启动</span>
+            <span class="post-date" title="2017-09-22 09:01:43">2017/09/22</span>
+        </a>
+        
+        <a  class=""
+           href="/2017/09/25/性能测试/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="性能测试">性能测试</span>
+            <span class="post-date" title="2017-09-25 15:43:40">2017/09/25</span>
+        </a>
+        
+        <a  class=""
+           href="/2018/03/08/手机基本概念/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="手机基本概念">手机基本概念</span>
+            <span class="post-date" title="2018-03-08 13:06:42">2018/03/08</span>
+        </a>
+        
+        <a  class=""
+           href="/2018/04/26/排序的时候出现的问题Comparison-method-violates-its-general-contract/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="排序的时候出现的问题Comparison method violates its general contract!">排序的时候出现的问题Comparison method violates its general contract!</span>
+            <span class="post-date" title="2018-04-26 10:09:56">2018/04/26</span>
+        </a>
+        
+        <a  class=""
+           href="/2017/09/21/提高进程优先级/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="提高进程优先级">提高进程优先级</span>
+            <span class="post-date" title="2017-09-21 11:08:41">2017/09/21</span>
+        </a>
+        
+        <a  class=""
+           href="/2017/09/22/收到短信后未振动手机/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="收到短信后未振动手机">收到短信后未振动手机</span>
+            <span class="post-date" title="2017-09-22 13:25:09">2017/09/22</span>
+        </a>
+        
+        <a  class=""
+           href="/2018/03/08/数据连接信号小图标/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="数据连接信号小图标">数据连接信号小图标</span>
+            <span class="post-date" title="2018-03-08 11:21:55">2018/03/08</span>
+        </a>
+        
+        <a  class=""
+           href="/2017/09/22/数据连接默认开关/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="数据连接默认开关">数据连接默认开关</span>
+            <span class="post-date" title="2017-09-22 11:18:36">2017/09/22</span>
+        </a>
+        
+        <a  class=""
+           href="/2017/09/21/杀进程的脚本/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="杀进程的脚本">杀进程的脚本</span>
+            <span class="post-date" title="2017-09-21 14:15:19">2017/09/21</span>
+        </a>
+        
+        <a  class=""
+           href="/2017/09/22/根据SDK版本号判断使用哪个类中的方法/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="根据SDK版本号判断使用哪个类中的方法">根据SDK版本号判断使用哪个类中的方法</span>
+            <span class="post-date" title="2017-09-22 09:56:15">2017/09/22</span>
+        </a>
+        
+        <a  class=""
+           href="/2017/09/21/根据控件的ID名称获取控件的ID值/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="根据控件的ID名称获取控件的ID值">根据控件的ID名称获取控件的ID值</span>
+            <span class="post-date" title="2017-09-21 13:10:29">2017/09/21</span>
+        </a>
+        
+        <a  class=""
+           href="/2017/09/29/沉浸式学习/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="沉浸式学习">沉浸式学习</span>
+            <span class="post-date" title="2017-09-29 14:27:53">2017/09/29</span>
+        </a>
+        
+        <a  class=""
+           href="/2017/09/22/添加MoreRingtone菜单/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="添加MoreRingtone菜单">添加MoreRingtone菜单</span>
+            <span class="post-date" title="2017-09-22 14:08:38">2017/09/22</span>
+        </a>
+        
+        <a  class=""
+           href="/2017/09/22/添加代码禁用GoogleCamera/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="添加代码禁用GoogleCamera">添加代码禁用GoogleCamera</span>
+            <span class="post-date" title="2017-09-22 13:50:36">2017/09/22</span>
+        </a>
+        
+        <a  class=""
+           href="/2017/09/22/添加水印效果/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="添加水印效果">添加水印效果</span>
+            <span class="post-date" title="2017-09-22 09:44:20">2017/09/22</span>
+        </a>
+        
+        <a  class=""
+           href="/2017/09/25/游戏框架/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="游戏框架">游戏框架</span>
+            <span class="post-date" title="2017-09-25 15:44:48">2017/09/25</span>
+        </a>
+        
+        <a  class=""
+           href="/2017/09/21/短信转彩信条数限制/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="短信转彩信条数限制">短信转彩信条数限制</span>
+            <span class="post-date" title="2017-09-21 13:03:48">2017/09/21</span>
+        </a>
+        
+        <a  class=""
+           href="/2017/09/22/第一次插卡弹出apn对话框/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="第一次插卡弹出apn对话框">第一次插卡弹出apn对话框</span>
+            <span class="post-date" title="2017-09-22 10:42:23">2017/09/22</span>
+        </a>
+        
+        <a  class=""
+           href="/2017/09/25/给APK进行系统签名/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="给APK进行系统签名">给APK进行系统签名</span>
+            <span class="post-date" title="2017-09-25 14:53:17">2017/09/25</span>
+        </a>
+        
+        <a  class=""
+           href="/2017/09/22/网络请求/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="网络请求">网络请求</span>
+            <span class="post-date" title="2017-09-22 13:01:47">2017/09/22</span>
+        </a>
+        
+        <a  class=""
+           href="/2017/09/21/耳机模式下播放音乐再拍照音乐会卡顿/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="耳机模式下播放音乐再拍照音乐会卡顿">耳机模式下播放音乐再拍照音乐会卡顿</span>
+            <span class="post-date" title="2017-09-21 16:46:39">2017/09/21</span>
+        </a>
+        
+        <a  class=""
+           href="/2017/09/21/联系人编辑界面上的号码输入框无法输入加号/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="联系人编辑界面上的号码输入框无法输入加号">联系人编辑界面上的号码输入框无法输入加号</span>
+            <span class="post-date" title="2017-09-21 16:57:34">2017/09/21</span>
+        </a>
+        
+        <a  class=""
+           href="/2017/09/22/背光亮度设置后待机界面快捷图标不会随之变化/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="背光亮度设置后待机界面快捷图标不会随之变化">背光亮度设置后待机界面快捷图标不会随之变化</span>
+            <span class="post-date" title="2017-09-22 11:23:09">2017/09/22</span>
+        </a>
+        
+        <a  class=""
+           href="/2017/09/21/自定义EditText的光标颜色/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="自定义EditText的光标颜色">自定义EditText的光标颜色</span>
+            <span class="post-date" title="2017-09-21 13:36:32">2017/09/21</span>
+        </a>
+        
+        <a  class=""
+           href="/2017/09/22/获取SIM卡的IMSI号码/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="获取SIM卡的IMSI号码">获取SIM卡的IMSI号码</span>
+            <span class="post-date" title="2017-09-22 10:38:33">2017/09/22</span>
+        </a>
+        
+        <a  class=""
+           href="/2018/03/15/获取图片信息/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="获取图片信息">获取图片信息</span>
+            <span class="post-date" title="2018-03-15 13:18:39">2018/03/15</span>
+        </a>
+        
+        <a  class=""
+           href="/2017/09/22/解析assets文件夹下的xml文件/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="解析assets文件夹下的xml文件">解析assets文件夹下的xml文件</span>
+            <span class="post-date" title="2017-09-22 10:47:01">2017/09/22</span>
+        </a>
+        
+        <a  class=""
+           href="/2017/09/25/解析res-drawable下图片的另一种方式/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="解析res/drawable下图片的另一种方式">解析res/drawable下图片的另一种方式</span>
+            <span class="post-date" title="2017-09-25 14:42:58">2017/09/25</span>
+        </a>
+        
+        <a  class=""
+           href="/2017/09/21/设置seekbar每一格的进度/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="设置seekbar每一格的进度">设置seekbar每一格的进度</span>
+            <span class="post-date" title="2017-09-21 16:49:12">2017/09/21</span>
+        </a>
+        
+        <a  class=""
+           href="/2018/04/26/设置状态栏的颜色/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="设置状态栏的颜色">设置状态栏的颜色</span>
+            <span class="post-date" title="2018-04-26 08:48:26">2018/04/26</span>
+        </a>
+        
+        <a  class=""
+           href="/2017/09/21/通过代码创建快捷方式/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="通过代码创建快捷方式">通过代码创建快捷方式</span>
+            <span class="post-date" title="2017-09-21 14:12:51">2017/09/21</span>
+        </a>
+        
+        <a  class=""
+           href="/2017/09/21/通过代码动态设置view的selector/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="通过代码动态设置view的selector">通过代码动态设置view的selector</span>
+            <span class="post-date" title="2017-09-21 14:09:58">2017/09/21</span>
+        </a>
+        
+        <a  class=""
+           href="/2017/09/21/通过代码模拟触屏和按键事件/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="通过代码模拟触屏和按键事件">通过代码模拟触屏和按键事件</span>
+            <span class="post-date" title="2017-09-21 14:03:52">2017/09/21</span>
+        </a>
+        
+        <a  class=""
+           href="/2017/09/29/通过反射修改全局默认字体/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="通过反射修改全局默认字体">通过反射修改全局默认字体</span>
+            <span class="post-date" title="2017-09-29 13:11:42">2017/09/29</span>
+        </a>
+        
+        <a  class=""
+           href="/2017/09/25/通过反射获取FeatureOption中的所有字段的值/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="通过反射获取FeatureOption中的所有字段的值">通过反射获取FeatureOption中的所有字段的值</span>
+            <span class="post-date" title="2017-09-25 14:48:36">2017/09/25</span>
+        </a>
+        
+        <a  class=""
+           href="/2017/09/22/配置AGPS/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="配置AGPS">配置AGPS</span>
+            <span class="post-date" title="2017-09-22 13:34:36">2017/09/22</span>
+        </a>
+        
+        <a  class=""
+           href="/2017/09/22/隐藏QuickSettings中的AutoRotate菜单/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="隐藏QuickSettings中的AutoRotate菜单">隐藏QuickSettings中的AutoRotate菜单</span>
+            <span class="post-date" title="2017-09-22 10:26:49">2017/09/22</span>
+        </a>
+        
+        <a  class=""
+           href="/2017/09/21/隐藏三个点的Overflow菜单/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="隐藏三个点的Overflow菜单">隐藏三个点的Overflow菜单</span>
+            <span class="post-date" title="2017-09-21 13:23:56">2017/09/21</span>
+        </a>
+        
+        <a  class=""
+           href="/2017/10/11/面试题集合/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="面试题集合">面试题集合</span>
+            <span class="post-date" title="2017-10-11 09:55:06">2017/10/11</span>
+        </a>
+        
+        <a  class=""
+           href="/2017/09/21/预置桌面快捷方式/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="预置桌面快捷方式">预置桌面快捷方式</span>
+            <span class="post-date" title="2017-09-21 16:51:19">2017/09/21</span>
+        </a>
+        
+        <a  class=""
+           href="/2017/09/22/预置了PDFViewer之后会报错/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="预置了PDFViewer之后会报错">预置了PDFViewer之后会报错</span>
+            <span class="post-date" title="2017-09-22 10:28:20">2017/09/22</span>
+        </a>
+        
+        <a  class=""
+           href="/2017/09/25/默认打开wifi热点/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="默认打开wifi热点">默认打开wifi热点</span>
+            <span class="post-date" title="2017-09-25 15:20:04">2017/09/25</span>
+        </a>
+        
+    </nav>
+</div>
+    </div>
+    <div class="hide-list">
+        <div class="semicircle">
+            <div class="brackets first"><</div>
+            <div class="brackets">&gt;</div>
+        </div>
+    </div>
+</aside>
+<div class="post">
+    <div class="pjax">
+        <article id="post-35个Java代码性能优化总结" class="article article-type-post" itemscope itemprop="blogPost">
+    
+        <h1 class="article-title">35个Java代码性能优化总结</h1>
+    
+    <div class="article-meta">
+        
+        
+        
+        
+    </div>
+    <div class="article-meta">
+        
+        创建时间:<time class="date" title='更新时间: 2018-11-08 12:07:48'>2017-10-10 14:07</time>
+        
+    </div>
+    <div class="article-meta">
+        
+        
+        <span id="busuanzi_container_page_pv">
+            阅读:<span id="busuanzi_value_page_pv">
+                <span class="count-comment">
+                    <span class="spinner">
+                      <div class="cube1"></div>
+                      <div class="cube2"></div>
+                    </span>
+                </span>
+            </span>
+        </span>
+        
+        
+    </div>
+    
+    <div class="toc-ref">
+    
+        
+    
+<style>
+    .left-col .switch-btn,
+    .left-col .switch-area {
+        display: none;
+    }
+    .toc-level-3 i,
+    .toc-level-3 ol {
+        display: none !important;
+    }
+</style>
+</div>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>代码优化细节</p>
+<p><strong>1、尽量指定类、方法的final修饰符</strong></p>
+<p>带有final修饰符的类是不可派生的。在Java核心API中，有许多应用final的例子，例如java.lang.String，整个类都是final的。为类指定final修饰符可以让类不可以被继承，为方法指定final修饰符可以让方法不可以被重写。如果指定了一个类为final，则该类所有的方法都是final的。Java编译器会寻找机会内联所有的final方法，内联对于提升Java运行效率作用重大，具体参见Java运行期优化。此举能够使性能平均提高50%。</p>
+<p><strong>2、尽量重用对象</strong></p>
+<p>特别是String对象的使用，出现字符串连接时应该使用StringBuilder/StringBuffer代替。由于Java虚拟机不仅要花时间生成对象，以后可能还需要花时间对这些对象进行垃圾回收和处理，因此，生成过多的对象将会给程序的性能带来很大的影响。</p>
+<p><strong>3、尽可能使用局部变量</strong></p>
+<p>调用方法时传递的参数以及在调用中创建的临时变量都保存在栈中速度较快，其他变量，如静态变量、实例变量等，都在堆中创建，速度较慢。另外，栈中创建的变量，随着方法的运行结束，这些内容就没了，不需要额外的垃圾回收。</p>
+<p><strong>4、及时关闭流</strong></p>
+<p>Java编程过程中，进行数据库连接、I/O流操作时务必小心，在使用完毕后，及时关闭以释放资源。因为对这些大对象的操作会造成系统大的开销，稍有不慎，将会导致严重的后果。</p>
+<p><strong>5、尽量减少对变量的重复计算</strong></p>
+<p>明确一个概念，对方法的调用，即使方法中只有一句语句，也是有消耗的，包括创建栈帧、调用方法时保护现场、调用方法完毕时恢复现场等。所以例如下面的操作：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; list.size(); i++)&#123;</div><div class="line">	...</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>建议替换为：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>, <span class="keyword">int</span> length = list.size(); i &lt; length; i++)&#123;</div><div class="line">    ...</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>这样，在list.size()很大的时候，就减少了很多的消耗</p>
+<p><strong>6、尽量采用懒加载的策略，即在需要的时候才创建</strong></p>
+<p>例如：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">String str = <span class="string">"aaa"</span>;<span class="keyword">if</span> (i == <span class="number">1</span>)&#123;</div><div class="line">    list.add(str);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>建议替换为：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> (i == <span class="number">1</span>)&#123;</div><div class="line">    String str = <span class="string">"aaa"</span>;</div><div class="line">    list.add(str);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p><strong>7、慎用异常</strong></p>
+<p>异常对性能不利。抛出异常首先要创建一个新的对象，Throwable接口的构造函数调用名为fillInStackTrace()的本地同步方法，fillInStackTrace()方法检查堆栈，收集调用跟踪信息。只要有异常被抛出，Java虚拟机就必须调整调用堆栈，因为在处理过程中创建了一个新的对象。异常只能用于错误处理，不应该用来控制程序流程。</p>
+<p><strong>8、不要在循环中使用try…catch…，应该把其放在最外层</strong></p>
+<p>除非不得已。如果毫无理由地这么写了，只要你的领导资深一点、有强迫症一点，八成就要骂你为什么写出这种垃圾代码来了</p>
+<p><strong>9、如果能估计到待添加的内容长度，为底层以数组方式实现的集合、工具类指定初始长度</strong></p>
+<p>比如ArrayList、LinkedLlist、StringBuilder、StringBuffer、HashMap、HashSet等等，以StringBuilder为例：</p>
+<p>（1）StringBuilder()　　　　　　// 默认分配16个字符的空间</p>
+<p>（2）StringBuilder(int size)　　// 默认分配size个字符的空间</p>
+<p>（3）StringBuilder(String str)　// 默认分配16个字符+str.length()个字符空间</p>
+<p>可以通过类（这里指的不仅仅是上面的StringBuilder）的来设定它的初始化容量，这样可以明显地提升性能。比如StringBuilder吧，length表示当前的StringBuilder能保持的字符数量。因为当StringBuilder达到最大容量的时候，它会将自身容量增加到当前的2倍再加2，无论何时只要StringBuilder达到它的最大容量，它就不得不创建一个新的字符数组然后将旧的字符数组内容拷贝到新字符数组中—-这是十分耗费性能的一个操作。试想，如果能预估到字符数组中大概要存放5000个字符而不指定长度，最接近5000的2次幂是4096，每次扩容加的2不管，那么：</p>
+<p>（1）在4096 的基础上，再申请8194个大小的字符数组，加起来相当于一次申请了12290个大小的字符数组，如果一开始能指定5000个大小的字符数组，就节省了一倍以上的空间</p>
+<p>（2）把原来的4096个字符拷贝到新的的字符数组中去</p>
+<p>这样，既浪费内存空间又降低代码运行效率。所以，给底层以数组实现的集合、工具类设置一个合理的初始化容量是错不了的，这会带来立竿见影的效果。但是，注意，像HashMap这种是以数组+链表实现的集合，别把初始大小和你估计的大小设置得一样，因为一个table上只连接一个对象的可能性几乎为0。初始大小建议设置为2的N次幂，如果能估计到有2000个元素，设置成new HashMap(128)、new HashMap(256)都可以。</p>
+<p><strong>10、当复制大量数据时，使用System.arraycopy()命令</strong></p>
+<p><strong>11、乘法和除法使用移位操作</strong></p>
+<p>例如：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span> (val = <span class="number">0</span>; val &lt; <span class="number">100000</span>; val += <span class="number">5</span>)&#123;</div><div class="line">    a = val * <span class="number">8</span>;</div><div class="line">    b = val / <span class="number">2</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>用移位操作可以极大地提高性能，因为在计算机底层，对位的操作是最方便、最快的，因此建议修改为：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span> (val = <span class="number">0</span>; val &lt; <span class="number">100000</span>; val += <span class="number">5</span>)&#123;</div><div class="line">    a = val &lt;&lt; <span class="number">3</span>;</div><div class="line">    b = val &gt;&gt; <span class="number">1</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>移位操作虽然快，但是可能会使代码不太好理解，因此最好加上相应的注释。</p>
+<p><strong>12、循环内不要不断创建对象引用</strong></p>
+<p>例如：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= count; i++)&#123;</div><div class="line">    Object obj = <span class="keyword">new</span> Object();</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>这种做法会导致内存中有count份Object对象引用存在，count很大的话，就耗费内存了，建议为改为：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">Object obj = <span class="keyword">null</span>;</div><div class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt;= count; i++) &#123; </div><div class="line">    obj = <span class="keyword">new</span> Object(); </div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>这样的话，内存中只有一份Object对象引用，每次new Object()的时候，Object对象引用指向不同的Object罢了，但是内存中只有一份，这样就大大节省了内存空间了。</p>
+<p><strong>13、基于效率和类型检查的考虑，应该尽可能使用array，无法确定数组大小时才使用ArrayList</strong></p>
+<p><strong>14、尽量使用HashMap、ArrayList、StringBuilder，除非线程安全需要，否则不推荐使用Hashtable、Vector、StringBuffer，后三者由于使用同步机制而导致了性能开销</strong></p>
+<p><strong>15、不要将数组声明为public static final</strong></p>
+<p>因为这毫无意义，这样只是定义了引用为static final，数组的内容还是可以随意改变的，将数组声明为public更是一个安全漏洞，这意味着这个数组可以被外部类所改变</p>
+<p><strong>16、尽量在合适的场合使用单例</strong></p>
+<p>使用单例可以减轻加载的负担、缩短加载的时间、提高加载的效率，但并不是所有地方都适用于单例，简单来说，单例主要适用于以下三个方面：</p>
+<p>（1）控制资源的使用，通过线程同步来控制资源的并发访问</p>
+<p>（2）控制实例的产生，以达到节约资源的目的</p>
+<p>（3）控制数据的共享，在不建立直接关联的条件下，让多个不相关的进程或线程之间实现通信</p>
+<p><strong>17、尽量避免随意使用静态变量</strong></p>
+<p>要知道，当某个对象被定义为static的变量所引用，那么gc通常是不会回收这个对象所占有的堆内存的，如：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"><span class="comment"> * Java学习交流QQ群：589809992 我们一起学Java！</span></div><div class="line"><span class="comment"> */</span></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">A</span> </span>&#123;</div><div class="line">    <span class="keyword">private</span> <span class="keyword">static</span> B b = <span class="keyword">new</span> B();</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>此时静态变量b的生命周期与A类相同，如果A类不被卸载，那么引用B指向的B对象会常驻内存，直到程序终止</p>
+<p><strong>18、及时清除不再需要的会话</strong></p>
+<p>为了清除不再活动的会话，许多应用服务器都有默认的会话超时时间，一般为30分钟。当应用服务器需要保存更多的会话时，如果内存不足，那么操作系统会把部分数据转移到磁盘，应用服务器也可能根据MRU（最近最频繁使用）算法把部分不活跃的会话转储到磁盘，甚至可能抛出内存不足的异常。如果会话要被转储到磁盘，那么必须要先被序列化，在大规模集群中，对对象进行序列化的代价是很昂贵的。因此，当会话不再需要时，应当及时调用HttpSession的invalidate()方法清除会话。</p>
+<p><strong>19、实现RandomAccess接口的集合比如ArrayList，应当使用最普通的for循环而不是foreach循环来遍历</strong></p>
+<p>这是JDK推荐给用户的。JDK API对于RandomAccess接口的解释是：实现RandomAccess接口用来表明其支持快速随机访问，此接口的主要目的是允许一般的算法更改其行为，从而将其应用到随机或连续访问列表时能提供良好的性能。实际经验表明，实现RandomAccess接口的类实例，假如是随机访问的，使用普通for循环效率将高于使用foreach循环；反过来，如果是顺序访问的，则使用Iterator会效率更高。可以使用类似如下的代码作判断：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> (list <span class="keyword">instanceof</span> RandomAccess)&#123; </div><div class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; list.size(); i++)&#123;&#125;</div><div class="line">&#125;<span class="keyword">else</span>&#123;</div><div class="line">    Iterator&lt;?&gt; iterator = list.iterable(); <span class="keyword">while</span> (iterator.hasNext())&#123;iterator.next()&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>foreach循环的底层实现原理就是迭代器Iterator，参见Java语法糖1：可变长度参数以及foreach循环原理。所以后半句”反过来，如果是顺序访问的，则使用Iterator会效率更高”的意思就是顺序访问的那些类实例，使用foreach循环去遍历。</p>
+<p><strong>20、使用同步代码块替代同步方法</strong></p>
+<p>这点在多线程模块中的synchronized锁方法块一文中已经讲得很清楚了，除非能确定一整个方法都是需要进行同步的，否则尽量使用同步代码块，避免对那些不需要进行同步的代码也进行了同步，影响了代码执行效率。</p>
+<p><strong>21、将常量声明为static final，并以大写命名</strong></p>
+<p>这样在编译期间就可以把这些内容放入常量池中，避免运行期间计算生成常量的值。另外，将常量的名字以大写命名也可以方便区分出常量与变量</p>
+<p><strong>22、不要创建一些不使用的对象，不要导入一些不使用的类</strong></p>
+<p>这毫无意义，如果代码中出现”The value of the local variable i is not used”、”The import java.util is never used”，那么请删除这些无用的内容</p>
+<p><strong>23、程序运行过程中避免使用反射</strong></p>
+<p>关于，请参见反射。反射是Java提供给用户一个很强大的功能，功能强大往往意味着效率不高。不建议在程序运行过程中使用尤其是频繁使用反射机制，特别是Method的invoke方法，如果确实有必要，一种建议性的做法是将那些需要通过反射加载的类在项目启动的时候通过反射实例化出一个对象并放入内存—-用户只关心和对端交互的时候获取最快的响应速度，并不关心对端的项目启动花多久时间。</p>
+<p><strong>24、使用数据库连接池和线程池</strong></p>
+<p>这两个池都是用于重用对象的，前者可以避免频繁地打开和关闭连接，后者可以避免频繁地创建和销毁线程</p>
+<p><strong>25、使用带缓冲的输入输出流进行IO操作</strong></p>
+<p>带缓冲的输入输出流，即BufferedReader、BufferedWriter、BufferedInputStream、BufferedOutputStream，这可以极大地提升IO效率</p>
+<p><strong>26、顺序插入和随机访问比较多的场景使用ArrayList，元素删除和中间插入比较多的场景使用LinkedList</strong></p>
+<p>这个，理解ArrayList和LinkedList的原理就知道了</p>
+<p><strong>27、不要让public方法中有太多的形参</strong></p>
+<p>public方法即对外提供的方法，如果给这些方法太多形参的话主要有两点坏处：</p>
+<p>1、违反了面向对象的编程思想，Java讲求一切都是对象，太多的形参，和面向对象的编程思想并不契合</p>
+<p>2、参数太多势必导致方法调用的出错概率增加</p>
+<p>至于这个”太多”指的是多少个，3、4个吧。比如我们用JDBC写一个insertStudentInfo方法，有10个学生信息字段要插如Student表中，可以把这10个参数封装在一个实体类中，作为insert方法的形参</p>
+<p><strong>28、字符串变量和字符串常量equals的时候将字符串常量写在前面</strong></p>
+<p>这是一个比较常见的小技巧了，如果有以下代码：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">String str = <span class="string">"123"</span>;</div><div class="line"><span class="keyword">if</span> (str.equals(<span class="string">"123"</span>)) &#123;</div><div class="line">...</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>建议修改为：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">String str = <span class="string">"123"</span>;</div><div class="line"><span class="keyword">if</span> (<span class="string">"123"</span>.equals(str))&#123;</div><div class="line">...</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>这么做主要是可以避免空指针异常</p>
+<p><strong>29、请知道，在java中if (i == 1)和if (1 == i)是没有区别的，但从阅读习惯上讲，建议使用前者</strong></p>
+<p>平时有人问，”if (i == 1)”和”if (1== i)”有没有区别，这就要从C/C++讲起。</p>
+<p>在C/C++中，”if (i == 1)”判断条件成立，是以0与非0为基准的，0表示false，非0表示true，如果有这么一段代码：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">int</span> i = <span class="number">2</span>;</div><div class="line"><span class="keyword">if</span> (i == <span class="number">1</span>)&#123;</div><div class="line">	...</div><div class="line">&#125;<span class="keyword">else</span>&#123;</div><div class="line">	...</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>C/C++判断”i==1″不成立，所以以0表示，即false。但是如果：</p>
+<p>int i = 2;if (i = 1) { … }else{ … }<br>万一程序员一个不小心，把”if (i == 1)”写成”if (i = 1)”，这样就有问题了。在if之内将i赋值为1，if判断里面的内容非0，返回的就是true了，但是明明i为2，比较的值是1，应该返回的false。这种情况在C/C++的开发中是很可能发生的并且会导致一些难以理解的错误产生，所以，为了避免开发者在if语句中不正确的赋值操作，建议将if语句写为：</p>
+<p>int i = 2;if (1 == i) { … }else{ … }<br>这样，即使开发者不小心写成了”1 = i”，C/C++编译器也可以第一时间检查出来，因为我们可以对一个变量赋值i为1，但是不能对一个常量赋值1为i。</p>
+<p>但是，在Java中，C/C++这种”if (i = 1)”的语法是不可能出现的，因为一旦写了这种语法，Java就会编译报错”Type mismatch: cannot convert from int to boolean”。但是，尽管Java的”if (i == 1)”和”if (1 == i)”在语义上没有任何区别，但是从阅读习惯上讲，建议使用前者会更好些。</p>
+<p><strong>30、不要对数组使用toString()方法</strong></p>
+<p>看一下对数组使用toString()打印出来的是什么：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">    <span class="keyword">int</span>[] is = <span class="keyword">new</span> <span class="keyword">int</span>[]&#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>&#125;;</div><div class="line">    System.out.println(is.toString());</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>结果是：</p>
+<p>[I@18a992f<br>本意是想打印出数组内容，却有可能因为数组引用is为空而导致空指针异常。不过虽然对数组toString()没有意义，但是对集合toString()是可以打印出集合里面的内容的，因为集合的父类AbstractCollections重写了Object的toString()方法。</p>
+<p><strong>31、不要对超出范围的基本数据类型做向下强制转型</strong></p>
+<p>这绝不会得到想要的结果：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">    <span class="keyword">long</span> l = <span class="number">12345678901234L</span>;</div><div class="line">    <span class="keyword">int</span> i = (<span class="keyword">int</span>) l;</div><div class="line">    System.out.println(i);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>我们可能期望得到其中的某几位，但是结果却是：</p>
+<p>1942892530</p>
+<p>解释一下。Java中long是8个字节64位的，所以12345678901234在计算机中的表示应该是：</p>
+<p>0000 0000 0000 0000 0000 1011 0011 1010 0111 0011 1100 1110 0010 1111 1111 0010</p>
+<p>一个int型数据是4个字节32位的，从低位取出上面这串二进制数据的前32位是：</p>
+<p>0111 0011 1100 1110 0010 1111 1111 0010</p>
+<p>这串二进制表示为十进制1942892530，所以就是我们上面的控制台上输出的内容。从这个例子上还能顺便得到两个结论：</p>
+<p>1、整型默认的数据类型是int，long l = 12345678901234L，这个数字已经超出了int的范围了，所以最后有一个L，表示这是一个long型数。顺便，浮点型的默认类型是double，所以定义float的时候要写成””float f = 3.5f”</p>
+<p>2、接下来再写一句”int ii = l + i;”会报错，因为long + int是一个long，不能赋值给int</p>
+<p><strong>32、公用的集合类中不使用的数据一定要及时remove掉</strong></p>
+<p>如果一个集合类是公用的（也就是说不是方法里面的属性），那么这个集合里面的元素是不会自动释放的，因为始终有引用指向它们。所以，如果公用集合里面的某些数据不使用而不去remove掉它们，那么将会造成这个公用集合不断增大，使得系统有内存泄露的隐患。</p>
+<p><strong>33、把一个基本数据类型转为字符串，基本数据类型.toString()是最快的方式、String.valueOf(数据)次之、数据+””最慢</strong></p>
+<p>把一个基本数据类型转为一般有三种方式，我有一个Integer型数据i，可以使用i.toString()、String.valueOf(i)、i+””三种方式，三种方式的效率如何，看一个测试：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</div><div class="line">    <span class="keyword">int</span> loopTime = <span class="number">50000</span>;</div><div class="line">    Integer i = <span class="number">0</span>;</div><div class="line">    <span class="keyword">long</span> startTime = System.currentTimeMillis();</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; loopTime; j++)&#123;</div><div class="line">        String str = String.valueOf(i);</div><div class="line">    &#125;</div><div class="line">    System.out.println(<span class="string">"String.valueOf()："</span> + (System.currentTimeMillis() - startTime) + <span class="string">"ms"</span>);</div><div class="line">    startTime = System.currentTimeMillis();</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; loopTime; j++)&#123;</div><div class="line">        String str = i.toString();</div><div class="line">    &#125;</div><div class="line">    System.out.println(<span class="string">"Integer.toString()："</span> + (System.currentTimeMillis() - startTime) + <span class="string">"ms"</span>);</div><div class="line">    startTime = System.currentTimeMillis(); <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; loopTime; j++)</div><div class="line">    &#123;</div><div class="line">        String str = i + <span class="string">""</span>;</div><div class="line">    &#125;</div><div class="line">    System.out.println(<span class="string">"i + \"\"："</span> + (System.currentTimeMillis() - startTime) + <span class="string">"ms"</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>运行结果为：</p>
+<p>String.valueOf()：11ms Integer.toString()：5ms i + “”：25ms<br>所以以后遇到把一个基本数据类型转为String的时候，优先考虑使用toString()方法。至于为什么，很简单：</p>
+<p>1、String.valueOf()方法底层调用了Integer.toString()方法，但是会在调用前做空判断</p>
+<p>2、Integer.toString()方法就不说了，直接调用了</p>
+<p>3、i + “”底层使用了StringBuilder实现，先用append方法拼接，再用toString()方法获取字符串</p>
+<p>三者对比下来，明显是2最快、1次之、3最慢</p>
+<p><strong>34、使用最有效率的方式去遍历Map</strong></p>
+<p>遍历Map的方式有很多，通常场景下我们需要的是遍历Map中的Key和Value，那么推荐使用的、效率最高的方式是：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</div><div class="line">    HashMap&lt;String, String&gt; hm = <span class="keyword">new</span> HashMap&lt;String, String&gt;();</div><div class="line">    hm.put(<span class="string">"111"</span>, <span class="string">"222"</span>);</div><div class="line">    Set&lt;Map.Entry&lt;String, String&gt;&gt; entrySet = hm.entrySet();</div><div class="line">    Iterator&lt;Map.Entry&lt;String, String&gt;&gt; iter = entrySet.iterator();</div><div class="line">    <span class="keyword">while</span> (iter.hasNext())&#123;</div><div class="line">        Map.Entry&lt;String, String&gt; entry = iter.next();</div><div class="line">        System.out.println(entry.getKey() + <span class="string">"\t"</span> + entry.getValue());</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>如果你只是想遍历一下这个Map的key值，那用”Set keySet = hm.keySet();”会比较合适一些</p>
+<p><strong>35、对资源的close()建议分开操作</strong></p>
+<p>意思是，比如我有这么一段代码：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">try</span>&#123;</div><div class="line">    XXX.close();</div><div class="line">    YYY.close();</div><div class="line">&#125;<span class="keyword">catch</span> (Exception e)&#123;</div><div class="line">    ...</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>建议修改为：</p>
+<p>try{ XXX.close(); }catch (Exception e) { … }try{ YYY.close(); }catch (Exception e) { … }<br>虽然有些麻烦，却能避免资源泄露。我们想，如果没有修改过的代码，万一XXX.close()抛异常了，那么就进入了cath块中了，YYY.close()不会执行，YYY这块资源就不会回收了，一直占用着，这样的代码一多，是可能引起资源句柄泄露的。而改为下面的写法之后，就保证了无论如何XXX和YYY都会被close掉。</p>
+
+      
+       <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 jaytp@qq.com </span>
+    </div>
+</article>
+
+
+<p>
+    <a  class="dashang" onclick="dashangToggle()">赏</a>
+</p>
+
+
+<div class="article_copyright">
+    <p><span class="copy-title">文章标题:</span>35个Java代码性能优化总结</p>
+    
+    <p><span class="copy-title">本文作者:</span><a  title="王大可">王大可</a></p>
+    <p><span class="copy-title">发布时间:</span>2017-10-10, 14:07:20</p>
+    <p><span class="copy-title">最后更新:</span>2018-11-08, 12:07:48</p>
+    <span class="copy-title">原始链接:</span><a class="post-url" href="/2017/10/10/35个Java代码性能优化总结/" title="35个Java代码性能优化总结">http://yoursite.com/2017/10/10/35个Java代码性能优化总结/</a>
+    <p>
+        <span class="copy-title">版权声明:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
+    </p>
+</div>
+
+
+
+
+
+    
+
+
+
+
+    </div>
+    <div class="copyright">
+        <p class="footer-entry">©2016-2019 Yelog</p>
+<p class="footer-entry">Built with <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/yelog/hexo-theme-3-hexo" target="_blank">3-hexo</a> theme</p>
+
+    </div>
+    <div class="full-toc">
+        <button class="full"><span class="min "></span></button>
+<button class="post-toc-menu"><span class="post-toc-menu-icons"></span></button>
+<div class="post-toc"><span class="post-toc-title">目录</span>
+    <div class="post-toc-content">
+
+    </div>
+</div>
+<a class="" id="rocket" ></a>
+
+    </div>
+</div>
+<div class="acParent"></div>
+
+<div class="hide_box" onclick="dashangToggle()"></div>
+<div class="shang_box">
+    <a class="shang_close"  onclick="dashangToggle()">×</a>
+    <div class="shang_tit">
+        <p>喜欢就点赞,疼爱就打赏</p>
+    </div>
+    <div class="shang_payimg">
+        <div class="pay_img">
+            <img src="/img/alipay.jpg" class="alipay" title="扫码支持">
+            <img src="/img/weixin.jpg" class="weixin" title="扫码支持">
+        </div>
+    </div>
+    <div class="shang_payselect">
+        <span><label><input type="radio" name="pay" checked value="alipay">支付宝</label></span><span><label><input type="radio" name="pay" value="weixin">微信</label></span>
+    </div>
+</div>
+
+
+</body>
+<script src="/js/jquery.pjax.js?v=1.0.1" ></script>
+
+<script src="/js/script.js?v=1.0.1" ></script>
+<script>
+    var img_resize = 'default';
+    /*作者、标签的自动补全*/
+    $(function () {
+        $('.search').AutoComplete({
+            'data': [],
+            'itemHeight': 20,
+            'width': 418
+        }).AutoComplete('show');
+    })
+    function initArticle() {
+        /*渲染对应的表格样式*/
+        
+            $(".post .pjax table").addClass("green_title");
+        
+
+        /*渲染打赏样式*/
+        
+        $("input[name=pay]").on("click", function () {
+            if($("input[name=pay]:checked").val()=="weixin"){
+                $(".shang_box .shang_payimg .pay_img").addClass("weixin_img");
+            } else {
+                $(".shang_box .shang_payimg .pay_img").removeClass("weixin_img");
+            }
+        })
+        
+
+        /*高亮代码块行号*/
+        
+        $('pre code').each(function(){
+            var lines = $(this).text().split('\n').length - 1, widther='';
+            if (lines>99) {
+                widther = 'widther'
+            }
+            var $numbering = $('<ul/>').addClass('pre-numbering ' + widther).attr("unselectable","on");
+            $(this).addClass('has-numbering ' + widther)
+                    .parent()
+                    .append($numbering);
+            for(var i=1;i<=lines;i++){
+                $numbering.append($('<li/>').text(i));
+            }
+        });
+        
+
+        /*访问数量*/
+        
+        $.getScript("//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js");
+        
+
+        /*代码高亮，行号对齐*/
+        $('.pre-numbering').css('line-height',$('.has-numbering').css('line-height'));
+
+        
+        
+    }
+
+    /*打赏页面隐藏与展示*/
+    
+    function dashangToggle() {
+        $(".shang_box").fadeToggle();
+        $(".hide_box").fadeToggle();
+    }
+    
+
+</script>
+
+<!--加入行号的高亮代码块样式-->
+
+<style>
+    pre{
+        position: relative;
+        margin-bottom: 24px;
+        border-radius: 10px;
+        border: 1px solid #e2dede;
+        background: #FFF;
+        overflow: hidden;
+    }
+    code.has-numbering{
+        margin-left: 30px;
+    }
+    code.has-numbering.widther{
+        margin-left: 35px;
+    }
+    .pre-numbering{
+        margin: 0px;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 20px;
+        padding: 0.5em 3px 0.7em 5px;
+        border-right: 1px solid #C3CCD0;
+        text-align: right;
+        color: #AAA;
+        background-color: #fafafa;
+    }
+    .pre-numbering.widther {
+        width: 35px;
+    }
+</style>
+
+<!--自定义样式设置-->
+<style>
+    
+    
+    .nav {
+        width: 542px;
+    }
+    .nav.fullscreen {
+        margin-left: -542px;
+    }
+    .nav-left {
+        width: 120px;
+    }
+    
+    
+    @media screen and (max-width: 1468px) {
+        .nav {
+            width: 492px;
+        }
+        .nav.fullscreen {
+            margin-left: -492px;
+        }
+        .nav-left {
+            width: 100px;
+        }
+    }
+    
+    
+    @media screen and (max-width: 1024px) {
+        .nav {
+            width: 492px;
+            margin-left: -492px
+        }
+        .nav.fullscreen {
+            margin-left: 0;
+        }
+        .nav .hide-list.fullscreen {
+            left: 492px
+        }
+    }
+    
+    @media screen and (max-width: 426px) {
+        .nav {
+            width: 100%;
+        }
+        .nav-left {
+            width: 100%;
+        }
+    }
+    
+    
+    .nav-right .title-list nav a .post-title, .nav-right .title-list #local-search-result a .post-title {
+        color: #383636;
+    }
+    
+    
+    .nav-right .title-list nav a .post-date, .nav-right .title-list #local-search-result a .post-date {
+        color: #5e5e5f;
+    }
+    
+    
+    .nav-right nav a.hover, #local-search-result a.hover{
+        background-color: #e2e0e0;
+    }
+    
+    
+
+    /*列表样式*/
+    
+    .post .pjax article .article-entry>ol, .post .pjax article .article-entry>ul, .post .pjax article>ol, .post .pjax article>ul{
+        border: #e2dede solid 1px;
+        border-radius: 10px;
+        padding: 10px 32px 10px 56px;
+    }
+    .post .pjax article .article-entry li>ol, .post .pjax article .article-entry li>ul,.post .pjax article li>ol, .post .pjax article li>ul{
+        padding-top: 5px;
+        padding-bottom: 5px;
+    }
+    .post .pjax article .article-entry>ol>li, .post .pjax article .article-entry>ul>li,.post .pjax article>ol>li, .post .pjax article>ul>li{
+        margin-bottom: auto;
+        margin-left: auto;
+    }
+    .post .pjax article .article-entry li>ol>li, .post .pjax article .article-entry li>ul>li,.post .pjax article li>ol>li, .post .pjax article li>ul>li{
+        margin-bottom: auto;
+        margin-left: auto;
+    }
+    
+
+    /* 背景图样式 */
+    
+    
+
+
+    /*引用块样式*/
+    
+
+    /*文章列表背景图*/
+    
+    .nav-right:before {
+        content: ' ';
+        display: block;
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0.3;
+        background: url("https://i.loli.net/2019/07/22/5d3521411f3f169375.png");
+        background-repeat: no-repeat;
+        background-position: 50% 0;
+        -ms-background-size: cover;
+        -o-background-size: cover;
+        -moz-background-size: cover;
+        -webkit-background-size: cover;
+        background-size: cover;
+    }
+    
+
+    
+</style>
+
+
+
+
+
+
+
+</html>

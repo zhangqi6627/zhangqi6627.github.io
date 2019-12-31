@@ -1,0 +1,1678 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>mtklog分析 | 王大可的茅草房</title>
+  <meta name="keywords" content="">
+  <meta name="description" content="mtklog分析 | 王大可的茅草房">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="description" content="123456789Class&amp;lt;?&amp;gt; serviceManagerClass;serviceManagerClass = Class.forName(&quot;android.os.ServiceManager&quot;);Method getService = serviceManagerClass.getMethod(&quot;getService&quot;, String.class);IBinder retbi">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android反射调用通知栏回收">
+<meta property="og:url" content="http://yoursite.com/2019/12/31/Android反射调用通知栏回收/index.html">
+<meta property="og:site_name" content="王大可的茅草房">
+<meta property="og:description" content="123456789Class&amp;lt;?&amp;gt; serviceManagerClass;serviceManagerClass = Class.forName(&quot;android.os.ServiceManager&quot;);Method getService = serviceManagerClass.getMethod(&quot;getService&quot;, String.class);IBinder retbi">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-12-31T06:05:24.379Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Android反射调用通知栏回收">
+<meta name="twitter:description" content="123456789Class&amp;lt;?&amp;gt; serviceManagerClass;serviceManagerClass = Class.forName(&quot;android.os.ServiceManager&quot;);Method getService = serviceManagerClass.getMethod(&quot;getService&quot;, String.class);IBinder retbi">
+
+
+<link rel="icon" href="/img/avatar.jpg">
+
+<link href="/css/style.css?v=1.0.1" rel="stylesheet">
+
+<link href="/css/hl_theme/atom-light.css?v=1.0.1" rel="stylesheet">
+
+<link href="//cdn.bootcss.com/animate.css/3.5.2/animate.min.css" rel="stylesheet">
+<link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
+<script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+<script src="/js/jquery.autocomplete.min.js?v=1.0.1" ></script>
+
+<script src="//cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
+
+<script src="//cdn.bootcss.com/nprogress/0.2.0/nprogress.min.js"></script>
+
+
+
+<script src="//cdn.bootcss.com/jquery-cookie/1.4.1/jquery.cookie.min.js" ></script>
+
+<script src="/js/iconfont.js?v=1.0.1" ></script>
+
+</head>
+<div style="display: none">
+  <input class="theme_disqus_on" value="false">
+  <input class="theme_preload_comment" value="false">
+  <input class="theme_blog_path" value="">
+</div>
+
+<body>
+<aside class="nav">
+    <div class="nav-left">
+        <a href="/" class="avatar_target">
+    <img class="avatar" src="/img/avatar.jpg" />
+</a>
+<div class="author">
+    <span>王大可</span>
+</div>
+
+<div class="icon">
+    
+        
+        <a title="rss" href="/atom.xml" target="_blank">
+            
+                <svg class="iconfont-svg" aria-hidden="true">
+                    <use xlink:href="#icon-rss"></use>
+                </svg>
+            
+        </a>
+        
+    
+        
+        <a title="github" href="https://github.com/yelog" target="_blank">
+            
+                <svg class="iconfont-svg" aria-hidden="true">
+                    <use xlink:href="#icon-github"></use>
+                </svg>
+            
+        </a>
+        
+    
+        
+        <a title="facebook" href="https://www.facebook.com/faker.tops" target="_blank">
+            
+                <svg class="iconfont-svg" aria-hidden="true">
+                    <use xlink:href="#icon-facebook"></use>
+                </svg>
+            
+        </a>
+        
+    
+        
+    
+        
+    
+        
+        <a title="instagram" href="https://www.facebook.com/faker.tops" target="_blank">
+            
+                <svg class="iconfont-svg" aria-hidden="true">
+                    <use xlink:href="#icon-instagram"></use>
+                </svg>
+            
+        </a>
+        
+    
+        
+        <a title="reddit" href="https://www.reddit.com/user/yelog/" target="_blank">
+            
+                <svg class="iconfont-svg" aria-hidden="true">
+                    <use xlink:href="#icon-reddit"></use>
+                </svg>
+            
+        </a>
+        
+    
+        
+        <a title="weibo" href="http://weibo.com/u/2307534817" target="_blank">
+            
+                <svg class="iconfont-svg" aria-hidden="true">
+                    <use xlink:href="#icon-weibo"></use>
+                </svg>
+            
+        </a>
+        
+    
+        
+        <a title="jianshu" href="https://www.jianshu.com/u/ff56736de7cf" target="_blank">
+            
+                <svg class="iconfont-svg" aria-hidden="true">
+                    <use xlink:href="#icon-jianshu"></use>
+                </svg>
+            
+        </a>
+        
+    
+        
+        <a title="zhihu" href="https://www.zhihu.com/people/jaytp/activities" target="_blank">
+            
+                <svg class="iconfont-svg" aria-hidden="true">
+                    <use xlink:href="#icon-zhihu"></use>
+                </svg>
+            
+        </a>
+        
+    
+        
+    
+        
+        <a title="oschina" href="https://my.oschina.net/yelog" target="_blank">
+            
+                <svg class="iconfont-svg" aria-hidden="true">
+                    <use xlink:href="#icon-oschina"></use>
+                </svg>
+            
+        </a>
+        
+    
+        
+    
+        
+        <a title="email" href="mailto:jaytp@qq.com" target="_blank">
+            
+                <svg class="iconfont-svg" aria-hidden="true">
+                    <use xlink:href="#icon-email"></use>
+                </svg>
+            
+        </a>
+        
+    
+        
+        <a title="qq" href="http://wpa.qq.com/msgrd?v=3&uin=872336115&site=qq&menu=yes" target="_blank">
+            
+                <svg class="iconfont-svg" aria-hidden="true">
+                    <use xlink:href="#icon-qq"></use>
+                </svg>
+            
+        </a>
+        
+    
+        
+        <a title="kugou" href="https://www.kugou.com/" target="_blank">
+            
+                <svg class="iconfont-svg" aria-hidden="true">
+                    <use xlink:href="#icon-kugou"></use>
+                </svg>
+            
+        </a>
+        
+    
+        
+        <a title="neteasemusic" href="https://music.163.com/#/user/home?id=88151013" target="_blank">
+            
+                <svg class="iconfont-svg" aria-hidden="true">
+                    <use xlink:href="#icon-neteasemusic"></use>
+                </svg>
+            
+        </a>
+        
+    
+</div>
+
+
+
+
+<ul>
+    <li><div class="all active">全部文章<small>(124)</small></div></li>
+    
+</ul>
+<div class="left-bottom">
+    <div class="menus">
+    
+    
+    
+    
+    </div>
+    <div><a class="about  hasFriend  site_url"  href="/about">关于</a><a style="width: 50%"  class="friends">友链</a></div>
+</div>
+<input type="hidden" id="yelog_site_posts_number" value="124">
+
+<div style="display: none">
+    <span id="busuanzi_value_site_uv"></span>
+    <span id="busuanzi_value_site_pv"></span>
+</div>
+
+    </div>
+    <div class="nav-right">
+        <div class="friends-area">
+    <div class="friends-title">
+        友情链接
+        <i class="back-title-list"></i>
+    </div>
+    <div class="friends-content">
+        <ul>
+            
+            <li><a target="_blank" href="http://yelog.org/">叶落阁</a></li>
+            
+        </ul>
+    </div>
+</div>
+        <div class="title-list">
+    <form onkeydown="if(event.keyCode==13){return false;}">
+        <input class="search" type="text" placeholder="Search..." autocomplete="off"id="local-search-input" >
+        <i class="cross"></i>
+        <span>
+            <label for="tagswitch">Tags:</label>
+            <input id="tagswitch" type="checkbox" style="display: none" />
+            <i id="tagsWitchIcon"></i>
+        </span>
+    </form>
+    <div class="tags-list">
+    
+    <div class="clearfix"></div>
+</div>
+
+    
+    <nav id="title-list-nav">
+        
+        <a  class=""
+           href="/2017/10/10/35个Java代码性能优化总结/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="35个Java代码性能优化总结">35个Java代码性能优化总结</span>
+            <span class="post-date" title="2017-10-10 14:07:20">2017/10/10</span>
+        </a>
+        
+        <a  class=""
+           href="/2018/02/27/50篇Android干货文章/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="50篇Android干货文章">50篇Android干货文章</span>
+            <span class="post-date" title="2018-02-27 11:08:41">2018/02/27</span>
+        </a>
+        
+        <a  class=""
+           href="/2018/04/11/ANR问题分析/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="ANR问题分析">ANR问题分析</span>
+            <span class="post-date" title="2018-04-11 10:41:59">2018/04/11</span>
+        </a>
+        
+        <a  class=""
+           href="/2017/09/22/Activity和Service之间通过接口进行通信/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Activity和Service之间通过接口进行通信">Activity和Service之间通过接口进行通信</span>
+            <span class="post-date" title="2017-09-22 13:19:22">2017/09/22</span>
+        </a>
+        
+        <a  class=""
+           href="/2017/09/22/Android单元测试/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Android单元测试">Android单元测试</span>
+            <span class="post-date" title="2017-09-22 12:48:21">2017/09/22</span>
+        </a>
+        
+        <a  class=""
+           href="/2017/09/25/Bitmap内存优化/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Bitmap内存优化">Bitmap内存优化</span>
+            <span class="post-date" title="2017-09-25 15:35:36">2017/09/25</span>
+        </a>
+        
+        <a  class=""
+           href="/2019/12/31/Android反射调用通知栏回收/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Android反射调用通知栏回收">Android反射调用通知栏回收</span>
+            <span class="post-date" title="2019-12-31 14:04:21">2019/12/31</span>
+        </a>
+        
+        <a  class=""
+           href="/2017/10/09/ButterKnife的学习和使用/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="ButterKnife的学习和使用">ButterKnife的学习和使用</span>
+            <span class="post-date" title="2017-10-09 14:56:45">2017/10/09</span>
+        </a>
+        
+        <a  class=""
+           href="/2018/04/09/Channel-is-unrecoverably-broken-and-will-be-disposed/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Channel is unrecoverably broken and will be disposed">Channel is unrecoverably broken and will be disposed</span>
+            <span class="post-date" title="2018-04-09 10:24:45">2018/04/09</span>
+        </a>
+        
+        <a  class=""
+           href="/2017/10/11/Chronometer的学习和使用/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Chronometer的学习和使用">Chronometer的学习和使用</span>
+            <span class="post-date" title="2017-10-11 09:45:28">2017/10/11</span>
+        </a>
+        
+        <a  class=""
+           href="/2018/03/02/EventLog含义/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="EventLog含义">EventLog含义</span>
+            <span class="post-date" title="2018-03-02 13:33:11">2018/03/02</span>
+        </a>
+        
+        <a  class=""
+           href="/2018/07/25/Hexo常用命令/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Hexo常用命令">Hexo常用命令</span>
+            <span class="post-date" title="2018-07-25 16:59:22">2018/07/25</span>
+        </a>
+        
+        <a  class=""
+           href="/2017/09/28/Intent的高级写法/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Intent的高级写法">Intent的高级写法</span>
+            <span class="post-date" title="2017-09-28 15:39:49">2017/09/28</span>
+        </a>
+        
+        <a  class=""
+           href="/2018/03/08/Java的编译时多态和运行时多态/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Java的编译时多态和运行时多态">Java的编译时多态和运行时多态</span>
+            <span class="post-date" title="2018-03-08 12:57:48">2018/03/08</span>
+        </a>
+        
+        <a  class=""
+           href="/2017/09/22/L6735M平台上如何配置才能使SN号码唯一/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="L6735M平台上如何配置才能使SN号码唯一">L6735M平台上如何配置才能使SN号码唯一</span>
+            <span class="post-date" title="2017-09-22 10:20:50">2017/09/22</span>
+        </a>
+        
+        <a  class=""
+           href="/2017/09/21/ListView界面点击按键的时候会显示快捷搜索框/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="ListView界面点击按键的时候会显示快捷搜索框">ListView界面点击按键的时候会显示快捷搜索框</span>
+            <span class="post-date" title="2017-09-21 16:55:39">2017/09/21</span>
+        </a>
+        
+        <a  class=""
+           href="/2017/09/22/Observer观察者模式/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Observer观察者模式">Observer观察者模式</span>
+            <span class="post-date" title="2017-09-22 13:17:51">2017/09/22</span>
+        </a>
+        
+        <a  class=""
+           href="/2018/03/08/Launcher移植学习/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Launcher移植学习">Launcher移植学习</span>
+            <span class="post-date" title="2018-03-08 09:50:39">2018/03/08</span>
+        </a>
+        
+        <a  class=""
+           href="/2017/09/30/ShadowView的学习和使用/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="ShadowView的学习和使用">ShadowView的学习和使用</span>
+            <span class="post-date" title="2017-09-30 14:51:25">2017/09/30</span>
+        </a>
+        
+        <a  class=""
+           href="/2017/09/29/Snackbar的学习和使用/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Snackbar的学习和使用">Snackbar的学习和使用</span>
+            <span class="post-date" title="2017-09-29 14:15:17">2017/09/29</span>
+        </a>
+        
+        <a  class=""
+           href="/2018/04/09/The-application-may-be-doing-too-much-work-on-its-main-thread/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="The application may be doing too much work on its main thread">The application may be doing too much work on its main thread</span>
+            <span class="post-date" title="2018-04-09 10:34:00">2018/04/09</span>
+        </a>
+        
+        <a  class=""
+           href="/2017/09/22/Toast优化/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Toast优化">Toast优化</span>
+            <span class="post-date" title="2017-09-22 11:14:53">2017/09/22</span>
+        </a>
+        
+        <a  class=""
+           href="/2017/09/25/adb-shell-input-text源码分析/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="adb shell input text源码分析">adb shell input text源码分析</span>
+            <span class="post-date" title="2017-09-25 15:00:24">2017/09/25</span>
+        </a>
+        
+        <a  class=""
+           href="/2017/09/21/adb命令集合/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="adb命令集合">adb命令集合</span>
+            <span class="post-date" title="2017-09-21 16:40:22">2017/09/21</span>
+        </a>
+        
+        <a  class=""
+           href="/2018/08/03/adb控制mtklog/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="adb控制mtklog">adb控制mtklog</span>
+            <span class="post-date" title="2018-08-03 09:21:20">2018/08/03</span>
+        </a>
+        
+        <a  class=""
+           href="/2018/03/26/android-am-pm-wm命令/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="android am pm wm命令">android am pm wm命令</span>
+            <span class="post-date" title="2018-03-26 13:25:19">2018/03/26</span>
+        </a>
+        
+        <a  class=""
+           href="/2017/09/25/android-res下资源命名规则/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="android-res下资源命名规则">android-res下资源命名规则</span>
+            <span class="post-date" title="2017-09-25 15:40:07">2017/09/25</span>
+        </a>
+        
+        <a  class=""
+           href="/2017/09/21/android中media的url/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="android中media的url">android中media的url</span>
+            <span class="post-date" title="2017-09-21 12:52:17">2017/09/21</span>
+        </a>
+        
+        <a  class=""
+           href="/2017/09/21/android清理缓存功能的实现/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="android清理缓存功能的实现">android清理缓存功能的实现</span>
+            <span class="post-date" title="2017-09-21 11:15:46">2017/09/21</span>
+        </a>
+        
+        <a  class=""
+           href="/2017/09/21/ccache/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="ccache">ccache</span>
+            <span class="post-date" title="2017-09-21 17:02:16">2017/09/21</span>
+        </a>
+        
+        <a  class=""
+           href="/2018/07/27/docker加载ylzq/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="docker加载ylzq">docker加载ylzq</span>
+            <span class="post-date" title="2018-07-27 09:47:22">2018/07/27</span>
+        </a>
+        
+        <a  class=""
+           href="/2018/07/27/docker安装ss/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="docker安装ss">docker安装ss</span>
+            <span class="post-date" title="2018-07-27 09:50:20">2018/07/27</span>
+        </a>
+        
+        <a  class=""
+           href="/2017/09/19/framework下添加一个自定义的服务/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="framework下添加一个自定义的服务 SELinux Permission Denied">framework下添加一个自定义的服务 SELinux Permission Denied</span>
+            <span class="post-date" title="2017-09-19 15:22:13">2017/09/19</span>
+        </a>
+        
+        <a  class=""
+           href="/2018/04/11/git命令大全/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="git命令大全">git命令大全</span>
+            <span class="post-date" title="2018-04-11 13:40:22">2018/04/11</span>
+        </a>
+        
+        <a  class=""
+           href="/2019/04/15/hello-world/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Hello World">Hello World</span>
+            <span class="post-date" title="2019-04-15 16:50:54">2019/04/15</span>
+        </a>
+        
+        <a  class=""
+           href="/2018/04/25/insufficient-permissions-for-device/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="insufficient permissions for device">insufficient permissions for device</span>
+            <span class="post-date" title="2018-04-25 09:20:29">2018/04/25</span>
+        </a>
+        
+        <a  class=""
+           href="/2017/09/19/jack编译报错/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="编译报错 Out of memory error (version 1.2-rc4 &#39;Carnac&#39;">编译报错 Out of memory error (version 1.2-rc4 &#39;Carnac&#39;</span>
+            <span class="post-date" title="2017-09-19 14:34:29">2017/09/19</span>
+        </a>
+        
+        <a  class=""
+           href="/2018/08/03/markdown语法/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="markdown语法">markdown语法</span>
+            <span class="post-date" title="2018-08-03 10:01:36">2018/08/03</span>
+        </a>
+        
+        <a  class=""
+           href="/2017/09/21/menu菜单的解析/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="menu菜单的解析">menu菜单的解析</span>
+            <span class="post-date" title="2017-09-21 17:08:54">2017/09/21</span>
+        </a>
+        
+        <a  class=""
+           href="/2018/04/09/mtklog分析/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="mtklog分析">mtklog分析</span>
+            <span class="post-date" title="2018-04-09 13:10:12">2018/04/09</span>
+        </a>
+        
+        <a  class=""
+           href="/2018/03/08/root权限相关/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="root权限相关">root权限相关</span>
+            <span class="post-date" title="2018-03-08 12:49:31">2018/03/08</span>
+        </a>
+        
+        <a  class=""
+           href="/2017/09/21/setDescendantFocusability的参数含义/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="setDescendantFocusability的参数含义">setDescendantFocusability的参数含义</span>
+            <span class="post-date" title="2017-09-21 13:39:14">2017/09/21</span>
+        </a>
+        
+        <a  class=""
+           href="/2017/09/19/shutdown-selinux/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="如何设置确认selinux 模式">如何设置确认selinux 模式</span>
+            <span class="post-date" title="2017-09-19 15:54:53">2017/09/19</span>
+        </a>
+        
+        <a  class=""
+           href="/2017/09/22/sqlite-rawQuery/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="sqlite rawQuery() 方法怎么用">sqlite rawQuery() 方法怎么用</span>
+            <span class="post-date" title="2017-09-22 10:45:52">2017/09/22</span>
+        </a>
+        
+        <a  class=""
+           href="/2017/09/21/support-features/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="support_features">support_features</span>
+            <span class="post-date" title="2017-09-21 17:10:05">2017/09/21</span>
+        </a>
+        
+        <a  class=""
+           href="/2017/09/25/ubuntu下cocos2dx学习/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="ubuntu下cocos2dx学习">ubuntu下cocos2dx学习</span>
+            <span class="post-date" title="2017-09-25 15:36:46">2017/09/25</span>
+        </a>
+        
+        <a  class=""
+           href="/2018/07/27/ubuntu安装docker/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="ubuntu安装docker">ubuntu安装docker</span>
+            <span class="post-date" title="2018-07-27 09:49:38">2018/07/27</span>
+        </a>
+        
+        <a  class=""
+           href="/2017/09/21/ubuntu搜狗输入法无法输入中文/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="ubuntu搜狗输入法无法输入中文">ubuntu搜狗输入法无法输入中文</span>
+            <span class="post-date" title="2017-09-21 10:42:39">2017/09/21</span>
+        </a>
+        
+        <a  class=""
+           href="/2017/09/22/wifi热点名称保存读取/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="wifi热点名称保存读取">wifi热点名称保存读取</span>
+            <span class="post-date" title="2017-09-22 09:27:51">2017/09/22</span>
+        </a>
+        
+        <a  class=""
+           href="/2017/09/22/两个Activity之间通过接口进行通信/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="两个Activity之间通过接口进行通信">两个Activity之间通过接口进行通信</span>
+            <span class="post-date" title="2017-09-22 13:18:42">2017/09/22</span>
+        </a>
+        
+        <a  class=""
+           href="/2018/02/27/为用户生成有趣的头像/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="为用户生成有趣的头像">为用户生成有趣的头像</span>
+            <span class="post-date" title="2018-02-27 09:23:02">2018/02/27</span>
+        </a>
+        
+        <a  class=""
+           href="/2017/09/22/使用AIDL调用CountryDetector中的接口来获取国家编码/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="使用AIDL调用CountryDetector中的接口来获取国家编码">使用AIDL调用CountryDetector中的接口来获取国家编码</span>
+            <span class="post-date" title="2017-09-22 14:12:26">2017/09/22</span>
+        </a>
+        
+        <a  class=""
+           href="/2017/09/22/保存大文件到sqlite数据库/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="保存大文件到sqlite数据库">保存大文件到sqlite数据库</span>
+            <span class="post-date" title="2017-09-22 13:20:16">2017/09/22</span>
+        </a>
+        
+        <a  class=""
+           href="/2017/09/25/修改SIMToolkit的显示名称/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="修改SIMToolkit的显示名称">修改SIMToolkit的显示名称</span>
+            <span class="post-date" title="2017-09-25 15:29:07">2017/09/25</span>
+        </a>
+        
+        <a  class=""
+           href="/2017/09/22/修改wifi热点默认密码/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="修改wifi热点默认密码">修改wifi热点默认密码</span>
+            <span class="post-date" title="2017-09-22 10:30:07">2017/09/22</span>
+        </a>
+        
+        <a  class=""
+           href="/2017/09/22/修改某些分区表中的某些分区之后不起作用/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="修改某些分区表中的某些分区之后不起作用">修改某些分区表中的某些分区之后不起作用</span>
+            <span class="post-date" title="2017-09-22 09:58:35">2017/09/22</span>
+        </a>
+        
+        <a  class=""
+           href="/2017/09/21/修改默认Launcher/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="修改默认Launcher">修改默认Launcher</span>
+            <span class="post-date" title="2017-09-21 15:35:40">2017/09/21</span>
+        </a>
+        
+        <a  class=""
+           href="/2017/09/21/修改默认日期/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="修改默认日期">修改默认日期</span>
+            <span class="post-date" title="2017-09-21 14:19:03">2017/09/21</span>
+        </a>
+        
+        <a  class=""
+           href="/2019/04/15/修改默认的两个闹钟震动打开/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title=""></span>
+            <span class="post-date" title="2019-04-15 16:50:54">2019/04/15</span>
+        </a>
+        
+        <a  class=""
+           href="/2017/09/22/全局对话框/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="全局对话框">全局对话框</span>
+            <span class="post-date" title="2017-09-22 15:11:55">2017/09/22</span>
+        </a>
+        
+        <a  class=""
+           href="/2017/09/22/关闭NavigationBar/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="关闭NavigationBar">关闭NavigationBar</span>
+            <span class="post-date" title="2017-09-22 12:54:57">2017/09/22</span>
+        </a>
+        
+        <a  class=""
+           href="/2017/09/25/内存消耗测试/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="内存消耗测试">内存消耗测试</span>
+            <span class="post-date" title="2017-09-25 15:42:23">2017/09/25</span>
+        </a>
+        
+        <a  class=""
+           href="/2017/09/21/减缓按键长按事件的处理速度/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="减缓按键长按事件的处理速度">减缓按键长按事件的处理速度</span>
+            <span class="post-date" title="2017-09-21 16:53:58">2017/09/21</span>
+        </a>
+        
+        <a  class=""
+           href="/2017/09/25/动态壁纸的学习和使用/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="动态壁纸的学习和使用">动态壁纸的学习和使用</span>
+            <span class="post-date" title="2017-09-25 14:37:21">2017/09/25</span>
+        </a>
+        
+        <a  class=""
+           href="/2018/03/08/反编译/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="反编译">反编译</span>
+            <span class="post-date" title="2018-03-08 12:52:28">2018/03/08</span>
+        </a>
+        
+        <a  class=""
+           href="/2017/09/25/反编译查看google向导设置息屏时间121000/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="反编译查看google向导设置息屏时间121000">反编译查看google向导设置息屏时间121000</span>
+            <span class="post-date" title="2017-09-25 15:32:18">2017/09/25</span>
+        </a>
+        
+        <a  class=""
+           href="/2017/09/22/同时支持两个文件名不同的布局/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="同时支持两个文件名不同的布局">同时支持两个文件名不同的布局</span>
+            <span class="post-date" title="2017-09-22 10:50:09">2017/09/22</span>
+        </a>
+        
+        <a  class=""
+           href="/2017/09/22/圆形的Imageview/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="圆形的Imageview">圆形的Imageview</span>
+            <span class="post-date" title="2017-09-22 10:31:57">2017/09/22</span>
+        </a>
+        
+        <a  class=""
+           href="/2018/03/26/在framework下添加字体和使用方法/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="在framework下添加字体和使用方法">在framework下添加字体和使用方法</span>
+            <span class="post-date" title="2018-03-26 14:58:38">2018/03/26</span>
+        </a>
+        
+        <a  class=""
+           href="/2017/09/22/在关闭飞行模式之后蓝牙打不开/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="在关闭飞行模式之后蓝牙打不开">在关闭飞行模式之后蓝牙打不开</span>
+            <span class="post-date" title="2017-09-22 10:47:44">2017/09/22</span>
+        </a>
+        
+        <a  class=""
+           href="/2017/09/25/在刷机之后Camera有可能会消失/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="在刷机之后Camera有可能会消失">在刷机之后Camera有可能会消失</span>
+            <span class="post-date" title="2017-09-25 15:02:46">2017/09/25</span>
+        </a>
+        
+        <a  class=""
+           href="/2017/09/22/如何去掉AccentedEnglish/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="如何去掉AccentedEnglish">如何去掉AccentedEnglish</span>
+            <span class="post-date" title="2017-09-22 14:01:34">2017/09/22</span>
+        </a>
+        
+        <a  class=""
+           href="/2017/09/22/如何在下载好图片之后更新Gallery/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="如何在下载好图片之后更新Gallery">如何在下载好图片之后更新Gallery</span>
+            <span class="post-date" title="2017-09-22 13:55:31">2017/09/22</span>
+        </a>
+        
+        <a  class=""
+           href="/2017/09/22/如何编译ICU资源/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="如何编译ICU资源">如何编译ICU资源</span>
+            <span class="post-date" title="2017-09-22 12:02:45">2017/09/22</span>
+        </a>
+        
+        <a  class=""
+           href="/2017/09/22/如何解析voicemail-conf-xml文件/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="如何解析voicemail-conf.xml文件">如何解析voicemail-conf.xml文件</span>
+            <span class="post-date" title="2017-09-22 11:16:02">2017/09/22</span>
+        </a>
+        
+        <a  class=""
+           href="/2017/09/25/如何让EditText不自动获取焦点/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="如何让EditText不自动获取焦点">如何让EditText不自动获取焦点</span>
+            <span class="post-date" title="2017-09-25 14:56:43">2017/09/25</span>
+        </a>
+        
+        <a  class=""
+           href="/2017/09/21/如何让Launcher支持横屏显示/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="如何让Launcher支持横屏显示">如何让Launcher支持横屏显示</span>
+            <span class="post-date" title="2017-09-21 16:21:27">2017/09/21</span>
+        </a>
+        
+        <a  class=""
+           href="/2017/09/22/如何通过代码动态设置语言/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="如何通过代码动态设置语言">如何通过代码动态设置语言</span>
+            <span class="post-date" title="2017-09-22 13:46:40">2017/09/22</span>
+        </a>
+        
+        <a  class=""
+           href="/2017/09/22/如果只是测试修改后效果，执行步骤A即可；如果需要build后生效，则需要执行全部步骤/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="如果只是测试修改后效果，执行步骤A即可；如果需要build后生效，则需要执行全部步骤">如果只是测试修改后效果，执行步骤A即可；如果需要build后生效，则需要执行全部步骤</span>
+            <span class="post-date" title="2017-09-22 12:02:28">2017/09/22</span>
+        </a>
+        
+        <a  class=""
+           href="/2017/09/25/客制化USB-CDROM/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="客制化USB CDROM的显示名称">客制化USB CDROM的显示名称</span>
+            <span class="post-date" title="2017-09-25 14:50:59">2017/09/25</span>
+        </a>
+        
+        <a  class=""
+           href="/2017/09/22/工厂方法模式/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="工厂方法模式">工厂方法模式</span>
+            <span class="post-date" title="2017-09-22 13:16:45">2017/09/22</span>
+        </a>
+        
+        <a  class=""
+           href="/2017/09/21/工厂测试中SD卡测试失败/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="工厂测试中SD卡测试失败">工厂测试中SD卡测试失败</span>
+            <span class="post-date" title="2017-09-21 12:56:08">2017/09/21</span>
+        </a>
+        
+        <a  class=""
+           href="/2017/09/22/应用开机自启动/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="应用开机自启动">应用开机自启动</span>
+            <span class="post-date" title="2017-09-22 09:01:43">2017/09/22</span>
+        </a>
+        
+        <a  class=""
+           href="/2017/09/25/性能测试/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="性能测试">性能测试</span>
+            <span class="post-date" title="2017-09-25 15:43:40">2017/09/25</span>
+        </a>
+        
+        <a  class=""
+           href="/2018/03/08/手机基本概念/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="手机基本概念">手机基本概念</span>
+            <span class="post-date" title="2018-03-08 13:06:42">2018/03/08</span>
+        </a>
+        
+        <a  class=""
+           href="/2018/04/26/排序的时候出现的问题Comparison-method-violates-its-general-contract/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="排序的时候出现的问题Comparison method violates its general contract!">排序的时候出现的问题Comparison method violates its general contract!</span>
+            <span class="post-date" title="2018-04-26 10:09:56">2018/04/26</span>
+        </a>
+        
+        <a  class=""
+           href="/2017/09/21/提高进程优先级/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="提高进程优先级">提高进程优先级</span>
+            <span class="post-date" title="2017-09-21 11:08:41">2017/09/21</span>
+        </a>
+        
+        <a  class=""
+           href="/2017/09/22/收到短信后未振动手机/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="收到短信后未振动手机">收到短信后未振动手机</span>
+            <span class="post-date" title="2017-09-22 13:25:09">2017/09/22</span>
+        </a>
+        
+        <a  class=""
+           href="/2018/03/08/数据连接信号小图标/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="数据连接信号小图标">数据连接信号小图标</span>
+            <span class="post-date" title="2018-03-08 11:21:55">2018/03/08</span>
+        </a>
+        
+        <a  class=""
+           href="/2017/09/22/数据连接默认开关/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="数据连接默认开关">数据连接默认开关</span>
+            <span class="post-date" title="2017-09-22 11:18:36">2017/09/22</span>
+        </a>
+        
+        <a  class=""
+           href="/2017/09/21/杀进程的脚本/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="杀进程的脚本">杀进程的脚本</span>
+            <span class="post-date" title="2017-09-21 14:15:19">2017/09/21</span>
+        </a>
+        
+        <a  class=""
+           href="/2017/09/22/根据SDK版本号判断使用哪个类中的方法/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="根据SDK版本号判断使用哪个类中的方法">根据SDK版本号判断使用哪个类中的方法</span>
+            <span class="post-date" title="2017-09-22 09:56:15">2017/09/22</span>
+        </a>
+        
+        <a  class=""
+           href="/2017/09/21/根据控件的ID名称获取控件的ID值/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="根据控件的ID名称获取控件的ID值">根据控件的ID名称获取控件的ID值</span>
+            <span class="post-date" title="2017-09-21 13:10:29">2017/09/21</span>
+        </a>
+        
+        <a  class=""
+           href="/2017/09/29/沉浸式学习/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="沉浸式学习">沉浸式学习</span>
+            <span class="post-date" title="2017-09-29 14:27:53">2017/09/29</span>
+        </a>
+        
+        <a  class=""
+           href="/2017/09/22/添加MoreRingtone菜单/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="添加MoreRingtone菜单">添加MoreRingtone菜单</span>
+            <span class="post-date" title="2017-09-22 14:08:38">2017/09/22</span>
+        </a>
+        
+        <a  class=""
+           href="/2017/09/22/添加代码禁用GoogleCamera/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="添加代码禁用GoogleCamera">添加代码禁用GoogleCamera</span>
+            <span class="post-date" title="2017-09-22 13:50:36">2017/09/22</span>
+        </a>
+        
+        <a  class=""
+           href="/2017/09/22/添加水印效果/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="添加水印效果">添加水印效果</span>
+            <span class="post-date" title="2017-09-22 09:44:20">2017/09/22</span>
+        </a>
+        
+        <a  class=""
+           href="/2017/09/25/游戏框架/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="游戏框架">游戏框架</span>
+            <span class="post-date" title="2017-09-25 15:44:48">2017/09/25</span>
+        </a>
+        
+        <a  class=""
+           href="/2017/09/21/短信转彩信条数限制/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="短信转彩信条数限制">短信转彩信条数限制</span>
+            <span class="post-date" title="2017-09-21 13:03:48">2017/09/21</span>
+        </a>
+        
+        <a  class=""
+           href="/2017/09/22/第一次插卡弹出apn对话框/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="第一次插卡弹出apn对话框">第一次插卡弹出apn对话框</span>
+            <span class="post-date" title="2017-09-22 10:42:23">2017/09/22</span>
+        </a>
+        
+        <a  class=""
+           href="/2017/09/25/给APK进行系统签名/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="给APK进行系统签名">给APK进行系统签名</span>
+            <span class="post-date" title="2017-09-25 14:53:17">2017/09/25</span>
+        </a>
+        
+        <a  class=""
+           href="/2017/09/22/网络请求/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="网络请求">网络请求</span>
+            <span class="post-date" title="2017-09-22 13:01:47">2017/09/22</span>
+        </a>
+        
+        <a  class=""
+           href="/2017/09/21/耳机模式下播放音乐再拍照音乐会卡顿/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="耳机模式下播放音乐再拍照音乐会卡顿">耳机模式下播放音乐再拍照音乐会卡顿</span>
+            <span class="post-date" title="2017-09-21 16:46:39">2017/09/21</span>
+        </a>
+        
+        <a  class=""
+           href="/2017/09/21/联系人编辑界面上的号码输入框无法输入加号/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="联系人编辑界面上的号码输入框无法输入加号">联系人编辑界面上的号码输入框无法输入加号</span>
+            <span class="post-date" title="2017-09-21 16:57:34">2017/09/21</span>
+        </a>
+        
+        <a  class=""
+           href="/2017/09/22/背光亮度设置后待机界面快捷图标不会随之变化/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="背光亮度设置后待机界面快捷图标不会随之变化">背光亮度设置后待机界面快捷图标不会随之变化</span>
+            <span class="post-date" title="2017-09-22 11:23:09">2017/09/22</span>
+        </a>
+        
+        <a  class=""
+           href="/2017/09/21/自定义EditText的光标颜色/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="自定义EditText的光标颜色">自定义EditText的光标颜色</span>
+            <span class="post-date" title="2017-09-21 13:36:32">2017/09/21</span>
+        </a>
+        
+        <a  class=""
+           href="/2017/09/22/获取SIM卡的IMSI号码/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="获取SIM卡的IMSI号码">获取SIM卡的IMSI号码</span>
+            <span class="post-date" title="2017-09-22 10:38:33">2017/09/22</span>
+        </a>
+        
+        <a  class=""
+           href="/2018/03/15/获取图片信息/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="获取图片信息">获取图片信息</span>
+            <span class="post-date" title="2018-03-15 13:18:39">2018/03/15</span>
+        </a>
+        
+        <a  class=""
+           href="/2017/09/22/解析assets文件夹下的xml文件/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="解析assets文件夹下的xml文件">解析assets文件夹下的xml文件</span>
+            <span class="post-date" title="2017-09-22 10:47:01">2017/09/22</span>
+        </a>
+        
+        <a  class=""
+           href="/2017/09/25/解析res-drawable下图片的另一种方式/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="解析res/drawable下图片的另一种方式">解析res/drawable下图片的另一种方式</span>
+            <span class="post-date" title="2017-09-25 14:42:58">2017/09/25</span>
+        </a>
+        
+        <a  class=""
+           href="/2017/09/21/设置seekbar每一格的进度/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="设置seekbar每一格的进度">设置seekbar每一格的进度</span>
+            <span class="post-date" title="2017-09-21 16:49:12">2017/09/21</span>
+        </a>
+        
+        <a  class=""
+           href="/2018/04/26/设置状态栏的颜色/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="设置状态栏的颜色">设置状态栏的颜色</span>
+            <span class="post-date" title="2018-04-26 08:48:26">2018/04/26</span>
+        </a>
+        
+        <a  class=""
+           href="/2017/09/21/通过代码创建快捷方式/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="通过代码创建快捷方式">通过代码创建快捷方式</span>
+            <span class="post-date" title="2017-09-21 14:12:51">2017/09/21</span>
+        </a>
+        
+        <a  class=""
+           href="/2017/09/21/通过代码动态设置view的selector/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="通过代码动态设置view的selector">通过代码动态设置view的selector</span>
+            <span class="post-date" title="2017-09-21 14:09:58">2017/09/21</span>
+        </a>
+        
+        <a  class=""
+           href="/2017/09/21/通过代码模拟触屏和按键事件/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="通过代码模拟触屏和按键事件">通过代码模拟触屏和按键事件</span>
+            <span class="post-date" title="2017-09-21 14:03:52">2017/09/21</span>
+        </a>
+        
+        <a  class=""
+           href="/2017/09/29/通过反射修改全局默认字体/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="通过反射修改全局默认字体">通过反射修改全局默认字体</span>
+            <span class="post-date" title="2017-09-29 13:11:42">2017/09/29</span>
+        </a>
+        
+        <a  class=""
+           href="/2017/09/25/通过反射获取FeatureOption中的所有字段的值/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="通过反射获取FeatureOption中的所有字段的值">通过反射获取FeatureOption中的所有字段的值</span>
+            <span class="post-date" title="2017-09-25 14:48:36">2017/09/25</span>
+        </a>
+        
+        <a  class=""
+           href="/2017/09/22/配置AGPS/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="配置AGPS">配置AGPS</span>
+            <span class="post-date" title="2017-09-22 13:34:36">2017/09/22</span>
+        </a>
+        
+        <a  class=""
+           href="/2017/09/22/隐藏QuickSettings中的AutoRotate菜单/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="隐藏QuickSettings中的AutoRotate菜单">隐藏QuickSettings中的AutoRotate菜单</span>
+            <span class="post-date" title="2017-09-22 10:26:49">2017/09/22</span>
+        </a>
+        
+        <a  class=""
+           href="/2017/09/21/隐藏三个点的Overflow菜单/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="隐藏三个点的Overflow菜单">隐藏三个点的Overflow菜单</span>
+            <span class="post-date" title="2017-09-21 13:23:56">2017/09/21</span>
+        </a>
+        
+        <a  class=""
+           href="/2017/10/11/面试题集合/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="面试题集合">面试题集合</span>
+            <span class="post-date" title="2017-10-11 09:55:06">2017/10/11</span>
+        </a>
+        
+        <a  class=""
+           href="/2017/09/21/预置桌面快捷方式/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="预置桌面快捷方式">预置桌面快捷方式</span>
+            <span class="post-date" title="2017-09-21 16:51:19">2017/09/21</span>
+        </a>
+        
+        <a  class=""
+           href="/2017/09/22/预置了PDFViewer之后会报错/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="预置了PDFViewer之后会报错">预置了PDFViewer之后会报错</span>
+            <span class="post-date" title="2017-09-22 10:28:20">2017/09/22</span>
+        </a>
+        
+        <a  class=""
+           href="/2017/09/25/默认打开wifi热点/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="默认打开wifi热点">默认打开wifi热点</span>
+            <span class="post-date" title="2017-09-25 15:20:04">2017/09/25</span>
+        </a>
+        
+    </nav>
+</div>
+    </div>
+    <div class="hide-list">
+        <div class="semicircle">
+            <div class="brackets first"><</div>
+            <div class="brackets">&gt;</div>
+        </div>
+    </div>
+</aside>
+<div class="post">
+    <div class="pjax">
+        <article id="post-mtklog分析" class="article article-type-post" itemscope itemprop="blogPost">
+    
+        <h1 class="article-title">mtklog分析</h1>
+    
+    <div class="article-meta">
+        
+        
+        
+        
+    </div>
+    <div class="article-meta">
+        
+        创建时间:<time class="date" title='更新时间: 2018-11-08 12:07:48'>2018-04-09 13:10</time>
+        
+    </div>
+    <div class="article-meta">
+        
+        
+        <span id="busuanzi_container_page_pv">
+            阅读:<span id="busuanzi_value_page_pv">
+                <span class="count-comment">
+                    <span class="spinner">
+                      <div class="cube1"></div>
+                      <div class="cube2"></div>
+                    </span>
+                </span>
+            </span>
+        </span>
+        
+        
+    </div>
+    
+    <div class="toc-ref">
+    
+        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#Mtklog-结构"><span class="toc-text">Mtklog 结构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ZZ-INTERNAL相关信息及解释"><span class="toc-text">ZZ_INTERNAL相关信息及解释</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#trace部分信息解析"><span class="toc-text">trace部分信息解析</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#radio-log分析网络状况"><span class="toc-text">radio_log分析网络状况</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#通话问题分析"><span class="toc-text">通话问题分析</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ANR-问题分析流程"><span class="toc-text">ANR 问题分析流程</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-定位问题点"><span class="toc-text">1.定位问题点</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-在mainlog中查看cpu"><span class="toc-text">2.在mainlog中查看cpu</span></a></li></ol></li></ol>
+    
+<style>
+    .left-col .switch-btn,
+    .left-col .switch-area {
+        display: none;
+    }
+    .toc-level-3 i,
+    .toc-level-3 ol {
+        display: none !important;
+    }
+</style>
+</div>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><a href="https://www.cnblogs.com/xiyuan2016/p/6740521.html" target="_blank" rel="external">https://www.cnblogs.com/xiyuan2016/p/6740521.html</a></p>
+<p><a href="http://www.voidcn.com/article/p-btyoxkos-bpn.html" target="_blank" rel="external">http://www.voidcn.com/article/p-btyoxkos-bpn.html</a></p>
+<h3 id="Mtklog-结构"><a href="#Mtklog-结构" class="headerlink" title="Mtklog 结构"></a>Mtklog 结构</h3><p>mtklog分析:  </p>
+<pre><code>1. mdlog1                           // modem 相关底层的log  
+    1.1 MDLog1_2010_0101_000152     // 每次打开mtklog都会新建一个文件夹  
+    1.2 MDLog1_2015_0101_000042  
+
+2. mobilelog                        // android log 和 kernel log  
+    2.1 APLog_2010_0101_000147  
+    2.1 APLog_2015_0101_000037        
+        atf_log                     // 所有_log都是进入安卓之后的  
+        atf_log.boot                // 所有.boot都是启动到进入安卓之前的log  
+        bootprof                    // 启动的简要信息 - 可以分析启动时间 - 启动模式(普通or看门狗or按键())  
+        cmdline                     // lk传给kernel的参数(包括lcm等) - 可以自己加  
+        crash_log                   // 崩溃log  
+        crash_log.boot  
+        events_log                  // 事件log，主要输出记录各个activity周期及事件  
+        events_log.boot：  
+        kernel_log                  // 内核log，常用  
+        kernel_log.boot  
+        last_kmsg                   // 上一次关机前的log - 可以分析重启原因  
+        main_log                    // hal层的log打印在这里  
+        main_log.boot  
+        mblog_history               // 本目录下所有log的大小等信息  
+        ProjectConfig.mk            // 工程配置  
+        properties                  // 属性  
+        radio_log                   // 输出通话，网络状态变化  
+        radio_log.boot  
+        sys_log                     // jni、framework层log，Exception定位点  
+        sys_log.boot  
+
+3. netlog                           //网络log  
+    3.1 NTLog_2010_0101_000147  
+        NTLog_2015_0101_000037  
+        tcpdump_NTLog_2015_0101_000037_start.cap.tmp  
+
+4. running_file_tree.txt            //
+</code></pre><h3 id="ZZ-INTERNAL相关信息及解释"><a href="#ZZ-INTERNAL相关信息及解释" class="headerlink" title="ZZ_INTERNAL相关信息及解释"></a>ZZ_INTERNAL相关信息及解释</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">ANR,2173,-1361051648,99,/data/core/,1,system_app_anr,android.process.media,Tue Jul  4 18:51:03 HKT 2017,1</div><div class="line"></div><div class="line">第一列：exception class，有KE/NE/JE/EE等</div><div class="line">第二列：pid</div><div class="line">第三列：tid</div><div class="line">第四列：固定是99</div><div class="line">第五列：固定是/data/core</div><div class="line">第六列：exception level，0: fatal, 1: exception, 2: warning, 3: reminding</div><div class="line">第七列：exception type info string (如果是NE，则这个栏位是signal名称，比如：SIGSEGV，KE则为空，SWT则为:system_server_watchdog)</div><div class="line">第八列：module name or process name</div><div class="line">第九列：UTC time</div><div class="line">第十列：固定是1</div></pre></td></tr></table></figure>
+<h3 id="trace部分信息解析"><a href="#trace部分信息解析" class="headerlink" title="trace部分信息解析"></a>trace部分信息解析</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">----- pid 2173 at 2017-07-04 11:51:32 -----</div><div class="line">Cmd line: android.process.media</div><div class="line">&quot;main&quot; prio=5 tid=1 Native</div><div class="line">&quot;Binder:2173_1&quot; prio=5 tid=9 Blocked</div><div class="line">  | group=&quot;main&quot; sCount=1 dsCount=0 obj=0x22c05430 self=0xa1fcab00</div><div class="line">  | sysTid=2186 nice=10 cgrp=bg_non_interactive sched=0/0 handle=0xa497a920</div><div class="line">  | state=S schedstat=( 26942858 122825452 281 ) utm=0 stm=2 core=0 HZ=100</div><div class="line">  | stack=0xa487e000-0xa4880000 stackSize=1014KB</div><div class="line">  | held mutexes=</div><div class="line">  at com.android.providers.media.MediaProvider.getParent(MediaProvider.java:4118)</div><div class="line">  - waiting to lock &lt;0x06de4cd2&gt; (a java.util.HashMap) held by thread 13</div><div class="line">  at com.android.providers.media.MediaProvider.insertFile(MediaProvider.java:4395)</div><div class="line">  at com.android.providers.media.MediaProvider.insertInternal(MediaProvider.java:4662)</div><div class="line">  at com.android.providers.media.MediaProvider.insert(MediaProvider.java:4015)</div><div class="line">  at android.content.ContentProvider$Transport.insert(ContentProvider.java:272)</div><div class="line">  at android.content.ContentProviderNative.onTransact(ContentProviderNative.java:163)</div><div class="line">  at android.os.Binder.execTransact(Binder.java:570)</div></pre></td></tr></table></figure>
+<p>1)pid 2173 at 2017-07-04 11:51:32<br>  ANR发生的进程的ID，时间点</p>
+<p>2)Cmd line: android.process.media<br>  ANR发生的进程的名称</p>
+<p>3)”main” prio=5 tid=1 Native<br>  说明线程名，线程的优先级，线程锁ID和线程状态.<br>  线程名称是启动线程的时候手动指明的，这里的main标示是主线程，<br>  是Android自动设定的一个线程名称，如果是自己手动创建的线程，<br>  一般会被命名成“Thread-xx”的格式，启动xx是线程ID，他只增不减<br>  不会被复用;注意这启动的tid不是线程的id，他是一个在Java虚拟机<br>  中用来实现线程锁的变量，随着线程的增减，这个变量的值是可能被<br>  复用的；</p>
+<p>4)group=”main” sCount=1 dsCount=0 obj=0x22c05430 self=0xa1fcab00<br>  group是线程组名称。<br>  sCount是此线程被挂起的次数，<br>  dsCount是线程被调试器挂起的次数。<br>  当一个进程被调试后，sCount会重置为，调试完毕后sCount会根据是否<br>  被正常挂起增长，但是dsCount不会被重置为0，所以dsCount也可以用来<br>  判断这个线程是否被调试过，obj表示这个线程的Java对象地址，self表<br>  示这个线程本身的地址。</p>
+<p>5)此后是线程的调度信息<br>| sysTid=2186 nice=10 cgrp=bg_non_interactive sched=0/0 handle=0xa497a920<br>  sysTid是Linux下的内核线程ID，<br>  nice是线程调度的优先级.<br>  sched分别标志了线程的调度策略和优先级，<br>  cgrp是调度属组，<br>  handle是线程的处理函数地址。</p>
+<p>6)线程当前上下文信息<br> | state=S schedstat=( 26942858 122825452 281 ) utm=0 stm=2 core=0 HZ=100<br>  state是调度状态;<br>  schedstat从 /proc/[pid]/task/[tid]/schedstat读出<br>  三个值分别表示线程在cpu上执行的时间、线程的等待时间和线程执行的时间片长度;<br>  有的android内核版本不支持这项信息，得到的三个值都是0；utm是线程用户态下使<br>  用的时间值(单位是jiffies);stm是内核态下的调度时间值;core是最后执行这个线程<br>  cpu核的序号</p>
+<p>7)最后就是这个线程的调度栈信息。<br>  一般可以通过以下几个简单的方法来判断<br>  <em>trace文件顶部的线程一般是ANR的元凶。
+  </em>这是一个简单的方法，大部分情况下都适用，可以通过这个方法来快速判断是否是自己<br>   的应用造成了本次的ANR，但是并不是trace文件包含的应用就一定是造成ANR的帮凶，应<br>   用出现在trace文件中，只能说明出现ANR的时候这个应用进程还活着，trace文件的顶部<br>   则是触发ANR的应用信息，因此如果你的应用出现在trace文件的顶部，那么很有可能是<br>   因为你的应用造成了ANR,否则是你的应用造成ANR的可能性不大，还需要进一步分析。</p>
+<p>8)如果定位不到时间点，可以看CPU<br>  (sys_log)07-04 18:51:03.209156  1044  1068 E ANRManager: 3.4% TOTAL: 0.5% user  + 2.6% kernel + 0.2% irq<br>   从CPU使用率可以看出:<br>   <em>如果使用量很高，说明当前设备很忙(内存不足，循环处理)
+   </em>如果CPU使用量很少，说明主线程被BLOCK了<br>   *如果IOwait很高，说明ANR有可能是主线程在进行I/O操作造成的(数据库、文件操作、<br>    网络操作等)      </p>
+<p>9)等待锁引起的ANR<br>  找到WallpaperManager对应代码，再结合main log等其他信息，看tid=27的thread在忙<br>  什么。</p>
+<p>10)SWT重启问题分析<br>  SWT是指Android Watchdog Timeout，应用层看门狗超时，通常我们说的WDT是HWT，硬件<br>  看门狗超时。<br>  1.Watchdog的目的是监控系统几个比较主要的service，比如NetworkManagementService，<br>  PowerManagerService，ActivityManagerService等。这些Service在启动时通过调用<br>  Watchdog。getInstance().addMonitor(this);加入到Watchdog的监控列表中，如果超过<br>  一定时间没有反应，认为系统出错，会强制启动Android。<br>  2.Watchdog原理：/framework/base/services/java/com/android/server/Watchdog.java<br>  3.具体分析方法<br>    <em>首先从enventlog中以watchdog为关键字搜索，记录下这个时刻<br>      17:25:23.645459 950 1285 I watchdog:surfaceflinger hang.
+    </em>然后分析所有Service Object的monitor()为何在这个时刻之前1分钟没有做完，<br>    <em>后面具体分析方法和ANR一样
+    </em>ANR是某个AP的主线程在一段时间内没有完成某件事情，<br>    *Android Watchdog 是SystemServer进程的ServerThread 线程在一段时间内没有做完<br>     某件事情。                </p>
+<h3 id="radio-log分析网络状况"><a href="#radio-log分析网络状况" class="headerlink" title="radio_log分析网络状况"></a>radio_log分析网络状况</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">06-30 10:38:06.572525 938 976 I AT : AT&lt; +ECSQ: 22,54,1,1,1,-36,-346,7,39 (RIL_URC_READER, tid:0)</div><div class="line">06-30 10:38:06.572737 938 976 I RILC : RIL_SOCKET_1 UNSOLICITED: UNSOL_SIGNAL_STRENGTH length:72</div><div class="line">06-30 10:38:06.573125 938 998 I RIL : [GSM MAL] URC send success, rid 0, ret 0:      #F5F6FA</div><div class="line">06-30 10:38:06.573125 938 998 I RIL : +ECSQ: 22,54,1,1,1,-36,-346,7,39</div><div class="line">06-30 10:38:06.574384 1028 1067 D RilMalClient: UNSOL_TO_MAL: remap to unsol resp(1009)</div><div class="line">06-30 10:38:06.575465 1028 1067 D RpRilClientController: leave blocking write</div><div class="line">06-30 10:38:06.575605 1028 1067 D RpRilClientController: leave blocking write</div><div class="line">06-30 10:38:06.576133 1425 1425 D SST : [GsmSST0] handle EVENT_SIGNAL_STRENGTH_UPDATE</div><div class="line">06-30 10:38:06.576410 1425 1425 W SignalStrength: Signal before validate=SignalStrength: 0 54 -1 -1 -1 -1 -1 99 86 9 97 2147483647 2147483647 gsm|lte 2147483647 2147483647 2147483647</div><div class="line">06-30 10:38:06.576526 1425 1425 W SignalStrength: Signal after validate=SignalStrength: 0 54 -120 -160 -120 -1 -1 99 -86 -9 97 2147483647 2147483647 gsm|lte 2147483647 2147483647 2147483647</div><div class="line">06-30 10:38:06.577794 1010 1367 D TelephonyRegistry: notifySignalStrengthForPhoneId: callback.onSsS r=&#123;callingPackage=android binder=android.telephony.PhoneStateListener$IPhoneStateListenerStub@d4b4edc callback=android.telephony.PhoneStateListener$IPhoneStateListenerStub@d4b4edc onSubscriptionsChangedListenererCallback=null callerUserId=0 subId=2147483647 phoneId=-1 events=1c1 canReadPhoneState=true&#125; subId=3 phoneId=0 ss=SignalStrength: 0 54 -120 -160 -120 -1 -1 99 -86 -9 97 2147483647 2147483647 gsm|lte 2147483647 2147483647 2147483647</div><div class="line">06-30 10:38:06.578163 1010 1367 D TelephonyRegistry: notifySignalStrengthForPhoneId: callback.onSsS r=&#123;callingPackage=com.android.systemui binder=android.os.BinderProxy@d2e4c9 callback=com.android.internal.telephony.IPhoneStateListener$Stub$Proxy@7f6d7ce onSubscriptionsChangedListenererCallback=null callerUserId=0 subId=3 phoneId=0 events=101e1 canReadPhoneState=true&#125; subId=3 phoneId=0 ss=SignalStrength: 0 54 -120 -160 -120 -1 -1 99 -86 -9 97 2147483647 2147483647 gsm|lte 2147483647 2147483647 2147483647</div><div class="line">06-30 10:38:06.578577 1010 1367 I use-Rlog/RLOG-GSM: getLTELevel - rsrp:-86 snr:97 rsrpIconLevel:3 snrIconLevel:3</div><div class="line">06-30 10:38:06.578693 1010 1367 W SignalStrength: getLevel=3</div><div class="line">06-30 10:38:06.579533 1305 1531 I use-Rlog/RLOG-GSM: getLTELevel - rsrp:-86 snr:97 rsrpIconLevel:3 snrIconLevel:3</div><div class="line">06-30 10:38:06.582788 1305 1531 W SignalStrength: getLevel=3</div><div class="line">06-30 10:38:06.588566 1305 1531 I use-Rlog/RLOG-GSM: getLTELevel - rsrp:-86 snr:97 rsrpIconLevel:3 snrIconLevel:3</div><div class="line">06-30 10:38:06.589489 1305 1531 W SignalStrength: getLevel=3</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">3G modem:</div><div class="line">+ECSQ: &lt;asu&gt;, &lt;ber&gt;, &lt;rssi&gt; （2G网络）</div><div class="line">+ECSQ: &lt;asu&gt;, &lt;ber&gt;, &lt;rssi&gt;, &lt;rscp&gt;, &lt;ec/no&gt; （3G网络）</div><div class="line">4G modem:</div><div class="line">+ECSQ: &lt;asu&gt;, &lt;ber&gt;, &lt;rssi&gt;, &lt;rscp&gt;,1,1,1,&lt;act&gt; （2G网络）</div><div class="line">+ECSQ: &lt;asu&gt;, &lt;ber&gt;, &lt;rssi&gt;, &lt;rscp&gt;, &lt;ec/no&gt;,1,1, &lt;act&gt; （3G网络）</div><div class="line">+ECSQ: &lt;rsrq&gt;, &lt;rsrp&gt;,1,1,1,&lt;rsrq_qdbm &gt;,&lt;rsrp_qdbm&gt; &lt;act&gt; （4G网络）</div><div class="line"></div><div class="line">看+ECSQ 命令带的值:</div><div class="line">*如果第六第七位不是255 or 1 则当前在LTE状态，</div><div class="line">*如果第四第五位不是255 or 1 则当前在3G mode。</div><div class="line">*2G的话不是很清楚怎么看radio log,一般是在modem log里确认的。</div><div class="line">+ECSQ:&lt;sig1&gt;,&lt;sig2&gt;,&lt;rssi_in_qdbm&gt;,&lt;rscp_in_qdbm&gt;,&lt;ecn0_in_qdbm&gt;,&lt;rsrq_in_qdbm&gt;,&lt;rsrp_in_qdbm&gt;,&lt;Act&gt;</div><div class="line">从radio log看，手机应该在</div><div class="line">4G mode时, 如果 SNR&lt;0 (RSRQ&lt;-60dbm)，则信号很差。</div><div class="line">3G mode时, EcN0&lt;-15 (RSCP&lt;-115dbm)时信号很差</div><div class="line">2G mode时, 2G：rssi&lt; -95dbm 、 rscq &gt; 4 (0~7 ,0最好，7最差)</div></pre></td></tr></table></figure>
+<h3 id="通话问题分析"><a href="#通话问题分析" class="headerlink" title="通话问题分析"></a>通话问题分析</h3><p>很多场测神马的，都会报出很多通话相关的bug，有些是通话无声，有些事通话质量不好，等等。遇到这种问题原来都是直接提给MTK的，后面发现很多都是网络质量问题，遂跟MTK讨了方法。在radiolog中搜索 +ECSQ:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">06-30 10:38:06.572525 938 976 I AT : AT&lt; +ECSQ: 22,54,1,1,1,-36,-346,7,39 (RIL_URC_READER, tid:0)</div></pre></td></tr></table></figure></p>
+<p>看+ECSQ 命令带的值，<br>如果第六第七位不是255 or 1 则当前在LTE状态，<br>如果第四第五位不是255or1则当前在3G mode。<br>2G的话不是很清楚怎么看radio log,一般是在modem log里确认的。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">+ECSQ:&lt;sig1&gt;,&lt;sig2&gt;,&lt;rssi_in_qdbm&gt;,&lt;rscp_in_qdbm&gt;,&lt;ecn0_in_qdbm&gt;,&lt;rsrq_in_qdbm&gt;,&lt;rsrp_in_qdbm&gt; ,&lt;Act&gt;</div></pre></td></tr></table></figure></p>
+<p>判断信号质量:<br>手机应该在4G下。如果 SNR &lt; 0 (RSRQ &lt;-60)，则信号很差。<br>3G mode时， EcN0&lt;-15 (RSCP&lt;-115)时信号很差。<br>2G mode时， rssi&lt; -95dbm 、 rscq &gt; 4 (0~7 ,0最好，7最差)</p>
+<h3 id="ANR-问题分析流程"><a href="#ANR-问题分析流程" class="headerlink" title="ANR 问题分析流程"></a>ANR 问题分析流程</h3><h4 id="1-定位问题点"><a href="#1-定位问题点" class="headerlink" title="1.定位问题点"></a>1.定位问题点</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">a) 使用mobile log</div><div class="line">*events_log中搜索am_anr</div><div class="line">*main_log 或 Sys_log 中搜索ANR in</div><div class="line">*traces.txt中查找相应的PID或者进程名</div><div class="line"></div><div class="line">b) 使用anr db文件 </div><div class="line">*使用gat工具打开db文件</div><div class="line">*查看ZZ_INTERNAL文件 找到pid或者进程名</div><div class="line">*在SWT_JBT_TRACES查找pid</div></pre></td></tr></table></figure>
+<h4 id="2-在mainlog中查看cpu"><a href="#2-在mainlog中查看cpu" class="headerlink" title="2.在mainlog中查看cpu"></a>2.在mainlog中查看cpu</h4><p>一般在trace就能看到问题点，如果还是定位不到，就需要在mainlog中搜索TOTAL：<br>查看CPU使用率  进而确认问题</p>
+
+      
+       <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 jaytp@qq.com </span>
+    </div>
+</article>
+
+
+<p>
+    <a  class="dashang" onclick="dashangToggle()">赏</a>
+</p>
+
+
+<div class="article_copyright">
+    <p><span class="copy-title">文章标题:</span>mtklog分析</p>
+    
+    <p><span class="copy-title">本文作者:</span><a  title="王大可">王大可</a></p>
+    <p><span class="copy-title">发布时间:</span>2018-04-09, 13:10:12</p>
+    <p><span class="copy-title">最后更新:</span>2018-11-08, 12:07:48</p>
+    <span class="copy-title">原始链接:</span><a class="post-url" href="/2018/04/09/mtklog分析/" title="mtklog分析">http://yoursite.com/2018/04/09/mtklog分析/</a>
+    <p>
+        <span class="copy-title">版权声明:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
+    </p>
+</div>
+
+
+
+
+
+    
+
+
+
+
+    </div>
+    <div class="copyright">
+        <p class="footer-entry">©2016-2019 Yelog</p>
+<p class="footer-entry">Built with <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/yelog/hexo-theme-3-hexo" target="_blank">3-hexo</a> theme</p>
+
+    </div>
+    <div class="full-toc">
+        <button class="full"><span class="min "></span></button>
+<button class="post-toc-menu"><span class="post-toc-menu-icons"></span></button>
+<div class="post-toc"><span class="post-toc-title">目录</span>
+    <div class="post-toc-content">
+
+    </div>
+</div>
+<a class="" id="rocket" ></a>
+
+    </div>
+</div>
+<div class="acParent"></div>
+
+<div class="hide_box" onclick="dashangToggle()"></div>
+<div class="shang_box">
+    <a class="shang_close"  onclick="dashangToggle()">×</a>
+    <div class="shang_tit">
+        <p>喜欢就点赞,疼爱就打赏</p>
+    </div>
+    <div class="shang_payimg">
+        <div class="pay_img">
+            <img src="/img/alipay.jpg" class="alipay" title="扫码支持">
+            <img src="/img/weixin.jpg" class="weixin" title="扫码支持">
+        </div>
+    </div>
+    <div class="shang_payselect">
+        <span><label><input type="radio" name="pay" checked value="alipay">支付宝</label></span><span><label><input type="radio" name="pay" value="weixin">微信</label></span>
+    </div>
+</div>
+
+
+</body>
+<script src="/js/jquery.pjax.js?v=1.0.1" ></script>
+
+<script src="/js/script.js?v=1.0.1" ></script>
+<script>
+    var img_resize = 'default';
+    /*作者、标签的自动补全*/
+    $(function () {
+        $('.search').AutoComplete({
+            'data': [],
+            'itemHeight': 20,
+            'width': 418
+        }).AutoComplete('show');
+    })
+    function initArticle() {
+        /*渲染对应的表格样式*/
+        
+            $(".post .pjax table").addClass("green_title");
+        
+
+        /*渲染打赏样式*/
+        
+        $("input[name=pay]").on("click", function () {
+            if($("input[name=pay]:checked").val()=="weixin"){
+                $(".shang_box .shang_payimg .pay_img").addClass("weixin_img");
+            } else {
+                $(".shang_box .shang_payimg .pay_img").removeClass("weixin_img");
+            }
+        })
+        
+
+        /*高亮代码块行号*/
+        
+        $('pre code').each(function(){
+            var lines = $(this).text().split('\n').length - 1, widther='';
+            if (lines>99) {
+                widther = 'widther'
+            }
+            var $numbering = $('<ul/>').addClass('pre-numbering ' + widther).attr("unselectable","on");
+            $(this).addClass('has-numbering ' + widther)
+                    .parent()
+                    .append($numbering);
+            for(var i=1;i<=lines;i++){
+                $numbering.append($('<li/>').text(i));
+            }
+        });
+        
+
+        /*访问数量*/
+        
+        $.getScript("//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js");
+        
+
+        /*代码高亮，行号对齐*/
+        $('.pre-numbering').css('line-height',$('.has-numbering').css('line-height'));
+
+        
+        
+    }
+
+    /*打赏页面隐藏与展示*/
+    
+    function dashangToggle() {
+        $(".shang_box").fadeToggle();
+        $(".hide_box").fadeToggle();
+    }
+    
+
+</script>
+
+<!--加入行号的高亮代码块样式-->
+
+<style>
+    pre{
+        position: relative;
+        margin-bottom: 24px;
+        border-radius: 10px;
+        border: 1px solid #e2dede;
+        background: #FFF;
+        overflow: hidden;
+    }
+    code.has-numbering{
+        margin-left: 30px;
+    }
+    code.has-numbering.widther{
+        margin-left: 35px;
+    }
+    .pre-numbering{
+        margin: 0px;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 20px;
+        padding: 0.5em 3px 0.7em 5px;
+        border-right: 1px solid #C3CCD0;
+        text-align: right;
+        color: #AAA;
+        background-color: #fafafa;
+    }
+    .pre-numbering.widther {
+        width: 35px;
+    }
+</style>
+
+<!--自定义样式设置-->
+<style>
+    
+    
+    .nav {
+        width: 542px;
+    }
+    .nav.fullscreen {
+        margin-left: -542px;
+    }
+    .nav-left {
+        width: 120px;
+    }
+    
+    
+    @media screen and (max-width: 1468px) {
+        .nav {
+            width: 492px;
+        }
+        .nav.fullscreen {
+            margin-left: -492px;
+        }
+        .nav-left {
+            width: 100px;
+        }
+    }
+    
+    
+    @media screen and (max-width: 1024px) {
+        .nav {
+            width: 492px;
+            margin-left: -492px
+        }
+        .nav.fullscreen {
+            margin-left: 0;
+        }
+        .nav .hide-list.fullscreen {
+            left: 492px
+        }
+    }
+    
+    @media screen and (max-width: 426px) {
+        .nav {
+            width: 100%;
+        }
+        .nav-left {
+            width: 100%;
+        }
+    }
+    
+    
+    .nav-right .title-list nav a .post-title, .nav-right .title-list #local-search-result a .post-title {
+        color: #383636;
+    }
+    
+    
+    .nav-right .title-list nav a .post-date, .nav-right .title-list #local-search-result a .post-date {
+        color: #5e5e5f;
+    }
+    
+    
+    .nav-right nav a.hover, #local-search-result a.hover{
+        background-color: #e2e0e0;
+    }
+    
+    
+
+    /*列表样式*/
+    
+    .post .pjax article .article-entry>ol, .post .pjax article .article-entry>ul, .post .pjax article>ol, .post .pjax article>ul{
+        border: #e2dede solid 1px;
+        border-radius: 10px;
+        padding: 10px 32px 10px 56px;
+    }
+    .post .pjax article .article-entry li>ol, .post .pjax article .article-entry li>ul,.post .pjax article li>ol, .post .pjax article li>ul{
+        padding-top: 5px;
+        padding-bottom: 5px;
+    }
+    .post .pjax article .article-entry>ol>li, .post .pjax article .article-entry>ul>li,.post .pjax article>ol>li, .post .pjax article>ul>li{
+        margin-bottom: auto;
+        margin-left: auto;
+    }
+    .post .pjax article .article-entry li>ol>li, .post .pjax article .article-entry li>ul>li,.post .pjax article li>ol>li, .post .pjax article li>ul>li{
+        margin-bottom: auto;
+        margin-left: auto;
+    }
+    
+
+    /* 背景图样式 */
+    
+    
+
+
+    /*引用块样式*/
+    
+
+    /*文章列表背景图*/
+    
+    .nav-right:before {
+        content: ' ';
+        display: block;
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0.3;
+        background: url("https://i.loli.net/2019/07/22/5d3521411f3f169375.png");
+        background-repeat: no-repeat;
+        background-position: 50% 0;
+        -ms-background-size: cover;
+        -o-background-size: cover;
+        -moz-background-size: cover;
+        -webkit-background-size: cover;
+        background-size: cover;
+    }
+    
+
+    
+</style>
+
+
+
+
+
+
+
+</html>
