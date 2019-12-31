@@ -6,17 +6,17 @@
   <meta name="keywords" content="">
   <meta name="description" content="王大可的茅草房">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="description" content="123456789Class&amp;lt;?&amp;gt; serviceManagerClass;serviceManagerClass = Class.forName(&quot;android.os.ServiceManager&quot;);Method getService = serviceManagerClass.getMethod(&quot;getService&quot;, String.class);IBinder retbi">
+<meta name="description" content="findViewById() 签名变更现在，findViewById() 函数的全部实例均返回  T，而不是 View。此变更会带来以下影响： 例如，如果 someMethod(View) 和 someMethod(TextView) 均接受调用 findViewById() 的结果，这可能导致现有代码的返回类型不确定。在使用 Java 8 源语言时，这需要在返回类型不受限制时（例如，assert">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Android反射调用通知栏回收">
-<meta property="og:url" content="http://yoursite.com/2019/12/31/Android反射调用通知栏回收/index.html">
+<meta property="og:title" content="Android-findViewById签名变更">
+<meta property="og:url" content="http://yoursite.com/2019/12/31/Android-findViewById签名变更/index.html">
 <meta property="og:site_name" content="王大可的茅草房">
-<meta property="og:description" content="123456789Class&amp;lt;?&amp;gt; serviceManagerClass;serviceManagerClass = Class.forName(&quot;android.os.ServiceManager&quot;);Method getService = serviceManagerClass.getMethod(&quot;getService&quot;, String.class);IBinder retbi">
+<meta property="og:description" content="findViewById() 签名变更现在，findViewById() 函数的全部实例均返回  T，而不是 View。此变更会带来以下影响： 例如，如果 someMethod(View) 和 someMethod(TextView) 均接受调用 findViewById() 的结果，这可能导致现有代码的返回类型不确定。在使用 Java 8 源语言时，这需要在返回类型不受限制时（例如，assert">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-12-31T06:15:34.792Z">
+<meta property="og:updated_time" content="2019-12-31T06:56:04.209Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Android反射调用通知栏回收">
-<meta name="twitter:description" content="123456789Class&amp;lt;?&amp;gt; serviceManagerClass;serviceManagerClass = Class.forName(&quot;android.os.ServiceManager&quot;);Method getService = serviceManagerClass.getMethod(&quot;getService&quot;, String.class);IBinder retbi">
+<meta name="twitter:title" content="Android-findViewById签名变更">
+<meta name="twitter:description" content="findViewById() 签名变更现在，findViewById() 函数的全部实例均返回  T，而不是 View。此变更会带来以下影响： 例如，如果 someMethod(View) 和 someMethod(TextView) 均接受调用 findViewById() 的结果，这可能导致现有代码的返回类型不确定。在使用 Java 8 源语言时，这需要在返回类型不受限制时（例如，assert">
 
 
 <link rel="icon" href="/img/avatar.jpg">
@@ -207,7 +207,7 @@
 
 
 <ul>
-    <li><div class="all active">全部文章<small>(135)</small></div></li>
+    <li><div class="all active">全部文章<small>(162)</small></div></li>
     
 </ul>
 <div class="left-bottom">
@@ -219,7 +219,7 @@
     </div>
     <div><a class="about  hasFriend  site_url"  href="/about">关于</a><a style="width: 50%"  class="friends">友链</a></div>
 </div>
-<input type="hidden" id="yelog_site_posts_number" value="135">
+<input type="hidden" id="yelog_site_posts_number" value="162">
 
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
@@ -260,14 +260,6 @@
     <nav id="title-list-nav">
         
         <a  class=""
-           href="/2017/10/10/35个Java代码性能优化总结/"
-           data-tag=""
-           data-author="" >
-            <span class="post-title" title="35个Java代码性能优化总结">35个Java代码性能优化总结</span>
-            <span class="post-date" title="2017-10-10 14:07:20">2017/10/10</span>
-        </a>
-        
-        <a  class=""
            href="/2018/02/27/50篇Android干货文章/"
            data-tag=""
            data-author="" >
@@ -276,11 +268,11 @@
         </a>
         
         <a  class=""
-           href="/2017/09/22/Activity和Service之间通过接口进行通信/"
+           href="/2019/12/31/Android-PackageManagerService中LI-LP等函数后缀的含义/"
            data-tag=""
            data-author="" >
-            <span class="post-title" title="Activity和Service之间通过接口进行通信">Activity和Service之间通过接口进行通信</span>
-            <span class="post-date" title="2017-09-22 13:19:22">2017/09/22</span>
+            <span class="post-title" title="Android--PackageManagerService中LI/LP等函数后缀的含义">Android--PackageManagerService中LI/LP等函数后缀的含义</span>
+            <span class="post-date" title="2019-12-31 16:37:12">2019/12/31</span>
         </a>
         
         <a  class=""
@@ -292,6 +284,22 @@
         </a>
         
         <a  class=""
+           href="/2017/10/10/35个Java代码性能优化总结/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="35个Java代码性能优化总结">35个Java代码性能优化总结</span>
+            <span class="post-date" title="2017-10-10 14:07:20">2017/10/10</span>
+        </a>
+        
+        <a  class=""
+           href="/2017/09/22/Activity和Service之间通过接口进行通信/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Activity和Service之间通过接口进行通信">Activity和Service之间通过接口进行通信</span>
+            <span class="post-date" title="2017-09-22 13:19:22">2017/09/22</span>
+        </a>
+        
+        <a  class=""
            href="/2019/12/31/Android-findViewById签名变更/"
            data-tag=""
            data-author="" >
@@ -300,11 +308,67 @@
         </a>
         
         <a  class=""
+           href="/2019/12/31/Android一个统计Service的脚本/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Android一个统计Service的脚本">Android一个统计Service的脚本</span>
+            <span class="post-date" title="2019-12-31 16:40:56">2019/12/31</span>
+        </a>
+        
+        <a  class=""
+           href="/2019/12/31/Android串口控制台改为root/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Android串口控制台改为root">Android串口控制台改为root</span>
+            <span class="post-date" title="2019-12-31 16:28:34">2019/12/31</span>
+        </a>
+        
+        <a  class=""
+           href="/2019/12/31/Android修改kernel-logo和开机动画/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Android修改kernel logo和开机动画">Android修改kernel logo和开机动画</span>
+            <span class="post-date" title="2019-12-31 15:51:47">2019/12/31</span>
+        </a>
+        
+        <a  class=""
+           href="/2019/12/31/Android7-1开机启动脚本/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Android7.1开机启动脚本">Android7.1开机启动脚本</span>
+            <span class="post-date" title="2019-12-31 16:19:35">2019/12/31</span>
+        </a>
+        
+        <a  class=""
+           href="/2019/12/31/Android-Stopwatch工具类/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Android--Stopwatch工具类">Android--Stopwatch工具类</span>
+            <span class="post-date" title="2019-12-31 15:48:39">2019/12/31</span>
+        </a>
+        
+        <a  class=""
            href="/2019/12/31/Android再次点击返回键退出/"
            data-tag=""
            data-author="" >
             <span class="post-title" title="Android再次点击返回键退出">Android再次点击返回键退出</span>
             <span class="post-date" title="2019-12-31 14:46:55">2019/12/31</span>
+        </a>
+        
+        <a  class=""
+           href="/2019/12/31/Android写log到文件模版/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Android写log到文件模版">Android写log到文件模版</span>
+            <span class="post-date" title="2019-12-31 15:56:28">2019/12/31</span>
+        </a>
+        
+        <a  class=""
+           href="/2017/09/22/Android单元测试/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Android单元测试">Android单元测试</span>
+            <span class="post-date" title="2017-09-22 12:48:21">2017/09/22</span>
         </a>
         
         <a  class=""
@@ -324,19 +388,51 @@
         </a>
         
         <a  class=""
-           href="/2017/09/22/Android单元测试/"
-           data-tag=""
-           data-author="" >
-            <span class="post-title" title="Android单元测试">Android单元测试</span>
-            <span class="post-date" title="2017-09-22 12:48:21">2017/09/22</span>
-        </a>
-        
-        <a  class=""
            href="/2019/12/31/Android反射调用通知栏回收/"
            data-tag=""
            data-author="" >
             <span class="post-title" title="Android反射调用通知栏回收">Android反射调用通知栏回收</span>
             <span class="post-date" title="2019-12-31 14:04:21">2019/12/31</span>
+        </a>
+        
+        <a  class=""
+           href="/2019/12/31/Android在framework和hal添加log/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Android在framework和hal添加log">Android在framework和hal添加log</span>
+            <span class="post-date" title="2019-12-31 15:39:07">2019/12/31</span>
+        </a>
+        
+        <a  class=""
+           href="/2019/12/31/Android在Android-mk里添加TAG/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Android在Android.mk里添加TAG">Android在Android.mk里添加TAG</span>
+            <span class="post-date" title="2019-12-31 15:55:09">2019/12/31</span>
+        </a>
+        
+        <a  class=""
+           href="/2019/12/31/Android命令行读写i2c寄存器操作/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Android命令行读写i2c寄存器操作">Android命令行读写i2c寄存器操作</span>
+            <span class="post-date" title="2019-12-31 15:35:31">2019/12/31</span>
+        </a>
+        
+        <a  class=""
+           href="/2019/12/31/Android安装使用i2c-tools/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Android安装使用i2c-tools">Android安装使用i2c-tools</span>
+            <span class="post-date" title="2019-12-31 15:36:43">2019/12/31</span>
+        </a>
+        
+        <a  class=""
+           href="/2019/12/31/Android-dex-odex-oat-vdex-art区别/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Android dex/odex/oat/vdex/art区别">Android dex/odex/oat/vdex/art区别</span>
+            <span class="post-date" title="2019-12-31 16:09:02">2019/12/31</span>
         </a>
         
         <a  class=""
@@ -348,6 +444,14 @@
         </a>
         
         <a  class=""
+           href="/2019/12/31/Android打开-关闭wifi命令/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Android打开/关闭wifi命令">Android打开/关闭wifi命令</span>
+            <span class="post-date" title="2019-12-31 15:34:17">2019/12/31</span>
+        </a>
+        
+        <a  class=""
            href="/2019/12/31/Android自带的常用注解/"
            data-tag=""
            data-author="" >
@@ -356,19 +460,43 @@
         </a>
         
         <a  class=""
-           href="/2017/10/09/ButterKnife的学习和使用/"
-           data-tag=""
-           data-author="" >
-            <span class="post-title" title="ButterKnife的学习和使用">ButterKnife的学习和使用</span>
-            <span class="post-date" title="2017-10-09 14:56:45">2017/10/09</span>
-        </a>
-        
-        <a  class=""
            href="/2017/09/25/Bitmap内存优化/"
            data-tag=""
            data-author="" >
             <span class="post-title" title="Bitmap内存优化">Bitmap内存优化</span>
             <span class="post-date" title="2017-09-25 15:35:36">2017/09/25</span>
+        </a>
+        
+        <a  class=""
+           href="/2019/12/31/Android重启framework命令及framework-jar引用/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Android重启framework命令及framework.jar引用">Android重启framework命令及framework.jar引用</span>
+            <span class="post-date" title="2019-12-31 15:28:47">2019/12/31</span>
+        </a>
+        
+        <a  class=""
+           href="/2019/12/31/Android连接网络立即同步时区/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Android连接网络立即同步时区">Android连接网络立即同步时区</span>
+            <span class="post-date" title="2019-12-31 15:50:02">2019/12/31</span>
+        </a>
+        
+        <a  class=""
+           href="/2019/12/31/Android隐藏类的使用/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Android隐藏类的使用">Android隐藏类的使用</span>
+            <span class="post-date" title="2019-12-31 15:30:45">2019/12/31</span>
+        </a>
+        
+        <a  class=""
+           href="/2017/10/09/ButterKnife的学习和使用/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="ButterKnife的学习和使用">ButterKnife的学习和使用</span>
+            <span class="post-date" title="2017-10-09 14:56:45">2017/10/09</span>
         </a>
         
         <a  class=""
@@ -393,6 +521,14 @@
            data-author="" >
             <span class="post-title" title="EventLog含义">EventLog含义</span>
             <span class="post-date" title="2018-03-02 13:33:11">2018/03/02</span>
+        </a>
+        
+        <a  class=""
+           href="/2019/12/31/Git-Repo-Gerrit区别/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Git/Repo/Gerrit区别">Git/Repo/Gerrit区别</span>
+            <span class="post-date" title="2019-12-31 15:26:05">2019/12/31</span>
         </a>
         
         <a  class=""
@@ -452,14 +588,6 @@
         </a>
         
         <a  class=""
-           href="/2018/03/08/Launcher移植学习/"
-           data-tag=""
-           data-author="" >
-            <span class="post-title" title="Launcher移植学习">Launcher移植学习</span>
-            <span class="post-date" title="2018-03-08 09:50:39">2018/03/08</span>
-        </a>
-        
-        <a  class=""
            href="/2017/09/30/ShadowView的学习和使用/"
            data-tag=""
            data-author="" >
@@ -468,11 +596,19 @@
         </a>
         
         <a  class=""
-           href="/2019/12/31/TextView的drawableLeft与文本无法一起居中显示/"
+           href="/2019/12/31/Shell死循环/"
            data-tag=""
            data-author="" >
-            <span class="post-title" title="TextView的drawableLeft与文本无法一起居中显示">TextView的drawableLeft与文本无法一起居中显示</span>
-            <span class="post-date" title="2019-12-31 14:41:41">2019/12/31</span>
+            <span class="post-title" title="Shell死循环">Shell死循环</span>
+            <span class="post-date" title="2019-12-31 15:40:59">2019/12/31</span>
+        </a>
+        
+        <a  class=""
+           href="/2019/12/31/SingleTon模板/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="SingleTon模板">SingleTon模板</span>
+            <span class="post-date" title="2019-12-31 15:47:42">2019/12/31</span>
         </a>
         
         <a  class=""
@@ -484,11 +620,19 @@
         </a>
         
         <a  class=""
-           href="/2017/09/22/Toast优化/"
+           href="/2019/12/31/TextView的drawableLeft与文本无法一起居中显示/"
            data-tag=""
            data-author="" >
-            <span class="post-title" title="Toast优化">Toast优化</span>
-            <span class="post-date" title="2017-09-22 11:14:53">2017/09/22</span>
+            <span class="post-title" title="TextView的drawableLeft与文本无法一起居中显示">TextView的drawableLeft与文本无法一起居中显示</span>
+            <span class="post-date" title="2019-12-31 14:41:41">2019/12/31</span>
+        </a>
+        
+        <a  class=""
+           href="/2018/03/08/Launcher移植学习/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Launcher移植学习">Launcher移植学习</span>
+            <span class="post-date" title="2018-03-08 09:50:39">2018/03/08</span>
         </a>
         
         <a  class=""
@@ -500,19 +644,19 @@
         </a>
         
         <a  class=""
+           href="/2017/09/22/Toast优化/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Toast优化">Toast优化</span>
+            <span class="post-date" title="2017-09-22 11:14:53">2017/09/22</span>
+        </a>
+        
+        <a  class=""
            href="/2017/09/25/adb-shell-input-text源码分析/"
            data-tag=""
            data-author="" >
             <span class="post-title" title="adb shell input text源码分析">adb shell input text源码分析</span>
             <span class="post-date" title="2017-09-25 15:00:24">2017/09/25</span>
-        </a>
-        
-        <a  class=""
-           href="/2018/08/03/adb控制mtklog/"
-           data-tag=""
-           data-author="" >
-            <span class="post-title" title="adb控制mtklog">adb控制mtklog</span>
-            <span class="post-date" title="2018-08-03 09:21:20">2018/08/03</span>
         </a>
         
         <a  class=""
@@ -524,6 +668,14 @@
         </a>
         
         <a  class=""
+           href="/2018/08/03/adb控制mtklog/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="adb控制mtklog">adb控制mtklog</span>
+            <span class="post-date" title="2018-08-03 09:21:20">2018/08/03</span>
+        </a>
+        
+        <a  class=""
            href="/2018/03/26/android-am-pm-wm命令/"
            data-tag=""
            data-author="" >
@@ -532,19 +684,19 @@
         </a>
         
         <a  class=""
-           href="/2017/09/21/android中media的url/"
-           data-tag=""
-           data-author="" >
-            <span class="post-title" title="android中media的url">android中media的url</span>
-            <span class="post-date" title="2017-09-21 12:52:17">2017/09/21</span>
-        </a>
-        
-        <a  class=""
            href="/2017/09/25/android-res下资源命名规则/"
            data-tag=""
            data-author="" >
             <span class="post-title" title="android-res下资源命名规则">android-res下资源命名规则</span>
             <span class="post-date" title="2017-09-25 15:40:07">2017/09/25</span>
+        </a>
+        
+        <a  class=""
+           href="/2017/09/21/android中media的url/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="android中media的url">android中media的url</span>
+            <span class="post-date" title="2017-09-21 12:52:17">2017/09/21</span>
         </a>
         
         <a  class=""
@@ -564,11 +716,11 @@
         </a>
         
         <a  class=""
-           href="/2018/07/27/docker加载ylzq/"
+           href="/2019/12/31/date在logcat中使用/"
            data-tag=""
            data-author="" >
-            <span class="post-title" title="docker加载ylzq">docker加载ylzq</span>
-            <span class="post-date" title="2018-07-27 09:47:22">2018/07/27</span>
+            <span class="post-title" title="date在logcat中使用">date在logcat中使用</span>
+            <span class="post-date" title="2019-12-31 16:14:25">2019/12/31</span>
         </a>
         
         <a  class=""
@@ -580,6 +732,22 @@
         </a>
         
         <a  class=""
+           href="/2018/07/27/docker加载ylzq/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="docker加载ylzq">docker加载ylzq</span>
+            <span class="post-date" title="2018-07-27 09:47:22">2018/07/27</span>
+        </a>
+        
+        <a  class=""
+           href="/2019/12/31/ffmpeg命令参考/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="ffmpeg命令参考">ffmpeg命令参考</span>
+            <span class="post-date" title="2019-12-31 16:13:00">2019/12/31</span>
+        </a>
+        
+        <a  class=""
            href="/2017/09/19/framework下添加一个自定义的服务/"
            data-tag=""
            data-author="" >
@@ -588,19 +756,19 @@
         </a>
         
         <a  class=""
-           href="/2019/12/31/hello-world/"
-           data-tag=""
-           data-author="" >
-            <span class="post-title" title="Hello World">Hello World</span>
-            <span class="post-date" title="2019-12-31 14:15:34">2019/12/31</span>
-        </a>
-        
-        <a  class=""
            href="/2018/04/11/git命令大全/"
            data-tag=""
            data-author="" >
             <span class="post-title" title="git命令大全">git命令大全</span>
             <span class="post-date" title="2018-04-11 13:40:22">2018/04/11</span>
+        </a>
+        
+        <a  class=""
+           href="/2019/12/31/hello-world/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Hello World">Hello World</span>
+            <span class="post-date" title="2019-12-31 14:15:34">2019/12/31</span>
         </a>
         
         <a  class=""
@@ -620,11 +788,11 @@
         </a>
         
         <a  class=""
-           href="/2017/09/21/menu菜单的解析/"
+           href="/2019/12/31/lsof查看进程所打开的文件/"
            data-tag=""
            data-author="" >
-            <span class="post-title" title="menu菜单的解析">menu菜单的解析</span>
-            <span class="post-date" title="2017-09-21 17:08:54">2017/09/21</span>
+            <span class="post-title" title="lsof查看进程所打开的文件">lsof查看进程所打开的文件</span>
+            <span class="post-date" title="2019-12-31 16:16:29">2019/12/31</span>
         </a>
         
         <a  class=""
@@ -636,11 +804,19 @@
         </a>
         
         <a  class=""
-           href="/2018/03/08/root权限相关/"
+           href="/2017/09/21/menu菜单的解析/"
            data-tag=""
            data-author="" >
-            <span class="post-title" title="root权限相关">root权限相关</span>
-            <span class="post-date" title="2018-03-08 12:49:31">2018/03/08</span>
+            <span class="post-title" title="menu菜单的解析">menu菜单的解析</span>
+            <span class="post-date" title="2017-09-21 17:08:54">2017/09/21</span>
+        </a>
+        
+        <a  class=""
+           href="/2019/12/31/nm查看动态库-静态库-可执行文件/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="nm查看动态库/静态库/可执行文件">nm查看动态库/静态库/可执行文件</span>
+            <span class="post-date" title="2019-12-31 16:11:20">2019/12/31</span>
         </a>
         
         <a  class=""
@@ -649,6 +825,22 @@
            data-author="" >
             <span class="post-title" title="mtklog分析">mtklog分析</span>
             <span class="post-date" title="2018-04-09 13:10:12">2018/04/09</span>
+        </a>
+        
+        <a  class=""
+           href="/2019/12/31/repo一个新工程使用步骤/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="repo一个新工程使用步骤">repo一个新工程使用步骤</span>
+            <span class="post-date" title="2019-12-31 15:43:32">2019/12/31</span>
+        </a>
+        
+        <a  class=""
+           href="/2018/03/08/root权限相关/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="root权限相关">root权限相关</span>
+            <span class="post-date" title="2018-03-08 12:49:31">2018/03/08</span>
         </a>
         
         <a  class=""
@@ -676,14 +868,6 @@
         </a>
         
         <a  class=""
-           href="/2017/09/25/ubuntu下cocos2dx学习/"
-           data-tag=""
-           data-author="" >
-            <span class="post-title" title="ubuntu下cocos2dx学习">ubuntu下cocos2dx学习</span>
-            <span class="post-date" title="2017-09-25 15:36:46">2017/09/25</span>
-        </a>
-        
-        <a  class=""
            href="/2017/09/21/support-features/"
            data-tag=""
            data-author="" >
@@ -692,11 +876,11 @@
         </a>
         
         <a  class=""
-           href="/2018/07/27/ubuntu安装docker/"
+           href="/2017/09/25/ubuntu下cocos2dx学习/"
            data-tag=""
            data-author="" >
-            <span class="post-title" title="ubuntu安装docker">ubuntu安装docker</span>
-            <span class="post-date" title="2018-07-27 09:49:38">2018/07/27</span>
+            <span class="post-title" title="ubuntu下cocos2dx学习">ubuntu下cocos2dx学习</span>
+            <span class="post-date" title="2017-09-25 15:36:46">2017/09/25</span>
         </a>
         
         <a  class=""
@@ -705,6 +889,14 @@
            data-author="" >
             <span class="post-title" title="ubuntu搜狗输入法无法输入中文">ubuntu搜狗输入法无法输入中文</span>
             <span class="post-date" title="2017-09-21 10:42:39">2017/09/21</span>
+        </a>
+        
+        <a  class=""
+           href="/2018/07/27/ubuntu安装docker/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="ubuntu安装docker">ubuntu安装docker</span>
+            <span class="post-date" title="2018-07-27 09:49:38">2018/07/27</span>
         </a>
         
         <a  class=""
@@ -729,6 +921,14 @@
            data-author="" >
             <span class="post-title" title="两个Activity之间通过接口进行通信">两个Activity之间通过接口进行通信</span>
             <span class="post-date" title="2017-09-22 13:18:42">2017/09/22</span>
+        </a>
+        
+        <a  class=""
+           href="/2019/12/31/为Android安装BusyBox-完整的bash-shell/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="为Android安装BusyBox--完整的bash shell">为Android安装BusyBox--完整的bash shell</span>
+            <span class="post-date" title="2019-12-31 15:27:36">2019/12/31</span>
         </a>
         
         <a  class=""
@@ -996,14 +1196,6 @@
         </a>
         
         <a  class=""
-           href="/2017/09/25/性能测试/"
-           data-tag=""
-           data-author="" >
-            <span class="post-title" title="性能测试">性能测试</span>
-            <span class="post-date" title="2017-09-25 15:43:40">2017/09/25</span>
-        </a>
-        
-        <a  class=""
            href="/2017/09/22/应用开机自启动/"
            data-tag=""
            data-author="" >
@@ -1012,19 +1204,11 @@
         </a>
         
         <a  class=""
-           href="/2018/03/08/手机基本概念/"
+           href="/2017/09/25/性能测试/"
            data-tag=""
            data-author="" >
-            <span class="post-title" title="手机基本概念">手机基本概念</span>
-            <span class="post-date" title="2018-03-08 13:06:42">2018/03/08</span>
-        </a>
-        
-        <a  class=""
-           href="/2017/09/21/提高进程优先级/"
-           data-tag=""
-           data-author="" >
-            <span class="post-title" title="提高进程优先级">提高进程优先级</span>
-            <span class="post-date" title="2017-09-21 11:08:41">2017/09/21</span>
+            <span class="post-title" title="性能测试">性能测试</span>
+            <span class="post-date" title="2017-09-25 15:43:40">2017/09/25</span>
         </a>
         
         <a  class=""
@@ -1036,6 +1220,14 @@
         </a>
         
         <a  class=""
+           href="/2017/09/21/提高进程优先级/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="提高进程优先级">提高进程优先级</span>
+            <span class="post-date" title="2017-09-21 11:08:41">2017/09/21</span>
+        </a>
+        
+        <a  class=""
            href="/2017/09/22/收到短信后未振动手机/"
            data-tag=""
            data-author="" >
@@ -1044,11 +1236,11 @@
         </a>
         
         <a  class=""
-           href="/2017/09/22/数据连接默认开关/"
+           href="/2018/03/08/手机基本概念/"
            data-tag=""
            data-author="" >
-            <span class="post-title" title="数据连接默认开关">数据连接默认开关</span>
-            <span class="post-date" title="2017-09-22 11:18:36">2017/09/22</span>
+            <span class="post-title" title="手机基本概念">手机基本概念</span>
+            <span class="post-date" title="2018-03-08 13:06:42">2018/03/08</span>
         </a>
         
         <a  class=""
@@ -1057,6 +1249,14 @@
            data-author="" >
             <span class="post-title" title="数据连接信号小图标">数据连接信号小图标</span>
             <span class="post-date" title="2018-03-08 11:21:55">2018/03/08</span>
+        </a>
+        
+        <a  class=""
+           href="/2017/09/22/数据连接默认开关/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="数据连接默认开关">数据连接默认开关</span>
+            <span class="post-date" title="2017-09-22 11:18:36">2017/09/22</span>
         </a>
         
         <a  class=""
@@ -1124,19 +1324,19 @@
         </a>
         
         <a  class=""
-           href="/2017/09/21/短信转彩信条数限制/"
-           data-tag=""
-           data-author="" >
-            <span class="post-title" title="短信转彩信条数限制">短信转彩信条数限制</span>
-            <span class="post-date" title="2017-09-21 13:03:48">2017/09/21</span>
-        </a>
-        
-        <a  class=""
            href="/2017/09/25/游戏框架/"
            data-tag=""
            data-author="" >
             <span class="post-title" title="游戏框架">游戏框架</span>
             <span class="post-date" title="2017-09-25 15:44:48">2017/09/25</span>
+        </a>
+        
+        <a  class=""
+           href="/2017/09/21/短信转彩信条数限制/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="短信转彩信条数限制">短信转彩信条数限制</span>
+            <span class="post-date" title="2017-09-21 13:03:48">2017/09/21</span>
         </a>
         
         <a  class=""
@@ -1156,11 +1356,11 @@
         </a>
         
         <a  class=""
-           href="/2017/09/21/耳机模式下播放音乐再拍照音乐会卡顿/"
+           href="/2019/12/31/编译android与tar打包命令/"
            data-tag=""
            data-author="" >
-            <span class="post-title" title="耳机模式下播放音乐再拍照音乐会卡顿">耳机模式下播放音乐再拍照音乐会卡顿</span>
-            <span class="post-date" title="2017-09-21 16:46:39">2017/09/21</span>
+            <span class="post-title" title="编译android与tar打包命令">编译android与tar打包命令</span>
+            <span class="post-date" title="2019-12-31 16:15:02">2019/12/31</span>
         </a>
         
         <a  class=""
@@ -1172,11 +1372,11 @@
         </a>
         
         <a  class=""
-           href="/2017/09/22/背光亮度设置后待机界面快捷图标不会随之变化/"
+           href="/2017/09/21/耳机模式下播放音乐再拍照音乐会卡顿/"
            data-tag=""
            data-author="" >
-            <span class="post-title" title="背光亮度设置后待机界面快捷图标不会随之变化">背光亮度设置后待机界面快捷图标不会随之变化</span>
-            <span class="post-date" title="2017-09-22 11:23:09">2017/09/22</span>
+            <span class="post-title" title="耳机模式下播放音乐再拍照音乐会卡顿">耳机模式下播放音乐再拍照音乐会卡顿</span>
+            <span class="post-date" title="2017-09-21 16:46:39">2017/09/21</span>
         </a>
         
         <a  class=""
@@ -1185,6 +1385,14 @@
            data-author="" >
             <span class="post-title" title="联系人编辑界面上的号码输入框无法输入加号">联系人编辑界面上的号码输入框无法输入加号</span>
             <span class="post-date" title="2017-09-21 16:57:34">2017/09/21</span>
+        </a>
+        
+        <a  class=""
+           href="/2017/09/22/背光亮度设置后待机界面快捷图标不会随之变化/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="背光亮度设置后待机界面快捷图标不会随之变化">背光亮度设置后待机界面快捷图标不会随之变化</span>
+            <span class="post-date" title="2017-09-22 11:23:09">2017/09/22</span>
         </a>
         
         <a  class=""
@@ -1284,6 +1492,14 @@
         </a>
         
         <a  class=""
+           href="/2019/12/31/重启framework命令/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="重启framework命令">重启framework命令</span>
+            <span class="post-date" title="2019-12-31 16:23:14">2019/12/31</span>
+        </a>
+        
+        <a  class=""
            href="/2017/09/22/配置AGPS/"
            data-tag=""
            data-author="" >
@@ -1308,19 +1524,19 @@
         </a>
         
         <a  class=""
-           href="/2017/09/22/预置了PDFViewer之后会报错/"
-           data-tag=""
-           data-author="" >
-            <span class="post-title" title="预置了PDFViewer之后会报错">预置了PDFViewer之后会报错</span>
-            <span class="post-date" title="2017-09-22 10:28:20">2017/09/22</span>
-        </a>
-        
-        <a  class=""
            href="/2017/10/11/面试题集合/"
            data-tag=""
            data-author="" >
             <span class="post-title" title="面试题集合">面试题集合</span>
             <span class="post-date" title="2017-10-11 09:55:06">2017/10/11</span>
+        </a>
+        
+        <a  class=""
+           href="/2017/09/22/预置了PDFViewer之后会报错/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="预置了PDFViewer之后会报错">预置了PDFViewer之后会报错</span>
+            <span class="post-date" title="2017-09-22 10:28:20">2017/09/22</span>
         </a>
         
         <a  class=""
