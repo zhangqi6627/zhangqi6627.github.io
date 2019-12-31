@@ -53,7 +53,7 @@ adb shell input text "helloworld"
 
 通过adb命令直接操作sqlite3数据库
 ``` bash
-adb shell sqlite3 /data/data/com.android.launcher3/databases/launcher.db "select * from favorites;"
+adb shell sqlite3 /data/data/com.android.launcher3/databases/launcher.db "'select * from favorites;'"
 adb shell sqlite3 /data/data/com.android.launcher3/databases/launcher.db ".dump" > sql.txt
 ```
 
@@ -71,7 +71,8 @@ adb shell monkey -s 6516 --throttle 200 --ignore-crashes --ignore-timeouts --ign
 ``` bash
 adb shell pm path com.android.launcher3
 ```
-输入：
+
+输出：
 ``` bash
 package:/system/priv-app/Launcher3Go/Launcher3Go.apk
 ```
