@@ -1,1881 +1,1359 @@
-<!DOCTYPE html>
-<html>
+<!DOCTYPE HTML>
+<html lang="zh-Hans">
+
+
 <head>
-  <meta charset="utf-8">
-  <title>王大可的茅草房</title>
-  <meta name="keywords" content="">
-  <meta name="description" content="王大可的茅草房">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="description" content="findViewById() 签名变更现在，findViewById() 函数的全部实例均返回  T，而不是 View。此变更会带来以下影响： 例如，如果 someMethod(View) 和 someMethod(TextView) 均接受调用 findViewById() 的结果，这可能导致现有代码的返回类型不确定。在使用 Java 8 源语言时，这需要在返回类型不受限制时（例如，assert">
-<meta property="og:type" content="article">
-<meta property="og:title" content="Android-findViewById签名变更">
-<meta property="og:url" content="http://yoursite.com/2019/12/31/Android-findViewById签名变更/index.html">
-<meta property="og:site_name" content="王大可的茅草房">
-<meta property="og:description" content="findViewById() 签名变更现在，findViewById() 函数的全部实例均返回  T，而不是 View。此变更会带来以下影响： 例如，如果 someMethod(View) 和 someMethod(TextView) 均接受调用 findViewById() 的结果，这可能导致现有代码的返回类型不确定。在使用 Java 8 源语言时，这需要在返回类型不受限制时（例如，assert">
-<meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-12-31T06:56:04.209Z">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Android-findViewById签名变更">
-<meta name="twitter:description" content="findViewById() 签名变更现在，findViewById() 函数的全部实例均返回  T，而不是 View。此变更会带来以下影响： 例如，如果 someMethod(View) 和 someMethod(TextView) 均接受调用 findViewById() 的结果，这可能导致现有代码的返回类型不确定。在使用 Java 8 源语言时，这需要在返回类型不受限制时（例如，assert">
+    <meta charset="utf-8">
+    <meta name="keywords" content="归档: 2017, 901的一家">
+    <meta name="description" content="901的一家">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-<link rel="icon" href="/img/avatar.jpg">
+    <title>归档: 2017 | 901的一家</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+    
 
-<link href="/css/style.css?v=1.0.1" rel="stylesheet">
 
-<link href="/css/hl_theme/atom-light.css?v=1.0.1" rel="stylesheet">
-
-<link href="//cdn.bootcss.com/animate.css/3.5.2/animate.min.css" rel="stylesheet">
-<link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-
-<script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
-<script src="/js/jquery.autocomplete.min.js?v=1.0.1" ></script>
-
-<script src="//cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
-<script>
-    hljs.initHighlightingOnLoad();
-</script>
-
-<script src="//cdn.bootcss.com/nprogress/0.2.0/nprogress.min.js"></script>
+    <!-- bg-cover style     -->
 
 
 
-<script src="//cdn.bootcss.com/jquery-cookie/1.4.1/jquery.cookie.min.js" ></script>
+<link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.min.css">
+<link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+<link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+<link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+<link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+<link rel="stylesheet" type="text/css" href="/css/matery.css">
+<link rel="stylesheet" type="text/css" href="/css/my.css">
+<link rel="stylesheet" type="text/css" href="/css/dark.css" media="none" onload="if(media!='all')media='all'">
 
-<script src="/js/iconfont.js?v=1.0.1" ></script>
+
+
+
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+    <link rel="stylesheet" href="/css/post.css">
+
+
+
+
+    
+        <link rel="stylesheet" type="text/css" href="/css/reward.css">
+    
+
+
+
+    <script src="/libs/jquery/jquery-3.6.0.min.js"></script>
 
 </head>
-<div style="display: none">
-  <input class="theme_disqus_on" value="false">
-  <input class="theme_preload_comment" value="false">
-  <input class="theme_blog_path" value="">
-</div>
+
 
 <body>
-<aside class="nav mobile">
-    <div class="nav-left">
-        <a href="/" class="avatar_target">
-    <img class="avatar" src="/img/avatar.jpg" />
-</a>
-<div class="author">
-    <span>王大可</span>
-</div>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">901的一家</span>
+                </a>
+            </div>
+            
 
-<div class="icon">
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
     
-        
-        <a title="rss" href="/atom.xml" target="_blank">
-            
-                <svg class="iconfont-svg" aria-hidden="true">
-                    <use xlink:href="#icon-rss"></use>
-                </svg>
-            
-        </a>
-        
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
     
-        
-        <a title="github" href="https://github.com/yelog" target="_blank">
-            
-                <svg class="iconfont-svg" aria-hidden="true">
-                    <use xlink:href="#icon-github"></use>
-                </svg>
-            
-        </a>
-        
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
     
-        
-        <a title="facebook" href="https://www.facebook.com/faker.tops" target="_blank">
-            
-                <svg class="iconfont-svg" aria-hidden="true">
-                    <use xlink:href="#icon-facebook"></use>
-                </svg>
-            
-        </a>
-        
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
     
-        
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
     
-        
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>分类</span>
+    </a>
     
-        
-        <a title="instagram" href="https://www.facebook.com/faker.tops" target="_blank">
-            
-                <svg class="iconfont-svg" aria-hidden="true">
-                    <use xlink:href="#icon-instagram"></use>
-                </svg>
-            
-        </a>
-        
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
     
-        
-        <a title="reddit" href="https://www.reddit.com/user/yelog/" target="_blank">
-            
-                <svg class="iconfont-svg" aria-hidden="true">
-                    <use xlink:href="#icon-reddit"></use>
-                </svg>
-            
-        </a>
-        
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>归档</span>
+    </a>
     
-        
-        <a title="weibo" href="http://weibo.com/u/2307534817" target="_blank">
-            
-                <svg class="iconfont-svg" aria-hidden="true">
-                    <use xlink:href="#icon-weibo"></use>
-                </svg>
-            
-        </a>
-        
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
     
-        
-        <a title="jianshu" href="https://www.jianshu.com/u/ff56736de7cf" target="_blank">
-            
-                <svg class="iconfont-svg" aria-hidden="true">
-                    <use xlink:href="#icon-jianshu"></use>
-                </svg>
-            
-        </a>
-        
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
     
-        
-        <a title="zhihu" href="https://www.zhihu.com/people/jaytp/activities" target="_blank">
-            
-                <svg class="iconfont-svg" aria-hidden="true">
-                    <use xlink:href="#icon-zhihu"></use>
-                </svg>
-            
-        </a>
-        
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
     
-        
+    <a href="/contact" class="waves-effect waves-light">
+      
+      <i class="fas fa-comments" style="zoom: 0.6;"></i>
+      
+      <span>留言板</span>
+    </a>
     
-        
-        <a title="oschina" href="https://my.oschina.net/yelog" target="_blank">
-            
-                <svg class="iconfont-svg" aria-hidden="true">
-                    <use xlink:href="#icon-oschina"></use>
-                </svg>
-            
-        </a>
-        
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
     
-        
+    <a href="/friends" class="waves-effect waves-light">
+      
+      <i class="fas fa-address-book" style="zoom: 0.6;"></i>
+      
+      <span>友情链接</span>
+    </a>
     
-        
-        <a title="email" href="mailto:jaytp@qq.com" target="_blank">
-            
-                <svg class="iconfont-svg" aria-hidden="true">
-                    <use xlink:href="#icon-email"></use>
-                </svg>
-            
-        </a>
-        
-    
-        
-        <a title="qq" href="http://wpa.qq.com/msgrd?v=3&uin=872336115&site=qq&menu=yes" target="_blank">
-            
-                <svg class="iconfont-svg" aria-hidden="true">
-                    <use xlink:href="#icon-qq"></use>
-                </svg>
-            
-        </a>
-        
-    
-        
-        <a title="kugou" href="https://www.kugou.com/" target="_blank">
-            
-                <svg class="iconfont-svg" aria-hidden="true">
-                    <use xlink:href="#icon-kugou"></use>
-                </svg>
-            
-        </a>
-        
-    
-        
-        <a title="neteasemusic" href="https://music.163.com/#/user/home?id=88151013" target="_blank">
-            
-                <svg class="iconfont-svg" aria-hidden="true">
-                    <use xlink:href="#icon-neteasemusic"></use>
-                </svg>
-            
-        </a>
-        
-    
-</div>
-
-
-
-
-<ul>
-    <li><div class="all active">全部文章<small>(162)</small></div></li>
-    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+  <li>
+    <a href="javascript:;" class="waves-effect waves-light" onclick="switchNightMode()" title="深色/浅色模式" >
+      <i id="sum-moon-icon" class="fas fa-sun" style="zoom: 0.85;"></i>
+    </a>
+  </li>
 </ul>
-<div class="left-bottom">
-    <div class="menus">
-    
-    
-    
-    
-    </div>
-    <div><a class="about  hasFriend  site_url"  href="/about">关于</a><a style="width: 50%"  class="friends">友链</a></div>
-</div>
-<input type="hidden" id="yelog_site_posts_number" value="162">
 
-<div style="display: none">
-    <span id="busuanzi_value_site_uv"></span>
-    <span id="busuanzi_value_site_pv"></span>
-</div>
 
-    </div>
-    <div class="nav-right">
-        <div class="friends-area">
-    <div class="friends-title">
-        友情链接
-        <i class="back-title-list"></i>
-    </div>
-    <div class="friends-content">
-        <ul>
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">901的一家</div>
+        <div class="logo-desc">
             
-            <li><a target="_blank" href="http://zhangqi6627.github.io/">叶落阁</a></li>
+            Never really desperate, only the lost of the soul.
             
-        </ul>
-    </div>
-</div>
-        <div class="title-list">
-    <form onkeydown="if(event.keyCode==13){return false;}">
-        <input class="search" type="text" placeholder="Search..." autocomplete="off"id="local-search-input" >
-        <i class="cross"></i>
-        <span>
-            <label for="tagswitch">Tags:</label>
-            <input id="tagswitch" type="checkbox" style="display: none" />
-            <i id="tagsWitchIcon"></i>
-        </span>
-    </form>
-    <div class="tags-list">
-    
-    <div class="clearfix"></div>
-</div>
-
-    
-    <nav id="title-list-nav">
-        
-        <a  class=""
-           href="/2018/02/27/50篇Android干货文章/"
-           data-tag=""
-           data-author="" >
-            <span class="post-title" title="50篇Android干货文章">50篇Android干货文章</span>
-            <span class="post-date" title="2018-02-27 11:08:41">2018/02/27</span>
-        </a>
-        
-        <a  class=""
-           href="/2019/12/31/Android-PackageManagerService中LI-LP等函数后缀的含义/"
-           data-tag=""
-           data-author="" >
-            <span class="post-title" title="Android--PackageManagerService中LI/LP等函数后缀的含义">Android--PackageManagerService中LI/LP等函数后缀的含义</span>
-            <span class="post-date" title="2019-12-31 16:37:12">2019/12/31</span>
-        </a>
-        
-        <a  class=""
-           href="/2018/04/11/ANR问题分析/"
-           data-tag=""
-           data-author="" >
-            <span class="post-title" title="ANR问题分析">ANR问题分析</span>
-            <span class="post-date" title="2018-04-11 10:41:59">2018/04/11</span>
-        </a>
-        
-        <a  class=""
-           href="/2017/10/10/35个Java代码性能优化总结/"
-           data-tag=""
-           data-author="" >
-            <span class="post-title" title="35个Java代码性能优化总结">35个Java代码性能优化总结</span>
-            <span class="post-date" title="2017-10-10 14:07:20">2017/10/10</span>
-        </a>
-        
-        <a  class=""
-           href="/2017/09/22/Activity和Service之间通过接口进行通信/"
-           data-tag=""
-           data-author="" >
-            <span class="post-title" title="Activity和Service之间通过接口进行通信">Activity和Service之间通过接口进行通信</span>
-            <span class="post-date" title="2017-09-22 13:19:22">2017/09/22</span>
-        </a>
-        
-        <a  class=""
-           href="/2019/12/31/Android-findViewById签名变更/"
-           data-tag=""
-           data-author="" >
-            <span class="post-title" title="Android-findViewById签名变更">Android-findViewById签名变更</span>
-            <span class="post-date" title="2019-12-31 14:55:43">2019/12/31</span>
-        </a>
-        
-        <a  class=""
-           href="/2019/12/31/Android一个统计Service的脚本/"
-           data-tag=""
-           data-author="" >
-            <span class="post-title" title="Android一个统计Service的脚本">Android一个统计Service的脚本</span>
-            <span class="post-date" title="2019-12-31 16:40:56">2019/12/31</span>
-        </a>
-        
-        <a  class=""
-           href="/2019/12/31/Android串口控制台改为root/"
-           data-tag=""
-           data-author="" >
-            <span class="post-title" title="Android串口控制台改为root">Android串口控制台改为root</span>
-            <span class="post-date" title="2019-12-31 16:28:34">2019/12/31</span>
-        </a>
-        
-        <a  class=""
-           href="/2019/12/31/Android修改kernel-logo和开机动画/"
-           data-tag=""
-           data-author="" >
-            <span class="post-title" title="Android修改kernel logo和开机动画">Android修改kernel logo和开机动画</span>
-            <span class="post-date" title="2019-12-31 15:51:47">2019/12/31</span>
-        </a>
-        
-        <a  class=""
-           href="/2019/12/31/Android7-1开机启动脚本/"
-           data-tag=""
-           data-author="" >
-            <span class="post-title" title="Android7.1开机启动脚本">Android7.1开机启动脚本</span>
-            <span class="post-date" title="2019-12-31 16:19:35">2019/12/31</span>
-        </a>
-        
-        <a  class=""
-           href="/2019/12/31/Android-Stopwatch工具类/"
-           data-tag=""
-           data-author="" >
-            <span class="post-title" title="Android--Stopwatch工具类">Android--Stopwatch工具类</span>
-            <span class="post-date" title="2019-12-31 15:48:39">2019/12/31</span>
-        </a>
-        
-        <a  class=""
-           href="/2019/12/31/Android再次点击返回键退出/"
-           data-tag=""
-           data-author="" >
-            <span class="post-title" title="Android再次点击返回键退出">Android再次点击返回键退出</span>
-            <span class="post-date" title="2019-12-31 14:46:55">2019/12/31</span>
-        </a>
-        
-        <a  class=""
-           href="/2019/12/31/Android写log到文件模版/"
-           data-tag=""
-           data-author="" >
-            <span class="post-title" title="Android写log到文件模版">Android写log到文件模版</span>
-            <span class="post-date" title="2019-12-31 15:56:28">2019/12/31</span>
-        </a>
-        
-        <a  class=""
-           href="/2017/09/22/Android单元测试/"
-           data-tag=""
-           data-author="" >
-            <span class="post-title" title="Android单元测试">Android单元测试</span>
-            <span class="post-date" title="2017-09-22 12:48:21">2017/09/22</span>
-        </a>
-        
-        <a  class=""
-           href="/2019/12/31/Android判断某个点是否在View的区域内/"
-           data-tag=""
-           data-author="" >
-            <span class="post-title" title="Android判断某个点是否在View的区域内">Android判断某个点是否在View的区域内</span>
-            <span class="post-date" title="2019-12-31 14:40:02">2019/12/31</span>
-        </a>
-        
-        <a  class=""
-           href="/2019/12/31/Android利用反射实现不安装直接运行APK-动态加载/"
-           data-tag=""
-           data-author="" >
-            <span class="post-title" title="Android利用反射实现不安装直接运行APK(动态加载)">Android利用反射实现不安装直接运行APK(动态加载)</span>
-            <span class="post-date" title="2019-12-31 14:39:07">2019/12/31</span>
-        </a>
-        
-        <a  class=""
-           href="/2019/12/31/Android反射调用通知栏回收/"
-           data-tag=""
-           data-author="" >
-            <span class="post-title" title="Android反射调用通知栏回收">Android反射调用通知栏回收</span>
-            <span class="post-date" title="2019-12-31 14:04:21">2019/12/31</span>
-        </a>
-        
-        <a  class=""
-           href="/2019/12/31/Android在framework和hal添加log/"
-           data-tag=""
-           data-author="" >
-            <span class="post-title" title="Android在framework和hal添加log">Android在framework和hal添加log</span>
-            <span class="post-date" title="2019-12-31 15:39:07">2019/12/31</span>
-        </a>
-        
-        <a  class=""
-           href="/2019/12/31/Android在Android-mk里添加TAG/"
-           data-tag=""
-           data-author="" >
-            <span class="post-title" title="Android在Android.mk里添加TAG">Android在Android.mk里添加TAG</span>
-            <span class="post-date" title="2019-12-31 15:55:09">2019/12/31</span>
-        </a>
-        
-        <a  class=""
-           href="/2019/12/31/Android命令行读写i2c寄存器操作/"
-           data-tag=""
-           data-author="" >
-            <span class="post-title" title="Android命令行读写i2c寄存器操作">Android命令行读写i2c寄存器操作</span>
-            <span class="post-date" title="2019-12-31 15:35:31">2019/12/31</span>
-        </a>
-        
-        <a  class=""
-           href="/2019/12/31/Android安装使用i2c-tools/"
-           data-tag=""
-           data-author="" >
-            <span class="post-title" title="Android安装使用i2c-tools">Android安装使用i2c-tools</span>
-            <span class="post-date" title="2019-12-31 15:36:43">2019/12/31</span>
-        </a>
-        
-        <a  class=""
-           href="/2019/12/31/Android-dex-odex-oat-vdex-art区别/"
-           data-tag=""
-           data-author="" >
-            <span class="post-title" title="Android dex/odex/oat/vdex/art区别">Android dex/odex/oat/vdex/art区别</span>
-            <span class="post-date" title="2019-12-31 16:09:02">2019/12/31</span>
-        </a>
-        
-        <a  class=""
-           href="/2019/12/31/Android应用的UID和PID/"
-           data-tag=""
-           data-author="" >
-            <span class="post-title" title="Android应用的UID和PID">Android应用的UID和PID</span>
-            <span class="post-date" title="2019-12-31 14:50:54">2019/12/31</span>
-        </a>
-        
-        <a  class=""
-           href="/2019/12/31/Android打开-关闭wifi命令/"
-           data-tag=""
-           data-author="" >
-            <span class="post-title" title="Android打开/关闭wifi命令">Android打开/关闭wifi命令</span>
-            <span class="post-date" title="2019-12-31 15:34:17">2019/12/31</span>
-        </a>
-        
-        <a  class=""
-           href="/2019/12/31/Android自带的常用注解/"
-           data-tag=""
-           data-author="" >
-            <span class="post-title" title="Android自带的常用注解">Android自带的常用注解</span>
-            <span class="post-date" title="2019-12-31 14:52:06">2019/12/31</span>
-        </a>
-        
-        <a  class=""
-           href="/2017/09/25/Bitmap内存优化/"
-           data-tag=""
-           data-author="" >
-            <span class="post-title" title="Bitmap内存优化">Bitmap内存优化</span>
-            <span class="post-date" title="2017-09-25 15:35:36">2017/09/25</span>
-        </a>
-        
-        <a  class=""
-           href="/2019/12/31/Android重启framework命令及framework-jar引用/"
-           data-tag=""
-           data-author="" >
-            <span class="post-title" title="Android重启framework命令及framework.jar引用">Android重启framework命令及framework.jar引用</span>
-            <span class="post-date" title="2019-12-31 15:28:47">2019/12/31</span>
-        </a>
-        
-        <a  class=""
-           href="/2019/12/31/Android连接网络立即同步时区/"
-           data-tag=""
-           data-author="" >
-            <span class="post-title" title="Android连接网络立即同步时区">Android连接网络立即同步时区</span>
-            <span class="post-date" title="2019-12-31 15:50:02">2019/12/31</span>
-        </a>
-        
-        <a  class=""
-           href="/2019/12/31/Android隐藏类的使用/"
-           data-tag=""
-           data-author="" >
-            <span class="post-title" title="Android隐藏类的使用">Android隐藏类的使用</span>
-            <span class="post-date" title="2019-12-31 15:30:45">2019/12/31</span>
-        </a>
-        
-        <a  class=""
-           href="/2017/10/09/ButterKnife的学习和使用/"
-           data-tag=""
-           data-author="" >
-            <span class="post-title" title="ButterKnife的学习和使用">ButterKnife的学习和使用</span>
-            <span class="post-date" title="2017-10-09 14:56:45">2017/10/09</span>
-        </a>
-        
-        <a  class=""
-           href="/2017/10/11/Chronometer的学习和使用/"
-           data-tag=""
-           data-author="" >
-            <span class="post-title" title="Chronometer的学习和使用">Chronometer的学习和使用</span>
-            <span class="post-date" title="2017-10-11 09:45:28">2017/10/11</span>
-        </a>
-        
-        <a  class=""
-           href="/2018/04/09/Channel-is-unrecoverably-broken-and-will-be-disposed/"
-           data-tag=""
-           data-author="" >
-            <span class="post-title" title="Channel is unrecoverably broken and will be disposed">Channel is unrecoverably broken and will be disposed</span>
-            <span class="post-date" title="2018-04-09 10:24:45">2018/04/09</span>
-        </a>
-        
-        <a  class=""
-           href="/2018/03/02/EventLog含义/"
-           data-tag=""
-           data-author="" >
-            <span class="post-title" title="EventLog含义">EventLog含义</span>
-            <span class="post-date" title="2018-03-02 13:33:11">2018/03/02</span>
-        </a>
-        
-        <a  class=""
-           href="/2019/12/31/Git-Repo-Gerrit区别/"
-           data-tag=""
-           data-author="" >
-            <span class="post-title" title="Git/Repo/Gerrit区别">Git/Repo/Gerrit区别</span>
-            <span class="post-date" title="2019-12-31 15:26:05">2019/12/31</span>
-        </a>
-        
-        <a  class=""
-           href="/2018/07/25/Hexo常用命令/"
-           data-tag=""
-           data-author="" >
-            <span class="post-title" title="Hexo常用命令">Hexo常用命令</span>
-            <span class="post-date" title="2018-07-25 16:59:22">2018/07/25</span>
-        </a>
-        
-        <a  class=""
-           href="/2017/09/28/Intent的高级写法/"
-           data-tag=""
-           data-author="" >
-            <span class="post-title" title="Intent的高级写法">Intent的高级写法</span>
-            <span class="post-date" title="2017-09-28 15:39:49">2017/09/28</span>
-        </a>
-        
-        <a  class=""
-           href="/2019/12/31/Java显示调用堆栈的几种方法/"
-           data-tag=""
-           data-author="" >
-            <span class="post-title" title="Java显示调用堆栈的几种方法">Java显示调用堆栈的几种方法</span>
-            <span class="post-date" title="2019-12-31 14:37:16">2019/12/31</span>
-        </a>
-        
-        <a  class=""
-           href="/2018/03/08/Java的编译时多态和运行时多态/"
-           data-tag=""
-           data-author="" >
-            <span class="post-title" title="Java的编译时多态和运行时多态">Java的编译时多态和运行时多态</span>
-            <span class="post-date" title="2018-03-08 12:57:48">2018/03/08</span>
-        </a>
-        
-        <a  class=""
-           href="/2017/09/22/L6735M平台上如何配置才能使SN号码唯一/"
-           data-tag=""
-           data-author="" >
-            <span class="post-title" title="L6735M平台上如何配置才能使SN号码唯一">L6735M平台上如何配置才能使SN号码唯一</span>
-            <span class="post-date" title="2017-09-22 10:20:50">2017/09/22</span>
-        </a>
-        
-        <a  class=""
-           href="/2017/09/21/ListView界面点击按键的时候会显示快捷搜索框/"
-           data-tag=""
-           data-author="" >
-            <span class="post-title" title="ListView界面点击按键的时候会显示快捷搜索框">ListView界面点击按键的时候会显示快捷搜索框</span>
-            <span class="post-date" title="2017-09-21 16:55:39">2017/09/21</span>
-        </a>
-        
-        <a  class=""
-           href="/2017/09/22/Observer观察者模式/"
-           data-tag=""
-           data-author="" >
-            <span class="post-title" title="Observer观察者模式">Observer观察者模式</span>
-            <span class="post-date" title="2017-09-22 13:17:51">2017/09/22</span>
-        </a>
-        
-        <a  class=""
-           href="/2017/09/30/ShadowView的学习和使用/"
-           data-tag=""
-           data-author="" >
-            <span class="post-title" title="ShadowView的学习和使用">ShadowView的学习和使用</span>
-            <span class="post-date" title="2017-09-30 14:51:25">2017/09/30</span>
-        </a>
-        
-        <a  class=""
-           href="/2019/12/31/Shell死循环/"
-           data-tag=""
-           data-author="" >
-            <span class="post-title" title="Shell死循环">Shell死循环</span>
-            <span class="post-date" title="2019-12-31 15:40:59">2019/12/31</span>
-        </a>
-        
-        <a  class=""
-           href="/2019/12/31/SingleTon模板/"
-           data-tag=""
-           data-author="" >
-            <span class="post-title" title="SingleTon模板">SingleTon模板</span>
-            <span class="post-date" title="2019-12-31 15:47:42">2019/12/31</span>
-        </a>
-        
-        <a  class=""
-           href="/2017/09/29/Snackbar的学习和使用/"
-           data-tag=""
-           data-author="" >
-            <span class="post-title" title="Snackbar的学习和使用">Snackbar的学习和使用</span>
-            <span class="post-date" title="2017-09-29 14:15:17">2017/09/29</span>
-        </a>
-        
-        <a  class=""
-           href="/2019/12/31/TextView的drawableLeft与文本无法一起居中显示/"
-           data-tag=""
-           data-author="" >
-            <span class="post-title" title="TextView的drawableLeft与文本无法一起居中显示">TextView的drawableLeft与文本无法一起居中显示</span>
-            <span class="post-date" title="2019-12-31 14:41:41">2019/12/31</span>
-        </a>
-        
-        <a  class=""
-           href="/2018/03/08/Launcher移植学习/"
-           data-tag=""
-           data-author="" >
-            <span class="post-title" title="Launcher移植学习">Launcher移植学习</span>
-            <span class="post-date" title="2018-03-08 09:50:39">2018/03/08</span>
-        </a>
-        
-        <a  class=""
-           href="/2018/04/09/The-application-may-be-doing-too-much-work-on-its-main-thread/"
-           data-tag=""
-           data-author="" >
-            <span class="post-title" title="The application may be doing too much work on its main thread">The application may be doing too much work on its main thread</span>
-            <span class="post-date" title="2018-04-09 10:34:00">2018/04/09</span>
-        </a>
-        
-        <a  class=""
-           href="/2017/09/22/Toast优化/"
-           data-tag=""
-           data-author="" >
-            <span class="post-title" title="Toast优化">Toast优化</span>
-            <span class="post-date" title="2017-09-22 11:14:53">2017/09/22</span>
-        </a>
-        
-        <a  class=""
-           href="/2017/09/25/adb-shell-input-text源码分析/"
-           data-tag=""
-           data-author="" >
-            <span class="post-title" title="adb shell input text源码分析">adb shell input text源码分析</span>
-            <span class="post-date" title="2017-09-25 15:00:24">2017/09/25</span>
-        </a>
-        
-        <a  class=""
-           href="/2017/09/21/adb命令集合/"
-           data-tag=""
-           data-author="" >
-            <span class="post-title" title="adb命令集合">adb命令集合</span>
-            <span class="post-date" title="2017-09-21 16:40:22">2017/09/21</span>
-        </a>
-        
-        <a  class=""
-           href="/2018/08/03/adb控制mtklog/"
-           data-tag=""
-           data-author="" >
-            <span class="post-title" title="adb控制mtklog">adb控制mtklog</span>
-            <span class="post-date" title="2018-08-03 09:21:20">2018/08/03</span>
-        </a>
-        
-        <a  class=""
-           href="/2018/03/26/android-am-pm-wm命令/"
-           data-tag=""
-           data-author="" >
-            <span class="post-title" title="android am pm wm命令">android am pm wm命令</span>
-            <span class="post-date" title="2018-03-26 13:25:19">2018/03/26</span>
-        </a>
-        
-        <a  class=""
-           href="/2017/09/25/android-res下资源命名规则/"
-           data-tag=""
-           data-author="" >
-            <span class="post-title" title="android-res下资源命名规则">android-res下资源命名规则</span>
-            <span class="post-date" title="2017-09-25 15:40:07">2017/09/25</span>
-        </a>
-        
-        <a  class=""
-           href="/2017/09/21/android中media的url/"
-           data-tag=""
-           data-author="" >
-            <span class="post-title" title="android中media的url">android中media的url</span>
-            <span class="post-date" title="2017-09-21 12:52:17">2017/09/21</span>
-        </a>
-        
-        <a  class=""
-           href="/2017/09/21/android清理缓存功能的实现/"
-           data-tag=""
-           data-author="" >
-            <span class="post-title" title="android清理缓存功能的实现">android清理缓存功能的实现</span>
-            <span class="post-date" title="2017-09-21 11:15:46">2017/09/21</span>
-        </a>
-        
-        <a  class=""
-           href="/2017/09/21/ccache/"
-           data-tag=""
-           data-author="" >
-            <span class="post-title" title="ccache">ccache</span>
-            <span class="post-date" title="2017-09-21 17:02:16">2017/09/21</span>
-        </a>
-        
-        <a  class=""
-           href="/2019/12/31/date在logcat中使用/"
-           data-tag=""
-           data-author="" >
-            <span class="post-title" title="date在logcat中使用">date在logcat中使用</span>
-            <span class="post-date" title="2019-12-31 16:14:25">2019/12/31</span>
-        </a>
-        
-        <a  class=""
-           href="/2018/07/27/docker安装ss/"
-           data-tag=""
-           data-author="" >
-            <span class="post-title" title="docker安装ss">docker安装ss</span>
-            <span class="post-date" title="2018-07-27 09:50:20">2018/07/27</span>
-        </a>
-        
-        <a  class=""
-           href="/2018/07/27/docker加载ylzq/"
-           data-tag=""
-           data-author="" >
-            <span class="post-title" title="docker加载ylzq">docker加载ylzq</span>
-            <span class="post-date" title="2018-07-27 09:47:22">2018/07/27</span>
-        </a>
-        
-        <a  class=""
-           href="/2019/12/31/ffmpeg命令参考/"
-           data-tag=""
-           data-author="" >
-            <span class="post-title" title="ffmpeg命令参考">ffmpeg命令参考</span>
-            <span class="post-date" title="2019-12-31 16:13:00">2019/12/31</span>
-        </a>
-        
-        <a  class=""
-           href="/2017/09/19/framework下添加一个自定义的服务/"
-           data-tag=""
-           data-author="" >
-            <span class="post-title" title="framework下添加一个自定义的服务 SELinux Permission Denied">framework下添加一个自定义的服务 SELinux Permission Denied</span>
-            <span class="post-date" title="2017-09-19 15:22:13">2017/09/19</span>
-        </a>
-        
-        <a  class=""
-           href="/2018/04/11/git命令大全/"
-           data-tag=""
-           data-author="" >
-            <span class="post-title" title="git命令大全">git命令大全</span>
-            <span class="post-date" title="2018-04-11 13:40:22">2018/04/11</span>
-        </a>
-        
-        <a  class=""
-           href="/2019/12/31/hello-world/"
-           data-tag=""
-           data-author="" >
-            <span class="post-title" title="Hello World">Hello World</span>
-            <span class="post-date" title="2019-12-31 14:15:34">2019/12/31</span>
-        </a>
-        
-        <a  class=""
-           href="/2018/04/25/insufficient-permissions-for-device/"
-           data-tag=""
-           data-author="" >
-            <span class="post-title" title="insufficient permissions for device">insufficient permissions for device</span>
-            <span class="post-date" title="2018-04-25 09:20:29">2018/04/25</span>
-        </a>
-        
-        <a  class=""
-           href="/2017/09/19/jack编译报错/"
-           data-tag=""
-           data-author="" >
-            <span class="post-title" title="编译报错 Out of memory error (version 1.2-rc4 &#39;Carnac&#39;">编译报错 Out of memory error (version 1.2-rc4 &#39;Carnac&#39;</span>
-            <span class="post-date" title="2017-09-19 14:34:29">2017/09/19</span>
-        </a>
-        
-        <a  class=""
-           href="/2019/12/31/lsof查看进程所打开的文件/"
-           data-tag=""
-           data-author="" >
-            <span class="post-title" title="lsof查看进程所打开的文件">lsof查看进程所打开的文件</span>
-            <span class="post-date" title="2019-12-31 16:16:29">2019/12/31</span>
-        </a>
-        
-        <a  class=""
-           href="/2018/08/03/markdown语法/"
-           data-tag=""
-           data-author="" >
-            <span class="post-title" title="markdown语法">markdown语法</span>
-            <span class="post-date" title="2018-08-03 10:01:36">2018/08/03</span>
-        </a>
-        
-        <a  class=""
-           href="/2017/09/21/menu菜单的解析/"
-           data-tag=""
-           data-author="" >
-            <span class="post-title" title="menu菜单的解析">menu菜单的解析</span>
-            <span class="post-date" title="2017-09-21 17:08:54">2017/09/21</span>
-        </a>
-        
-        <a  class=""
-           href="/2019/12/31/nm查看动态库-静态库-可执行文件/"
-           data-tag=""
-           data-author="" >
-            <span class="post-title" title="nm查看动态库/静态库/可执行文件">nm查看动态库/静态库/可执行文件</span>
-            <span class="post-date" title="2019-12-31 16:11:20">2019/12/31</span>
-        </a>
-        
-        <a  class=""
-           href="/2018/04/09/mtklog分析/"
-           data-tag=""
-           data-author="" >
-            <span class="post-title" title="mtklog分析">mtklog分析</span>
-            <span class="post-date" title="2018-04-09 13:10:12">2018/04/09</span>
-        </a>
-        
-        <a  class=""
-           href="/2019/12/31/repo一个新工程使用步骤/"
-           data-tag=""
-           data-author="" >
-            <span class="post-title" title="repo一个新工程使用步骤">repo一个新工程使用步骤</span>
-            <span class="post-date" title="2019-12-31 15:43:32">2019/12/31</span>
-        </a>
-        
-        <a  class=""
-           href="/2018/03/08/root权限相关/"
-           data-tag=""
-           data-author="" >
-            <span class="post-title" title="root权限相关">root权限相关</span>
-            <span class="post-date" title="2018-03-08 12:49:31">2018/03/08</span>
-        </a>
-        
-        <a  class=""
-           href="/2017/09/21/setDescendantFocusability的参数含义/"
-           data-tag=""
-           data-author="" >
-            <span class="post-title" title="setDescendantFocusability的参数含义">setDescendantFocusability的参数含义</span>
-            <span class="post-date" title="2017-09-21 13:39:14">2017/09/21</span>
-        </a>
-        
-        <a  class=""
-           href="/2017/09/19/shutdown-selinux/"
-           data-tag=""
-           data-author="" >
-            <span class="post-title" title="如何设置确认selinux 模式">如何设置确认selinux 模式</span>
-            <span class="post-date" title="2017-09-19 15:54:53">2017/09/19</span>
-        </a>
-        
-        <a  class=""
-           href="/2017/09/22/sqlite-rawQuery/"
-           data-tag=""
-           data-author="" >
-            <span class="post-title" title="sqlite rawQuery() 方法怎么用">sqlite rawQuery() 方法怎么用</span>
-            <span class="post-date" title="2017-09-22 10:45:52">2017/09/22</span>
-        </a>
-        
-        <a  class=""
-           href="/2017/09/21/support-features/"
-           data-tag=""
-           data-author="" >
-            <span class="post-title" title="support_features">support_features</span>
-            <span class="post-date" title="2017-09-21 17:10:05">2017/09/21</span>
-        </a>
-        
-        <a  class=""
-           href="/2017/09/25/ubuntu下cocos2dx学习/"
-           data-tag=""
-           data-author="" >
-            <span class="post-title" title="ubuntu下cocos2dx学习">ubuntu下cocos2dx学习</span>
-            <span class="post-date" title="2017-09-25 15:36:46">2017/09/25</span>
-        </a>
-        
-        <a  class=""
-           href="/2017/09/21/ubuntu搜狗输入法无法输入中文/"
-           data-tag=""
-           data-author="" >
-            <span class="post-title" title="ubuntu搜狗输入法无法输入中文">ubuntu搜狗输入法无法输入中文</span>
-            <span class="post-date" title="2017-09-21 10:42:39">2017/09/21</span>
-        </a>
-        
-        <a  class=""
-           href="/2018/07/27/ubuntu安装docker/"
-           data-tag=""
-           data-author="" >
-            <span class="post-title" title="ubuntu安装docker">ubuntu安装docker</span>
-            <span class="post-date" title="2018-07-27 09:49:38">2018/07/27</span>
-        </a>
-        
-        <a  class=""
-           href="/2017/09/22/wifi热点名称保存读取/"
-           data-tag=""
-           data-author="" >
-            <span class="post-title" title="wifi热点名称保存读取">wifi热点名称保存读取</span>
-            <span class="post-date" title="2017-09-22 09:27:51">2017/09/22</span>
-        </a>
-        
-        <a  class=""
-           href="/2019/12/31/wrap-content不生效的原因和解决方案/"
-           data-tag=""
-           data-author="" >
-            <span class="post-title" title="wrap_content不生效的原因和解决方案">wrap_content不生效的原因和解决方案</span>
-            <span class="post-date" title="2019-12-31 14:45:20">2019/12/31</span>
-        </a>
-        
-        <a  class=""
-           href="/2017/09/22/两个Activity之间通过接口进行通信/"
-           data-tag=""
-           data-author="" >
-            <span class="post-title" title="两个Activity之间通过接口进行通信">两个Activity之间通过接口进行通信</span>
-            <span class="post-date" title="2017-09-22 13:18:42">2017/09/22</span>
-        </a>
-        
-        <a  class=""
-           href="/2019/12/31/为Android安装BusyBox-完整的bash-shell/"
-           data-tag=""
-           data-author="" >
-            <span class="post-title" title="为Android安装BusyBox--完整的bash shell">为Android安装BusyBox--完整的bash shell</span>
-            <span class="post-date" title="2019-12-31 15:27:36">2019/12/31</span>
-        </a>
-        
-        <a  class=""
-           href="/2018/02/27/为用户生成有趣的头像/"
-           data-tag=""
-           data-author="" >
-            <span class="post-title" title="为用户生成有趣的头像">为用户生成有趣的头像</span>
-            <span class="post-date" title="2018-02-27 09:23:02">2018/02/27</span>
-        </a>
-        
-        <a  class=""
-           href="/2017/09/22/使用AIDL调用CountryDetector中的接口来获取国家编码/"
-           data-tag=""
-           data-author="" >
-            <span class="post-title" title="使用AIDL调用CountryDetector中的接口来获取国家编码">使用AIDL调用CountryDetector中的接口来获取国家编码</span>
-            <span class="post-date" title="2017-09-22 14:12:26">2017/09/22</span>
-        </a>
-        
-        <a  class=""
-           href="/2017/09/22/保存大文件到sqlite数据库/"
-           data-tag=""
-           data-author="" >
-            <span class="post-title" title="保存大文件到sqlite数据库">保存大文件到sqlite数据库</span>
-            <span class="post-date" title="2017-09-22 13:20:16">2017/09/22</span>
-        </a>
-        
-        <a  class=""
-           href="/2017/09/25/修改SIMToolkit的显示名称/"
-           data-tag=""
-           data-author="" >
-            <span class="post-title" title="修改SIMToolkit的显示名称">修改SIMToolkit的显示名称</span>
-            <span class="post-date" title="2017-09-25 15:29:07">2017/09/25</span>
-        </a>
-        
-        <a  class=""
-           href="/2017/09/22/修改wifi热点默认密码/"
-           data-tag=""
-           data-author="" >
-            <span class="post-title" title="修改wifi热点默认密码">修改wifi热点默认密码</span>
-            <span class="post-date" title="2017-09-22 10:30:07">2017/09/22</span>
-        </a>
-        
-        <a  class=""
-           href="/2017/09/22/修改某些分区表中的某些分区之后不起作用/"
-           data-tag=""
-           data-author="" >
-            <span class="post-title" title="修改某些分区表中的某些分区之后不起作用">修改某些分区表中的某些分区之后不起作用</span>
-            <span class="post-date" title="2017-09-22 09:58:35">2017/09/22</span>
-        </a>
-        
-        <a  class=""
-           href="/2017/09/21/修改默认日期/"
-           data-tag=""
-           data-author="" >
-            <span class="post-title" title="修改默认日期">修改默认日期</span>
-            <span class="post-date" title="2017-09-21 14:19:03">2017/09/21</span>
-        </a>
-        
-        <a  class=""
-           href="/2017/09/21/修改默认Launcher/"
-           data-tag=""
-           data-author="" >
-            <span class="post-title" title="修改默认Launcher">修改默认Launcher</span>
-            <span class="post-date" title="2017-09-21 15:35:40">2017/09/21</span>
-        </a>
-        
-        <a  class=""
-           href="/2017/09/22/修改默认的两个闹钟震动打开/"
-           data-tag=""
-           data-author="" >
-            <span class="post-title" title="修改默认的两个闹钟震动打开">修改默认的两个闹钟震动打开</span>
-            <span class="post-date" title="2017-09-22 10:25:03">2017/09/22</span>
-        </a>
-        
-        <a  class=""
-           href="/2017/09/22/全局对话框/"
-           data-tag=""
-           data-author="" >
-            <span class="post-title" title="全局对话框">全局对话框</span>
-            <span class="post-date" title="2017-09-22 15:11:55">2017/09/22</span>
-        </a>
-        
-        <a  class=""
-           href="/2017/09/22/关闭NavigationBar/"
-           data-tag=""
-           data-author="" >
-            <span class="post-title" title="关闭NavigationBar">关闭NavigationBar</span>
-            <span class="post-date" title="2017-09-22 12:54:57">2017/09/22</span>
-        </a>
-        
-        <a  class=""
-           href="/2017/09/25/内存消耗测试/"
-           data-tag=""
-           data-author="" >
-            <span class="post-title" title="内存消耗测试">内存消耗测试</span>
-            <span class="post-date" title="2017-09-25 15:42:23">2017/09/25</span>
-        </a>
-        
-        <a  class=""
-           href="/2017/09/21/减缓按键长按事件的处理速度/"
-           data-tag=""
-           data-author="" >
-            <span class="post-title" title="减缓按键长按事件的处理速度">减缓按键长按事件的处理速度</span>
-            <span class="post-date" title="2017-09-21 16:53:58">2017/09/21</span>
-        </a>
-        
-        <a  class=""
-           href="/2019/12/31/利用app-process启动一个java程序/"
-           data-tag=""
-           data-author="" >
-            <span class="post-title" title="利用app_process启动一个java程序">利用app_process启动一个java程序</span>
-            <span class="post-date" title="2019-12-31 14:43:24">2019/12/31</span>
-        </a>
-        
-        <a  class=""
-           href="/2017/09/25/动态壁纸的学习和使用/"
-           data-tag=""
-           data-author="" >
-            <span class="post-title" title="动态壁纸的学习和使用">动态壁纸的学习和使用</span>
-            <span class="post-date" title="2017-09-25 14:37:21">2017/09/25</span>
-        </a>
-        
-        <a  class=""
-           href="/2018/03/08/反编译/"
-           data-tag=""
-           data-author="" >
-            <span class="post-title" title="反编译">反编译</span>
-            <span class="post-date" title="2018-03-08 12:52:28">2018/03/08</span>
-        </a>
-        
-        <a  class=""
-           href="/2017/09/25/反编译查看google向导设置息屏时间121000/"
-           data-tag=""
-           data-author="" >
-            <span class="post-title" title="反编译查看google向导设置息屏时间121000">反编译查看google向导设置息屏时间121000</span>
-            <span class="post-date" title="2017-09-25 15:32:18">2017/09/25</span>
-        </a>
-        
-        <a  class=""
-           href="/2017/09/22/同时支持两个文件名不同的布局/"
-           data-tag=""
-           data-author="" >
-            <span class="post-title" title="同时支持两个文件名不同的布局">同时支持两个文件名不同的布局</span>
-            <span class="post-date" title="2017-09-22 10:50:09">2017/09/22</span>
-        </a>
-        
-        <a  class=""
-           href="/2017/09/22/圆形的Imageview/"
-           data-tag=""
-           data-author="" >
-            <span class="post-title" title="圆形的Imageview">圆形的Imageview</span>
-            <span class="post-date" title="2017-09-22 10:31:57">2017/09/22</span>
-        </a>
-        
-        <a  class=""
-           href="/2018/03/26/在framework下添加字体和使用方法/"
-           data-tag=""
-           data-author="" >
-            <span class="post-title" title="在framework下添加字体和使用方法">在framework下添加字体和使用方法</span>
-            <span class="post-date" title="2018-03-26 14:58:38">2018/03/26</span>
-        </a>
-        
-        <a  class=""
-           href="/2017/09/22/在关闭飞行模式之后蓝牙打不开/"
-           data-tag=""
-           data-author="" >
-            <span class="post-title" title="在关闭飞行模式之后蓝牙打不开">在关闭飞行模式之后蓝牙打不开</span>
-            <span class="post-date" title="2017-09-22 10:47:44">2017/09/22</span>
-        </a>
-        
-        <a  class=""
-           href="/2017/09/25/在刷机之后Camera有可能会消失/"
-           data-tag=""
-           data-author="" >
-            <span class="post-title" title="在刷机之后Camera有可能会消失">在刷机之后Camera有可能会消失</span>
-            <span class="post-date" title="2017-09-25 15:02:46">2017/09/25</span>
-        </a>
-        
-        <a  class=""
-           href="/2017/09/22/如何去掉AccentedEnglish/"
-           data-tag=""
-           data-author="" >
-            <span class="post-title" title="如何去掉AccentedEnglish">如何去掉AccentedEnglish</span>
-            <span class="post-date" title="2017-09-22 14:01:34">2017/09/22</span>
-        </a>
-        
-        <a  class=""
-           href="/2017/09/22/如何在下载好图片之后更新Gallery/"
-           data-tag=""
-           data-author="" >
-            <span class="post-title" title="如何在下载好图片之后更新Gallery">如何在下载好图片之后更新Gallery</span>
-            <span class="post-date" title="2017-09-22 13:55:31">2017/09/22</span>
-        </a>
-        
-        <a  class=""
-           href="/2017/09/22/如何编译ICU资源/"
-           data-tag=""
-           data-author="" >
-            <span class="post-title" title="如何编译ICU资源">如何编译ICU资源</span>
-            <span class="post-date" title="2017-09-22 12:02:45">2017/09/22</span>
-        </a>
-        
-        <a  class=""
-           href="/2017/09/22/如何解析voicemail-conf-xml文件/"
-           data-tag=""
-           data-author="" >
-            <span class="post-title" title="如何解析voicemail-conf.xml文件">如何解析voicemail-conf.xml文件</span>
-            <span class="post-date" title="2017-09-22 11:16:02">2017/09/22</span>
-        </a>
-        
-        <a  class=""
-           href="/2017/09/25/如何让EditText不自动获取焦点/"
-           data-tag=""
-           data-author="" >
-            <span class="post-title" title="如何让EditText不自动获取焦点">如何让EditText不自动获取焦点</span>
-            <span class="post-date" title="2017-09-25 14:56:43">2017/09/25</span>
-        </a>
-        
-        <a  class=""
-           href="/2017/09/21/如何让Launcher支持横屏显示/"
-           data-tag=""
-           data-author="" >
-            <span class="post-title" title="如何让Launcher支持横屏显示">如何让Launcher支持横屏显示</span>
-            <span class="post-date" title="2017-09-21 16:21:27">2017/09/21</span>
-        </a>
-        
-        <a  class=""
-           href="/2017/09/22/如何通过代码动态设置语言/"
-           data-tag=""
-           data-author="" >
-            <span class="post-title" title="如何通过代码动态设置语言">如何通过代码动态设置语言</span>
-            <span class="post-date" title="2017-09-22 13:46:40">2017/09/22</span>
-        </a>
-        
-        <a  class=""
-           href="/2017/09/22/如果只是测试修改后效果，执行步骤A即可；如果需要build后生效，则需要执行全部步骤/"
-           data-tag=""
-           data-author="" >
-            <span class="post-title" title="如果只是测试修改后效果，执行步骤A即可；如果需要build后生效，则需要执行全部步骤">如果只是测试修改后效果，执行步骤A即可；如果需要build后生效，则需要执行全部步骤</span>
-            <span class="post-date" title="2017-09-22 12:02:28">2017/09/22</span>
-        </a>
-        
-        <a  class=""
-           href="/2017/09/25/客制化USB-CDROM/"
-           data-tag=""
-           data-author="" >
-            <span class="post-title" title="客制化USB CDROM的显示名称">客制化USB CDROM的显示名称</span>
-            <span class="post-date" title="2017-09-25 14:50:59">2017/09/25</span>
-        </a>
-        
-        <a  class=""
-           href="/2017/09/22/工厂方法模式/"
-           data-tag=""
-           data-author="" >
-            <span class="post-title" title="工厂方法模式">工厂方法模式</span>
-            <span class="post-date" title="2017-09-22 13:16:45">2017/09/22</span>
-        </a>
-        
-        <a  class=""
-           href="/2017/09/21/工厂测试中SD卡测试失败/"
-           data-tag=""
-           data-author="" >
-            <span class="post-title" title="工厂测试中SD卡测试失败">工厂测试中SD卡测试失败</span>
-            <span class="post-date" title="2017-09-21 12:56:08">2017/09/21</span>
-        </a>
-        
-        <a  class=""
-           href="/2017/09/22/应用开机自启动/"
-           data-tag=""
-           data-author="" >
-            <span class="post-title" title="应用开机自启动">应用开机自启动</span>
-            <span class="post-date" title="2017-09-22 09:01:43">2017/09/22</span>
-        </a>
-        
-        <a  class=""
-           href="/2017/09/25/性能测试/"
-           data-tag=""
-           data-author="" >
-            <span class="post-title" title="性能测试">性能测试</span>
-            <span class="post-date" title="2017-09-25 15:43:40">2017/09/25</span>
-        </a>
-        
-        <a  class=""
-           href="/2018/04/26/排序的时候出现的问题Comparison-method-violates-its-general-contract/"
-           data-tag=""
-           data-author="" >
-            <span class="post-title" title="排序的时候出现的问题Comparison method violates its general contract!">排序的时候出现的问题Comparison method violates its general contract!</span>
-            <span class="post-date" title="2018-04-26 10:09:56">2018/04/26</span>
-        </a>
-        
-        <a  class=""
-           href="/2017/09/21/提高进程优先级/"
-           data-tag=""
-           data-author="" >
-            <span class="post-title" title="提高进程优先级">提高进程优先级</span>
-            <span class="post-date" title="2017-09-21 11:08:41">2017/09/21</span>
-        </a>
-        
-        <a  class=""
-           href="/2017/09/22/收到短信后未振动手机/"
-           data-tag=""
-           data-author="" >
-            <span class="post-title" title="收到短信后未振动手机">收到短信后未振动手机</span>
-            <span class="post-date" title="2017-09-22 13:25:09">2017/09/22</span>
-        </a>
-        
-        <a  class=""
-           href="/2018/03/08/手机基本概念/"
-           data-tag=""
-           data-author="" >
-            <span class="post-title" title="手机基本概念">手机基本概念</span>
-            <span class="post-date" title="2018-03-08 13:06:42">2018/03/08</span>
-        </a>
-        
-        <a  class=""
-           href="/2018/03/08/数据连接信号小图标/"
-           data-tag=""
-           data-author="" >
-            <span class="post-title" title="数据连接信号小图标">数据连接信号小图标</span>
-            <span class="post-date" title="2018-03-08 11:21:55">2018/03/08</span>
-        </a>
-        
-        <a  class=""
-           href="/2017/09/22/数据连接默认开关/"
-           data-tag=""
-           data-author="" >
-            <span class="post-title" title="数据连接默认开关">数据连接默认开关</span>
-            <span class="post-date" title="2017-09-22 11:18:36">2017/09/22</span>
-        </a>
-        
-        <a  class=""
-           href="/2017/09/21/杀进程的脚本/"
-           data-tag=""
-           data-author="" >
-            <span class="post-title" title="杀进程的脚本">杀进程的脚本</span>
-            <span class="post-date" title="2017-09-21 14:15:19">2017/09/21</span>
-        </a>
-        
-        <a  class=""
-           href="/2019/12/31/查看某一个进程的线程id/"
-           data-tag=""
-           data-author="" >
-            <span class="post-title" title="查看某一个进程的线程id">查看某一个进程的线程id</span>
-            <span class="post-date" title="2019-12-31 14:54:25">2019/12/31</span>
-        </a>
-        
-        <a  class=""
-           href="/2017/09/22/根据SDK版本号判断使用哪个类中的方法/"
-           data-tag=""
-           data-author="" >
-            <span class="post-title" title="根据SDK版本号判断使用哪个类中的方法">根据SDK版本号判断使用哪个类中的方法</span>
-            <span class="post-date" title="2017-09-22 09:56:15">2017/09/22</span>
-        </a>
-        
-        <a  class=""
-           href="/2017/09/21/根据控件的ID名称获取控件的ID值/"
-           data-tag=""
-           data-author="" >
-            <span class="post-title" title="根据控件的ID名称获取控件的ID值">根据控件的ID名称获取控件的ID值</span>
-            <span class="post-date" title="2017-09-21 13:10:29">2017/09/21</span>
-        </a>
-        
-        <a  class=""
-           href="/2017/09/29/沉浸式学习/"
-           data-tag=""
-           data-author="" >
-            <span class="post-title" title="沉浸式学习">沉浸式学习</span>
-            <span class="post-date" title="2017-09-29 14:27:53">2017/09/29</span>
-        </a>
-        
-        <a  class=""
-           href="/2017/09/22/添加MoreRingtone菜单/"
-           data-tag=""
-           data-author="" >
-            <span class="post-title" title="添加MoreRingtone菜单">添加MoreRingtone菜单</span>
-            <span class="post-date" title="2017-09-22 14:08:38">2017/09/22</span>
-        </a>
-        
-        <a  class=""
-           href="/2017/09/22/添加代码禁用GoogleCamera/"
-           data-tag=""
-           data-author="" >
-            <span class="post-title" title="添加代码禁用GoogleCamera">添加代码禁用GoogleCamera</span>
-            <span class="post-date" title="2017-09-22 13:50:36">2017/09/22</span>
-        </a>
-        
-        <a  class=""
-           href="/2017/09/22/添加水印效果/"
-           data-tag=""
-           data-author="" >
-            <span class="post-title" title="添加水印效果">添加水印效果</span>
-            <span class="post-date" title="2017-09-22 09:44:20">2017/09/22</span>
-        </a>
-        
-        <a  class=""
-           href="/2017/09/25/游戏框架/"
-           data-tag=""
-           data-author="" >
-            <span class="post-title" title="游戏框架">游戏框架</span>
-            <span class="post-date" title="2017-09-25 15:44:48">2017/09/25</span>
-        </a>
-        
-        <a  class=""
-           href="/2017/09/21/短信转彩信条数限制/"
-           data-tag=""
-           data-author="" >
-            <span class="post-title" title="短信转彩信条数限制">短信转彩信条数限制</span>
-            <span class="post-date" title="2017-09-21 13:03:48">2017/09/21</span>
-        </a>
-        
-        <a  class=""
-           href="/2017/09/22/第一次插卡弹出apn对话框/"
-           data-tag=""
-           data-author="" >
-            <span class="post-title" title="第一次插卡弹出apn对话框">第一次插卡弹出apn对话框</span>
-            <span class="post-date" title="2017-09-22 10:42:23">2017/09/22</span>
-        </a>
-        
-        <a  class=""
-           href="/2017/09/25/给APK进行系统签名/"
-           data-tag=""
-           data-author="" >
-            <span class="post-title" title="给APK进行系统签名">给APK进行系统签名</span>
-            <span class="post-date" title="2017-09-25 14:53:17">2017/09/25</span>
-        </a>
-        
-        <a  class=""
-           href="/2019/12/31/编译android与tar打包命令/"
-           data-tag=""
-           data-author="" >
-            <span class="post-title" title="编译android与tar打包命令">编译android与tar打包命令</span>
-            <span class="post-date" title="2019-12-31 16:15:02">2019/12/31</span>
-        </a>
-        
-        <a  class=""
-           href="/2017/09/22/网络请求/"
-           data-tag=""
-           data-author="" >
-            <span class="post-title" title="网络请求">网络请求</span>
-            <span class="post-date" title="2017-09-22 13:01:47">2017/09/22</span>
-        </a>
-        
-        <a  class=""
-           href="/2017/09/21/耳机模式下播放音乐再拍照音乐会卡顿/"
-           data-tag=""
-           data-author="" >
-            <span class="post-title" title="耳机模式下播放音乐再拍照音乐会卡顿">耳机模式下播放音乐再拍照音乐会卡顿</span>
-            <span class="post-date" title="2017-09-21 16:46:39">2017/09/21</span>
-        </a>
-        
-        <a  class=""
-           href="/2017/09/21/联系人编辑界面上的号码输入框无法输入加号/"
-           data-tag=""
-           data-author="" >
-            <span class="post-title" title="联系人编辑界面上的号码输入框无法输入加号">联系人编辑界面上的号码输入框无法输入加号</span>
-            <span class="post-date" title="2017-09-21 16:57:34">2017/09/21</span>
-        </a>
-        
-        <a  class=""
-           href="/2017/09/22/背光亮度设置后待机界面快捷图标不会随之变化/"
-           data-tag=""
-           data-author="" >
-            <span class="post-title" title="背光亮度设置后待机界面快捷图标不会随之变化">背光亮度设置后待机界面快捷图标不会随之变化</span>
-            <span class="post-date" title="2017-09-22 11:23:09">2017/09/22</span>
-        </a>
-        
-        <a  class=""
-           href="/2017/09/21/自定义EditText的光标颜色/"
-           data-tag=""
-           data-author="" >
-            <span class="post-title" title="自定义EditText的光标颜色">自定义EditText的光标颜色</span>
-            <span class="post-date" title="2017-09-21 13:36:32">2017/09/21</span>
-        </a>
-        
-        <a  class=""
-           href="/2017/09/22/获取SIM卡的IMSI号码/"
-           data-tag=""
-           data-author="" >
-            <span class="post-title" title="获取SIM卡的IMSI号码">获取SIM卡的IMSI号码</span>
-            <span class="post-date" title="2017-09-22 10:38:33">2017/09/22</span>
-        </a>
-        
-        <a  class=""
-           href="/2018/03/15/获取图片信息/"
-           data-tag=""
-           data-author="" >
-            <span class="post-title" title="获取图片信息">获取图片信息</span>
-            <span class="post-date" title="2018-03-15 13:18:39">2018/03/15</span>
-        </a>
-        
-        <a  class=""
-           href="/2017/09/22/解析assets文件夹下的xml文件/"
-           data-tag=""
-           data-author="" >
-            <span class="post-title" title="解析assets文件夹下的xml文件">解析assets文件夹下的xml文件</span>
-            <span class="post-date" title="2017-09-22 10:47:01">2017/09/22</span>
-        </a>
-        
-        <a  class=""
-           href="/2017/09/25/解析res-drawable下图片的另一种方式/"
-           data-tag=""
-           data-author="" >
-            <span class="post-title" title="解析res/drawable下图片的另一种方式">解析res/drawable下图片的另一种方式</span>
-            <span class="post-date" title="2017-09-25 14:42:58">2017/09/25</span>
-        </a>
-        
-        <a  class=""
-           href="/2017/09/21/设置seekbar每一格的进度/"
-           data-tag=""
-           data-author="" >
-            <span class="post-title" title="设置seekbar每一格的进度">设置seekbar每一格的进度</span>
-            <span class="post-date" title="2017-09-21 16:49:12">2017/09/21</span>
-        </a>
-        
-        <a  class=""
-           href="/2018/04/26/设置状态栏的颜色/"
-           data-tag=""
-           data-author="" >
-            <span class="post-title" title="设置状态栏的颜色">设置状态栏的颜色</span>
-            <span class="post-date" title="2018-04-26 08:48:26">2018/04/26</span>
-        </a>
-        
-        <a  class=""
-           href="/2017/09/21/通过代码创建快捷方式/"
-           data-tag=""
-           data-author="" >
-            <span class="post-title" title="通过代码创建快捷方式">通过代码创建快捷方式</span>
-            <span class="post-date" title="2017-09-21 14:12:51">2017/09/21</span>
-        </a>
-        
-        <a  class=""
-           href="/2017/09/21/通过代码动态设置view的selector/"
-           data-tag=""
-           data-author="" >
-            <span class="post-title" title="通过代码动态设置view的selector">通过代码动态设置view的selector</span>
-            <span class="post-date" title="2017-09-21 14:09:58">2017/09/21</span>
-        </a>
-        
-        <a  class=""
-           href="/2017/09/21/通过代码模拟触屏和按键事件/"
-           data-tag=""
-           data-author="" >
-            <span class="post-title" title="通过代码模拟触屏和按键事件">通过代码模拟触屏和按键事件</span>
-            <span class="post-date" title="2017-09-21 14:03:52">2017/09/21</span>
-        </a>
-        
-        <a  class=""
-           href="/2017/09/29/通过反射修改全局默认字体/"
-           data-tag=""
-           data-author="" >
-            <span class="post-title" title="通过反射修改全局默认字体">通过反射修改全局默认字体</span>
-            <span class="post-date" title="2017-09-29 13:11:42">2017/09/29</span>
-        </a>
-        
-        <a  class=""
-           href="/2017/09/25/通过反射获取FeatureOption中的所有字段的值/"
-           data-tag=""
-           data-author="" >
-            <span class="post-title" title="通过反射获取FeatureOption中的所有字段的值">通过反射获取FeatureOption中的所有字段的值</span>
-            <span class="post-date" title="2017-09-25 14:48:36">2017/09/25</span>
-        </a>
-        
-        <a  class=""
-           href="/2019/12/31/重启framework命令/"
-           data-tag=""
-           data-author="" >
-            <span class="post-title" title="重启framework命令">重启framework命令</span>
-            <span class="post-date" title="2019-12-31 16:23:14">2019/12/31</span>
-        </a>
-        
-        <a  class=""
-           href="/2017/09/22/配置AGPS/"
-           data-tag=""
-           data-author="" >
-            <span class="post-title" title="配置AGPS">配置AGPS</span>
-            <span class="post-date" title="2017-09-22 13:34:36">2017/09/22</span>
-        </a>
-        
-        <a  class=""
-           href="/2017/09/22/隐藏QuickSettings中的AutoRotate菜单/"
-           data-tag=""
-           data-author="" >
-            <span class="post-title" title="隐藏QuickSettings中的AutoRotate菜单">隐藏QuickSettings中的AutoRotate菜单</span>
-            <span class="post-date" title="2017-09-22 10:26:49">2017/09/22</span>
-        </a>
-        
-        <a  class=""
-           href="/2017/09/21/隐藏三个点的Overflow菜单/"
-           data-tag=""
-           data-author="" >
-            <span class="post-title" title="隐藏三个点的Overflow菜单">隐藏三个点的Overflow菜单</span>
-            <span class="post-date" title="2017-09-21 13:23:56">2017/09/21</span>
-        </a>
-        
-        <a  class=""
-           href="/2017/10/11/面试题集合/"
-           data-tag=""
-           data-author="" >
-            <span class="post-title" title="面试题集合">面试题集合</span>
-            <span class="post-date" title="2017-10-11 09:55:06">2017/10/11</span>
-        </a>
-        
-        <a  class=""
-           href="/2017/09/22/预置了PDFViewer之后会报错/"
-           data-tag=""
-           data-author="" >
-            <span class="post-title" title="预置了PDFViewer之后会报错">预置了PDFViewer之后会报错</span>
-            <span class="post-date" title="2017-09-22 10:28:20">2017/09/22</span>
-        </a>
-        
-        <a  class=""
-           href="/2017/09/21/预置桌面快捷方式/"
-           data-tag=""
-           data-author="" >
-            <span class="post-title" title="预置桌面快捷方式">预置桌面快捷方式</span>
-            <span class="post-date" title="2017-09-21 16:51:19">2017/09/21</span>
-        </a>
-        
-        <a  class=""
-           href="/2017/09/25/默认打开wifi热点/"
-           data-tag=""
-           data-author="" >
-            <span class="post-title" title="默认打开wifi热点">默认打开wifi热点</span>
-            <span class="post-date" title="2017-09-25 15:20:04">2017/09/25</span>
-        </a>
-        
-    </nav>
-</div>
-    </div>
-    <div class="hide-list">
-        <div class="semicircle">
-            <div class="brackets first"><</div>
-            <div class="brackets">&gt;</div>
         </div>
     </div>
-</aside>
-<div class="post index">
-    <div class="pjax">
-        <article class="index">
-            <div class="toc-ref">
-    
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Why-Blog"><span class="toc-text">Why Blog</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#对博客的理解"><span class="toc-text">对博客的理解</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#关于叶落阁"><span class="toc-text">关于叶落阁</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#博客平台"><span class="toc-text">博客平台</span></a></li></ol></li></ol>
-    
-<style>
-    .left-col .switch-btn,
-    .left-col .switch-area {
-        display: none;
-    }
-    .toc-level-3 i,
-    .toc-level-3 ol {
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			首页
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			标签
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			分类
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			归档
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/contact" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-comments"></i>
+			
+			留言板
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/friends" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-address-book"></i>
+			
+			友情链接
+		</a>
+          
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/blinkfox/hexo-theme-matery" class="waves-effect waves-light" target="_blank">
+                <i class="fab fa-github-square fa-fw"></i>Fork Me
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
         display: none !important;
     }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
 </style>
-</div>
-            <h1 id="Why-Blog"><a href="#Why-Blog" class="headerlink" title="Why Blog"></a>Why Blog</h1><h2 id="对博客的理解"><a href="#对博客的理解" class="headerlink" title="对博客的理解"></a>对博客的理解</h2><p>喜欢写Blog的人，会经历三个阶段。</p>
-<blockquote>
-<p>第一阶段，刚接触Blog，觉得很新鲜，试着选择一个免费空间来写。</p>
-<p>第二阶段，发现免费空间限制太多，就自己购买域名和空间，搭建独立博客。</p>
-<p>第三阶段，觉得独立博客的管理太麻烦，最好在保留控制权的前提下，让别人来管，自己只负责写文章。</p>
-</blockquote>
-<p>我们每个人的在网络上产生的数据越来越多，这些信息是我们在互联网上存在过的痕迹，值得我们认真对待。但是它们被分散分布在各个网站上。很多时候我们很难将它们聚合在一起，而且各个网站的信息排布方式也没有办法自由控制，所以我们需要一个可以由自己主宰的空间——博客。</p>
-<p>通过博客，我们可以记录自己的生活和成长的轨迹。它不像 Twitter 那样碎片化，也不像 Facebook 那样关系化，它是私人的空间。</p>
-<h2 id="关于叶落阁"><a href="#关于叶落阁" class="headerlink" title="关于叶落阁"></a>关于叶落阁</h2><p><strong>叶落阁</strong> 是阿杰（杨玉杰）的个人站。</p>
-<p>到目前为止已经写了<code class="article_number"></code>篇文章， 共<code class="site_word_count"></code>字。</p>
-<p>本站访问人数：<code class="site_uv"></code>人次 ， 访问量：<code class="site_pv"></code>次</p>
-<h2 id="博客平台"><a href="#博客平台" class="headerlink" title="博客平台"></a>博客平台</h2><p>这个博客通过 <a href="https://hexo.io/">Hexo</a> 生成，部署在 <a href="https://pages.github.com/">GitHub Pages</a>，主题 <a href="https://github.com/yelog/hexo-theme-3-hexo">3-hexo</a> 已经在github上开源</p>
-<p>主要功能：</p>
-<ul>
-<li>搜索支持文章标题、标签(#标签)、作者(@作者)</li>
-<li>pad/手机等移动端适配</li>
-<li>页面全局快捷键 <a href='http://yelog.org/2017/03/24/3-hexo-shortcuts/'>3-hexo快捷键说明</a></li>
-</ul>
 
-        </article>
+<a href="https://github.com/blinkfox/hexo-theme-matery" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+   data-tooltip="Fork Me" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
         
-        <p>
-            <a  class="dashang" onclick="dashangToggle()">赏</a>
-        </p>
-        
-        
-    </div>
-    <div class="copyright">
-        <p class="footer-entry">©2016-2019 Yelog</p>
-<p class="footer-entry">Built with <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/yelog/hexo-theme-3-hexo" target="_blank">3-hexo</a> theme</p>
+    </nav>
 
-    </div>
-    <div class="full-toc">
-        <button class="full"><span class="min "></span></button>
-<button class="post-toc-menu"><span class="post-toc-menu-icons"></span></button>
-<div class="post-toc"><span class="post-toc-title">目录</span>
-    <div class="post-toc-content">
+</header>
 
-    </div>
-</div>
-<a class="" id="rocket" ></a>
+    <div class="bg-cover pd-header about-cover">
+    <div class="container">
+    <div class="row">
+    <div class="col s10 offset-s1 m8 offset-m2 l8 offset-l2">
+        <div class="brand">
+            <div class="title center-align">
+                
+                    subtitle
+                
+            </div>
 
-    </div>
-</div>
-<div class="acParent"></div>
-
-<div class="hide_box" onclick="dashangToggle()"></div>
-<div class="shang_box">
-    <a class="shang_close"  onclick="dashangToggle()">×</a>
-    <div class="shang_tit">
-        <p>喜欢就点赞,疼爱就打赏</p>
-    </div>
-    <div class="shang_payimg">
-        <div class="pay_img">
-            <img src="/img/alipay.jpg" class="alipay" title="扫码支持">
-            <img src="/img/weixin.jpg" class="weixin" title="扫码支持">
+            <div class="description center-align">
+                
+                <span id="subtitle"></span>
+                <script src="/libs/typed/typed.js"></script>
+                <script>
+                    var typed = new Typed("#subtitle", {
+                        strings: [ 
+                            
+                                "从来没有真正的绝境, 只有心灵的迷途",
+                            
+                                "Never really desperate, only the lost of the soul",
+                            
+                        ],
+                        startDelay: 300,
+                        typeSpeed: 100,
+                        loop: true,
+                        backSpeed: 50,
+                        showCursor: true
+                    });
+                </script>
+                
+            </div>
         </div>
     </div>
-    <div class="shang_payselect">
-        <span><label><input type="radio" name="pay" checked value="alipay">支付宝</label></span><span><label><input type="radio" name="pay" value="weixin">微信</label></span>
-    </div>
 </div>
 
 
-</body>
-<script src="/js/jquery.pjax.js?v=1.0.1" ></script>
-
-<script src="/js/script.js?v=1.0.1" ></script>
 <script>
-    var img_resize = 'default';
-    /*作者、标签的自动补全*/
-    $(function () {
-        $('.search').AutoComplete({
-            'data': [],
-            'itemHeight': 20,
-            'width': 418
-        }).AutoComplete('show');
-    })
-    function initArticle() {
-        /*渲染对应的表格样式*/
-        
-            $(".post .pjax table").addClass("green_title");
-        
-
-        /*渲染打赏样式*/
-        
-        $("input[name=pay]").on("click", function () {
-            if($("input[name=pay]:checked").val()=="weixin"){
-                $(".shang_box .shang_payimg .pay_img").addClass("weixin_img");
-            } else {
-                $(".shang_box .shang_payimg .pay_img").removeClass("weixin_img");
-            }
-        })
-        
-
-        /*高亮代码块行号*/
-        
-        $('pre code').each(function(){
-            var lines = $(this).text().split('\n').length - 1, widther='';
-            if (lines>99) {
-                widther = 'widther'
-            }
-            var $numbering = $('<ul/>').addClass('pre-numbering ' + widther).attr("unselectable","on");
-            $(this).addClass('has-numbering ' + widther)
-                    .parent()
-                    .append($numbering);
-            for(var i=1;i<=lines;i++){
-                $numbering.append($('<li/>').text(i));
-            }
-        });
-        
-
-        /*访问数量*/
-        
-        $.getScript("//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js");
-        
-
-        /*代码高亮，行号对齐*/
-        $('.pre-numbering').css('line-height',$('.has-numbering').css('line-height'));
-
-        
-        
-    }
-
-    /*打赏页面隐藏与展示*/
+    // 每天切换 banner 图.  Switch banner image every day.
+    var bannerUrl = "/medias/banner/" + new Date().getDay() + '.jpg';
+    $('.bg-cover').css('background-image', 'url(' + bannerUrl + ')');
+</script>
+<script>
     
-    function dashangToggle() {
-        $(".shang_box").fadeToggle();
-        $(".hide_box").fadeToggle();
-    }
+      var bannerUrl = "/medias/featureimages/" + Math.floor(Math.random() * 24) + '.jpg';
     
+    $('.bg-cover.about-cover').css('background-image', 'url(' + bannerUrl + ')');
 
 </script>
 
-<!--加入行号的高亮代码块样式-->
 
+    </div>
+</div>
+
+<main class="content">
+
+    
+    <div class="container archive-calendar">
+    <div class="card">
+        <div id="post-calendar" class="card-content"></div>
+    </div>
+</div>
+
+<script type="text/javascript" src="/libs/echarts/echarts.min.js"></script>
+<script type="text/javascript">
+    let myChart = echarts.init(document.getElementById('post-calendar'));
+
+    
+
+    let option = {
+        title: {
+            top: 0,
+            text: '文章日历',
+            left: 'center',
+            textStyle: {
+                color: '#3C4858'
+            }
+        },
+        tooltip: {
+            padding: 10,
+            backgroundColor: '#555',
+            borderColor: '#777',
+            borderWidth: 1,
+            formatter: function (obj) {
+                var value = obj.value;
+                return '<div style="font-size: 14px;">' + value[0] + '：' + value[1] + '</div>';
+            }
+        },
+        visualMap: {
+            show: true,
+            showLabel: true,
+            categories: [0, 1, 2, 3, 4],
+            calculable: true,
+            inRange: {
+                symbol: 'rect',
+                color: ['#ebedf0', '#c6e48b', '#7bc96f', '#239a3b', '#196127']
+            },
+            itemWidth: 12,
+            itemHeight: 12,
+            orient: 'horizontal',
+            left: 'center',
+            bottom: 0
+        },
+        calendar: [{
+            left: 'center',
+            range: ["2022-08-10", "2023-08-10"],
+            cellSize: [13, 13],
+            splitLine: {
+                show: false
+            },
+            itemStyle: {
+                color: '#196127',
+                borderColor: '#fff',
+                borderWidth: 2
+            },
+            yearLabel: {
+                show: false
+            },
+            monthLabel: {
+                nameMap: 'cn',
+                fontSize: 11
+            },
+            dayLabel: {
+                formatter: '{start}  1st',
+                nameMap: 'cn',
+                fontSize: 11
+            }
+        }],
+        series: [{
+            type: 'heatmap',
+            coordinateSystem: 'calendar',
+            calendarIndex: 0,
+            data: [["2022-08-10", 0], ["2022-08-11", 0], ["2022-08-12", 0], ["2022-08-13", 0], ["2022-08-14", 0], ["2022-08-15", 0], ["2022-08-16", 0], ["2022-08-17", 0], ["2022-08-18", 0], ["2022-08-19", 0], ["2022-08-20", 0], ["2022-08-21", 0], ["2022-08-22", 0], ["2022-08-23", 0], ["2022-08-24", 0], ["2022-08-25", 0], ["2022-08-26", 0], ["2022-08-27", 0], ["2022-08-28", 0], ["2022-08-29", 0], ["2022-08-30", 0], ["2022-08-31", 0], ["2022-09-01", 0], ["2022-09-02", 0], ["2022-09-03", 0], ["2022-09-04", 0], ["2022-09-05", 0], ["2022-09-06", 0], ["2022-09-07", 0], ["2022-09-08", 0], ["2022-09-09", 0], ["2022-09-10", 0], ["2022-09-11", 0], ["2022-09-12", 0], ["2022-09-13", 0], ["2022-09-14", 0], ["2022-09-15", 0], ["2022-09-16", 0], ["2022-09-17", 0], ["2022-09-18", 0], ["2022-09-19", 0], ["2022-09-20", 0], ["2022-09-21", 0], ["2022-09-22", 0], ["2022-09-23", 0], ["2022-09-24", 0], ["2022-09-25", 0], ["2022-09-26", 0], ["2022-09-27", 0], ["2022-09-28", 0], ["2022-09-29", 0], ["2022-09-30", 0], ["2022-10-01", 0], ["2022-10-02", 0], ["2022-10-03", 0], ["2022-10-04", 0], ["2022-10-05", 0], ["2022-10-06", 0], ["2022-10-07", 0], ["2022-10-08", 0], ["2022-10-09", 0], ["2022-10-10", 0], ["2022-10-11", 0], ["2022-10-12", 0], ["2022-10-13", 0], ["2022-10-14", 0], ["2022-10-15", 0], ["2022-10-16", 0], ["2022-10-17", 0], ["2022-10-18", 0], ["2022-10-19", 0], ["2022-10-20", 0], ["2022-10-21", 0], ["2022-10-22", 0], ["2022-10-23", 0], ["2022-10-24", 0], ["2022-10-25", 0], ["2022-10-26", 0], ["2022-10-27", 0], ["2022-10-28", 0], ["2022-10-29", 0], ["2022-10-30", 0], ["2022-10-31", 0], ["2022-11-01", 0], ["2022-11-02", 0], ["2022-11-03", 0], ["2022-11-04", 0], ["2022-11-05", 0], ["2022-11-06", 0], ["2022-11-07", 0], ["2022-11-08", 0], ["2022-11-09", 0], ["2022-11-10", 0], ["2022-11-11", 0], ["2022-11-12", 0], ["2022-11-13", 0], ["2022-11-14", 0], ["2022-11-15", 0], ["2022-11-16", 0], ["2022-11-17", 0], ["2022-11-18", 0], ["2022-11-19", 0], ["2022-11-20", 0], ["2022-11-21", 0], ["2022-11-22", 0], ["2022-11-23", 0], ["2022-11-24", 0], ["2022-11-25", 0], ["2022-11-26", 0], ["2022-11-27", 0], ["2022-11-28", 0], ["2022-11-29", 0], ["2022-11-30", 0], ["2022-12-01", 0], ["2022-12-02", 0], ["2022-12-03", 0], ["2022-12-04", 0], ["2022-12-05", 0], ["2022-12-06", 0], ["2022-12-07", 0], ["2022-12-08", 0], ["2022-12-09", 0], ["2022-12-10", 0], ["2022-12-11", 0], ["2022-12-12", 0], ["2022-12-13", 0], ["2022-12-14", 0], ["2022-12-15", 0], ["2022-12-16", 0], ["2022-12-17", 0], ["2022-12-18", 0], ["2022-12-19", 0], ["2022-12-20", 0], ["2022-12-21", 0], ["2022-12-22", 0], ["2022-12-23", 0], ["2022-12-24", 0], ["2022-12-25", 0], ["2022-12-26", 0], ["2022-12-27", 0], ["2022-12-28", 0], ["2022-12-29", 0], ["2022-12-30", 0], ["2022-12-31", 0], ["2023-01-01", 0], ["2023-01-02", 0], ["2023-01-03", 0], ["2023-01-04", 0], ["2023-01-05", 0], ["2023-01-06", 0], ["2023-01-07", 0], ["2023-01-08", 0], ["2023-01-09", 0], ["2023-01-10", 0], ["2023-01-11", 0], ["2023-01-12", 0], ["2023-01-13", 0], ["2023-01-14", 0], ["2023-01-15", 0], ["2023-01-16", 0], ["2023-01-17", 0], ["2023-01-18", 0], ["2023-01-19", 0], ["2023-01-20", 0], ["2023-01-21", 0], ["2023-01-22", 0], ["2023-01-23", 0], ["2023-01-24", 0], ["2023-01-25", 0], ["2023-01-26", 0], ["2023-01-27", 0], ["2023-01-28", 0], ["2023-01-29", 0], ["2023-01-30", 0], ["2023-01-31", 0], ["2023-02-01", 0], ["2023-02-02", 0], ["2023-02-03", 0], ["2023-02-04", 0], ["2023-02-05", 0], ["2023-02-06", 0], ["2023-02-07", 0], ["2023-02-08", 0], ["2023-02-09", 0], ["2023-02-10", 0], ["2023-02-11", 0], ["2023-02-12", 0], ["2023-02-13", 0], ["2023-02-14", 0], ["2023-02-15", 0], ["2023-02-16", 0], ["2023-02-17", 0], ["2023-02-18", 0], ["2023-02-19", 0], ["2023-02-20", 0], ["2023-02-21", 0], ["2023-02-22", 0], ["2023-02-23", 0], ["2023-02-24", 0], ["2023-02-25", 0], ["2023-02-26", 0], ["2023-02-27", 0], ["2023-02-28", 0], ["2023-03-01", 0], ["2023-03-02", 0], ["2023-03-03", 0], ["2023-03-04", 0], ["2023-03-05", 0], ["2023-03-06", 0], ["2023-03-07", 0], ["2023-03-08", 0], ["2023-03-09", 0], ["2023-03-10", 0], ["2023-03-11", 0], ["2023-03-12", 0], ["2023-03-13", 0], ["2023-03-14", 0], ["2023-03-15", 0], ["2023-03-16", 0], ["2023-03-17", 0], ["2023-03-18", 0], ["2023-03-19", 0], ["2023-03-20", 0], ["2023-03-21", 0], ["2023-03-22", 0], ["2023-03-23", 0], ["2023-03-24", 0], ["2023-03-25", 0], ["2023-03-26", 0], ["2023-03-27", 0], ["2023-03-28", 0], ["2023-03-29", 0], ["2023-03-30", 0], ["2023-03-31", 0], ["2023-04-01", 0], ["2023-04-02", 0], ["2023-04-03", 0], ["2023-04-04", 0], ["2023-04-05", 0], ["2023-04-06", 0], ["2023-04-07", 0], ["2023-04-08", 0], ["2023-04-09", 0], ["2023-04-10", 0], ["2023-04-11", 0], ["2023-04-12", 0], ["2023-04-13", 0], ["2023-04-14", 0], ["2023-04-15", 0], ["2023-04-16", 0], ["2023-04-17", 0], ["2023-04-18", 0], ["2023-04-19", 0], ["2023-04-20", 0], ["2023-04-21", 0], ["2023-04-22", 0], ["2023-04-23", 0], ["2023-04-24", 0], ["2023-04-25", 0], ["2023-04-26", 0], ["2023-04-27", 0], ["2023-04-28", 0], ["2023-04-29", 0], ["2023-04-30", 0], ["2023-05-01", 0], ["2023-05-02", 0], ["2023-05-03", 0], ["2023-05-04", 0], ["2023-05-05", 0], ["2023-05-06", 0], ["2023-05-07", 0], ["2023-05-08", 0], ["2023-05-09", 0], ["2023-05-10", 0], ["2023-05-11", 0], ["2023-05-12", 0], ["2023-05-13", 0], ["2023-05-14", 0], ["2023-05-15", 0], ["2023-05-16", 0], ["2023-05-17", 0], ["2023-05-18", 0], ["2023-05-19", 0], ["2023-05-20", 0], ["2023-05-21", 0], ["2023-05-22", 0], ["2023-05-23", 0], ["2023-05-24", 0], ["2023-05-25", 0], ["2023-05-26", 0], ["2023-05-27", 0], ["2023-05-28", 0], ["2023-05-29", 0], ["2023-05-30", 0], ["2023-05-31", 0], ["2023-06-01", 0], ["2023-06-02", 0], ["2023-06-03", 0], ["2023-06-04", 0], ["2023-06-05", 0], ["2023-06-06", 0], ["2023-06-07", 0], ["2023-06-08", 0], ["2023-06-09", 0], ["2023-06-10", 0], ["2023-06-11", 0], ["2023-06-12", 0], ["2023-06-13", 0], ["2023-06-14", 0], ["2023-06-15", 0], ["2023-06-16", 0], ["2023-06-17", 0], ["2023-06-18", 0], ["2023-06-19", 0], ["2023-06-20", 0], ["2023-06-21", 0], ["2023-06-22", 0], ["2023-06-23", 0], ["2023-06-24", 0], ["2023-06-25", 0], ["2023-06-26", 0], ["2023-06-27", 0], ["2023-06-28", 0], ["2023-06-29", 0], ["2023-06-30", 0], ["2023-07-01", 0], ["2023-07-02", 0], ["2023-07-03", 0], ["2023-07-04", 0], ["2023-07-05", 0], ["2023-07-06", 0], ["2023-07-07", 0], ["2023-07-08", 0], ["2023-07-09", 0], ["2023-07-10", 0], ["2023-07-11", 0], ["2023-07-12", 0], ["2023-07-13", 0], ["2023-07-14", 0], ["2023-07-15", 0], ["2023-07-16", 0], ["2023-07-17", 0], ["2023-07-18", 0], ["2023-07-19", 0], ["2023-07-20", 0], ["2023-07-21", 0], ["2023-07-22", 0], ["2023-07-23", 0], ["2023-07-24", 0], ["2023-07-25", 0], ["2023-07-26", 0], ["2023-07-27", 0], ["2023-07-28", 0], ["2023-07-29", 0], ["2023-07-30", 0], ["2023-07-31", 0], ["2023-08-01", 0], ["2023-08-02", 0], ["2023-08-03", 0], ["2023-08-04", 0], ["2023-08-05", 0], ["2023-08-06", 0], ["2023-08-07", 0], ["2023-08-08", 0], ["2023-08-09", 0], ["2023-08-10", 0]]
+        }]
+
+    };
+
+    myChart.setOption(option);
+</script>
+
+    
+
+    
+
+    <div id="cd-timeline" class="container">
+        
+        <div class="cd-timeline-block">
+
+            
+            
+            
+            <div class="cd-timeline-img year" data-aos="zoom-in-up">
+                <a href="/archives/2017">2017</a>
+            </div>
+            
+
+            
+            
+            
+            <div class="cd-timeline-img month" data-aos="zoom-in-up">
+                <a href="/archives/2017/10">10</a>
+            </div>
+            
+
+            
+            <div class="cd-timeline-img day" data-aos="zoom-in-up">
+                <span>11</span>
+            </div>
+            <article class="cd-timeline-content" data-aos="fade-up">
+                <div class="article col s12 m6">
+                    <div class="card">
+                        <a href="/2017/10/11/面试题集合/">
+                            <div class="card-image">
+                                
+                                
+                                <img src="/medias/featureimages/17.jpg" class="responsive-img" alt="面试题集合">
+                                
+                                <span class="card-title">面试题集合</span>
+                            </div>
+                        </a>
+                        <div class="card-content article-content">
+                            <div class="summary block-with-text">
+                                
+                                    阿里巴巴LRUCache原理图片加载原理模块化实现（好处，原因）JVM视频加密传输统计启动时长,标准如何保持应用的稳定性ThreadLocal 原理谈谈classloader动态布局热修复,插件化HashMap源码,SpareArray原理
+                                
+                            </div>
+                            <div class="publish-info">
+                                <span class="publish-date">
+                                    <i class="far fa-clock fa-fw icon-date"></i>2017-10-11
+                                </span>
+                                <span class="publish-author">
+                                    
+                                    <i class="fas fa-user fa-fw"></i>
+                                    王大可
+                                    
+                                </span>
+                            </div>
+                        </div>
+
+                        
+                    </div>
+                </div>
+            </article>
+        </div>
+        
+        <div class="cd-timeline-block">
+
+            
+            
+
+            
+            
+
+            
+            <div class="cd-timeline-img day" data-aos="zoom-in-up">
+                <span>11</span>
+            </div>
+            <article class="cd-timeline-content" data-aos="fade-up">
+                <div class="article col s12 m6">
+                    <div class="card">
+                        <a href="/2017/10/11/Chronometer的学习和使用/">
+                            <div class="card-image">
+                                
+                                
+                                <img src="/medias/featureimages/21.jpg" class="responsive-img" alt="Chronometer的学习和使用">
+                                
+                                <span class="card-title">Chronometer的学习和使用</span>
+                            </div>
+                        </a>
+                        <div class="card-content article-content">
+                            <div class="summary block-with-text">
+                                
+                                    1.布局12345678910&lt;Chronometer    android:id="@+id/text_timer"    android:layout_width="wrap_content"    android:layout_
+                                
+                            </div>
+                            <div class="publish-info">
+                                <span class="publish-date">
+                                    <i class="far fa-clock fa-fw icon-date"></i>2017-10-11
+                                </span>
+                                <span class="publish-author">
+                                    
+                                    <i class="fas fa-user fa-fw"></i>
+                                    王大可
+                                    
+                                </span>
+                            </div>
+                        </div>
+
+                        
+                    </div>
+                </div>
+            </article>
+        </div>
+        
+        <div class="cd-timeline-block">
+
+            
+            
+
+            
+            
+
+            
+            <div class="cd-timeline-img day" data-aos="zoom-in-up">
+                <span>10</span>
+            </div>
+            <article class="cd-timeline-content" data-aos="fade-up">
+                <div class="article col s12 m6">
+                    <div class="card">
+                        <a href="/2017/10/10/35个Java代码性能优化总结/">
+                            <div class="card-image">
+                                
+                                
+                                <img src="/medias/featureimages/4.jpg" class="responsive-img" alt="35个Java代码性能优化总结">
+                                
+                                <span class="card-title">35个Java代码性能优化总结</span>
+                            </div>
+                        </a>
+                        <div class="card-content article-content">
+                            <div class="summary block-with-text">
+                                
+                                    代码优化细节
+1、尽量指定类、方法的final修饰符
+带有final修饰符的类是不可派生的。在Java核心API中，有许多应用final的例子，例如java.lang.String，整个类都是final的。为类指定final修饰符可以让类不
+                                
+                            </div>
+                            <div class="publish-info">
+                                <span class="publish-date">
+                                    <i class="far fa-clock fa-fw icon-date"></i>2017-10-10
+                                </span>
+                                <span class="publish-author">
+                                    
+                                    <i class="fas fa-user fa-fw"></i>
+                                    王大可
+                                    
+                                </span>
+                            </div>
+                        </div>
+
+                        
+                    </div>
+                </div>
+            </article>
+        </div>
+        
+        <div class="cd-timeline-block">
+
+            
+            
+
+            
+            
+
+            
+            <div class="cd-timeline-img day" data-aos="zoom-in-up">
+                <span>09</span>
+            </div>
+            <article class="cd-timeline-content" data-aos="fade-up">
+                <div class="article col s12 m6">
+                    <div class="card">
+                        <a href="/2017/10/09/ButterKnife的学习和使用/">
+                            <div class="card-image">
+                                
+                                
+                                <img src="/medias/featureimages/4.jpg" class="responsive-img" alt="ButterKnife的学习和使用">
+                                
+                                <span class="card-title">ButterKnife的学习和使用</span>
+                            </div>
+                        </a>
+                        <div class="card-content article-content">
+                            <div class="summary block-with-text">
+                                
+                                    Butter Knife1.添加依赖1234dependencies &#123;  compile 'com.jakewharton:butterknife:8.8.1'  annotationProcessor 'com.jakewha
+                                
+                            </div>
+                            <div class="publish-info">
+                                <span class="publish-date">
+                                    <i class="far fa-clock fa-fw icon-date"></i>2017-10-09
+                                </span>
+                                <span class="publish-author">
+                                    
+                                    <i class="fas fa-user fa-fw"></i>
+                                    王大可
+                                    
+                                </span>
+                            </div>
+                        </div>
+
+                        
+                    </div>
+                </div>
+            </article>
+        </div>
+        
+        <div class="cd-timeline-block">
+
+            
+            
+
+            
+            
+            
+            <div class="cd-timeline-img month" data-aos="zoom-in-up">
+                <a href="/archives/2017/09">09</a>
+            </div>
+            
+
+            
+            <div class="cd-timeline-img day" data-aos="zoom-in-up">
+                <span>30</span>
+            </div>
+            <article class="cd-timeline-content" data-aos="fade-up">
+                <div class="article col s12 m6">
+                    <div class="card">
+                        <a href="/2017/09/30/ShadowView的学习和使用/">
+                            <div class="card-image">
+                                
+                                
+                                <img src="/medias/featureimages/4.jpg" class="responsive-img" alt="ShadowView的学习和使用">
+                                
+                                <span class="card-title">ShadowView的学习和使用</span>
+                            </div>
+                        </a>
+                        <div class="card-content article-content">
+                            <div class="summary block-with-text">
+                                
+                                    1.添加依赖库123dependencies &#123;    compile &apos;com.loopeer.lib:shadow:0.0.3&apos;&#125;
+2.使用123456789101112131415161718&
+                                
+                            </div>
+                            <div class="publish-info">
+                                <span class="publish-date">
+                                    <i class="far fa-clock fa-fw icon-date"></i>2017-09-30
+                                </span>
+                                <span class="publish-author">
+                                    
+                                    <i class="fas fa-user fa-fw"></i>
+                                    王大可
+                                    
+                                </span>
+                            </div>
+                        </div>
+
+                        
+                    </div>
+                </div>
+            </article>
+        </div>
+        
+        <div class="cd-timeline-block">
+
+            
+            
+
+            
+            
+
+            
+            <div class="cd-timeline-img day" data-aos="zoom-in-up">
+                <span>29</span>
+            </div>
+            <article class="cd-timeline-content" data-aos="fade-up">
+                <div class="article col s12 m6">
+                    <div class="card">
+                        <a href="/2017/09/29/沉浸式学习/">
+                            <div class="card-image">
+                                
+                                
+                                <img src="/medias/featureimages/18.jpg" class="responsive-img" alt="沉浸式学习">
+                                
+                                <span class="card-title">沉浸式学习</span>
+                            </div>
+                        </a>
+                        <div class="card-content article-content">
+                            <div class="summary block-with-text">
+                                
+                                    1.隐藏状态栏123456789101112public class MainActivity extends AppCompatActivity &#123;    @Override    protected void onCreate
+                                
+                            </div>
+                            <div class="publish-info">
+                                <span class="publish-date">
+                                    <i class="far fa-clock fa-fw icon-date"></i>2017-09-29
+                                </span>
+                                <span class="publish-author">
+                                    
+                                    <i class="fas fa-user fa-fw"></i>
+                                    王大可
+                                    
+                                </span>
+                            </div>
+                        </div>
+
+                        
+                    </div>
+                </div>
+            </article>
+        </div>
+        
+        <div class="cd-timeline-block">
+
+            
+            
+
+            
+            
+
+            
+            <div class="cd-timeline-img day" data-aos="zoom-in-up">
+                <span>29</span>
+            </div>
+            <article class="cd-timeline-content" data-aos="fade-up">
+                <div class="article col s12 m6">
+                    <div class="card">
+                        <a href="/2017/09/29/Snackbar的学习和使用/">
+                            <div class="card-image">
+                                
+                                
+                                <img src="/medias/featureimages/4.jpg" class="responsive-img" alt="Snackbar的学习和使用">
+                                
+                                <span class="card-title">Snackbar的学习和使用</span>
+                            </div>
+                        </a>
+                        <div class="card-content article-content">
+                            <div class="summary block-with-text">
+                                
+                                    Snackbar是Android Support Design Library库中的一个控件，可以在屏幕底部快速弹出消息，比Toast更加好用。本文对原生Snackbar进行了修改，使其更加灵活。
+1.Snackbar基本介绍
+使用Snac
+                                
+                            </div>
+                            <div class="publish-info">
+                                <span class="publish-date">
+                                    <i class="far fa-clock fa-fw icon-date"></i>2017-09-29
+                                </span>
+                                <span class="publish-author">
+                                    
+                                    <i class="fas fa-user fa-fw"></i>
+                                    王大可
+                                    
+                                </span>
+                            </div>
+                        </div>
+
+                        
+                    </div>
+                </div>
+            </article>
+        </div>
+        
+        <div class="cd-timeline-block">
+
+            
+            
+
+            
+            
+
+            
+            <div class="cd-timeline-img day" data-aos="zoom-in-up">
+                <span>29</span>
+            </div>
+            <article class="cd-timeline-content" data-aos="fade-up">
+                <div class="article col s12 m6">
+                    <div class="card">
+                        <a href="/2017/09/29/通过反射修改全局默认字体/">
+                            <div class="card-image">
+                                
+                                
+                                <img src="/medias/featureimages/23.jpg" class="responsive-img" alt="通过反射修改全局默认字体">
+                                
+                                <span class="card-title">通过反射修改全局默认字体</span>
+                            </div>
+                        </a>
+                        <div class="card-content article-content">
+                            <div class="summary block-with-text">
+                                
+                                    在 Typeface 中，是有一些被标记为 static final 的默认字体，因为上一步的 Theme 中，就是设置的 serif ，所以我们这里替换它就好了。
+完整的方法非常的简单，就是通过反射拿到 Typeface.SERIF，然后
+                                
+                            </div>
+                            <div class="publish-info">
+                                <span class="publish-date">
+                                    <i class="far fa-clock fa-fw icon-date"></i>2017-09-29
+                                </span>
+                                <span class="publish-author">
+                                    
+                                    <i class="fas fa-user fa-fw"></i>
+                                    王大可
+                                    
+                                </span>
+                            </div>
+                        </div>
+
+                        
+                    </div>
+                </div>
+            </article>
+        </div>
+        
+        <div class="cd-timeline-block">
+
+            
+            
+
+            
+            
+
+            
+            <div class="cd-timeline-img day" data-aos="zoom-in-up">
+                <span>28</span>
+            </div>
+            <article class="cd-timeline-content" data-aos="fade-up">
+                <div class="article col s12 m6">
+                    <div class="card">
+                        <a href="/2017/09/28/Intent的高级写法/">
+                            <div class="card-image">
+                                
+                                
+                                <img src="/medias/featureimages/21.jpg" class="responsive-img" alt="Intent的高级写法">
+                                
+                                <span class="card-title">Intent的高级写法</span>
+                            </div>
+                        </a>
+                        <div class="card-content article-content">
+                            <div class="summary block-with-text">
+                                
+                                    Intent的高级写法?
+1.普通写Intent的方法和缺陷
+普通activity a要调用起activity b页面会这么写:MainActivity.java123Intent intent = new Intent(MainActiv
+                                
+                            </div>
+                            <div class="publish-info">
+                                <span class="publish-date">
+                                    <i class="far fa-clock fa-fw icon-date"></i>2017-09-28
+                                </span>
+                                <span class="publish-author">
+                                    
+                                    <i class="fas fa-user fa-fw"></i>
+                                    王大可
+                                    
+                                </span>
+                            </div>
+                        </div>
+
+                        
+                    </div>
+                </div>
+            </article>
+        </div>
+        
+        <div class="cd-timeline-block">
+
+            
+            
+
+            
+            
+
+            
+            <div class="cd-timeline-img day" data-aos="zoom-in-up">
+                <span>25</span>
+            </div>
+            <article class="cd-timeline-content" data-aos="fade-up">
+                <div class="article col s12 m6">
+                    <div class="card">
+                        <a href="/2017/09/25/游戏框架/">
+                            <div class="card-image">
+                                
+                                
+                                <img src="/medias/featureimages/15.jpg" class="responsive-img" alt="游戏框架">
+                                
+                                <span class="card-title">游戏框架</span>
+                            </div>
+                        </a>
+                        <div class="card-content article-content">
+                            <div class="summary block-with-text">
+                                
+                                    123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646
+                                
+                            </div>
+                            <div class="publish-info">
+                                <span class="publish-date">
+                                    <i class="far fa-clock fa-fw icon-date"></i>2017-09-25
+                                </span>
+                                <span class="publish-author">
+                                    
+                                    <i class="fas fa-user fa-fw"></i>
+                                    王大可
+                                    
+                                </span>
+                            </div>
+                        </div>
+
+                        
+                    </div>
+                </div>
+            </article>
+        </div>
+        
+    </div>
+
+</main>
+
+
+<div class="container paging">
+    <div class="row">
+        <div class="col s6 m4 l4">
+            
+            <a class="left btn-floating btn-large disabled">
+                <i class="fas fa-angle-left"></i>
+            </a>
+            
+        </div>
+        <div class="page-info col m4 l4 hide-on-small-only">
+            <div class="center-align b-text-gray">1 / 10</div>
+        </div>
+        <div class="col s6 m4 l4">
+            
+            <a href="/archives/2017/page/2/"
+               class="right btn-floating btn-large waves-effect waves-light bg-color">
+                <i class="fas fa-angle-right"></i>
+            </a>
+            
+        </div>
+    </div>
+</div>
+
+
+
+
+    <footer class="page-footer bg-color">
+    
+        <link rel="stylesheet" href="/libs/aplayer/APlayer.min.css">
 <style>
-    pre{
-        position: relative;
-        margin-bottom: 24px;
-        border-radius: 10px;
-        border: 1px solid #e2dede;
-        background: #FFF;
-        overflow: hidden;
+    .aplayer .aplayer-lrc p {
+        
+        display: none;
+        
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 16px !important;
     }
-    code.has-numbering{
-        margin-left: 30px;
-    }
-    code.has-numbering.widther{
-        margin-left: 35px;
-    }
-    .pre-numbering{
-        margin: 0px;
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 20px;
-        padding: 0.5em 3px 0.7em 5px;
-        border-right: 1px solid #C3CCD0;
-        text-align: right;
-        color: #AAA;
-        background-color: #fafafa;
-    }
-    .pre-numbering.widther {
-        width: 35px;
-    }
-</style>
 
-<!--自定义样式设置-->
-<style>
-    
-    
-    .nav {
-        width: 542px;
+    .aplayer .aplayer-lrc p.aplayer-lrc-current {
+        
+        display: none;
+        
+        font-size: 15px;
+        color: #42b983;
     }
-    .nav.fullscreen {
-        margin-left: -542px;
-    }
-    .nav-left {
-        width: 120px;
-    }
-    
-    
-    @media screen and (max-width: 1468px) {
-        .nav {
-            width: 492px;
-        }
-        .nav.fullscreen {
-            margin-left: -492px;
-        }
-        .nav-left {
-            width: 100px;
-        }
-    }
-    
-    
-    @media screen and (max-width: 1024px) {
-        .nav {
-            width: 492px;
-            margin-left: -492px
-        }
-        .nav.fullscreen {
-            margin-left: 0;
-        }
-        .nav .hide-list.fullscreen {
-            left: 492px
-        }
-    }
-    
-    @media screen and (max-width: 426px) {
-        .nav {
-            width: 100%;
-        }
-        .nav-left {
-            width: 100%;
-        }
-    }
-    
-    
-    .nav-right .title-list nav a .post-title, .nav-right .title-list #local-search-result a .post-title {
-        color: #383636;
-    }
-    
-    
-    .nav-right .title-list nav a .post-date, .nav-right .title-list #local-search-result a .post-date {
-        color: #5e5e5f;
-    }
-    
-    
-    .nav-right nav a.hover, #local-search-result a.hover{
-        background-color: #e2e0e0;
-    }
-    
-    
 
-    /*列表样式*/
     
-    .post .pjax article .article-entry>ol, .post .pjax article .article-entry>ul, .post .pjax article>ol, .post .pjax article>ul{
-        border: #e2dede solid 1px;
-        border-radius: 10px;
-        padding: 10px 32px 10px 56px;
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body {
+        left: -66px !important;
     }
-    .post .pjax article .article-entry li>ol, .post .pjax article .article-entry li>ul,.post .pjax article li>ol, .post .pjax article li>ul{
-        padding-top: 5px;
-        padding-bottom: 5px;
-    }
-    .post .pjax article .article-entry>ol>li, .post .pjax article .article-entry>ul>li,.post .pjax article>ol>li, .post .pjax article>ul>li{
-        margin-bottom: auto;
-        margin-left: auto;
-    }
-    .post .pjax article .article-entry li>ol>li, .post .pjax article .article-entry li>ul>li,.post .pjax article li>ol>li, .post .pjax article li>ul>li{
-        margin-bottom: auto;
-        margin-left: auto;
-    }
-    
 
-    /* 背景图样式 */
-    
-    
-
-
-    /*引用块样式*/
-    
-
-    /*文章列表背景图*/
-    
-    .nav-right:before {
-        content: ' ';
-        display: block;
-        position: absolute;
-        left: 0;
-        top: 0;
-        width: 100%;
-        height: 100%;
-        opacity: 0.3;
-        background: url("https://i.loli.net/2019/07/22/5d3521411f3f169375.png");
-        background-repeat: no-repeat;
-        background-position: 50% 0;
-        -ms-background-size: cover;
-        -o-background-size: cover;
-        -moz-background-size: cover;
-        -webkit-background-size: cover;
-        background-size: cover;
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body:hover {
+        left: 0px !important;
     }
-    
 
     
 </style>
+<div class="">
+    
+    <div class="row">
+        <meting-js class="col l8 offset-l2 m10 offset-m1 s12"
+                   server="netease"
+                   type="playlist"
+                   id="503838841"
+                   fixed='true'
+                   autoplay='false'
+                   theme='#42b983'
+                   loop='all'
+                   order='random'
+                   preload='auto'
+                   volume='0.7'
+                   list-folded='true'
+        >
+        </meting-js>
+    </div>
+</div>
+
+<script src="/libs/aplayer/APlayer.min.js"></script>
+<script src="/libs/aplayer/Meting.min.js"></script>
+
+    
+
+    <div class="container row center-align"
+         style="margin-bottom: 0px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            
+                <span id="year">2019-2023</span>
+            
+            <a href="/about" target="_blank">王大可</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            
+            <br>
+            
+            
+            
+                
+            
+            
+                <span id="busuanzi_container_site_pv">
+                &nbsp;|&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;
+                    <span id="busuanzi_value_site_pv" class="white-color"></span>
+            </span>
+            
+            
+                <span id="busuanzi_container_site_uv">
+                &nbsp;|&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;
+                    <span id="busuanzi_value_site_uv" class="white-color"></span>
+            </span>
+            
+            <br>
+
+            <!-- 运行天数提醒. -->
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/blinkfox" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:1181062873@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
 
 
 
 
 
 
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=1181062873" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 1181062873" data-position="top" data-delay="50">
+        <i class="fab fa-qq"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fas fa-rss"></i>
+    </a>
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(function () {
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('/search.xml', 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- 白天和黑夜主题 -->
+<div class="stars-con">
+    <div id="stars"></div>
+    <div id="stars2"></div>
+    <div id="stars3"></div>  
+</div>
+
+<script>
+    function switchNightMode() {
+        $('<div class="Cuteen_DarkSky"><div class="Cuteen_DarkPlanet"></div></div>').appendTo($('body')),
+        setTimeout(function () {
+            $('body').hasClass('DarkMode') 
+            ? ($('body').removeClass('DarkMode'), localStorage.setItem('isDark', '0'), $('#sum-moon-icon').removeClass("fa-sun").addClass('fa-moon')) 
+            : ($('body').addClass('DarkMode'), localStorage.setItem('isDark', '1'), $('#sum-moon-icon').addClass("fa-sun").removeClass('fa-moon')),
+            
+            setTimeout(function () {
+            $('.Cuteen_DarkSky').fadeOut(1e3, function () {
+                $(this).remove()
+            })
+            }, 2e3)
+        })
+    }
+</script>
+
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
+    
+
+    
+    
+    
+
+    <!-- 雪花特效 -->
+    
+
+    <!-- 鼠标星星特效 -->
+    
+
+     
+        <script src="https://ssl.captcha.qq.com/TCaptcha.js"></script>
+        <script src="/libs/others/TencentCaptcha.js"></script>
+        <button id="TencentCaptcha" data-appid="xxxxxxxxxx" data-cbfn="callback" type="button" hidden></button>
+    
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    <script src="/libs/others/clicklove.js" async="async"></script>
+    
+    
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+    <!--腾讯兔小巢-->
+    
+    
+
+    
+
+    
+
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+</body>
 
 </html>
