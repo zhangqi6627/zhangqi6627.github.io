@@ -1,0 +1,1316 @@
+<!DOCTYPE HTML>
+<html lang="zh-Hans">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="Launcher移植学习, 901的一家">
+    <meta name="description" content="1.移植R5的Tecno_Launcher2????
+解决:移植完毕
+2.添加接口setStatusBarBg()？？？
+解决:需要修改以下几个文件1234567891011121314151617181920212223242526272">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <title>Launcher移植学习 | 901的一家</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+    
+
+
+    <!-- bg-cover style     -->
+
+
+
+<link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.min.css">
+<link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+<link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+<link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+<link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+<link rel="stylesheet" type="text/css" href="/css/matery.css">
+<link rel="stylesheet" type="text/css" href="/css/my.css">
+<link rel="stylesheet" type="text/css" href="/css/dark.css" media="none" onload="if(media!='all')media='all'">
+
+
+
+
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+    <link rel="stylesheet" href="/css/post.css">
+
+
+
+
+    
+        <link rel="stylesheet" type="text/css" href="/css/reward.css">
+    
+
+
+
+    <script src="/libs/jquery/jquery-3.6.0.min.js"></script>
+
+</head>
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">901的一家</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>分类</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>归档</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/contact" class="waves-effect waves-light">
+      
+      <i class="fas fa-comments" style="zoom: 0.6;"></i>
+      
+      <span>留言板</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/friends" class="waves-effect waves-light">
+      
+      <i class="fas fa-address-book" style="zoom: 0.6;"></i>
+      
+      <span>友情链接</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+  <li>
+    <a href="javascript:;" class="waves-effect waves-light" onclick="switchNightMode()" title="深色/浅色模式" >
+      <i id="sum-moon-icon" class="fas fa-sun" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">901的一家</div>
+        <div class="logo-desc">
+            
+            Never really desperate, only the lost of the soul.
+            
+        </div>
+    </div>
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			首页
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			标签
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			分类
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			归档
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/contact" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-comments"></i>
+			
+			留言板
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/friends" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-address-book"></i>
+			
+			友情链接
+		</a>
+          
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/blinkfox/hexo-theme-matery" class="waves-effect waves-light" target="_blank">
+                <i class="fab fa-github-square fa-fw"></i>Fork Me
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/blinkfox/hexo-theme-matery" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+   data-tooltip="Fork Me" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
+        
+    </nav>
+
+</header>
+
+    
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/4.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">Launcher移植学习</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                          <div class="article-tag">
+                            <span class="chip bg-color">无标签</span>
+                          </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2018-03-08
+                </div>
+                
+
+                
+
+                
+
+                
+
+                
+            </div>
+        </div>
+        <hr class="clearfix">
+
+        
+
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <p>1.移植R5的Tecno_Launcher2????</p>
+<p>解决:<br>移植完毕</p>
+<p>2.添加接口setStatusBarBg()？？？</p>
+<p>解决:<br>需要修改以下几个文件<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//frameworks/base/core/java/android/app/StatusBarManager.java</span></div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setStatusBarBg</span><span class="params">(<span class="keyword">int</span> statusBarBg)</span> </span>&#123;					<span class="comment">//添加 setStatusBarBg(int color) 方法</span></div><div class="line">    <span class="keyword">try</span> &#123;</div><div class="line">        <span class="keyword">final</span> IStatusBarService svc = getService();</div><div class="line">        <span class="keyword">if</span> (svc != <span class="keyword">null</span>) &#123;</div><div class="line">            mService.setStatusBarBg(statusBarBg);</div><div class="line">        &#125;</div><div class="line">    &#125; <span class="keyword">catch</span> (RemoteException ex) &#123;</div><div class="line">        <span class="comment">/// M: system process is dead anyway.</span></div><div class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> RuntimeException(ex);</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">//frameworks/base/core/java/com/android/internal/statusbar/IStatusBarService.aidl</span></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">setStatusBarBg</span><span class="params">(<span class="keyword">int</span> color)</span></span>;									<span class="comment">//添加 IStatusBarService.aidl 中的 setStatusBarBg(int color)接口</span></div><div class="line"></div><div class="line"><span class="comment">//frameworks/base/services/java/com/android/server/StatusBarManagerService.java</span></div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setStatusBarBg</span><span class="params">(<span class="keyword">int</span> statusBarBg)</span> </span>&#123;					<span class="comment">//实现 IStatusBarService.aidl 中的 setStatusBarBg(int color)接口</span></div><div class="line">    <span class="keyword">if</span> (mBar != <span class="keyword">null</span>) &#123;</div><div class="line">        <span class="keyword">try</span> &#123;</div><div class="line">            mBar.setStatusBarBg(statusBarBg);</div><div class="line">        &#125; <span class="keyword">catch</span> (RemoteException ex) &#123;</div><div class="line">            ex.printStackTrace();</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">//frameworks/base/core/java/com/android/internal/statusbar/IStatusBar.aidl</span></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">setStatusBarBg</span><span class="params">(<span class="keyword">int</span> color)</span></span>;									<span class="comment">//添加 IStatusBar.aidl 中的 setStatusBarBg(int color)接口</span></div><div class="line"></div><div class="line"><span class="comment">//frameworks/base/packages/SystemUI/src/com/android/systemui/statusbar/CommandQueue.java</span></div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setStatusBarBg</span><span class="params">(<span class="keyword">int</span> statusBarBg)</span> </span>&#123;</div><div class="line">    <span class="keyword">synchronized</span> (mList) &#123;</div><div class="line">        mHandler.obtainMessage(MSG_SET_STATUSBAR, statusBarBg, <span class="number">0</span>, <span class="keyword">null</span>).sendToTarget();</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"><span class="comment">//在H(Handler)中添加对MSG_SET_STATUSBAR的处理</span></div><div class="line"><span class="keyword">case</span> MSG_SET_STATUSBAR:</div><div class="line">    mCallbacks.setStatusBarBg(msg.arg1);</div><div class="line">    <span class="keyword">break</span>;</div><div class="line"><span class="comment">//在 CommandQueue.Callbacks 接口中添加 setStatusBarBg() 接口</span></div><div class="line">setStatusBarBg(<span class="keyword">int</span> color)</div><div class="line"></div><div class="line"><span class="comment">//frameworks/base/packages/SystemUI/src/com/android/systemui/statusbar/BaseStatusBar.java</span></div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setStatusBarBg</span><span class="params">(<span class="keyword">int</span> color)</span></span>&#123;&#125;				<span class="comment">//在这里实现 CommandQueue.Callbacks 中的 setStatusBarBg()接口</span></div><div class="line"></div><div class="line"><span class="comment">//frameworks\base\packages\systemui\src\com\android\systemui\statusbar\phone\PhoneStatusBar.java	extends BaseStatusBar</span></div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setStatusBarBg</span><span class="params">(<span class="keyword">int</span> color)</span> </span>&#123;</div><div class="line">    mStatusBarView.setBackgroundColor(color);		<span class="comment">//这里也有对 CommandQueue.Callbacks 中的 setStatusBarBg()接口的实现</span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">//frameworks/base/packages/SystemUI/src/com/android/systemui/statusbar/phone/PhoneStatusBarView.java	中有对 setBackgroundColor()的实现</span></div><div class="line"><span class="meta">@RemotableViewMethod</span></div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setBackgroundColor</span><span class="params">(<span class="keyword">int</span> color)</span> </span>&#123;</div><div class="line">    <span class="keyword">if</span> (mBackground <span class="keyword">instanceof</span> ColorDrawable) &#123;</div><div class="line">        ((ColorDrawable) mBackground.mutate()).setColor(color);</div><div class="line">        computeOpaqueFlags();</div><div class="line">        mBackgroundResource = <span class="number">0</span>;</div><div class="line">    &#125; <span class="keyword">else</span> &#123;</div><div class="line">        setBackground(<span class="keyword">new</span> ColorDrawable(color));</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>3.修改 Apps 和 Widgets 字体的大小和宽度？？？</p>
+<p>解决:<br>在 AppsCustomizeTabHost.java 文件的 onFinishInflate() 方法中修改<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//Apps</span></div><div class="line">tabView.setTextSize(TypedValue.COMPLEX_UNIT_PX, <span class="number">25</span>);</div><div class="line">tabView.setWidth(<span class="number">129</span>);</div><div class="line"><span class="comment">//Widgets</span></div><div class="line">widgettabView.setTextSize(TypedValue.COMPLEX_UNIT_PX, <span class="number">25</span>);</div><div class="line">widgettabView.setWidth(<span class="number">250</span>);</div></pre></td></tr></table></figure></p>
+<p>4.AppsCustomizerTabHost 上右边的两个按钮 market_button 和 tecno_order_button ？？？</p>
+<p>解决:<br>将 apps_customize_pane.xml 中的 RelativeLayout中的 android:layout_marginLeft 改为 187dp 就能在tab下面显示一条完美的横线了<br>market_button还是没有显示出来</p>
+<p>5.如何将 AppsCustomizerTabHost 下面蓝色的 indicator 替换为 三角箭头????</p>
+<p>解决:<br>只要将 values/styles.xml 文件中的 TabIndicator 的<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">item</span> <span class="attr">name</span>=<span class="string">"android:background"</span>&gt;</span>@drawable/tab_widget_indicator_selector<span class="tag">&lt;/<span class="name">item</span>&gt;</span></div><div class="line">修改为</div><div class="line"><span class="tag">&lt;<span class="name">item</span> <span class="attr">name</span>=<span class="string">"android:background"</span>&gt;</span>@drawable/buttonbarbackground<span class="tag">&lt;/<span class="name">item</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p>6.修改Launcher里面应用图标大小，应用字体大小？？？</p>
+<p>解决:<br>PagedViewIcon.java中添加 setTextSize(12); 设置应用标题的字体<br>在 dimens.xml 文件中修改如何参数来修改图标的大小<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">dimen</span> <span class="attr">name</span>=<span class="string">"app_icon_size"</span>&gt;</span>54dp<span class="tag">&lt;/<span class="name">dimen</span>&gt;</span>				</div><div class="line"><span class="tag">&lt;<span class="name">dimen</span> <span class="attr">name</span>=<span class="string">"apps_customize_cell_width"</span>&gt;</span>100dp<span class="tag">&lt;/<span class="name">dimen</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">dimen</span> <span class="attr">name</span>=<span class="string">"apps_customize_cell_height"</span>&gt;</span>140dp<span class="tag">&lt;/<span class="name">dimen</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p>7.有些应用的图标显示会比较大，如《梦宝谷》？？？</p>
+<p>解决:<br>已去掉该应用，去掉该应用的方法参考《问题55》</p>
+<p>8.apps_customize_pane.xml 上的 market_button 按钮还是没有显示出来？？？</p>
+<p>解决:<br>只要预置了Goole Play store就会显示出来</p>
+<p>9.在widget列表界面每一项的右下角添加一个指示 n * m 的 图标？？？</p>
+<p>解决:<br>添加一个DimsView自定义View</p>
+<ol>
+<li>widget 列表的绘制？？？</li>
+</ol>
+<p>解决:<br>在 PagedViewGridLayout.java的 dispatchDraw()方法中绘制 widget 列表的横线和竖线<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//mFirstLine = 240;												//这个变量可以去掉的，因为在cellWidth中控制widget的高度和宽度之后就可以控制 mFirstLine 的大小了</span></div><div class="line">canvas.drawLine(<span class="number">0</span>, mFirstLine, <span class="number">480</span>, mFirstLine, mPaint);		<span class="comment">//在这里只需要将 720 改为 480 ，将 360 改为 240 就可以了</span></div><div class="line">canvas.drawLine(<span class="number">0</span>, mFirstLine*<span class="number">2</span>, <span class="number">480</span>, mFirstLine*<span class="number">2</span>, mPaint);</div><div class="line">canvas.drawLine(<span class="number">0</span>, mFirstLine*<span class="number">3</span>, <span class="number">480</span>, mFirstLine*<span class="number">3</span>, mPaint);</div><div class="line">canvas.drawLine(<span class="number">240</span>, <span class="number">0</span>, <span class="number">240</span>, mFirstLine*<span class="number">3</span>, mPaint);</div></pre></td></tr></table></figure></p>
+<ol>
+<li>控制每一个widget列表项的大小？？？</li>
+</ol>
+<p>解决:<br>在 apps_customize_widget_add.xml 文件中有每一个列表项的布局        //注意这里用的是 apps_customize_widget_add.xml 而不是 apps_customize_widget.xml<br>在 AppsCustomizePagedView.java 的 syncWidgetPageItems()方法中将每一个 widget 添加到列表中<br>final int cellWidth = 217;        //用于控制每一个widget的显示宽度<br>final int cellHeight = 190;        //用于控制每一个widget的显示高度            这样控制是不是不太好，是不是应该控制每一个 cellHeight 计算公式中的变量来控制比较好</p>
+<p>12.apps列表下面的 indicator ????</p>
+<p>解决:<br>在 AllAppPageControlView.java 文件中有 pageID = { R.drawable.page_unit_nor, R.drawable.page_unit_active };    //这两张图片就是下面的indicator图片<br>在 PagedView.java 中使用 AllAppPageControlView</p>
+<p>13.widget列表下面的 indicator 不会随页数的变化而变化？？？</p>
+<p>解决:<br>主要在 AllAppPageControlView.java 中添加<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">bindWidgetView</span><span class="params">(AppsCustomizePagedView allapppage)</span> </span>&#123;</div><div class="line">    Log.v(<span class="string">"sw98"</span>,<span class="string">"bindPageView allapppage.mCurrentPage == "</span>+allapppage.mCurrentPage);</div><div class="line">    Log.v(<span class="string">"sw98"</span>,<span class="string">"bindPageView allapppage.mNumAppsPages() == "</span>+allapppage.mNumAppsPages);</div><div class="line">    <span class="keyword">this</span>.count = allapppage.mNumWidgetPages;</div><div class="line">    mPagedView = allapppage;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>14.app列表和widget列表的黑色背景怎么改？？？</p>
+<p>解决:<br>只要将 TECNO_THEME_SUPPORT 的宏打开为yes就可以了</p>
+<p>15.修改Hotseat上图标的大小？？？</p>
+<p>解决:<br>将values/dimens.xml文件中的hotseat_cell_width改为64dp<br>将layout-port/hotseat.xml文件中的android:layout_width改为match_parent</p>
+<p>16.去掉widget列表上第一个小部件《应用》小部件的缩略图？？？</p>
+<p>17.点击Menu键的时候会右移一大块？？？</p>
+<p>解决:<br>//packages/apps/Tecno_Launcher2/src/com/android/launcher2/Hotseat.java 文件中把 720 都改为 480 即可</p>
+<p>18.修改Folder的布局？？？</p>
+<p>解决:<br>修改 packages/apps/Tecno_Launcher2/src/com/android/launcher2/Folder.java 文件中的 centerAboutIcon()方法中的<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">lp.width = <span class="number">480</span>;</div><div class="line">lp.height = <span class="number">800</span>;</div><div class="line">lp.x = <span class="number">80</span>;</div><div class="line">lp.y = <span class="number">100</span>;</div><div class="line">修改 packages/apps/Tecno_Launcher2/src/com/android/launcher2/Folder.java 文件中的 onMeasure()方法中</div><div class="line"><span class="keyword">int</span> contentWidthSpec = MeasureSpec.makeMeasureSpec(<span class="number">430</span>, MeasureSpec.EXACTLY);</div><div class="line"><span class="keyword">int</span> contentHeightSpec = MeasureSpec.makeMeasureSpec(<span class="number">650</span>, MeasureSpec.EXACTLY);</div></pre></td></tr></table></figure></p>
+<p>19.Folder文件夹中可以存放的应用数量在哪里设定？？？</p>
+<p>解决:<br>// packages/apps/Tecno_Launcher2/src/com/android/launcher2/Folder.java 的构造函数 public Folder() 中有如下数值<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">mMaxCountX = <span class="number">3</span>;<span class="comment">//res.getInteger(R.integer.folder_max_count_x);</span></div><div class="line">mMaxCountY = <span class="number">5</span>;<span class="comment">//res.getInteger(R.integer.folder_max_count_y);</span></div><div class="line">mMaxNumItems = <span class="number">15</span>;</div></pre></td></tr></table></figure></p>
+<p>20.修改桌面下方页面控制pageControl的显示位置？？？</p>
+<p>解决:<br>只要修改 packages/apps/Tecno_Launcher2/res/layout-port/launcher.xml 中的 PageControlView(R.id.pageControl) 的 android:layout_marginBottom=”80dp” 即可</p>
+<p>21.修改上 Folder 文件夹图标的大小？？？Folder文件夹的大小和app的大小不太一致????????</p>
+<p>解决:<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">dimen</span> <span class="attr">name</span>=<span class="string">"folder_preview_size"</span>&gt;</span>48dp<span class="tag">&lt;/<span class="name">dimen</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p>22.替换主页面上应用列表按钮的资源图片？？？</p>
+<p>解决:<br>//只要替换下面这两张图片就行了<br>packages/apps/Tecno_Launcher2/res/drawable-hdpi/ic_allapps.png<br>packages/apps/Tecno_Launcher2/res/drawable-hdpi/ic_allapps_pressed.png        //这张图片还需要替换</p>
+<p>23.修改编辑屏幕的布局？？？</p>
+<p>解决:<br>替换为 R5 的 Tecno_Launcher 就可以了</p>
+<p>24.Folder 文件夹在编辑的时候没有显示删除图标？？</p>
+<p>25.GlobalDialog关机对话框中的图片资源乱，需要编译哪些模块？？</p>
+<p>解决:<br>在修改了frameworks/base/core/res/res/下的资源后GlobalDialog关机对话框中的图片资源乱掉了<br>首先应该将 out/target/common/obj/APPS/framework-res_intermediates 文件夹彻底删除<br>再重新编译push ./mk -t mm frameworks/base/core/res/res<br>再重新编译push ./mk -t mm frameworks/base<br>再重新编译push ./mk -t mm frameworks/base/policy</p>
+<p>26.左边的Hotseat启动不了 Theme 和 Wallpaper ？？？</p>
+<p>解决:<br>Unable to find explicit activity class {com.android.launcher/com.android.launcher2.ThemeChooser}; have you declared this activity in your AndroidManifest.xml?<br>Theme启动不了:重新添加一个ThemeChooserTest<br>真正有效的解决方法:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">在LauncherApplication.java中将 PackageManager.COMPONENT_ENABLED_STATE_DISABLED 改为 PackageManager.COMPONENT_ENABLED_STATE_ENABLED	再运行一次,再改回去</div><div class="line"><span class="keyword">static</span> <span class="keyword">final</span> ComponentName DISABLED_ACTIVITY_COMPONENTNAME = <span class="keyword">new</span> ComponentName(<span class="string">"com.android.launcher"</span>, <span class="string">"com.android.launcher2.ThemeChooser"</span>);</div><div class="line">mPackageManager.setComponentEnabledSetting(DISABLED_ACTIVITY_COMPONENTNAME, PackageManager.COMPONENT_ENABLED_STATE_ENABLED, <span class="number">0</span>);		<span class="comment">//启用ThemeChooser</span></div><div class="line">mPackageManager.setComponentEnabledSetting(DISABLED_ACTIVITY_COMPONENTNAME, PackageManager.COMPONENT_ENABLED_STATE_DISABLED, <span class="number">0</span>);	<span class="comment">//禁用ThemeChooser</span></div></pre></td></tr></table></figure></p>
+<p>上面的代码只要运行一次之后就永久生效，不管是否重启，由于一开始TECNO_THEME_SUPPORT的宏没有打开，导致运行了一次禁用 ThemeChooser 的代码，把ThemeChooser永远禁用了，需要再运行一次启用ThemeChooser的代码才能把应用给显示出来</p>
+<p>wallpaper 启动不了:将 Tecno_Wallpaper 应用拷贝过来编译push就行了</p>
+<p>27.设置了主题之后，动态壁纸没有替换？？？</p>
+<p>解决:<br>需要将R5上的packages/wallpaper/ 目录下的动态壁纸的应用也一起移植过来</p>
+<p>《简约》风格的主题没有设置之后没起作用？？？？<br>需要修改frameworks/base/core/res/res/drawable-nodip/default_wallpaper.jpg 默认壁纸<br>需要添加《问题29》所修改的主题图标功能</p>
+<p>28.workspace 上的 widget 列表没有显示出来？？？需要稍微调一下布局</p>
+<p>解决:<br>//代码中有<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">widgettabView.setText(<span class="string">""</span>);</div><div class="line">widgettabView.setClickable(<span class="keyword">false</span>);</div><div class="line">widgettabView.setLayoutParams(<span class="keyword">new</span> LinearLayout.LayoutParams(<span class="number">0</span>, LayoutParams.WRAP_CONTENT, <span class="number">5</span>));	<span class="comment">//widget列表显示是有显示的，但没有标题Widgets,显示出来之后也不能跳转到widget列表页</span></div></pre></td></tr></table></figure></p>
+<p>29.workspace 上的应用的图标没有跟着主题的变化而变化？？？</p>
+<p>解决:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//声明接口</span></div><div class="line"><span class="comment">//在frameworks/base/core/java/android/content/pm/PackageManager.java	 中添加 getFancyDrawable()接口</span></div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> Drawable <span class="title">getFancyDrawable</span><span class="params">(String packageName, <span class="keyword">int</span> resid,ApplicationInfo appInfo)</span></span>;</div><div class="line"></div><div class="line"><span class="comment">//声明api</span></div><div class="line"><span class="comment">//在frameworks/base/api/current.txt 文件需要添加api接口声明</span></div><div class="line">method <span class="keyword">public</span> <span class="keyword">abstract</span> android.graphics.drawable.<span class="function">Drawable <span class="title">getFancyDrawable</span><span class="params">(java.lang.String, <span class="keyword">int</span>, android.content.pm.ApplicationInfo)</span></span>;</div><div class="line">method <span class="keyword">public</span> android.graphics.drawable.<span class="function">Drawable <span class="title">getFancyDrawable</span><span class="params">(java.lang.String, <span class="keyword">int</span>, android.content.pm.ApplicationInfo)</span></span>;</div><div class="line"></div><div class="line"><span class="comment">//实现接口</span></div><div class="line"><span class="comment">//在frameworks/base/core/java/android/app/ApplicationPackageManager.java 中实现getFancyDrawable()接口</span></div><div class="line"><span class="comment">//在frameworks/base/test-runner/src/android/test/mock/MockPackageManager.java 中也需要实现getFancyDrawable()接口</span></div><div class="line"></div><div class="line"><span class="comment">//调用接口</span></div><div class="line"><span class="comment">//在frameworks/base/core/java/android/content/pm/PackageItemInfo.java中的调用这个方法</span></div><div class="line"><span class="function"><span class="keyword">public</span> Drawable <span class="title">loadIcon</span><span class="params">(PackageManager pm)</span> </span>&#123;</div><div class="line">    <span class="keyword">if</span> (icon != <span class="number">0</span>) &#123;</div><div class="line">        Drawable dr = <span class="keyword">null</span>;		</div><div class="line">        <span class="keyword">if</span>(FeatureOption.TECNO_THEME_SUPPORT) &#123;</div><div class="line">            dr = pm.getFancyDrawable(packageName,icon,getApplicationInfo());		<span class="comment">//在这里调用getFancyDrawable()方法</span></div><div class="line">        &#125; <span class="keyword">else</span> &#123;</div><div class="line">            dr = pm.getDrawable(packageName, icon, getApplicationInfo());</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">if</span> (dr != <span class="keyword">null</span>) &#123;</div><div class="line">            <span class="keyword">return</span> dr;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> loadDefaultIcon(pm);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>30.下拉状态栏StatusBar上通知栏的布局怎么修改？？</p>
+<p>解决:<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">//symbols.xml</div><div class="line"><span class="tag">&lt;<span class="name">java-symbol</span> <span class="attr">type</span>=<span class="string">"id"</span> <span class="attr">name</span>=<span class="string">"img_back"</span> /&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">java-symbol</span> <span class="attr">type</span>=<span class="string">"drawable"</span> <span class="attr">name</span>=<span class="string">"notify_panel_notification_icon_bg"</span> /&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">java-symbol</span> <span class="attr">type</span>=<span class="string">"drawable"</span> <span class="attr">name</span>=<span class="string">"notify_panel_notification_icon_bg2"</span> /&gt;</span></div></pre></td></tr></table></figure></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//Notification.java 在 RemoteViews applyStandardTemplate()方法上添加</span></div><div class="line">contentView.setImageViewResource(R.id.img_back, R.drawable.notify_panel_notification_icon_bg2);</div><div class="line"><span class="comment">//上面这几个貌似不需要添加，添加了之后很多应用程序会报错？？？？？？？？？？？？？？？</span></div><div class="line"></div><div class="line"><span class="comment">//notification_template_base.xml文件中添加 img_frame 和 img_back</span></div><div class="line"></div><div class="line"><span class="comment">//在drawable-hdpi下添加替换如下图片</span></div><div class="line">frameworks/base/core/res/res/drawable-hdpi/notification_bg_low_normal.9.png</div><div class="line">frameworks/base/core/res/res/drawable-hdpi/notification_bg_low_pressed.9.png</div><div class="line">frameworks/base/core/res/res/drawable-hdpi/notification_bg_normal.9.png</div><div class="line">frameworks/base/core/res/res/drawable-hdpi/notification_bg_normal_pressed.9.png</div><div class="line">frameworks/base/core/res/res/drawable-hdpi/notify_panel_notification_icon_bg.png</div><div class="line">frameworks/base/core/res/res/drawable-hdpi/notify_panel_notification_icon_bg2.png</div></pre></td></tr></table></figure>
+<p>31.workspace 上的 Folder 文件夹里面放上15个快捷方式的时候没有显示完全???</p>
+<p>解决:<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">//在 user_folder.xml 中有</div><div class="line"><span class="tag">&lt;<span class="name">com.android.launcher2.CellLayout</span></span></div><div class="line"><span class="tag"><span class="attr">...</span></span></div><div class="line"><span class="tag"><span class="attr">launcher:cellWidth</span>=<span class="string">"@dimen/folder_cell_width"</span>		//这个参数控制<span class="attr">Folder</span>文件夹中每一个<span class="attr">item</span>的宽度</span></div><div class="line"><span class="tag"><span class="attr">launcher:cellHeight</span>=<span class="string">"@dimen/folder_cell_height"</span>/&gt;</span>	//这个参数控制Folder文件夹中每一个item的高度</div><div class="line">//在 dimens.xml 中有</div><div class="line"><span class="tag">&lt;<span class="name">dimen</span> <span class="attr">name</span>=<span class="string">"folder_cell_width"</span>&gt;</span>74dp<span class="tag">&lt;/<span class="name">dimen</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">dimen</span> <span class="attr">name</span>=<span class="string">"folder_cell_height"</span>&gt;</span>85dp<span class="tag">&lt;/<span class="name">dimen</span>&gt;</span>		//要修改每一个Folder中Item的高度只需要修改这个参数为 80dp 就可以了</div></pre></td></tr></table></figure></p>
+<p>32.StatusBar上的某些字符串没有翻译,在中文下也显示英文???</p>
+<p>解决:<br>//在frameworks/base/packages/SystemUI/res/values-zh/strings.xml文件中添加如下字符串即可<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">string</span> <span class="attr">name</span>=<span class="string">"torch"</span>&gt;</span>手电筒<span class="tag">&lt;/<span class="name">string</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">string</span> <span class="attr">name</span>=<span class="string">"calculator"</span>&gt;</span>计算器<span class="tag">&lt;/<span class="name">string</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">string</span> <span class="attr">name</span>=<span class="string">"camera"</span>&gt;</span>相机<span class="tag">&lt;/<span class="name">string</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">string</span> <span class="attr">name</span>=<span class="string">"recorder"</span>&gt;</span>录音机<span class="tag">&lt;/<span class="name">string</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">string</span> <span class="attr">name</span>=<span class="string">"stopWatch"</span>&gt;</span>计时器<span class="tag">&lt;/<span class="name">string</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">string</span> <span class="attr">name</span>=<span class="string">"notify"</span>&gt;</span>通知<span class="tag">&lt;/<span class="name">string</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">string</span> <span class="attr">name</span>=<span class="string">"onoff"</span>&gt;</span>开关<span class="tag">&lt;/<span class="name">string</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">string</span> <span class="attr">name</span>=<span class="string">"wifihotspot"</span>&gt;</span>WLAN热点<span class="tag">&lt;/<span class="name">string</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">string</span> <span class="attr">name</span>=<span class="string">"delete_all"</span>&gt;</span>移除所有应用<span class="tag">&lt;/<span class="name">string</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">string</span> <span class="attr">name</span>=<span class="string">"app_manager"</span>&gt;</span>管理应用<span class="tag">&lt;/<span class="name">string</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p>33.通知栏上的每一条通知的标题没有显示黑色???每一条通知的圈圈里面的图片在哪里替换????</p>
+<p>解决:<br>//标题黑色:<br>//frameworks/base/core/res/res/values/styles.xml<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">style</span> <span class="attr">name</span>=<span class="string">"TextAppearance.StatusBar.EventContent.Title"</span>&gt;</span><span class="undefined"></span></div><div class="line"><span class="xml">    <span class="tag">&lt;<span class="name">item</span> <span class="attr">name</span>=<span class="string">"android:textColor"</span>&gt;</span>#ffffff<span class="tag">&lt;/<span class="name">item</span>&gt;</span>		//把 #ffffff 修改为 #000000 就可以了</span></div><div class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p>//圈圈里面的图片:<br>这个貌似需要在每个发送通知的地方修改</p>
+<p>34.如何修改Notification上的黑色背景???</p>
+<p>解决:<br>//frameworks/base/packages/SystemUI/res/colors.xml<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">color</span> <span class="attr">name</span>=<span class="string">"notification_panel_solid_background"</span>&gt;</span>#ffffffff<span class="tag">&lt;/<span class="name">color</span>&gt;</span>	//把这里原来的#ff000000修改为#ffffffff就行了</div></pre></td></tr></table></figure></p>
+<p>35.某些APK打开之后会报错???如时钟,settings中的某些地方???貌似有ActionBar的地方都会报错？？？</p>
+<p>解决:<br>修改Notification引起的报错<br>还不知道是什么原因引起的报错，但知道怎么修改可以让它不报错，只要将《问题30》中frameworks/base/core/res下的修改全部还原之后就可以了</p>
+<p>36.Folder上的四个小图标是怎么画出来的?????</p>
+<p>37.修改 innertheme1 主题中的默认壁纸？？？</p>
+<p>解决:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//在 packages/apps/TECNO_Launcher2/src/com/android/launcher2/ThemePreview.java 中有</span></div><div class="line">InputStream is = context.getResources().openRawResource(com.android.internal.R.drawable.default_wallpaper);</div><div class="line"><span class="comment">//需要将innertheme1的默认壁纸改为从innertheme1的文件夹中获取吗？？可以修改代码如下</span></div><div class="line"><span class="keyword">try</span>&#123;</div><div class="line">    is = context.getAssets().open(<span class="string">"innertheme1/wallpaper.png"</span>);</div><div class="line">&#125;<span class="keyword">catch</span>(Exception e)&#123;</div><div class="line">    e.printStackTrace();</div><div class="line">    is = context.getResources().openRawResource(com.android.internal.R.drawable.default_wallpaper);			</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>//默认壁纸所在路径，默认壁纸貌似必须使用.jpg格式的图片<br>frameworks/base/core/res/res/drawable-nodip/default_wallpaper.jpg</p>
+<p>38.如何添加TECNO主题上的动态壁纸？？？？</p>
+<p>解决:<br>需要将R5上的packages/wallpaper下的 Leaves 和 WorldCup 主题应用拷贝过来，并编译push到手机上，在ProjectConfig.mk和common.mk文件中添加宏控</p>
+<p>39.预置 Tecno_Launcher2 的时候需不需要先编译Launcher2然后再编译Tecno_Launcher2????</p>
+<p>解决:<br>不需要，只要在TECNO_Launcher2的Android.mk文件中添加 LOCAL_OVERRIDES_PACKAGES := Home Launcher2 Launcher3 就OK了</p>
+<p>40.时钟Widget添加到桌面上之后显示不正常？？？？</p>
+<p>解决:<br>在DigitalAppWidgetProvider.java中的updateClock()方法中有<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">float</span> ratio = WidgetUtils.getScaleRatio(context, newOptions, appWidgetId);</div><div class="line">WidgetUtils.setClockSize(context, widget, ratio);				<span class="comment">//只要把最后一个参数ratio改为1就可以显示正常了</span></div><div class="line">density:<span class="number">1.5</span> minHeight:<span class="number">24</span> lblBox:<span class="number">28.35</span> widget_height:<span class="number">193.5</span>		<span class="comment">//或者可以修改这里的minHeight</span></div><div class="line">ratio:((<span class="number">1.5</span> * <span class="number">24</span>) - <span class="number">28.35</span>) / (<span class="number">193.5</span> - <span class="number">28.35</span>) = <span class="number">0.046321526</span></div></pre></td></tr></table></figure></p>
+<p>41.研究一下动态壁纸是如何添加的？？？</p>
+<p>解决:<br>请参考《08月29日学习笔记》</p>
+<p>42.将StatusBar切换到Switch页面的时候会出现”只能拨打紧急呼救电话”字符串被遮挡的现象？？？</p>
+<p>解决:<br>只要在PhoneStatusBar.java中修改<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">mSettingsButtonListener 	监听器中添加代码隐藏该字符串即可 mCarrierLabelGemini.setVisibility(View.GONE);</div><div class="line">mNotificationButtonListener 监听器中添加代码显示该文本框即可 mCarrierLabelGemini.setVisibility(View.VISIBLE);</div></pre></td></tr></table></figure></p>
+<p>43.Notification通知栏上的左边的小圆圈图标显示不正常，下面有一小段显示不全？？？</p>
+<p>解决:<br>//在frameworks/base/packages/SystemUI/res/values/dimens.xml<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">dimen</span> <span class="attr">name</span>=<span class="string">"notification_divider_height"</span>&gt;</span>3dp<span class="tag">&lt;/<span class="name">dimen</span>&gt;</span>	//只要将这里的3dp修改为0dp就行了</div></pre></td></tr></table></figure></p>
+<p>44.Wallpaper如何选中当前壁纸？？？</p>
+<p>解决:<br>//MyLocalGridViewAdapter.java<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">PreferencesService service = <span class="keyword">new</span> PreferencesService(mContext);</div><div class="line"><span class="keyword">if</span>(service.getPreferencesPosition() == position)&#123;			<span class="comment">//这里的</span></div><div class="line">    holder.current_setted.setVisibility(View.VISIBLE);</div><div class="line">&#125;<span class="keyword">else</span>&#123;</div><div class="line">    holder.current_setted.setVisibility(View.INVISIBLE);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">//PreferencesService.java</span></div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getPreferencesPosition</span><span class="params">()</span></span>&#123;</div><div class="line">    <span class="keyword">int</span> WallpaperPosition;</div><div class="line">    SharedPreferences preferences = context.getSharedPreferences(<span class="string">"TecnoWallpaper"</span>, Context.MODE_PRIVATE);</div><div class="line">    WallpaperPosition = preferences.getInt(<span class="string">"WallpaperPosition"</span>, Constants.Extra.defaultsLocalWallpaper);	<span class="comment">//public static final int defaultsLocalWallpaper = 1;</span></div><div class="line">    <span class="keyword">return</span> WallpaperPosition;		<span class="comment">//这里的位置需要和当前壁纸相对应,只需要修改这个地方就可以了</span></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>45.状态栏上的Torch打不开？？？</p>
+<p>解决:<br>在 PhoneStatusBar.java 上有 context.sendBroadcast(new Intent(“TorchDirectOpen”));        //这个地方发送了一个广播打开Torch<br>将R5上的FlashLight直接移植过来就可以了</p>
+<p>46.状态栏上的机主信息显示不全，有图片的时候不显示机主名称？？？</p>
+<p>解决:<br>因为R.id.user_textview文本框显示太小了<br>只需要在 quick_settings_tile_user.xml 中将 R.id.user_imageview 的属性修改为如下即可<br>android:layout_height=”0dp”<br>android:layout_weight=”1”</p>
+<ol>
+<li>adb shell如何按照进程名称杀死进程com.android.systemui？？？</li>
+</ol>
+<p>48.锁屏界面上的闹钟显示不全？？？</p>
+<p>解决:<br>keyguard_status_view.xml 中有 R.id.alarm_status 这个控件显示闹钟信息</p>
+<p>49.主题列表界面来蓝牙配对请求等通知的时候背景显示主界面？？？</p>
+<p>解决:<br>去掉ThemeChooser的<br>android:launchMode=”singleTask”</p>
+<p>50.添加了 img_back 和 img_frame 之后很多应用都会报错？？？</p>
+<p>51.点击主界面菜单上的《搜索》菜单项报错？？？</p>
+<p>解决:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//这里我添加了捕获异常的处理</span></div><div class="line"><span class="keyword">try</span> &#123;</div><div class="line">    startActivity();</div><div class="line">&#125; <span class="keyword">catch</span>(ActivityNotFoundException e) &#123;</div><div class="line">    Toast.makeText(mContext,<span class="string">"There is no app found to support this action!"</span>).show();</div><div class="line">&#125;</div><div class="line">Launcher.java</div><div class="line"><span class="keyword">case</span> MENU_SEARCH:</div><div class="line">    ComponentName componentNameSearch = <span class="keyword">new</span> ComponentName(<span class="string">"com.google.android.googlequicksearchbox"</span>, <span class="string">"com.google.android.googlequicksearchbox.SearchActivity"</span>);		<span class="comment">//添加google包之后就不会报错了</span></div><div class="line">    Intent mintentSearch = <span class="keyword">new</span> Intent();</div><div class="line">    mintentSearch.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);</div><div class="line">    mintentSearch.setComponent(componentNameSearch);</div><div class="line">    startActivity(mintentSearch);</div><div class="line">    <span class="keyword">break</span>;</div></pre></td></tr></table></figure></p>
+<p>52.点击主界面菜单上的《分享》菜单项报错？？？</p>
+<p>解决:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">Launcher.java</div><div class="line"><span class="keyword">case</span> MENU_SHARE:</div><div class="line">    ComponentName componetName1 = <span class="keyword">new</span> ComponentName(<span class="string">"com.zzd.share"</span>, <span class="string">"com.zzd.share.ShareTestActivity"</span>);		<span class="comment">//这个应用是哪一个？？ShareTest</span></div><div class="line">    Intent mintent1 = <span class="keyword">new</span> Intent();</div><div class="line">    mintent1.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);</div><div class="line">    mintent1.setComponent(componetName1);</div><div class="line">    startActivity(mintent1);</div><div class="line">    <span class="keyword">break</span>;</div></pre></td></tr></table></figure></p>
+<p>在 packages/apps 下添加上 ShareTest 应用就可以了</p>
+<p>53.卸载应用的时候会显示两个背景？？？桌面和主菜单界面？？？？</p>
+<p>分析:<br>《卸载》按钮:<br>//DeleteDropTarget.java 中有<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">setText(isUninstall ? R.string.delete_target_uninstall_label : R.string.delete_target_label);</div><div class="line"><span class="comment">//DeleteDropTarget.java文件中有</span></div><div class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">completeDrop</span><span class="params">(DragObject d)</span> </span>&#123;</div><div class="line">    ...</div><div class="line">    <span class="keyword">if</span> (isAllAppsApplication(d.dragSource, item)) &#123;</div><div class="line">        mLauncher.startApplicationUninstallActivity((ApplicationInfo) item);		<span class="comment">//卸载应用的方法</span></div><div class="line">    &#125;</div><div class="line">    ...</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>《应用详情》按钮:<br>//InfoDropTarget.java 中有<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">acceptDrop</span><span class="params">(DragObject d)</span> </span>&#123;</div><div class="line">    ...</div><div class="line">    <span class="keyword">if</span> (componentName != <span class="keyword">null</span>) &#123;</div><div class="line">        mLauncher.startApplicationDetailsActivity(componentName);					<span class="comment">//查看应用详情的方法</span></div><div class="line">    &#125;</div><div class="line">    ...</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>《workspace/hotseat没有空间》<br>//Workspace.java 中有<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">acceptDrop</span><span class="params">(DragObject d)</span> </span>&#123;</div><div class="line">    ...</div><div class="line">    mLauncher.showOutOfSpaceMessage(isHotseat);										<span class="comment">//弹出Toast显示没空间的方法</span></div><div class="line">    ...</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>解决:<br>只要在上面3个地方都添加上 mLauncher.hideWorkspace(); 方法将workspace/hotseat/pagecontrol 都隐藏了就可以了<br>现在替换为最新版的TECNO_Launcher2就OK了</p>
+<p>54.状态栏透明效果没有修改好？？？Message界面会跳闪？？？Bug16824</p>
+<p>解决:<br>直接在Launcher.java的onStop()方法中添加 mStatusBarManager.setStatusBarBg(0xff000000);        //直接添加，不要添加任何判断<br>//改为在startActivity()方法中判断，再设置背景</p>
+<p>55.《梦宝谷》应用在什么地方？？？</p>
+<p>解决:<br>应用在 mediatek/platform/mt6572/binary/3rd-party/free/Mobage/Mobage.apk<br>在 ProjectConfig.mk文件中 有 MTK_DENA_MOBAGE_APP 宏用来控制是否编译这个应用</p>
+<p>56.点击进入应用列表界面的时候加载较慢？？？？</p>
+<p>解决:<br>经过内存优化之后稍微有点改善</p>
+<p>57.切换语言或主题之后会很卡？？？</p>
+<p>解决:<br>经过内存优化之后稍微有点改善</p>
+<p>58.USB connected通知前面的标签图标显示白色？？？</p>
+<p>分析:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">Intent intent = <span class="keyword">new</span> Intent();</div><div class="line">intent.setClass(mContext, com.android.systemui.usb.UsbStorageActivity.class);</div><div class="line">intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);</div><div class="line">PendingIntent pi = PendingIntent.getActivity(mContext, <span class="number">0</span>, intent, <span class="number">0</span>);</div><div class="line"><span class="comment">//发送通知</span></div><div class="line">setUsbStorageNotification(com.android.internal.R.string.usb_storage_notification_title com.android.internal.R.string.usb_storage_notification_message, com.android.internal.R.drawable.stat_sys_data_usb,<span class="keyword">false</span>, <span class="keyword">true</span>, pi);</div><div class="line">在 Notification.java 中的 applyStandardTemplate() 方法中添加 contentView.setInt(R.id.icon, <span class="string">"setBackgroundResource"</span>, R.drawable.notify_panel_notification_icon_bg2);</div></pre></td></tr></table></figure></p>
+<p>解决:<br>//这个只需要将frameworks/base/core/res/res/layout/notification<em>template</em>*.xml的icon的android:background都改为蓝色的圆圈就行了</p>
+<p>59.研究一下FlashLight的直接打开闪光灯的Receiver的代码？？？</p>
+<p>60.Bug16662 <a href="主菜单">BUG</a>操作过程中主菜单排序错误????</p>
+<p>61.App列表的行数和列数在哪里确定？？？</p>
+<p>解决:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//在workspace.java文件中有</span></div><div class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> DEFAULT_CELL_COUNT_Y = <span class="number">4</span>;						<span class="comment">//默认列数</span></div><div class="line"><span class="keyword">int</span> cellCountY = DEFAULT_CELL_COUNT_Y;									<span class="comment">//这里默认就为4，这里的4是 workspace 上的4，而不是 AppsCustomizePagedView 上的 4</span></div><div class="line">cellCountY = a.getInt(R.styleable.Workspace_cellCountY, cellCountY);	<span class="comment">//在config.xml文件中有    &lt;integer name="cell_count_y"&gt;4&lt;/integer&gt;</span></div><div class="line"><span class="comment">//APP列表:		PagedViewCellLayout.java</span></div><div class="line">?????????????????????</div><div class="line"></div><div class="line"><span class="comment">//Widget列表:	PagedViewGridLayout.java</span></div><div class="line">AppsCustomizePagedView.java 文件中有</div><div class="line"><span class="comment">//syncWidgetPageItems()方法中有</span></div><div class="line"><span class="keyword">if</span>(mLauncher.isAddMode)&#123;</div><div class="line">	mWidgetCountY = <span class="number">2</span>;	<span class="comment">//添加模式</span></div><div class="line">&#125; <span class="keyword">else</span> &#123;</div><div class="line">	mWidgetCountY = <span class="number">3</span>;	<span class="comment">//正常模式</span></div><div class="line">&#125;</div><div class="line"><span class="comment">//syncPages()方法中有</span></div><div class="line">PagedViewGridLayout layout = <span class="keyword">new</span> PagedViewGridLayout(context, mWidgetCountX, mWidgetCountY);</div></pre></td></tr></table></figure></p>
+<p>62.截屏的时候显示通知栏还是正方形的？？</p>
+<p>分析:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">在 GlobalScreenShot.java文件中有</div><div class="line">mNotificationBuilder</div><div class="line">.setContentTitle(r.getString(R.string.screenshot_saved_title))</div><div class="line">.setContentText(r.getString(R.string.screenshot_saved_text))</div><div class="line">.setContentIntent(PendingIntent.getActivity(params.context, <span class="number">0</span>, launchIntent, <span class="number">0</span>))</div><div class="line">.setWhen(System.currentTimeMillis())</div><div class="line">.setAutoCancel(<span class="keyword">true</span>);</div></pre></td></tr></table></figure></p>
+<p>解决:<br>还是需要在 frameworks/base/core/res/res/layout/notification_template_big_picture.xml 中将 R.id.icon 的 background 修改为 notify_panel_notification_icon_bg</p>
+<p>63.Bug16901 创建直接拨号或直接发短信快捷方式的时候，快捷方式图标显示不正常？？？</p>
+<p>解决:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">M:packages/apps/ContactsCommon/src/com/android/contacts/common/list/ShortcutIntentBuilder.java</div><div class="line"><span class="function"><span class="keyword">private</span> Bitmap <span class="title">generatePhoneNumberIcon</span><span class="params">()</span></span>&#123;</div><div class="line">    ...</div><div class="line">    dst.set(iconWidth - ((<span class="keyword">int</span>) (<span class="number">80</span> * density)) - <span class="number">30</span>, <span class="number">29</span>, iconWidth - <span class="number">30</span>, ((<span class="keyword">int</span>) (<span class="number">80</span> * density)) + <span class="number">30</span>);		<span class="comment">//微调这里的参数就行了</span></div><div class="line">    ...</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>64.在设置主题的时候左右滑动数组越界报错的问题？？？</p>
+<p>解决:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//在ThemePreview.java的getView()方法中判断themePreviewList的元素是否为0，若为0则重新加载一遍 loadThemes()</span></div><div class="line"><span class="keyword">if</span>(themePreviewList.size() == <span class="number">0</span>)&#123;</div><div class="line">    loadThemes(mCurrentThemeName);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>65.在 Launcher.java的 onPause()中状态栏设置背景颜色的时候有问题？？？</p>
+<p>解决:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//onPause()方法</span></div><div class="line">ActivityManager am = (ActivityManager)<span class="keyword">this</span>.getSystemService(Context.ACTIVITY_SERVICE);</div><div class="line">ComponentName cn = am.getRunningTasks(<span class="number">1</span>).get(<span class="number">0</span>).topActivity;</div><div class="line"><span class="comment">//将上面的方法移植到boolean startActivity()方法中就可以解决大部分，如mms,phone等</span></div></pre></td></tr></table></figure></p>
+<p>66.Settings热底座上的add按钮？？？</p>
+<p>分析:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">Hotseat.java</div><div class="line">addButton.setOnClickListener(<span class="keyword">new</span> View.OnClickListener() &#123;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClick</span><span class="params">(View v)</span> </span>&#123;&#125;</div><div class="line">&#125;);</div><div class="line">Hotseat.java</div><div class="line">allAppButton.setOnClickListener(<span class="keyword">new</span> OnClickListener()&#123;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClick</span><span class="params">(View v)</span> </span>&#123;</div><div class="line">		mLauncher.onClickAllAppsButton(v);</div><div class="line">	&#125;</div><div class="line">&#125;);</div><div class="line"></div><div class="line">Launcher.java</div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClickAllAppsButton</span><span class="params">(View v)</span> </span>&#123;</div><div class="line">	<span class="keyword">if</span>(isArrange)&#123;</div><div class="line">		<span class="keyword">return</span>;</div><div class="line">	&#125;</div><div class="line">	mAppsCustomizeTabHost.selectAppsTab();</div><div class="line">	showAllApps(<span class="keyword">true</span>);</div><div class="line">	mAppsCustomizeTabHost.getContentTypeForTabTag(AppsCustomizeTabHost.APPS_TAB_TAG);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>67.Launcher.addMode模式下添加widget列表显示3行？？？</p>
+<p>分析:<br>//复现方法<br>1.进入到Direct message widget选择联系人，连续按两次返回键，widget列表没有消失<br>2.点击AppsCustomizeTabHost上的apps选项卡，进入到app列表<br>3.按返回键退出add mode,再进入到add mode就会直接显示3行widget列表</p>
+<p>68.将主题设置为《world cup》之后启动《RF 2013》world cup会意外停止？？？《WorldCup》主题和《Leaves》主题的效果都有待优化？？？</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">Log:</div><div class="line">E/AndroidRuntime(12461): FATAL EXCEPTION: Thread-470</div><div class="line">E/AndroidRuntime(12461): Process: com.android.worldcup, PID: 12461</div><div class="line">E/AndroidRuntime(12461): java.lang.NullPointerException</div><div class="line">E/AndroidRuntime(12461): 	at android.graphics.Canvas.throwIfCannotDraw(Canvas.java:1083)</div><div class="line">E/AndroidRuntime(12461): 	at android.graphics.Canvas.drawBitmap(Canvas.java:1139)</div><div class="line">E/AndroidRuntime(12461): 	at com.android.worldcup.WallpaperService$LiveWallpaperPainting.drawPaillette(WallpaperService.java:283)						//这里会有问题？？？</div><div class="line">E/AndroidRuntime(12461): 	at com.android.worldcup.WallpaperService$LiveWallpaperPainting.draw(WallpaperService.java:318)</div><div class="line">E/AndroidRuntime(12461): 	at com.android.worldcup.WallpaperService$LiveWallpaperPainting.doDraw(WallpaperService.java:405)</div><div class="line">E/AndroidRuntime(12461): 	at com.android.worldcup.WallpaperService$LiveWallpaperPainting.run(WallpaperService.java:349)</div><div class="line"></div><div class="line">原因:在 WallpaperService.java 的 drawPaillette() 方法中有一个 BitmapFactory.decodeStream(getClass().getResourceAsStream(path));		//这个地方解析的时候会出错，就会导致解析出来的图片为空，导致NullPointerException</div><div class="line">只要将 WallpaperService.java 的 drawPaillette() 方法中添加一个图片非空的判断就行了，具体修改代码如下</div><div class="line">解决:</div><div class="line">if(paillette_array[0] != null)&#123;							//添加非空判断</div><div class="line">    canvas.drawBitmap(paillette_array[0],0,0,null);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>69.状态栏上的亮度调节栏应该在设置为非自动模式之后设置为不可用？？？？</p>
+<p>解决:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//在 frameworks/base/packages/SystemUI/src/com/android/systemui/statusbar/phone/PhoneStatusBar.java中的监听器和初始化seekBar的地方添加</span></div><div class="line">mSeekbar.setEnabled(nAutomatic == <span class="number">1</span> ? <span class="keyword">false</span> : <span class="keyword">true</span>);</div></pre></td></tr></table></figure></p>
+<p>70.从 Notification 界面跳转到 《FM Radio》 界面，状态栏还是会闪？？？</p>
+<p>解决:<br>同《问题75》</p>
+<p>71.在删除应用的时候出现问题？？？内存溢出？？？</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">分析:</div><div class="line">01-01 08:02:40.468685   964  1021 W System.err: Caused by: java.lang.OutOfMemoryError</div><div class="line">01-01 08:02:40.469218   964  1021 W System.err: 	at android.graphics.BitmapFactory.nativeDecodeAsset(Native Method)</div><div class="line">01-01 08:02:40.469362   964  1021 W System.err: 	at android.graphics.BitmapFactory.decodeStream(BitmapFactory.java:609)</div><div class="line">01-01 08:02:40.469441   964  1021 W System.err: 	at android.graphics.BitmapFactory.decodeResourceStream(BitmapFactory.java:444)</div><div class="line">01-01 08:02:40.469510   964  1021 W System.err: 	at android.graphics.drawable.Drawable.createFromResourceStream(Drawable.java:840)</div><div class="line">01-01 08:02:40.469579   964  1021 W System.err: 	at android.content.res.Resources.loadDrawable(Resources.java:2166)</div><div class="line">01-01 08:02:40.469664   964  1021 W System.err: 	at android.content.res.Resources.getDrawable(Resources.java:710)</div><div class="line">01-01 08:02:40.469748   964  1021 W System.err: 	at android.app.ApplicationPackageManager.getDrawable(ApplicationPackageManager.java:946)				//这里会有问题？？？</div><div class="line">01-01 08:02:40.469826   964  1021 W System.err: 	at com.android.launcher2.AppsCustomizePagedView.getWidgetPreview(AppsCustomizePagedView.java:2033)			</div><div class="line">01-01 08:02:40.469902   964  1021 W System.err: 	at com.android.launcher2.AppsCustomizePagedView.loadWidgetPreviewsInBackground(AppsCustomizePagedView.java:2340)</div><div class="line">01-01 08:02:40.469991   964  1021 W System.err: 	at com.android.launcher2.AppsCustomizePagedView.access$200(AppsCustomizePagedView.java:212)</div><div class="line">01-01 08:02:40.470071   964  1021 W System.err: 	at com.android.launcher2.AppsCustomizePagedView$8.run(AppsCustomizePagedView.java:1906)</div><div class="line">01-01 08:02:40.470252   964  1021 W System.err: 	at com.android.launcher2.AppsCustomizeAsyncTask.doInBackground(AppsCustomizePagedView.java:180)</div><div class="line">01-01 08:02:40.470338   964  1021 W System.err: 	at com.android.launcher2.AppsCustomizeAsyncTask.doInBackground(AppsCustomizePagedView.java:168)</div><div class="line">01-01 08:02:40.470427   964  1021 W System.err: 	at android.os.AsyncTask$2.call(AsyncTask.java:288)</div><div class="line">01-01 08:02:40.470497   964  1021 W System.err: 	at java.util.concurrent.FutureTask.run(FutureTask.java:237)</div><div class="line">01-01 08:02:40.470558   964  1021 W System.err: 	... 3 more</div><div class="line"></div><div class="line">Resources r = getResourcesForApplication(appInfo);</div><div class="line">dr = r.getDrawable(resid);							//log显示是在这里出现的问题？？</div></pre></td></tr></table></figure>
+<p>72.优化《WorldCup》主题和《Leaves》主题的显示效果和内存？？？？</p>
+<p>解决:<br>在使用BitmapFactory.decodeStream()方法加载图片之后效果好了一点</p>
+<p>73.在开机的时候如何禁止一些服务的启动？？？</p>
+<p>74.一些三方apk的名称和控制方法？？？</p>
+<p>解决:<br>点心省电        Tecno_DUBattery                        TECNO_DUBATTERY_APP<br>电影工作室    packages/apps/VideoEditor            MTK_ENABLE_VIDEO_EDITOR<br>手机管家        Tencent_Mobile_Manager_Slim            MTK_TENCENT_MOBILE_MANAGER_SLIM_SUPPORT<br>待办事项        mediatek/packages/apps/Todos<br>梦宝谷        Mobage                                MTK_DENA_MOBAGE_APP<br>墨迹天气国际    Tecno_MoWeather                        Tecno_MoWeather_APP<br>安卓优化大师    Tecno_DUSpeed                        Tecno_DUSpeed_APP</p>
+<p>75.从通知状态栏上进入到某个应用的时候状态栏会跳闪？？？</p>
+<p>解决:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//在 frameworks/base/packages/SystemUI/src/com/android/systemui/statusbar/BaseStatusBar.java 文件中有</span></div><div class="line"><span class="keyword">protected</span> <span class="class"><span class="keyword">class</span> <span class="title">NotificationClicker</span> <span class="keyword">implements</span> <span class="title">View</span>.<span class="title">OnClickListener</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClick</span><span class="params">(View v)</span></span>&#123;			<span class="comment">//通知栏某一项的点击事件</span></div><div class="line">        ...</div><div class="line">        StatusBarManager mStatusBarManager = (StatusBarManager)mContext.getSystemService(Context.STATUS_BAR_SERVICE);</div><div class="line">        mStatusBarManager.setStatusBarBg(<span class="number">0xff000000</span>);	<span class="comment">//将状态栏的颜色修改为黑色</span></div><div class="line">        ...</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>76.在主页面删除应用或查看应用详细信息的时候状态栏会跳闪？？？</p>
+<p>解决:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//在packages/apps/TECNO_Launcher2/src/com/android/launcher2/Launcher.java上有</span></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">startApplicationDetailsActivity</span><span class="params">(ComponentName componentName)</span> </span>&#123;</div><div class="line">    String packageName = componentName.getPackageName();</div><div class="line">    Intent intent = <span class="keyword">new</span> Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS, Uri.fromParts(<span class="string">"package"</span>, packageName, <span class="keyword">null</span>));</div><div class="line">    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_EXCLUDE_FROM_RECENTS);</div><div class="line">    startActivitySafely(<span class="keyword">null</span>, intent, <span class="string">"startApplicationDetailsActivity"</span>);</div><div class="line">    mStatusBarManager.setStatusBarBg(<span class="number">0xff000000</span>);		<span class="comment">//在这里将状态栏设置为黑色</span></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>77.从下拉状态栏跳转到《Data usage》状态栏也会跳闪？？？</p>
+<p>解决:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//在frameworks/base/packages/SystemUI/src/com/android/systemui/statusbar/phone/QuickSettings.java文件中有</span></div><div class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">startSettingsActivity</span><span class="params">(Intent intent, <span class="keyword">boolean</span> onlyProvisioned)</span> </span>&#123;</div><div class="line">    <span class="keyword">if</span> (onlyProvisioned &amp;&amp; !getService().isDeviceProvisioned()) <span class="keyword">return</span>;</div><div class="line">    <span class="keyword">try</span> &#123;</div><div class="line">        <span class="comment">// Dismiss the lock screen when Settings starts.</span></div><div class="line">        ActivityManagerNative.getDefault().dismissKeyguardOnNextActivity();</div><div class="line">    &#125; <span class="keyword">catch</span> (RemoteException e) &#123;</div><div class="line">    &#125;</div><div class="line">    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);</div><div class="line">    mContext.startActivityAsUser(intent, <span class="keyword">new</span> UserHandle(UserHandle.USER_CURRENT));</div><div class="line">    <span class="comment">//Bug17319 modified for statusbarbg 2014/09/17:begin</span></div><div class="line">    ((android.app.StatusBarManager)mContext.getSystemService(Context.STATUS_BAR_SERVICE)).setStatusBarBg(<span class="number">0xff000000</span>);	<span class="comment">//在这里将状态栏的背景设置为黑色</span></div><div class="line">    <span class="comment">//Bug17319 modified for statusbarbg 2014/09/17:end</span></div><div class="line">    collapsePanels();</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>78.先进入Message等应用,再按开关机键进入锁屏界面，锁屏界面状态栏会显示黑色？？？</p>
+<p>解决:<br>在 frameworks/base/policy/src/com/android/internal/policy/impl/keyguard/KeyguardServiceDelegate.java 文件中添加代码将状态栏的颜色修改为透明<br>但解锁了之后在回到应用界面，状态栏又会跳闪，参考《问题81》在解锁之后将状态栏修改为黑色</p>
+<p>79.在hotseat上切换fm/music功能的时候会出现divide by zero异常？？？</p>
+<p>分析:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//从Log中看应该是CellLayout.java文件中的997行有</span></div><div class="line">result[<span class="number">0</span>] = (x - hStartPadding) / (mCellWidth + mWidthGap);		<span class="comment">//这里有个除0的异常，需要捕获异常</span></div><div class="line">mCellWidth = a.getDimensionPixelSize(R.styleable.CellLayout_cellWidth, <span class="number">10</span>);</div></pre></td></tr></table></figure></p>
+<p>80.从hotseat上启动FM和Music的时候状态栏也会闪？？？</p>
+<p>解决:<br>//Music的跳转在 MusicControl.java文件中<br>//FM的跳转在什么地方？？在 LauncherAppWidgetHostView.java 文件中</p>
+<p>81.解锁成功在什么地方？？？</p>
+<p>解决:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//在 frameworks/base/packages/Keyguard/src/com/android/keyguard/KeyguardHostView.java文件中</span></div><div class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">showNextSecurityScreenOrFinish</span><span class="params">(<span class="keyword">boolean</span> authenticated, <span class="keyword">boolean</span> showBouncer)</span> </span>&#123;</div><div class="line">    <span class="comment">//可以在这里将状态栏的背景颜色设置为黑色</span></div><div class="line">    <span class="comment">//这里可以添加代码判断一下是不是Launcher界面，如果不是Launcher界面就将状态栏设置为黑色</span></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>82.在 AppsCustomizePagedView.java 文件中的2055行会报内存溢出的异常？？？</p>
+<p>分析:<br>同《问题71》</p>
+<p>83.”Setup Wizard has stopped” ?????</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">Log:</div><div class="line">No Activity found to handle Intent&#123;act=android.intent.action.MAIN cat=[android.intent.category.HOME]&#125;</div><div class="line">解决:</div><div class="line">push完Launcher之后重启一下就可以了</div></pre></td></tr></table></figure>
+<p>84.workspace 上 folder文件夹好像太小了，包不住两个应用？？？</p>
+<p>解决:<br>用R5的新的Launcher就可以了</p>
+<p>85.在添加widget的时候，状态栏背景会变黑？？？</p>
+<p>解决:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">//在 Launcher.java 文件的 setWorkspaceBackground() 方法中有</div><div class="line">mStatusBarManager.setStatusBarBg(0x75000000);	//把这里改为0xff000000就行了</div></pre></td></tr></table></figure></p>
+<p>86.状态栏跳变总结？？？</p>
+<p>解决:<br>《问题02》    添加setStatusBarBg()接口<br>《问题54》    状态栏透明效果没有修改好？？？Message界面会跳闪？？？Bug16824<br>《问题65》    在Launcher.java的onPause()中状态栏设置背景颜色的时候有问题？？？<br>《问题70》    从 Notification 界面跳转到 《FM Radio》 界面，状态栏还是会闪？？？<br>《问题75》    从通知状态栏上进入到某个应用的时候状态栏会跳闪？？？<br>《问题76》    在主页面删除应用或查看应用详细信息的时候状态栏会跳闪？？？<br>《问题77》    从下拉状态栏跳转到《Data usage》状态栏也会跳闪？？？<br>《问题78》    先进如Message等应用,再按开关机键进入锁屏界面，锁屏界面状态栏会显示黑色？？？<br>《问题80》    从hotseat上启动FM和Music的时候状态栏也会闪？？？<br>《问题81》    解锁成功之后将状态栏设置为黑色？？？<br>《问题85》    在添加widget的时候，状态栏背景会变黑？？？<br>《问题91》    点击Home键的时候状态栏跳变？？？<br>最后只要在 Launcher.java 的 onPause() 方法中添加 setStatusBarBg(0xff000000); 就行了</p>
+<p>最终解决方法:<br>只要将 frameworks/base/services/java/com/android/server/StatusBarManagerService.java 中 setStatusBarBg() 的方法实现给去掉就都ok了<br>public void setStatusBarBg(int statusBarBg) {<br>}</p>
+<p>87.《Sound Recorder》在通知栏上的背景小图标还是白色的？？？</p>
+<p>解决:<br>参考《问题98》</p>
+<p>88.在 frameworks/base/core/java/android/app/ApplicationPackageManager.java 的946行会报OOM错？？？</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">分析:</div><div class="line">//ApplicationPackageManager.java</div><div class="line">Resources r = getResourcesForApplication(appInfo);</div><div class="line">dr = r.getDrawable(resid);							//这里报错？？</div><div class="line">同《问题71》</div></pre></td></tr></table></figure>
+<p>89.在锁屏界面添加《Message》短信widget之后，再从锁屏界面跳转到《Message》就会出现状态栏跳闪？？？</p>
+<p>解决:<br>参考《问题86最终解决方法》</p>
+<p>90.在添加 Driver 的 widget 的时候报错？？？</p>
+<p>分析:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">Log:</div><div class="line">01-01 23:44:42.768: E/AndroidRuntime(25435): Caused by: java.lang.NullPointerException</div><div class="line">01-01 23:44:42.768: E/AndroidRuntime(25435): 	at com.android.launcher2.Workspace.estimateItemPosition(Workspace.java:392)</div><div class="line">01-01 23:44:42.768: E/AndroidRuntime(25435): 	at com.android.launcher2.Workspace.getFinalPositionForDropAnimation(Workspace.java:3536)</div><div class="line">01-01 23:44:42.768: E/AndroidRuntime(25435): 	at com.android.launcher2.Workspace.animateWidgetDrop(Workspace.java:3573)</div><div class="line">01-01 23:44:42.768: E/AndroidRuntime(25435): 	at com.android.launcher2.Launcher.completeTwoStageWidgetDrop(Launcher.java:1686)</div><div class="line">01-01 23:44:42.768: E/AndroidRuntime(25435): 	at com.android.launcher2.Launcher.onActivityResult(Launcher.java:1619)</div><div class="line">01-01 23:44:42.768: E/AndroidRuntime(25435): 	at android.app.Activity.dispatchActivityResult(Activity.java:5456)</div><div class="line">01-01 23:44:42.768: E/AndroidRuntime(25435): 	at android.app.ActivityThread.deliverResults(ActivityThread.java:3549)</div><div class="line">01-01 23:44:42.768: E/AndroidRuntime(25435): 	... 11 more</div></pre></td></tr></table></figure></p>
+<p>91.点击Home键的时候状态栏跳变？？？</p>
+<p>分析:<br>貌似点击Home键的时候就会调用Launcher上的onPause()方法<br>解决:<br>参考《问题86最终解决方法》</p>
+<p>92.添加widget跳转的方法在什么地方？？？</p>
+<p>解决:<br>添加widget跳转    在 Launcher.java 上有 addAppWidgetImpl()方法<br>添加shortcut跳转    在 Launcher.java 上有 processShortcut()方法</p>
+<p>93.AppsCustomizePagedView 上的《Edit》菜单有时会不显示？？？</p>
+<p>解决:<br>设计如此，只有在《Own order》排序模式下才会显示</p>
+<p>94.R5的不同点？？？</p>
+<p>TabHost上的google play图标显示不太清楚            已修改（替换为R5的Launcher就行了）<br>主题不同，主题列表不同，主题数量不同（多了两个主题）    已修改（替换为R5的Launcher就行了）<br>AppsCustomizePagedView的加载动画不太一样        已修改（替换为R5的Launcher就行了）<br>在AddMode的时候的背景不透明                        已修改（替换为R5的Launcher就行了）<br>锁屏界面的壁纸不一致                            已修改（替换为R5的Launcher就行了）<br>在状态栏上的FlashLight的图标不会改变？？                这个貌似需要修改很多代码</p>
+<p>95.为什么H5的Settings/Apps/Running 中 RAM 的使用率这么高？？？</p>
+<p>解决:<br>因为R5是1G内存，H5是512M内存，在代码中写死了，<br>RunningProcessView.java</p>
+<p>96.Bug20323 锁屏界面解锁的时候背景是黑色的？？？</p>
+<p>解决:<br>M:frameworks/base/policy/src/com/android/internal/policy/impl/PhoneWindowManager.java<br>将 PhoneWindowManager.java 中的 doesForceHide() 函数的返回值改为 return false; 就ok了，谢谢鑫哥</p>
+<p>97.主题预览界面的图片不是全屏的，左右有黑边？？？</p>
+<p>解决:只要替换innertheme下的预览图片就可以了</p>
+<p>98.《Sound Record》在状态栏上的通知前面的图标不一致????</p>
+<p>分析:<br>这个是在<sound recorder="">应用内部自己添加的通知布局，需要在《SoundRecorder》应用内部修改<br>解决:<br>只要在 packages/apps/SoundRecorder/res/layout/notification.xml 的 app_icon 的 background 改为 notify_panel_notification_icon_bg.png(这张图片在frameworks/base/core/res/res/drawable-hdpi下)<br>再替换两张图片<br>packages/apps/SoundRecorder/res/drawable-hdpi/notification_pause_am.png<br>packages/apps/SoundRecorder/res/drawable-hdpi/notification_stop_am.png</sound></p>
+<p>99.在壁纸-&gt;动态壁纸-&gt;WorldCup预览界面中横屏的时候会报错？？？</p>
+<p>解决:<br>好像有人把动态壁纸的预览页面强制设置为竖屏的了</p>
+<p>100.从《Recent App》上启动 App Manager 会报错？？？</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">Log:</div><div class="line">01-01 08:00:18.991: E/AndroidRuntime(6474): android.content.res.Resources$NotFoundException: File res/layout/detail_dialog.xml from drawable resource ID #0x7f030000</div><div class="line">01-01 08:00:18.991: E/AndroidRuntime(6474): 	at android.content.res.Resources.loadDrawable(Resources.java:2152)</div><div class="line">01-01 08:00:18.991: E/AndroidRuntime(6474): 	at android.content.res.Resources.getDrawable(Resources.java:710)</div><div class="line">01-01 08:00:18.991: E/AndroidRuntime(6474): 	at android.app.ApplicationPackageManager.getFancyDrawable(ApplicationPackageManager.java:890)</div><div class="line">01-01 08:00:18.991: E/AndroidRuntime(6474): 	at android.content.pm.PackageItemInfo.loadIcon(PackageItemInfo.java:144)</div><div class="line">01-01 08:00:18.991: E/AndroidRuntime(6474): 	at com.android.settings.applications.ApplicationsState$AppEntry.ensureIconLocked(ApplicationsState.java:145)</div><div class="line">01-01 08:00:18.991: E/AndroidRuntime(6474): 	at com.android.settings.applications.ApplicationsState$BackgroundHandler.handleMessage(ApplicationsState.java:1017)</div><div class="line">01-01 08:00:18.991: E/AndroidRuntime(6474): 	at android.os.Handler.dispatchMessage(Handler.java:110)</div><div class="line">01-01 08:00:18.991: E/AndroidRuntime(6474): 	at android.os.Looper.loop(Looper.java:193)</div><div class="line">01-01 08:00:18.991: E/AndroidRuntime(6474): 	at android.os.HandlerThread.run(HandlerThread.java:61)</div><div class="line">01-01 08:00:18.991: E/AndroidRuntime(6474): Caused by: org.xmlpull.v1.XmlPullParserException: Binary XML file line #40: invalid drawable tag ScrollView</div><div class="line">01-01 08:00:18.991: E/AndroidRuntime(6474): 	at android.graphics.drawable.Drawable.createFromXmlInner(Drawable.java:933)</div><div class="line">01-01 08:00:18.991: E/AndroidRuntime(6474): 	at android.graphics.drawable.Drawable.createFromXml(Drawable.java:877)</div><div class="line">01-01 08:00:18.991: E/AndroidRuntime(6474): 	at android.content.res.Resources.loadDrawable(Resources.java:2148)</div><div class="line">01-01 08:00:18.991: E/AndroidRuntime(6474): 	... 8 more</div></pre></td></tr></table></figure>
+<p>101.锁屏界面解锁的时候有问题？？？黑色的圈圈和花环对不起来</p>
+<p>解决:莫名奇妙就好了</p>
+<p>102.为什么在Hotseat上显示的phone会变成这个com.google.android.dialer/com.android.dialer.DialtactsActivity？？？</p>
+<p>分析:<br>com.google.android.dialer/com.android.dialer.DialtactsActivity        //为什么在Hotseat上显示的phone会变成这个？？？<br>com.android.dialer/.DialtactsActivity<br>解决:<br>去掉Google包中的GoogleOneTimeInitializer就可以了</p>
+<p>103.添加App列表和widget列表翻页功能？？？</p>
+<p>解决:<br>只要在 packages/apps/TECNO_Launcher2/src/com/android/launcher2/PagedView.java 的 onTouchEvent() 方法中的case 1,case 2中做一下处理就可以了</p>
+<p>104.Bug19127修改锁屏界面上时钟的显示大小??</p>
+<p>解决:<br>修改 frameworks/base/packages/Keyguard/res/layout-800x480/keyguard_status_view.xml 中的 clock_text 这个TextView的 textSize 从59dp 修改为55dp</p>
+<p>105.在日历的快捷方式上显示日期？？？</p>
+<p>分析:<br>如何实时更新<br>忽略:<br>客户已同意不做改功能</p>
+<p>106.H5在SD卡上写东西的时候不成功？？Flash Share在接受文件的时候创建文件文件夹失败，接收文件失败？？？</p>
+<p>107.近期任务中的图标好像不是主题里面的图标？？？？</p>
+<p>解决:<br>修改 RecentTasksLoader.java 中的 getDrawable() 改为 getFancyDrawable() 就可以了</p>
+<p>108.Bug19250 在不插卡的时候在状态栏上显示两个信号图标？？？</p>
+<p>解决:<br>frameworks/base/packages/SystemUI/src/com/android/systemui/statusbar/SignalClusterView.java            //这个文件中添加用于控制显示两个信号图标<br>frameworks/base/packages/SystemUI/src/com/android/systemui/statusbar/policy/NetworkController.java    //这个文件中添加用于控制在不插卡的时候显示信号图标</p>
+<p>109.Bug19333 修改下载的时候在状态栏显示的图标？？？</p>
+<p>解决:<br>“Download complete” 字符串在 packages/providers/DownloadProvider/res/values/strings.xml    notification_download_complete<br>发送通知的地方:packages/providers/DownloadProvider/src/com/android/providers/downloads/DownloadNotifier.java    中有 builder.setSmallIcon(android.R.drawable.stat_sys_download);    //这个图片就是通知栏上看不清除的图片<br>//只要替换下面的这几张图片就可以了<br>frameworks/base/core/res/res/drawable-hdpi/stat_sys_download_anim0.png<br>frameworks/base/core/res/res/drawable-hdpi/stat_sys_download_anim1.png<br>frameworks/base/core/res/res/drawable-hdpi/stat_sys_download_anim2.png<br>frameworks/base/core/res/res/drawable-hdpi/stat_sys_download_anim3.png<br>frameworks/base/core/res/res/drawable-hdpi/stat_sys_download_anim4.png<br>frameworks/base/core/res/res/drawable-hdpi/stat_sys_download_anim5.png</p>
+<p>110.Bug16669 去掉Settings/Action/Double click to wake up 选项？？？</p>
+<p>解决:<br>packages/apps/ActionSettings/src/com/sagereal/actions/CustomPreferenceActivity.java    中将所有的 R.id.double_click_wake 都换成 0<br>packages/apps/ActionSettings/res/xml/preference_header.xml                            中将    double_click_wake 注释掉</p>
+<p>111.Bug19187 在FileManager中打开文本文件，横屏的时候字体变大？？？</p>
+<p>解决:<br>packages/apps/HTMLViewer/AndroidManifest.xml    //将这个文件中的 HTMLViewerActivity 中添加 android:screenOrientation=”portrait” 强制将这个Activity设置为竖屏，不让它可以横屏显示</p>
+<p>112.TecnoBug262 Settings-&gt;Apps-&gt;App info 中下面的权限前面的图标显示不清楚？？？</p>
+<p>解决:<br>frameworks/base/core/java/android/content/pm/PackageItemInfo.java 文件中有 loadNormalIcon() 方法<br>frameworks/base/core/java/android/widget/AppSecurityPermission.java 文件中的 loadGroupIcon() 方法中的 loadIcon() 方法替换成 loadNormalIcon() 方法<br>还需要将frameworks/base/core/res/res/drawable-hdpi/下面的以 perm<em>group</em> 开头的图片替换为R5下面同名的29张图片</p>
+<p>113.TecnoBug260 计算器横屏的时候删除按钮不显示C？？？</p>
+<p>解决:<br>packages/apps/Calculator/res/layout-port/main.xml    在这个文件中 R.id.del 按钮中添加 android:text=”@string/mtk_clear” 就行了</p>
+<p>114.在RecentApp中短信的图标有时会显示不正常？？？</p>
+<p>分析:<br>从Log中可以看出近期任务的短信图标有时候会显示成    com_android_mms_title_message.png    而有时候会显示成    com_android_mms_ic_launcher_mms.png        但这里还没有找到具体原因为什么会变成    com_android_mms_title_message.png<br>解决:<br>只要在innertheme下添加        com_android_mms_title_message.png    就可以了</p>
+<p>115.Bug19523 开机出现报错？？？</p>
+<p>分析:<br>从aee_exp的dbg文件中可以看出<br>java.lang.NullPointerException<br>at com.android.keyguard.KeyguardBubblesOperate$4.handleMessage(KeyguardBubblesOperate.java:571)<br>at android.os.Handler.dispatchMessage(Handler.java:110)<br>at android.os.Looper.loop(Looper.java:193)<br>at android.app.ActivityThread.main(ActivityThread.java:5299)<br>at java.lang.reflect.Method.invokeNative(Native Method)<br>at java.lang.reflect.Method.invoke(Method.java:515)<br>at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:825)<br>at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:641)<br>at dalvik.system.NativeStart.main(Native Method)<br>解决:<br>在 KeyguardBubblesOperate.java 中添加上非空判断</p>
+<p>116.修改按键音？？</p>
+<p>解决:<br>需要将 PhoneWindow.java 和 PhoneWindowManager.java 中修改</p>
+<p>117.强度测试 《Ripple》和《Triangular space》动态壁纸会报错？？？</p>
+<p>分析:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">//Ripple</div><div class="line">10-23 11:05:49.786 E/AndroidRuntime( 3834): FATAL EXCEPTION: main</div><div class="line">10-23 11:05:49.786 E/AndroidRuntime( 3834): Process: com.vlife.wallpaper.resource.number5082, PID: 3834</div><div class="line">10-23 11:05:49.786 E/AndroidRuntime( 3834): java.lang.NullPointerException</div><div class="line">10-23 11:05:49.786 E/AndroidRuntime( 3834): at n.nq.i(Unknown Source)</div><div class="line">10-23 11:05:49.786 E/AndroidRuntime( 3834): at n.nq.g(Unknown Source)</div><div class="line">10-23 11:05:49.786 E/AndroidRuntime( 3834): at n.nq$2.run(Unknown Source)</div><div class="line">10-23 11:05:49.786 E/AndroidRuntime( 3834): at android.os.Handler.handleCallback(Handler.java:808)</div><div class="line">10-23 11:05:49.786 E/AndroidRuntime( 3834): at android.os.Handler.dispatchMessage(Handler.java:103)</div><div class="line">10-23 11:05:49.786 E/AndroidRuntime( 3834): at android.os.Looper.loop(Looper.java:193)</div><div class="line">10-23 11:05:49.786 E/AndroidRuntime( 3834): at android.app.ActivityThread.main(ActivityThread.java:5309)</div><div class="line">10-23 11:05:49.786 E/AndroidRuntime( 3834): at java.lang.reflect.Method.invokeNative(Native Method)</div><div class="line">10-23 11:05:49.786 E/AndroidRuntime( 3834): at java.lang.reflect.Method.invoke(Method.java:515)</div><div class="line">10-23 11:05:49.786 E/AndroidRuntime( 3834): at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:824)</div><div class="line">10-23 11:05:49.786 E/AndroidRuntime( 3834): at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:640)</div><div class="line">10-23 11:05:49.786 E/AndroidRuntime( 3834): at dalvik.system.NativeStart.main(Native Method)</div><div class="line">//Triangle</div></pre></td></tr></table></figure></p>
+<p>解决:<br>只要替换为上海提供的新的APK就可以了</p>
+<p>118.notification panel will show ‘Emergency calls only - rongweidi’ ???</p>
+<p>119.在锁屏界面上的FM widget上点击录音按钮界面会跳闪？？？</p>
+<p>解决:<br>只要将录音的按钮的图标替换为透明的图标就可以了，不知道为什么？？<br>这里需要注意的是widget的布局文件在 layout-hdpi-800x480 文件夹中，图片在 drawable-hdpi-800x480 文件夹中，不要找错地方</p>
+<p>120.卸载应用的对话框好像没有换肤？？？</p>
+<p>121.将 Settings 中的 Security 修改为和其他的设置项都对齐？？？</p>
+<p>解决:<br>M:packages/apps/Settings/res/layout/preference_header_button_item.xml<br>只要将 android:layout_marginEnd 去掉就可以了</p>
+
+                
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        文章作者:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/about" rel="external nofollow noreferrer">王大可</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        文章链接:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="http://yoursite.com/2018/03/08/Launcher移植学习/">http://yoursite.com/2018/03/08/Launcher移植学习/</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        版权声明:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    本博客所有文章除特別声明外，均采用
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    许可协议。转载请注明来源
+                    <a href="/about" target="_blank">王大可</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            <span class="chip bg-color">无标签</span>
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+                <div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fas fa-times"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+
+            
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/2018/03/08/数据连接信号小图标/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/11.jpg" class="responsive-img" alt="数据连接信号小图标">
+                        
+                        <span class="card-title">数据连接信号小图标</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2018-03-08
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-user fa-fw"></i>
+                            王大可
+                            
+                        </span>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2018/03/02/EventLog含义/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/8.jpg" class="responsive-img" alt="EventLog含义">
+                        
+                        <span class="card-title">EventLog含义</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2018-03-02
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-user fa-fw"></i>
+                            王大可
+                            
+                        </span>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+
+    <footer class="page-footer bg-color">
+    
+        <link rel="stylesheet" href="/libs/aplayer/APlayer.min.css">
+<style>
+    .aplayer .aplayer-lrc p {
+        
+        display: none;
+        
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 16px !important;
+    }
+
+    .aplayer .aplayer-lrc p.aplayer-lrc-current {
+        
+        display: none;
+        
+        font-size: 15px;
+        color: #42b983;
+    }
+
+    
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body {
+        left: -66px !important;
+    }
+
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body:hover {
+        left: 0px !important;
+    }
+
+    
+</style>
+<div class="">
+    
+    <div class="row">
+        <meting-js class="col l8 offset-l2 m10 offset-m1 s12"
+                   server="netease"
+                   type="playlist"
+                   id="503838841"
+                   fixed='true'
+                   autoplay='false'
+                   theme='#42b983'
+                   loop='all'
+                   order='random'
+                   preload='auto'
+                   volume='0.7'
+                   list-folded='true'
+        >
+        </meting-js>
+    </div>
+</div>
+
+<script src="/libs/aplayer/APlayer.min.js"></script>
+<script src="/libs/aplayer/Meting.min.js"></script>
+
+    
+
+    <div class="container row center-align"
+         style="margin-bottom: 0px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            
+                <span id="year">2019-2023</span>
+            
+            <a href="/about" target="_blank">王大可</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            
+            <br>
+            
+            
+            
+                
+            
+            
+                <span id="busuanzi_container_site_pv">
+                &nbsp;|&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;
+                    <span id="busuanzi_value_site_pv" class="white-color"></span>
+            </span>
+            
+            
+                <span id="busuanzi_container_site_uv">
+                &nbsp;|&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;
+                    <span id="busuanzi_value_site_uv" class="white-color"></span>
+            </span>
+            
+            <br>
+
+            <!-- 运行天数提醒. -->
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/blinkfox" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:1181062873@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=1181062873" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 1181062873" data-position="top" data-delay="50">
+        <i class="fab fa-qq"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fas fa-rss"></i>
+    </a>
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(function () {
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('/search.xml', 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- 白天和黑夜主题 -->
+<div class="stars-con">
+    <div id="stars"></div>
+    <div id="stars2"></div>
+    <div id="stars3"></div>  
+</div>
+
+<script>
+    function switchNightMode() {
+        $('<div class="Cuteen_DarkSky"><div class="Cuteen_DarkPlanet"></div></div>').appendTo($('body')),
+        setTimeout(function () {
+            $('body').hasClass('DarkMode') 
+            ? ($('body').removeClass('DarkMode'), localStorage.setItem('isDark', '0'), $('#sum-moon-icon').removeClass("fa-sun").addClass('fa-moon')) 
+            : ($('body').addClass('DarkMode'), localStorage.setItem('isDark', '1'), $('#sum-moon-icon').addClass("fa-sun").removeClass('fa-moon')),
+            
+            setTimeout(function () {
+            $('.Cuteen_DarkSky').fadeOut(1e3, function () {
+                $(this).remove()
+            })
+            }, 2e3)
+        })
+    }
+</script>
+
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
+    
+
+    
+    
+    
+
+    <!-- 雪花特效 -->
+    
+
+    <!-- 鼠标星星特效 -->
+    
+
+     
+        <script src="https://ssl.captcha.qq.com/TCaptcha.js"></script>
+        <script src="/libs/others/TencentCaptcha.js"></script>
+        <button id="TencentCaptcha" data-appid="xxxxxxxxxx" data-cbfn="callback" type="button" hidden></button>
+    
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    <script src="/libs/others/clicklove.js" async="async"></script>
+    
+    
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+    <!--腾讯兔小巢-->
+    
+    
+
+    
+
+    
+
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+</body>
+
+</html>

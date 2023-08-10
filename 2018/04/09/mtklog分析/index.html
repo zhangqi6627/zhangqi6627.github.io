@@ -1,0 +1,1124 @@
+<!DOCTYPE HTML>
+<html lang="zh-Hans">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="mtklog分析, 901的一家">
+    <meta name="description" content="https://www.cnblogs.com/xiyuan2016/p/6740521.html
+http://www.voidcn.com/article/p-btyoxkos-bpn.html
+Mtklog 结构mtklog分析:  ">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <title>mtklog分析 | 901的一家</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+    
+
+
+    <!-- bg-cover style     -->
+
+
+
+<link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.min.css">
+<link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+<link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+<link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+<link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+<link rel="stylesheet" type="text/css" href="/css/matery.css">
+<link rel="stylesheet" type="text/css" href="/css/my.css">
+<link rel="stylesheet" type="text/css" href="/css/dark.css" media="none" onload="if(media!='all')media='all'">
+
+
+
+
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+    <link rel="stylesheet" href="/css/post.css">
+
+
+
+
+    
+        <link rel="stylesheet" type="text/css" href="/css/reward.css">
+    
+
+
+
+    <script src="/libs/jquery/jquery-3.6.0.min.js"></script>
+
+</head>
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">901的一家</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>分类</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>归档</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/contact" class="waves-effect waves-light">
+      
+      <i class="fas fa-comments" style="zoom: 0.6;"></i>
+      
+      <span>留言板</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/friends" class="waves-effect waves-light">
+      
+      <i class="fas fa-address-book" style="zoom: 0.6;"></i>
+      
+      <span>友情链接</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+  <li>
+    <a href="javascript:;" class="waves-effect waves-light" onclick="switchNightMode()" title="深色/浅色模式" >
+      <i id="sum-moon-icon" class="fas fa-sun" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">901的一家</div>
+        <div class="logo-desc">
+            
+            Never really desperate, only the lost of the soul.
+            
+        </div>
+    </div>
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			首页
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			标签
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			分类
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			归档
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/contact" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-comments"></i>
+			
+			留言板
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/friends" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-address-book"></i>
+			
+			友情链接
+		</a>
+          
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/blinkfox/hexo-theme-matery" class="waves-effect waves-light" target="_blank">
+                <i class="fab fa-github-square fa-fw"></i>Fork Me
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/blinkfox/hexo-theme-matery" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+   data-tooltip="Fork Me" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
+        
+    </nav>
+
+</header>
+
+    
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/22.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">mtklog分析</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                          <div class="article-tag">
+                            <span class="chip bg-color">无标签</span>
+                          </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2018-04-09
+                </div>
+                
+
+                
+
+                
+
+                
+
+                
+            </div>
+        </div>
+        <hr class="clearfix">
+
+        
+
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <p><a href="https://www.cnblogs.com/xiyuan2016/p/6740521.html" target="_blank" rel="external">https://www.cnblogs.com/xiyuan2016/p/6740521.html</a></p>
+<p><a href="http://www.voidcn.com/article/p-btyoxkos-bpn.html" target="_blank" rel="external">http://www.voidcn.com/article/p-btyoxkos-bpn.html</a></p>
+<h3 id="Mtklog-结构"><a href="#Mtklog-结构" class="headerlink" title="Mtklog 结构"></a>Mtklog 结构</h3><p>mtklog分析:  </p>
+<pre><code>1. mdlog1                           // modem 相关底层的log  
+    1.1 MDLog1_2010_0101_000152     // 每次打开mtklog都会新建一个文件夹  
+    1.2 MDLog1_2015_0101_000042  
+
+2. mobilelog                        // android log 和 kernel log  
+    2.1 APLog_2010_0101_000147  
+    2.1 APLog_2015_0101_000037        
+        atf_log                     // 所有_log都是进入安卓之后的  
+        atf_log.boot                // 所有.boot都是启动到进入安卓之前的log  
+        bootprof                    // 启动的简要信息 - 可以分析启动时间 - 启动模式(普通or看门狗or按键())  
+        cmdline                     // lk传给kernel的参数(包括lcm等) - 可以自己加  
+        crash_log                   // 崩溃log  
+        crash_log.boot  
+        events_log                  // 事件log，主要输出记录各个activity周期及事件  
+        events_log.boot：  
+        kernel_log                  // 内核log，常用  
+        kernel_log.boot  
+        last_kmsg                   // 上一次关机前的log - 可以分析重启原因  
+        main_log                    // hal层的log打印在这里  
+        main_log.boot  
+        mblog_history               // 本目录下所有log的大小等信息  
+        ProjectConfig.mk            // 工程配置  
+        properties                  // 属性  
+        radio_log                   // 输出通话，网络状态变化  
+        radio_log.boot  
+        sys_log                     // jni、framework层log，Exception定位点  
+        sys_log.boot  
+
+3. netlog                           //网络log  
+    3.1 NTLog_2010_0101_000147  
+        NTLog_2015_0101_000037  
+        tcpdump_NTLog_2015_0101_000037_start.cap.tmp  
+
+4. running_file_tree.txt            //
+</code></pre><h3 id="ZZ-INTERNAL相关信息及解释"><a href="#ZZ-INTERNAL相关信息及解释" class="headerlink" title="ZZ_INTERNAL相关信息及解释"></a>ZZ_INTERNAL相关信息及解释</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">ANR,2173,-1361051648,99,/data/core/,1,system_app_anr,android.process.media,Tue Jul  4 18:51:03 HKT 2017,1</div><div class="line"></div><div class="line">第一列：exception class，有KE/NE/JE/EE等</div><div class="line">第二列：pid</div><div class="line">第三列：tid</div><div class="line">第四列：固定是99</div><div class="line">第五列：固定是/data/core</div><div class="line">第六列：exception level，0: fatal, 1: exception, 2: warning, 3: reminding</div><div class="line">第七列：exception type info string (如果是NE，则这个栏位是signal名称，比如：SIGSEGV，KE则为空，SWT则为:system_server_watchdog)</div><div class="line">第八列：module name or process name</div><div class="line">第九列：UTC time</div><div class="line">第十列：固定是1</div></pre></td></tr></table></figure>
+<h3 id="trace部分信息解析"><a href="#trace部分信息解析" class="headerlink" title="trace部分信息解析"></a>trace部分信息解析</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">----- pid 2173 at 2017-07-04 11:51:32 -----</div><div class="line">Cmd line: android.process.media</div><div class="line">&quot;main&quot; prio=5 tid=1 Native</div><div class="line">&quot;Binder:2173_1&quot; prio=5 tid=9 Blocked</div><div class="line">  | group=&quot;main&quot; sCount=1 dsCount=0 obj=0x22c05430 self=0xa1fcab00</div><div class="line">  | sysTid=2186 nice=10 cgrp=bg_non_interactive sched=0/0 handle=0xa497a920</div><div class="line">  | state=S schedstat=( 26942858 122825452 281 ) utm=0 stm=2 core=0 HZ=100</div><div class="line">  | stack=0xa487e000-0xa4880000 stackSize=1014KB</div><div class="line">  | held mutexes=</div><div class="line">  at com.android.providers.media.MediaProvider.getParent(MediaProvider.java:4118)</div><div class="line">  - waiting to lock &lt;0x06de4cd2&gt; (a java.util.HashMap) held by thread 13</div><div class="line">  at com.android.providers.media.MediaProvider.insertFile(MediaProvider.java:4395)</div><div class="line">  at com.android.providers.media.MediaProvider.insertInternal(MediaProvider.java:4662)</div><div class="line">  at com.android.providers.media.MediaProvider.insert(MediaProvider.java:4015)</div><div class="line">  at android.content.ContentProvider$Transport.insert(ContentProvider.java:272)</div><div class="line">  at android.content.ContentProviderNative.onTransact(ContentProviderNative.java:163)</div><div class="line">  at android.os.Binder.execTransact(Binder.java:570)</div></pre></td></tr></table></figure>
+<p>1)pid 2173 at 2017-07-04 11:51:32<br>  ANR发生的进程的ID，时间点</p>
+<p>2)Cmd line: android.process.media<br>  ANR发生的进程的名称</p>
+<p>3)”main” prio=5 tid=1 Native<br>  说明线程名，线程的优先级，线程锁ID和线程状态.<br>  线程名称是启动线程的时候手动指明的，这里的main标示是主线程，<br>  是Android自动设定的一个线程名称，如果是自己手动创建的线程，<br>  一般会被命名成“Thread-xx”的格式，启动xx是线程ID，他只增不减<br>  不会被复用;注意这启动的tid不是线程的id，他是一个在Java虚拟机<br>  中用来实现线程锁的变量，随着线程的增减，这个变量的值是可能被<br>  复用的；</p>
+<p>4)group=”main” sCount=1 dsCount=0 obj=0x22c05430 self=0xa1fcab00<br>  group是线程组名称。<br>  sCount是此线程被挂起的次数，<br>  dsCount是线程被调试器挂起的次数。<br>  当一个进程被调试后，sCount会重置为，调试完毕后sCount会根据是否<br>  被正常挂起增长，但是dsCount不会被重置为0，所以dsCount也可以用来<br>  判断这个线程是否被调试过，obj表示这个线程的Java对象地址，self表<br>  示这个线程本身的地址。</p>
+<p>5)此后是线程的调度信息<br>| sysTid=2186 nice=10 cgrp=bg_non_interactive sched=0/0 handle=0xa497a920<br>  sysTid是Linux下的内核线程ID，<br>  nice是线程调度的优先级.<br>  sched分别标志了线程的调度策略和优先级，<br>  cgrp是调度属组，<br>  handle是线程的处理函数地址。</p>
+<p>6)线程当前上下文信息<br> | state=S schedstat=( 26942858 122825452 281 ) utm=0 stm=2 core=0 HZ=100<br>  state是调度状态;<br>  schedstat从 /proc/[pid]/task/[tid]/schedstat读出<br>  三个值分别表示线程在cpu上执行的时间、线程的等待时间和线程执行的时间片长度;<br>  有的android内核版本不支持这项信息，得到的三个值都是0；utm是线程用户态下使<br>  用的时间值(单位是jiffies);stm是内核态下的调度时间值;core是最后执行这个线程<br>  cpu核的序号</p>
+<p>7)最后就是这个线程的调度栈信息。<br>  一般可以通过以下几个简单的方法来判断<br>  <em>trace文件顶部的线程一般是ANR的元凶。
+  </em>这是一个简单的方法，大部分情况下都适用，可以通过这个方法来快速判断是否是自己<br>   的应用造成了本次的ANR，但是并不是trace文件包含的应用就一定是造成ANR的帮凶，应<br>   用出现在trace文件中，只能说明出现ANR的时候这个应用进程还活着，trace文件的顶部<br>   则是触发ANR的应用信息，因此如果你的应用出现在trace文件的顶部，那么很有可能是<br>   因为你的应用造成了ANR,否则是你的应用造成ANR的可能性不大，还需要进一步分析。</p>
+<p>8)如果定位不到时间点，可以看CPU<br>  (sys_log)07-04 18:51:03.209156  1044  1068 E ANRManager: 3.4% TOTAL: 0.5% user  + 2.6% kernel + 0.2% irq<br>   从CPU使用率可以看出:<br>   <em>如果使用量很高，说明当前设备很忙(内存不足，循环处理)
+   </em>如果CPU使用量很少，说明主线程被BLOCK了<br>   *如果IOwait很高，说明ANR有可能是主线程在进行I/O操作造成的(数据库、文件操作、<br>    网络操作等)      </p>
+<p>9)等待锁引起的ANR<br>  找到WallpaperManager对应代码，再结合main log等其他信息，看tid=27的thread在忙<br>  什么。</p>
+<p>10)SWT重启问题分析<br>  SWT是指Android Watchdog Timeout，应用层看门狗超时，通常我们说的WDT是HWT，硬件<br>  看门狗超时。<br>  1.Watchdog的目的是监控系统几个比较主要的service，比如NetworkManagementService，<br>  PowerManagerService，ActivityManagerService等。这些Service在启动时通过调用<br>  Watchdog。getInstance().addMonitor(this);加入到Watchdog的监控列表中，如果超过<br>  一定时间没有反应，认为系统出错，会强制启动Android。<br>  2.Watchdog原理：/framework/base/services/java/com/android/server/Watchdog.java<br>  3.具体分析方法<br>    <em>首先从enventlog中以watchdog为关键字搜索，记录下这个时刻<br>      17:25:23.645459 950 1285 I watchdog:surfaceflinger hang.
+    </em>然后分析所有Service Object的monitor()为何在这个时刻之前1分钟没有做完，<br>    <em>后面具体分析方法和ANR一样
+    </em>ANR是某个AP的主线程在一段时间内没有完成某件事情，<br>    *Android Watchdog 是SystemServer进程的ServerThread 线程在一段时间内没有做完<br>     某件事情。                </p>
+<h3 id="radio-log分析网络状况"><a href="#radio-log分析网络状况" class="headerlink" title="radio_log分析网络状况"></a>radio_log分析网络状况</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">06-30 10:38:06.572525 938 976 I AT : AT&lt; +ECSQ: 22,54,1,1,1,-36,-346,7,39 (RIL_URC_READER, tid:0)</div><div class="line">06-30 10:38:06.572737 938 976 I RILC : RIL_SOCKET_1 UNSOLICITED: UNSOL_SIGNAL_STRENGTH length:72</div><div class="line">06-30 10:38:06.573125 938 998 I RIL : [GSM MAL] URC send success, rid 0, ret 0:      #F5F6FA</div><div class="line">06-30 10:38:06.573125 938 998 I RIL : +ECSQ: 22,54,1,1,1,-36,-346,7,39</div><div class="line">06-30 10:38:06.574384 1028 1067 D RilMalClient: UNSOL_TO_MAL: remap to unsol resp(1009)</div><div class="line">06-30 10:38:06.575465 1028 1067 D RpRilClientController: leave blocking write</div><div class="line">06-30 10:38:06.575605 1028 1067 D RpRilClientController: leave blocking write</div><div class="line">06-30 10:38:06.576133 1425 1425 D SST : [GsmSST0] handle EVENT_SIGNAL_STRENGTH_UPDATE</div><div class="line">06-30 10:38:06.576410 1425 1425 W SignalStrength: Signal before validate=SignalStrength: 0 54 -1 -1 -1 -1 -1 99 86 9 97 2147483647 2147483647 gsm|lte 2147483647 2147483647 2147483647</div><div class="line">06-30 10:38:06.576526 1425 1425 W SignalStrength: Signal after validate=SignalStrength: 0 54 -120 -160 -120 -1 -1 99 -86 -9 97 2147483647 2147483647 gsm|lte 2147483647 2147483647 2147483647</div><div class="line">06-30 10:38:06.577794 1010 1367 D TelephonyRegistry: notifySignalStrengthForPhoneId: callback.onSsS r=&#123;callingPackage=android binder=android.telephony.PhoneStateListener$IPhoneStateListenerStub@d4b4edc callback=android.telephony.PhoneStateListener$IPhoneStateListenerStub@d4b4edc onSubscriptionsChangedListenererCallback=null callerUserId=0 subId=2147483647 phoneId=-1 events=1c1 canReadPhoneState=true&#125; subId=3 phoneId=0 ss=SignalStrength: 0 54 -120 -160 -120 -1 -1 99 -86 -9 97 2147483647 2147483647 gsm|lte 2147483647 2147483647 2147483647</div><div class="line">06-30 10:38:06.578163 1010 1367 D TelephonyRegistry: notifySignalStrengthForPhoneId: callback.onSsS r=&#123;callingPackage=com.android.systemui binder=android.os.BinderProxy@d2e4c9 callback=com.android.internal.telephony.IPhoneStateListener$Stub$Proxy@7f6d7ce onSubscriptionsChangedListenererCallback=null callerUserId=0 subId=3 phoneId=0 events=101e1 canReadPhoneState=true&#125; subId=3 phoneId=0 ss=SignalStrength: 0 54 -120 -160 -120 -1 -1 99 -86 -9 97 2147483647 2147483647 gsm|lte 2147483647 2147483647 2147483647</div><div class="line">06-30 10:38:06.578577 1010 1367 I use-Rlog/RLOG-GSM: getLTELevel - rsrp:-86 snr:97 rsrpIconLevel:3 snrIconLevel:3</div><div class="line">06-30 10:38:06.578693 1010 1367 W SignalStrength: getLevel=3</div><div class="line">06-30 10:38:06.579533 1305 1531 I use-Rlog/RLOG-GSM: getLTELevel - rsrp:-86 snr:97 rsrpIconLevel:3 snrIconLevel:3</div><div class="line">06-30 10:38:06.582788 1305 1531 W SignalStrength: getLevel=3</div><div class="line">06-30 10:38:06.588566 1305 1531 I use-Rlog/RLOG-GSM: getLTELevel - rsrp:-86 snr:97 rsrpIconLevel:3 snrIconLevel:3</div><div class="line">06-30 10:38:06.589489 1305 1531 W SignalStrength: getLevel=3</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">3G modem:</div><div class="line">+ECSQ: &lt;asu&gt;, &lt;ber&gt;, &lt;rssi&gt; （2G网络）</div><div class="line">+ECSQ: &lt;asu&gt;, &lt;ber&gt;, &lt;rssi&gt;, &lt;rscp&gt;, &lt;ec/no&gt; （3G网络）</div><div class="line">4G modem:</div><div class="line">+ECSQ: &lt;asu&gt;, &lt;ber&gt;, &lt;rssi&gt;, &lt;rscp&gt;,1,1,1,&lt;act&gt; （2G网络）</div><div class="line">+ECSQ: &lt;asu&gt;, &lt;ber&gt;, &lt;rssi&gt;, &lt;rscp&gt;, &lt;ec/no&gt;,1,1, &lt;act&gt; （3G网络）</div><div class="line">+ECSQ: &lt;rsrq&gt;, &lt;rsrp&gt;,1,1,1,&lt;rsrq_qdbm &gt;,&lt;rsrp_qdbm&gt; &lt;act&gt; （4G网络）</div><div class="line"></div><div class="line">看+ECSQ 命令带的值:</div><div class="line">*如果第六第七位不是255 or 1 则当前在LTE状态，</div><div class="line">*如果第四第五位不是255 or 1 则当前在3G mode。</div><div class="line">*2G的话不是很清楚怎么看radio log,一般是在modem log里确认的。</div><div class="line">+ECSQ:&lt;sig1&gt;,&lt;sig2&gt;,&lt;rssi_in_qdbm&gt;,&lt;rscp_in_qdbm&gt;,&lt;ecn0_in_qdbm&gt;,&lt;rsrq_in_qdbm&gt;,&lt;rsrp_in_qdbm&gt;,&lt;Act&gt;</div><div class="line">从radio log看，手机应该在</div><div class="line">4G mode时, 如果 SNR&lt;0 (RSRQ&lt;-60dbm)，则信号很差。</div><div class="line">3G mode时, EcN0&lt;-15 (RSCP&lt;-115dbm)时信号很差</div><div class="line">2G mode时, 2G：rssi&lt; -95dbm 、 rscq &gt; 4 (0~7 ,0最好，7最差)</div></pre></td></tr></table></figure>
+<h3 id="通话问题分析"><a href="#通话问题分析" class="headerlink" title="通话问题分析"></a>通话问题分析</h3><p>很多场测神马的，都会报出很多通话相关的bug，有些是通话无声，有些事通话质量不好，等等。遇到这种问题原来都是直接提给MTK的，后面发现很多都是网络质量问题，遂跟MTK讨了方法。在radiolog中搜索 +ECSQ:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">06-30 10:38:06.572525 938 976 I AT : AT&lt; +ECSQ: 22,54,1,1,1,-36,-346,7,39 (RIL_URC_READER, tid:0)</div></pre></td></tr></table></figure></p>
+<p>看+ECSQ 命令带的值，<br>如果第六第七位不是255 or 1 则当前在LTE状态，<br>如果第四第五位不是255or1则当前在3G mode。<br>2G的话不是很清楚怎么看radio log,一般是在modem log里确认的。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">+ECSQ:&lt;sig1&gt;,&lt;sig2&gt;,&lt;rssi_in_qdbm&gt;,&lt;rscp_in_qdbm&gt;,&lt;ecn0_in_qdbm&gt;,&lt;rsrq_in_qdbm&gt;,&lt;rsrp_in_qdbm&gt; ,&lt;Act&gt;</div></pre></td></tr></table></figure></p>
+<p>判断信号质量:<br>手机应该在4G下。如果 SNR &lt; 0 (RSRQ &lt;-60)，则信号很差。<br>3G mode时， EcN0&lt;-15 (RSCP&lt;-115)时信号很差。<br>2G mode时， rssi&lt; -95dbm 、 rscq &gt; 4 (0~7 ,0最好，7最差)</p>
+<h3 id="ANR-问题分析流程"><a href="#ANR-问题分析流程" class="headerlink" title="ANR 问题分析流程"></a>ANR 问题分析流程</h3><h4 id="1-定位问题点"><a href="#1-定位问题点" class="headerlink" title="1.定位问题点"></a>1.定位问题点</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">a) 使用mobile log</div><div class="line">*events_log中搜索am_anr</div><div class="line">*main_log 或 Sys_log 中搜索ANR in</div><div class="line">*traces.txt中查找相应的PID或者进程名</div><div class="line"></div><div class="line">b) 使用anr db文件 </div><div class="line">*使用gat工具打开db文件</div><div class="line">*查看ZZ_INTERNAL文件 找到pid或者进程名</div><div class="line">*在SWT_JBT_TRACES查找pid</div></pre></td></tr></table></figure>
+<h4 id="2-在mainlog中查看cpu"><a href="#2-在mainlog中查看cpu" class="headerlink" title="2.在mainlog中查看cpu"></a>2.在mainlog中查看cpu</h4><p>一般在trace就能看到问题点，如果还是定位不到，就需要在mainlog中搜索TOTAL：<br>查看CPU使用率  进而确认问题</p>
+
+                
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        文章作者:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/about" rel="external nofollow noreferrer">王大可</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        文章链接:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="http://yoursite.com/2018/04/09/mtklog分析/">http://yoursite.com/2018/04/09/mtklog分析/</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        版权声明:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    本博客所有文章除特別声明外，均采用
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    许可协议。转载请注明来源
+                    <a href="/about" target="_blank">王大可</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            <span class="chip bg-color">无标签</span>
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+                <div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fas fa-times"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+
+            
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/2018/04/11/ANR问题分析/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/1.jpg" class="responsive-img" alt="ANR问题分析">
+                        
+                        <span class="card-title">ANR问题分析</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2018-04-11
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-user fa-fw"></i>
+                            王大可
+                            
+                        </span>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2018/04/09/The-application-may-be-doing-too-much-work-on-its-main-thread/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="The application may be doing too much work on its main thread">
+                        
+                        <span class="card-title">The application may be doing too much work on its main thread</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2018-04-09
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-user fa-fw"></i>
+                            王大可
+                            
+                        </span>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+
+    <footer class="page-footer bg-color">
+    
+        <link rel="stylesheet" href="/libs/aplayer/APlayer.min.css">
+<style>
+    .aplayer .aplayer-lrc p {
+        
+        display: none;
+        
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 16px !important;
+    }
+
+    .aplayer .aplayer-lrc p.aplayer-lrc-current {
+        
+        display: none;
+        
+        font-size: 15px;
+        color: #42b983;
+    }
+
+    
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body {
+        left: -66px !important;
+    }
+
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body:hover {
+        left: 0px !important;
+    }
+
+    
+</style>
+<div class="">
+    
+    <div class="row">
+        <meting-js class="col l8 offset-l2 m10 offset-m1 s12"
+                   server="netease"
+                   type="playlist"
+                   id="503838841"
+                   fixed='true'
+                   autoplay='false'
+                   theme='#42b983'
+                   loop='all'
+                   order='random'
+                   preload='auto'
+                   volume='0.7'
+                   list-folded='true'
+        >
+        </meting-js>
+    </div>
+</div>
+
+<script src="/libs/aplayer/APlayer.min.js"></script>
+<script src="/libs/aplayer/Meting.min.js"></script>
+
+    
+
+    <div class="container row center-align"
+         style="margin-bottom: 0px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            
+                <span id="year">2019-2023</span>
+            
+            <a href="/about" target="_blank">王大可</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            
+            <br>
+            
+            
+            
+                
+            
+            
+                <span id="busuanzi_container_site_pv">
+                &nbsp;|&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;
+                    <span id="busuanzi_value_site_pv" class="white-color"></span>
+            </span>
+            
+            
+                <span id="busuanzi_container_site_uv">
+                &nbsp;|&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;
+                    <span id="busuanzi_value_site_uv" class="white-color"></span>
+            </span>
+            
+            <br>
+
+            <!-- 运行天数提醒. -->
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/blinkfox" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:1181062873@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=1181062873" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 1181062873" data-position="top" data-delay="50">
+        <i class="fab fa-qq"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fas fa-rss"></i>
+    </a>
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(function () {
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('/search.xml', 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- 白天和黑夜主题 -->
+<div class="stars-con">
+    <div id="stars"></div>
+    <div id="stars2"></div>
+    <div id="stars3"></div>  
+</div>
+
+<script>
+    function switchNightMode() {
+        $('<div class="Cuteen_DarkSky"><div class="Cuteen_DarkPlanet"></div></div>').appendTo($('body')),
+        setTimeout(function () {
+            $('body').hasClass('DarkMode') 
+            ? ($('body').removeClass('DarkMode'), localStorage.setItem('isDark', '0'), $('#sum-moon-icon').removeClass("fa-sun").addClass('fa-moon')) 
+            : ($('body').addClass('DarkMode'), localStorage.setItem('isDark', '1'), $('#sum-moon-icon').addClass("fa-sun").removeClass('fa-moon')),
+            
+            setTimeout(function () {
+            $('.Cuteen_DarkSky').fadeOut(1e3, function () {
+                $(this).remove()
+            })
+            }, 2e3)
+        })
+    }
+</script>
+
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
+    
+
+    
+    
+    
+
+    <!-- 雪花特效 -->
+    
+
+    <!-- 鼠标星星特效 -->
+    
+
+     
+        <script src="https://ssl.captcha.qq.com/TCaptcha.js"></script>
+        <script src="/libs/others/TencentCaptcha.js"></script>
+        <button id="TencentCaptcha" data-appid="xxxxxxxxxx" data-cbfn="callback" type="button" hidden></button>
+    
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    <script src="/libs/others/clicklove.js" async="async"></script>
+    
+    
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+    <!--腾讯兔小巢-->
+    
+    
+
+    
+
+    
+
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+</body>
+
+</html>
